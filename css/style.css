@@ -50,9 +50,7 @@ button {
     align-items: center;
     justify-content: center;
     z-index: 9999;
-    transition:
-        opacity 0.9s ease,
-        visibility 0.9s ease;
+    transition: opacity 0.9s ease, visibility 0.9s ease;
 }
 
 .intro-screen.hide {
@@ -62,27 +60,58 @@ button {
 }
 
 .intro-logo {
+    display: flex;
+    align-items: center;
+    animation: shrinkLogo 0.6s ease forwards 2.4s;
+}
+
+.h-icon {
+    height: clamp(50px, 7vw, 90px); 
+    width: auto;
+    margin-right: 2px;
+}
+
+.h-path {
+    stroke-dasharray: 300;
+    stroke-dashoffset: 300;
+    /* Line draw animation */
+    animation: drawLine 1s ease forwards 0.2s;
+}
+
+.rest-of-word {
     font-family: "Outfit", sans-serif;
     font-size: clamp(40px, 6vw, 85px);
     font-weight: 600;
     color: var(--lime);
     letter-spacing: -3px;
-    clip-path: inset(0 100% 0 0);
-    animation: logoAnimation 2.5s ease forwards;
+    opacity: 0;
+    transform: translateX(-15px);
+    animation: fadeText 0.8s ease forwards 1.2s;
     text-shadow: 0 0 35px rgba(230, 255, 66, 0.15);
 }
 
-@keyframes logoAnimation {
-    0% {
-        clip-path: inset(0 100% 0 0);
-        transform: scale(0.9);
+/* --- KEYFRAMES --- */
+@keyframes drawLine {
+    to {
+        stroke-dashoffset: 0;
     }
-    70% {
-        clip-path: inset(0 0 0 0);
+}
+
+@keyframes fadeText {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes shrinkLogo {
+    0% {
         transform: scale(1);
+        opacity: 1;
     }
     100% {
-        clip-path: inset(0 0 0 0);
+        transform: scale(0);
+        opacity: 0;
     }
 }
 
@@ -150,6 +179,7 @@ button {
     white-space: nowrap;
     transition: color 0.3s ease;
 }
+
 .nav-item > a:hover,
 .nav-link:hover {
     color: #829b20;
@@ -202,6 +232,7 @@ button {
     visibility: visible;
     transform: translateY(0);
 }
+
 
 /* HEADER RIGHT SIDE */
 
@@ -439,7 +470,12 @@ button {
     margin-top: 78px;
 }
 
+/* =========================================
+   DISCOVER BUTTON (Fill from bottom)
+========================================= */
 .discover-btn {
+    position: relative; /* Animation ne button ni andar rakhva */
+    overflow: hidden;   /* Circle bahar na jay ena mate */
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -449,26 +485,92 @@ button {
     border-radius: 15px;
     font-size: 19px;
     font-weight: 800;
-    transition: all 0.3s ease;
+    text-decoration: none;
+    border: 1px solid transparent; /* Hover par border dekhadva mate */
+    transition: color 0.4s ease, border-color 0.4s ease;
+    z-index: 1; /* Text ne upar rakhva */
+}
+
+/* Bottom mathi aavtu dark circle */
+.discover-btn::before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(0);
+    width: 250%;
+    height: 250%;
+    border-radius: 50%;
+    background-color: var(--dark-green);
+    transition: transform 0.5s ease-in-out;
+    z-index: -1;
 }
 
 .discover-btn:hover {
-    transform: translateY(-4px);
-    background: #f1ff75;
+    color: var(--white); /* Hover karta text white thase */
+    border-color: rgba(255, 255, 255, 0.3); /* White border aavse */
 }
 
+.discover-btn:hover::before {
+    transform: translateX(-50%) translateY(-50%);
+}
+
+/* =========================================
+   LEARN MORE BUTTON (Underline to Fill)
+========================================= */
 .learn-btn {
+    position: relative;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     color: var(--lime);
     font-size: 18px;
     font-weight: 800;
-    border-bottom: 2px solid var(--lime);
-    padding-bottom: 5px;
-    transition: 0.3s ease;
+    text-decoration: none;
+    padding: 10px 15px; /* Hover fill mate thodi space aapi che */
+    border-radius: 8px;
+    transition: color 0.4s ease;
+    z-index: 1;
+}
+
+/* Underline (CSS border ni jagya e element banavyo che jethi hide kari shakay) */
+.learn-btn::after {
+    content: "";
+    position: absolute;
+    bottom: 5px; 
+    left: 15px;
+    right: 15px;
+    height: 2px;
+    background-color: var(--lime);
+    transition: background-color 0.3s ease;
+}
+
+/* Bottom mathi aavtu lime circle */
+.learn-btn::before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(0);
+    width: 250%;
+    height: 250%;
+    border-radius: 50%;
+    background-color: var(--lime);
+    transition: transform 0.5s ease-in-out;
+    z-index: -1;
 }
 
 .learn-btn:hover {
-    color: var(--white);
-    border-color: var(--white);
+    color: var(--dark-green); /* Hover karta text dark thai jase */
+}
+
+.learn-btn:hover::after {
+    background-color: transparent; /* Hover karta underline gayab thai jase */
+}
+
+.learn-btn:hover::before {
+    transform: translateX(-50%) translateY(-50%);
 }
 
 /* TRUST TEXT */
@@ -709,7 +811,6 @@ button {
         padding: 13px 15px;
         font-size: 13px;
     }
-
     .hero-title {
         letter-spacing: -3px;
     }
@@ -741,6 +842,7 @@ button {
     }
 
     /* MOBILE TOGGLE */
+
     .menu-toggle {
         display: flex;
         flex-direction: column;
@@ -810,6 +912,7 @@ button {
     }
 
     /* HERO */
+
     .hero-section {
         min-height: 760px;
         height: 100svh;
@@ -847,12 +950,11 @@ button {
     }
 
     .trust-text {
-        margin-top: 55px;
+        margin-top: 55p;
         font-size: 14px;
     }
 
     /* SHAPES */
-
     .shape-left {
         transform: scale(0.65);
         transform-origin: bottom left;
@@ -865,6 +967,7 @@ button {
     }
 
     /* OTHER SECTIONS */
+
     .about-section,
     .solutions-section,
     .resources-section {
@@ -904,93 +1007,83 @@ button {
     width: 100%;
     height: 160px;
     background: #00563c;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-    position: relative;
-    z-index: 5;
 
-}
-
-.client-logo-track {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    gap: 85px;
-    width: max-content;
-    min-width: 200%;
-    animation: clientLogoMove 28s linear infinite;
-}
-
-.client-logo-item {
-    color: #e5eee8;
     display: flex;
     align-items: center;
     justify-content: center;
-    white-space: nowrap;
-    font-family: "Outfit", sans-serif;
-    font-weight: 700;
-    flex-shrink: 0;
-    opacity: 0.95;
-}
 
-.amazon-logo {
-    font-size: 48px;
-    letter-spacing: -3px;
     position: relative;
+    z-index: 10;
+    overflow: hidden;
+
+    opacity: 0;
+    transform: translateY(35px);
+
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
 }
 
-.total-logo {
-    font-size: 45px;
-    flex-direction: column;
-    gap: 0;
-    line-height: 0.8;
+.client-logo-strip.logo-visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
-.total-symbol {
-    font-size: 54px;
-    font-weight: 900;
-    font-style: italic;
+.client-logo-track {
+    width: 100%;
+    max-width: 1250px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 30px;
+    gap: 45px;
 }
 
-.total-logo small {
-    font-family: "DM Sans", sans-serif;
-    font-size: 11px;
-    margin-top: 8px;
+.client-logo-item {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.edf-logo {
-    font-size: 48px;
-    gap: 8px;
+.client-logo-item img {
+    display: block;
+    width: 100%;
+    max-width: 190px;
+    height: 65px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
 }
 
-.edf-logo span {
-    font-size: 65px;
-}
+/* MOBILE */
 
-.capgemini-logo {
-    font-family: cursive;
-    font-size: 36px;
-    font-weight: 600;
-}
+@media (max-width: 760px) {
 
-.backmarket-logo {
-    font-size: 36px;
-    line-height: 0.85;
-    letter-spacing: -2px;
-}
-
-.backmarket-logo span {
-    font-size: 35px;
-    margin-right: 5px;
-}
-
-@keyframes clientLogoMove {
-    from {
-        transform: translateX(0);
+    .client-logo-strip {
+        height: 110px;
     }
-    to {
-        transform: translateX(-50%);
+
+    .client-logo-track {
+        gap: 30px;
+        padding: 0 20px;
+        justify-content: flex-start;
+        overflow-x: auto;
+        scrollbar-width: none;
+    }
+
+    .client-logo-track::-webkit-scrollbar {
+        display: none;
+    }
+
+    .client-logo-item {
+        flex: 0 0 120px;
+    }
+
+    .client-logo-item img {
+        max-width: 120px;
+        height: 48px;
     }
 }
 
@@ -1000,16 +1093,23 @@ button {
 
 .activate-section {
     position: relative;
-    width: 100%;
-    min-height: 850px;
-    background: #071b14;
-    color: #ffffff;
     overflow: hidden;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    padding: 115px 5% 140px;
-    isolation: isolate;
+    min-height: 830px;
+}
+
+.activate-section .activate-content {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.activate-section .activate-description {
+    max-width: 750px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* =========================================
@@ -1065,6 +1165,8 @@ button {
 ========================================= */
 
 .activate-button {
+    position: relative; 
+    overflow: hidden;   
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -1075,13 +1177,33 @@ button {
     font-size: 19px;
     font-weight: 800;
     border-radius: 15px;
-    transition: all 0.3s ease;
+    border: 1px solid transparent; 
+    transition: color 0.4s ease, border-color 0.4s ease, box-shadow 0.3s ease;
+    z-index: 1; 
+}
+
+.activate-button::before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(0);
+    width: 250%;
+    height: 250%;
+    border-radius: 50%;
+    background-color: #071b14; 
+    transition: transform 0.5s ease-in-out;
+    z-index: -1;
 }
 
 .activate-button:hover {
-    transform: translateY(-5px);
-    background: #f0ff75;
+    color: #ffffff; 
+    border-color: rgba(255, 255, 255, 0.3); 
     box-shadow: 0 10px 35px rgba(230, 255, 66, 0.15);
+}
+
+.activate-button:hover::before {
+    transform: translateX(-50%) translateY(-50%);
 }
 
 /* =========================================
@@ -1118,7 +1240,6 @@ button {
 }
 
 /* LOWER DECORATIVE CIRCLE */
-
 .activate-circle-three {
     width: 500px;
     height: 500px;
@@ -1128,10 +1249,10 @@ button {
 }
 
 @keyframes circleFloat {
+
     from {
         transform: translateY(0) rotate(0deg);
     }
-
     to {
         transform: translateY(-25px) rotate(8deg);
     }
@@ -1230,86 +1351,239 @@ button {
 }
 
 /* =========================================
-   BOTTOM MOVING LOGOS
+   BEETOGREEN STYLE LOGO MARQUEE
 ========================================= */
 
 .mobility-logo-slider {
     position: absolute;
+
     left: 0;
-    bottom: 20px;
+    bottom: 30px;
+
     width: 100%;
+
     overflow: hidden;
-    z-index: 4;
+
+    z-index: 5;
+
+    pointer-events: auto;
+
+    /* Smooth edge fade */
+    -webkit-mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        #000 3%,
+        #000 97%,
+        transparent 100%
+    );
+
+    mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        #000 3%,
+        #000 97%,
+        transparent 100%
+    );
 }
+
+
+/* =========================================
+   MOVING TRACK
+========================================= */
 
 .mobility-logo-track {
     display: flex;
     align-items: center;
-    gap: 65px;
     width: max-content;
-    animation: mobilityLogoMove 25s linear infinite;
+    flex-wrap: nowrap;
+    animation: mobilityLogoMove 5s linear infinite;
+    will-change: transform;
 }
+
+/* =========================================
+   LOGO GROUP
+========================================= */
+
+.mobility-logo-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+    width: 100vw;
+    gap: 70px;
+    padding: 0 40px;
+    box-sizing: border-box;
+}
+
+/* =========================================
+   INDIVIDUAL LOGO
+========================================= */
 
 .mobility-logo-item {
     display: flex;
     align-items: center;
-    gap: 10px;
-    font-family: "Outfit", sans-serif;
-    font-size: 34px;
-    font-weight: 800;
-    color: #ffffff;
-    white-space: nowrap;
-    opacity: 0.8;
-}
-
-.mobility-logo-item span {
-    font-size: 32px;
-}
-
-@keyframes mobilityLogoMove {
-    from {
-        transform: translateX(0);
-    }
-    to {
-        transform: translateX(-50%);
-    }
-}
-
-.client-logo-track:hover,
-.mobility-logo-track:hover {
-    animation-play-state: paused;
+    justify-content: center;
+    flex: 1 1 0;
+    min-width: 0;
+    height: 75px;
+    transition: opacity 0.3s ease;
 }
 
 /* =========================================
-   ACTIVATE SECTION RESPONSIVE
+   LOGO IMAGE
+========================================= */
+
+.mobility-logo-item img {
+    display: block;
+    width: 100%;
+    max-width: 230px;
+    height: 65px;
+    object-fit: contain;
+    object-position: center;
+    /* Make all logos white */
+    filter: brightness(0) invert(1);
+    opacity: 0.95;
+    transition: transform 0.3s ease;
+}
+
+/* =========================================
+   LOGO HOVER
+========================================= */
+
+.mobility-logo-item:hover img {
+    transform: scale(1.06);
+
+    opacity: 1;
+}
+
+
+/* =========================================
+   INFINITE ANIMATION
+========================================= */
+
+@keyframes mobilityLogoMove {
+
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+
+}
+
+
+/* =========================================
+   PAUSE WHEN HOVERING
+========================================= */
+
+.mobility-logo-slider:hover .mobility-logo-track {
+    animation-play-state: paused;
+}
+
+
+/* =========================================
+   TABLET
 ========================================= */
 
 @media (max-width: 1100px) {
 
-    .activate-section {
-        min-height: 900px;
+    .mobility-logo-slider {
+        bottom: 25px;
     }
 
-    .activate-title {
-        font-size: 85px;
+    .mobility-logo-group {
+        gap: 45px;
+
+        padding: 0 30px;
     }
 
-    .promo-card {
-        width: 290px;
-        top: 560px;
-        right: 3%;
+    .mobility-logo-item {
+        height: 65px;
     }
 
-    .promo-image {
-        height: 145px;
+    .mobility-logo-item img {
+        height: 55px;
+
+        max-width: 180px;
     }
 
-    .promo-card-content h3 {
-        font-size: 39px;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 760px) {
+
+    .mobility-logo-slider {
+        bottom: 20px;
     }
 
-    .promo-card-content p {
-        font-size: 26px;
+    .mobility-logo-track {
+        animation-duration: 5s;
+    }
+
+    .mobility-logo-group {
+        gap: 35px;
+
+        padding: 0 20px;
+    }
+
+    .mobility-logo-item {
+        height: 50px;
+    }
+
+    .mobility-logo-item img {
+        height: 40px;
+
+        max-width: 130px;
+    }
+
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 480px) {
+
+    .mobility-logo-track {
+        animation-duration: 5s;
+    }
+
+    .mobility-logo-group {
+        gap: 25px;
+        padding: 0 15px;
+    }
+
+    .mobility-logo-item img {
+        height: 32px;
+        max-width: 100px;
+    }
+}
+
+/* =========================================
+   ACTIVATE SECTION LOGO RESPONSIVE
+========================================= */
+
+@media (max-width: 1100px) {
+
+    .mobility-logo-group {
+        gap: 60px;
+        padding-right: 60px;
+    }
+
+    .mobility-logo-item {
+        height: 65px;
+    }
+
+    .mobility-logo-item img {
+        height: 55px;
+        max-width: 180px;
     }
 }
 
@@ -1319,124 +1593,522 @@ button {
 
 @media (max-width: 760px) {
 
-    /* TOP CLIENT LOGOS */
-
-    .client-logo-strip {
-        height: 110px;
-    }
-
-    .client-logo-track {
-        gap: 45px;
-    }
-
-    .amazon-logo {
-        font-size: 35px;
-    }
-
-    .total-symbol {
-        font-size: 38px;
-    }
-
-    .edf-logo {
-        font-size: 35px;
-    }
-
-    .edf-logo span {
-        font-size: 40px;
-    }
-
-    .capgemini-logo {
-        font-size: 27px;
-    }
-
-    .backmarket-logo {
-        font-size: 27px;
-    }
-
-    /* ACTIVATE SECTION */
-
-    .activate-section {
-        min-height: 1050px;
-        padding: 100px 6% 180px;
-    }
-
-    .activate-title {
-        font-size: clamp(43px, 10vw, 68px);
-        letter-spacing: -2px;
-        line-height: 1.05;
-    }
-
-    .activate-description {
-        margin-top: 30px;
-        font-size: 17px;
-        line-height: 1.6;
-    }
-
-    .activate-button {
-        margin-top: 25px;
-        padding: 17px 25px;
-        font-size: 15px;
-    }
-
-    /* PROMO CARD */
-
-    .promo-card {
-        width: 230px;
-        top: 610px;
-        right: 8%;
-    }
-
-    .promo-image {
-        height: 120px;
-    }
-
-    .promo-card-content h3 {
-        font-size: 33px;
-    }
-    .promo-card-content p {
-        font-size: 23px;
-        margin-top: 20px;
-    }
-
-    /* CIRCLES */
-
-    .activate-circle-one {
-        width: 450px;
-        height: 450px;
-        border-width: 75px;
-        left: -280px;
-        top: 520px;
-    }
-
-    .activate-circle-two {
-        width: 300px;
-        height: 300px;
-        border-width: 65px;
-        left: -180px;
-        top: 700px;
-    }
-
-    .activate-circle-three {
-        display: none;
-    }
-
-    /* BOTTOM TEXT */
-
-    .mobility-note {
-        bottom: 105px;
-        font-size: 14px;
-        padding: 0 15px;
-    }
-
     .mobility-logo-slider {
         bottom: 20px;
     }
 
     .mobility-logo-track {
-        gap: 35px;
+        animation-duration: 5s;
+    }
+
+    .mobility-logo-group {
+        gap: 40px;
+        padding-right: 40px;
     }
 
     .mobility-logo-item {
-        font-size: 25px;
+        height: 50px;
+    }
+
+    .mobility-logo-item img {
+        height: 40px;
+        max-width: 140px;
+    }
+}
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 480px) {
+    .mobility-logo-group {
+        gap: 30px;
+        padding-right: 30px;
+    }
+
+    .mobility-logo-item img {
+        height: 35px;
+        max-width: 120px;
+    }
+}
+
+
+
+/* =========================================
+   ACTIVATE SECTION LAYOUT
+========================================= */
+
+.activate-section {
+    position: relative;
+
+    width: 100%;
+
+    min-height: 830px;
+
+    background: #071b14;
+
+    color: #ffffff;
+
+    overflow: hidden;
+
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: center;
+
+    padding: 110px 5% 150px;
+
+    isolation: isolate;
+}
+
+
+/* MAIN CONTENT */
+
+.activate-content {
+    position: relative;
+
+    z-index: 3;
+
+    width: 100%;
+
+    max-width: 1100px;
+
+    text-align: center;
+}
+
+
+/* DESCRIPTION */
+
+.activate-description {
+    max-width: 900px;
+
+    margin: 30px auto 0;
+
+    font-size: clamp(18px, 1.5vw, 24px);
+
+    font-weight: 700;
+
+    line-height: 1.5;
+
+    color: #ffffff;
+}
+
+
+/* BOTTOM NOTE */
+
+.mobility-note {
+    position: absolute;
+
+    bottom: 145px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 100%;
+
+    padding: 0 20px;
+
+    text-align: center;
+
+    z-index: 4;
+
+    font-size: 19px;
+
+    font-weight: 600;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 1100px) {
+
+    .activate-section {
+        min-height: 900px;
+    }
+
+    .mobility-note {
+        bottom: 130px;
+    }
+
+}
+
+
+@media (max-width: 760px) {
+
+    .activate-section {
+        min-height: 1050px;
+
+        padding: 100px 6% 180px;
+    }
+
+    .mobility-note {
+        bottom: 100px;
+        font-size: 14px;
+    }
+}
+
+.client-logo-strip {
+    opacity: 0;
+    transform: translateY(35px);
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+}
+
+.client-logo-strip.logo-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =========================================================
+   ACTIVATE CYCLING SECTION — TARGETED FIXES ONLY
+========================================================= */
+
+.activate-section {
+    min-height: 830px;
+    padding-bottom: 155px;
+}
+
+.activate-section .activate-button {
+        margin-bottom: 80px;
+    }
+
+/* Extra breathing room below the CTA */
+.activate-section .mobility-note {
+    bottom: 138px;
+    padding: 0 20px;
+}
+
+/* Promotional card entrance: slides up into place */
+.activate-section .promo-card {
+    position: absolute;
+    z-index: 4;
+    top: 160px;
+    right: 4%;
+    width: 330px;
+    /* Starting position */
+    opacity: 0;
+    transform: translateY(180px) rotate(7deg);
+    /* Smooth slide up */
+    animation: activatePromoCardEnter 1.5s
+        cubic-bezier(0.22, 1, 0.36, 1)
+        0.3s forwards;
+    will-change: transform, opacity;
+}
+
+.activate-section .promo-card:hover {
+    transform: rotate(2deg) translateY(-8px);
+}
+
+@keyframes activatePromoCardEnter {
+
+    0% {
+        opacity: 0;
+        transform: translateY(180px) rotate(7deg);
+    }
+
+    70% {
+        opacity: 1;
+        transform: translateY(-8px) rotate(7deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) rotate(7deg);
+    }
+
+}
+
+/* Keep card above the logo strip */
+.activate-section .promo-card {
+    bottom: auto;
+}
+
+/* Logo marquee viewport */
+.activate-section .mobility-logo-slider {
+    position: absolute;
+    left: 0;
+    bottom: 25px;
+    width: 100%;
+    overflow: hidden;
+    z-index: 5;
+}
+
+/* Identical groups move by exactly half of the complete track */
+.activate-section .mobility-logo-track {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    flex-wrap: nowrap;
+    animation: activateMobilityMarquee 5s linear infinite;
+    will-change: transform;
+}
+
+.activate-section .mobility-logo-group {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex: 0 0 auto;
+    width: max-content;
+    gap: 42px;
+    padding: 0 21px;
+    box-sizing: border-box;
+}
+
+.activate-section .mobility-logo-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    width: auto;
+    min-width: 0;
+    height: 72px;
+}
+
+.activate-section .mobility-logo-item img {
+    display: block;
+    width: auto;
+    height: 58px;
+    max-width: 220px;
+    object-fit: contain;
+    object-position: center;
+    filter: brightness(0) invert(1);
+}
+
+@keyframes activateMobilityMarquee {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+/* Pause while hovering the strip or any logo */
+.activate-section .mobility-logo-slider:hover .mobility-logo-track,
+.activate-section .mobility-logo-track:hover {
+    animation-play-state: paused;
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 1100px) {
+
+    .activate-section {
+        min-height: 1000px;
+    }
+
+    .activate-section .activate-content {
+        width: 100%;
+        max-width: 850px;
+
+        margin: 0 auto;
+    }
+
+    .activate-section .activate-title {
+        width: 100%;
+        max-width: 1250px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .activate-section .activate-description {
+        width: 100%;
+        max-width: 900px;
+        margin: 30px auto 0;
+        text-align: center;
+    }
+
+    .activate-section .activate-button {
+        margin-top: 38px;
+    }
+
+   .activate-section .promo-card {
+        top: 620px;
+        right: 50%;
+        width: min(260px, 78%);
+        transform: translateX(50%) translateY(180px) rotate(5deg);
+        animation-name: activatePromoCardEnterMobile;
+    }
+
+    @keyframes activatePromoCardEnterMobile {
+        0% {
+            opacity: 0;
+            transform: translateX(50%) translateY(180px) rotate(5deg);
+        }
+
+        70% {
+            opacity: 1;
+            transform: translateX(50%) translateY(-8px) rotate(5deg);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateX(50%) translateY(0) rotate(5deg);
+        }
+    }
+}
+
+/* =====================================
+   DYNAMIC TABS SECTION (UPDATED)
+====================================== */
+.dynamic-tabs-section {
+    padding: 80px 5% 100px;
+    background-color: #f3f0ff;
+    transition: background-color 0.4s ease;
+}
+
+.tabs-container {
+    max-width: 1250px;
+    margin: 0 auto;
+}
+
+.tabs-header-wrapper {
+    text-align: center;
+    margin-bottom: 70px;
+}
+
+.dynamic-main-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(42px, 5.2vw, 68px);
+    font-weight: 800;
+    line-height: 1.15;
+    text-align: center;
+    max-width: 850px;
+    margin: 0 auto;
+    color: #5b318e;
+    transition: color 0.4s ease;
+}
+
+.tabs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr 1.2fr;
+    gap: 50px;
+    align-items: center;
+}
+
+/* Left Navigation Buttons */
+.tabs-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    position: relative;
+}
+
+.tabs-nav::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: rgba(0, 0, 0, 0.08);
+    z-index: 0;
+}
+
+.tab-btn {
+    background: none;
+    border: none;
+    text-align: left;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.35); /* Inactive option color */
+    cursor: pointer;
+    padding: 8px 0 8px 20px;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.tab-btn::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 2px;
+    background: transparent;
+    transition: background 0.3s ease;
+}
+
+/* Active class ne JavaScript thi dynamically theme color malse */
+.tab-btn.active {
+    font-weight: 700;
+}
+
+.tab-btn.active::after {
+    background: currentColor; /* Active left vertical line match thase */
+}
+
+/* Center Image Container */
+.tabs-image-container {
+    width: 100%;
+    border-radius: 28px;
+    overflow: hidden;
+    aspect-ratio: 4/5;
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.tabs-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.3s ease;
+}
+
+/* Right Content Box */
+.tabs-content-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.tab-badge {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    letter-spacing: 0.5px;
+    transition: color 0.4s ease;
+}
+
+.tab-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(32px, 3.5vw, 46px);
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 20px;
+    transition: color 0.4s ease;
+}
+
+.tab-desc {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+    transition: color 0.4s ease;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .tabs-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    .tabs-nav {
+        flex-direction: row;
+        overflow-x: auto;
+    }
+    .tabs-nav::before, .tab-btn::after {
+        display: none;
+    }
+    .dynamic-main-title {
+        font-size: 36px;
     }
 }

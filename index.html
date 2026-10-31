@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Beetogreen | Mobility that makes a difference</title>
+    <title>Highwages | Mobility that makes a difference</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,11 +25,13 @@
     ====================================== -->
 
     <div class="intro-screen" id="introScreen">
-
         <div class="intro-logo">
-            Beetogreen
+            <!-- 'H' letter in SVG for line drawing effect -->
+            <svg class="h-icon" viewBox="0 0 80 100">
+                <path class="h-path" d="M20,10 L20,90 M20,50 L60,50 M60,10 L60,90" fill="none" stroke="var(--lime)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <span class="rest-of-word">ighwages</span>
         </div>
-
     </div>
 
 
@@ -37,119 +39,7 @@
          HEADER / NAVBAR
     ====================================== -->
 
-    <header class="header" id="header">
-
-        <!-- LOGO -->
-
-        <a href="index.html" class="logo">
-            Beetogreen
-        </a>
-
-
-        <!-- MOBILE MENU BUTTON -->
-
-        <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
-
-            <span></span>
-            <span></span>
-            <span></span>
-
-        </button>
-
-
-        <!-- NAVIGATION -->
-
-        <nav class="navbar" id="navbar">
-
-            <!-- SOLUTIONS -->
-
-            <div class="nav-item dropdown">
-
-                <a href="#solutions">
-                    Solutions
-                    <span class="arrow"></span>
-                </a>
-
-                <div class="dropdown-menu">
-
-                    <a href="#solutions">For companies</a>
-                    <a href="#solutions">For employees</a>
-                    <a href="#solutions">Our solutions</a>
-
-                </div>
-
-            </div>
-
-
-            <!-- PRICING -->
-
-            <div class="nav-item dropdown">
-
-                <a href="#pricing">
-                    Pricing
-                    <span class="arrow"></span>
-                </a>
-
-                <div class="dropdown-menu">
-
-                    <a href="#pricing">Our plans</a>
-                    <a href="#pricing">Request a quote</a>
-
-                </div>
-
-            </div>
-
-
-            <!-- RESOURCES -->
-
-            <div class="nav-item dropdown">
-
-                <a href="#resources">
-                    Resources
-                    <span class="arrow"></span>
-                </a>
-
-                <div class="dropdown-menu">
-
-                    <a href="#resources">Blog</a>
-                    <a href="#resources">News</a>
-                    <a href="#resources">FAQs</a>
-
-                </div>
-
-            </div>
-
-
-            <!-- CONTACT -->
-
-            <a href="#contact" class="nav-link">
-                Contact
-            </a>
-
-        </nav>
-
-
-        <!-- HEADER RIGHT BUTTONS -->
-
-        <div class="header-right">
-
-            <a href="#" class="language">
-                <span>🇬🇧</span> EN
-            </a>
-
-            <a href="#login" class="login-btn">
-                Log in
-            </a>
-
-            <a href="#contact" class="demo-btn">
-                Book a demo
-            </a>
-
-        </div>
-
-    </header>
-
-
+    <div id="header-placeholder"></div>
 
     <!-- =====================================
          HERO SECTION
@@ -159,54 +49,37 @@
 
         <section class="hero-section" id="home">
 
-
             <!-- BACKGROUND VIDEO -->
 
             <video class="hero-video" autoplay muted loop playsinline>
-
-                <source src="assets/hero-video.mp4" type="video/mp4">
-
+                <source src="/images/hero-bg.mp4" type="video/mp4">
             </video>
-
 
             <!-- VIDEO OVERLAY -->
 
             <div class="hero-overlay"></div>
 
-
             <!-- DARK DECORATIVE SHAPES -->
 
             <div class="shape shape-left"></div>
-
             <div class="shape shape-bottom"></div>
-
             <div class="shape shape-right"></div>
-
 
 
             <!-- HERO CONTENT -->
 
             <div class="hero-content">
 
-
                 <!-- MAIN HEADING -->
-
                 <h1 class="hero-title">
-
                     Mobility that
-
                     <br>
-
                     makes a difference<span class="star">*</span>
-
                 </h1>
-
-
 
                 <!-- HERO INFORMATION -->
 
                 <div class="hero-info">
-
                     <p>
                         <span>*</span>French leader in workplace cycling
                     </p>
@@ -230,331 +103,256 @@
                     <a href="#about" class="learn-btn">
                         Learn more
                     </a>
-
                 </div>
-
-
 
                 <!-- TRUST TEXT -->
-
                 <div class="trust-text">
-
-                    <strong>+500 companies</strong> trust Beetogreen,
+                    <strong>+500 companies</strong> trust Highwages,
                     and we're really proud of it.
-
                 </div>
-
-
             </div>
 
         </section>
-
-
 
         <!-- =========================================
-     CLIENT LOGOS STRIP
-========================================= -->
+            CLIENT LOGOS STRIP
+        ========================================= -->
 
-<section class="client-logo-strip">
+        <section class="client-logo-strip">
 
-    <div class="client-logo-track">
+            <div class="client-logo-track">
 
-        <div class="client-logo-item amazon-logo">amazon</div>
+                <div class="client-logo-item">
+                    <img src="/images/logos/AMZN_BIG.webp" alt="Amazon">
+                </div>
 
-        <div class="client-logo-item total-logo">
-            <span class="total-symbol">te</span>
-            <small>TotalEnergies</small>
-        </div>
+                <div class="client-logo-item">
+                    <img src="/images/logos/TTE_BIG.webp" alt="TotalEnergies">
+                </div>
 
-        <div class="client-logo-item edf-logo">
-            <span>✣</span> EDF
-        </div>
+                <div class="client-logo-item">
+                    <img src="/images/logos/edf.webp" alt="EDF">
+                </div>
 
-        <div class="client-logo-item capgemini-logo">
-            Capgemini ♠
-        </div>
+                <div class="client-logo-item">
+                    <img src="/images/logos/capgemini.webp" alt="Capgemini">
+                </div>
 
-        <div class="client-logo-item backmarket-logo">
-            <span>≪</span> Back<br>Market
-        </div>
-
-        <!-- Repeated logos for continuous animation -->
-
-        <div class="client-logo-item amazon-logo">amazon</div>
-
-        <div class="client-logo-item total-logo">
-            <span class="total-symbol">te</span>
-            <small>TotalEnergies</small>
-        </div>
-
-        <div class="client-logo-item edf-logo">
-            <span>✣</span> EDF
-        </div>
-
-        <div class="client-logo-item capgemini-logo">
-            Capgemini ♠
-        </div>
-
-        <div class="client-logo-item backmarket-logo">
-            <span>≪</span> Back<br>Market
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================
-     ACTIVATE CYCLING SECTION
-========================================= -->
-
-<section class="activate-section">
-
-    <!-- LEFT DECORATIVE CIRCLES -->
-
-    <div class="activate-circle activate-circle-one"></div>
-
-    <div class="activate-circle activate-circle-two"></div>
-
-    <div class="activate-circle activate-circle-three"></div>
-
-
-    <!-- MAIN CONTENT -->
-
-    <div class="activate-content">
-
-        <h2 class="activate-title">
-
-            Activate cycling.
-
-            <br>
-
-            Made simple.
-
-        </h2>
-
-
-        <p class="activate-description">
-
-            BeeToGreen helps companies transform their employees'
-            mobility through a turnkey solution that funds, structures
-            and deploys cycling at work (just that).
-
-        </p>
-
-
-        <a href="#solutions" class="activate-button">
-
-            Discover Beetogreen
-
-        </a>
-
-    </div>
-
-
-
-    <!-- RIGHT PROMOTIONAL CARD -->
-
-    <div class="promo-card">
-
-        <div class="promo-image">
-
-            <img
-                src="assets/images/promo-photo.jpg"
-                alt="Employees enjoying workplace mobility"
-            >
-
-        </div>
-
-
-        <div class="promo-card-content">
-
-            <h3>
-
-                Up to
-
-                <br>
-
-                €600/year*
-
-            </h3>
-
-
-            <p>
-
-                per employee
-
-            </p>
-
-
-            <small>
-
-                *via the FMD scheme.
-
-            </small>
-
-        </div>
-
-    </div>
-
-
-
-    <!-- BOTTOM TEXT -->
-
-    <div class="mobility-note">
-
-        Compatible with all mobility schemes.
-
-    </div>
-
-
-    <!-- BOTTOM MOVING LOGOS -->
-
-    <div class="mobility-logo-slider">
-
-        <div class="mobility-logo-track">
-
-            <div class="mobility-logo-item">
-                <span>◉</span> betterway
-            </div>
-
-            <div class="mobility-logo-item">
-                skipr
-            </div>
-
-            <div class="mobility-logo-item">
-                <span>✳</span> worklife
-            </div>
-
-            <div class="mobility-logo-item">
-                <span>◉</span> betterway
-            </div>
-
-            <div class="mobility-logo-item">
-                skipr
-            </div>
-
-            <div class="mobility-logo-item">
-                <span>✳</span> worklife
-            </div>
-
-            <!-- Duplicate for seamless animation -->
-
-            <div class="mobility-logo-item">
-                <span>◉</span> betterway
-            </div>
-
-            <div class="mobility-logo-item">
-                skipr
-            </div>
-
-            <div class="mobility-logo-item">
-                <span>✳</span> worklife
-            </div>
-
-            <div class="mobility-logo-item">
-                <span>◉</span> betterway
-            </div>
-
-            <div class="mobility-logo-item">
-                skipr
-            </div>
-
-            <div class="mobility-logo-item">
-                <span>✳</span> worklife
-            </div>
-
-        </div>
-
-    </div>
-
-
-</section>
-
-
-
-        <!-- =====================================
-             SOLUTIONS SECTION
-        ====================================== -->
-
-        <section class="solutions-section" id="solutions">
-
-            <div class="section-container">
-
-                <p class="section-label">
-                    WHAT WE DO
-                </p>
-
-                <h2>Our solutions</h2>
-
-
-                <div class="solutions-grid">
-
-
-                    <div class="solution-card">
-
-                        <span>01</span>
-
-                        <h3>For companies</h3>
-
-                        <p>
-                            Build a workplace mobility programme
-                            that makes a real difference.
-                        </p>
-
-                        <a href="#contact">
-                            Discover more ↗
-                        </a>
-
-                    </div>
-
-
-
-                    <div class="solution-card">
-
-                        <span>02</span>
-
-                        <h3>For employees</h3>
-
-                        <p>
-                            Make your daily commute easier,
-                            healthier and more sustainable.
-                        </p>
-
-                        <a href="#contact">
-                            Discover more ↗
-                        </a>
-
-                    </div>
-
-
-
-                    <div class="solution-card">
-
-                        <span>03</span>
-
-                        <h3>Our impact</h3>
-
-                        <p>
-                            Turn small everyday choices
-                            into a positive collective impact.
-                        </p>
-
-                        <a href="#contact">
-                            Discover more ↗
-                        </a>
-
-                    </div>
-
-
+                <div class="client-logo-item">
+                    <img src="/images/logos/Back_Market_Vertical_Logo_Tangaroa.webp" alt="Back Market">
                 </div>
 
             </div>
 
+        </section>        
+
+        <!-- =========================================
+            ACTIVATE CYCLING SECTION
+        ========================================= -->
+
+        <section class="activate-section">
+
+            <!-- =====================================
+                LEFT DECORATIVE CIRCLES
+            ====================================== -->
+            <div class="activate-circle activate-circle-one"></div>
+            <div class="activate-circle activate-circle-two"></div>
+            <div class="activate-circle activate-circle-three"></div>
+
+            <!-- =====================================
+                MAIN CONTENT
+            ====================================== -->
+            <div class="activate-content">
+                <h2 class="activate-title">
+                    Activate cycling.
+                    <br>
+                    Made simple.
+                </h2>
+
+                <p class="activate-description">
+                    Highwages helps companies transform their employees'
+                    mobility through a turnkey solution that funds, structures
+                    and deploys cycling at work (just that).
+                </p>
+
+                <a href="#solutions" class="activate-button">
+                    Discover Highwages
+                </a>
+            </div>
+
+            <!-- =====================================
+                RIGHT PROMOTIONAL CARD
+            ====================================== -->
+
+            <div class="promo-card">
+                <!-- PROMOTIONAL IMAGE -->
+                <div class="promo-image">
+                    <img
+                        src="/images/Card-section2.webp"
+                        alt="Employees enjoying workplace mobility"
+                    >
+                </div>
+
+                <!-- PROMOTIONAL CONTENT -->
+                <div class="promo-card-content">
+                    <h3>
+                        Up to
+                        <br>
+                        €600/year*
+                    </h3>
+
+                    <p>
+                        per employee
+                    </p>
+
+                    <small>
+                        *via the FMD scheme.
+                    </small>
+                </div>
+            </div>
+
+            <!-- =====================================
+                MOBILITY NOTE
+            ====================================== -->
+
+            <div class="mobility-note">
+                Compatible with all mobility schemes.
+            </div>
+
+            <!-- =====================================
+                BOTTOM MOVING LOGOS
+            ====================================== -->
+            <div class="mobility-logo-slider">
+                <div class="mobility-logo-track">
+
+                    <!-- =================================
+                        FIRST LOGO GROUP
+                    ================================== -->
+
+                    <div class="mobility-logo-group">
+
+                        <!-- BETTERWAY -->
+                        <div class="mobility-logo-item">
+                            <img
+                                src="/images/logos/betterway_logo_orange_medium 3.webp"
+                                alt="Betterway"
+                            >
+                        </div>
+
+                        <!-- PLUXEE -->
+                        <div class="mobility-logo-item">
+                            <img
+                                src="/images/logos/pluxee-logo-darkblue-rgb-2048x580 4.webp"
+                                alt="Pluxee"
+                            >
+                        </div>
+
+                        <!-- SKIPR -->
+                        <div class="mobility-logo-item">
+                            <img
+                                src="/images/logos/skipr-20211115164750.webp"
+                                alt="Skipr"
+                            >
+                        </div>
+
+                        <!-- WORKLIFE -->
+                        <div class="mobility-logo-item">
+                            <img
+                                src="/images/logos/Logo-Worklife-noir-1-1-2048x370 3.webp"
+                                alt="Worklife"
+                            >
+                        </div>
+                    </div>
+
+                    <!-- =================================
+                        SECOND LOGO GROUP
+                        DUPLICATE FOR INFINITE ANIMATION
+                    ================================== -->
+
+                    <div class="mobility-logo-group" aria-hidden="true">
+
+                        <!-- BETTERWAY -->
+                        <div class="mobility-logo-item">
+                            <img
+                                src="/images/logos/betterway_logo_orange_medium 3.webp"
+                                alt=""
+                            >
+                        </div>
+
+                        <!-- PLUXEE -->
+                        <div class="mobility-logo-item">
+                            <img
+                                src="/images/logos/pluxee-logo-darkblue-rgb-2048x580 4.webp"
+                                alt=""
+                            >
+                        </div>
+
+                        <!-- SKIPR -->
+                        <div class="mobility-logo-item">
+                            <img
+                                src="/images/logos/skipr-20211115164750.webp"
+                                alt=""
+                            >
+                        </div>
+
+                        <!-- WORKLIFE -->
+                        <div class="mobility-logo-item">
+                            <img
+                                src="/images/logos/Logo-Worklife-noir-1-1-2048x370 3.webp"
+                                alt=""
+                            >
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
 
+        <!-- =====================================
+             DYNAMIC TABS SECTION (BEETOGREEN STYLE)
+        ====================================== -->
 
+        <section class="dynamic-tabs-section" id="dynamicTabs">
+            <div class="tabs-container">
+                
+                <!-- Main Header -->
+                <div class="tabs-header-wrapper">
+                    <h2 class="dynamic-main-title" id="mainTitle">
+                        How do we move you <br>forward, smoothly?
+                    </h2>
+                </div>
+
+                <div class="tabs-grid">
+                    
+                    <!-- Left Side: 3 Options -->
+                    <div class="tabs-nav" id="tabsNav">
+                        <button class="tab-btn active" data-index="0">
+                            We actually equip you
+                        </button>
+                        <button class="tab-btn" data-index="1">
+                            We help you get started
+                        </button>
+                        <button class="tab-btn" data-index="2">
+                            We support you from A to Z
+                        </button>
+                    </div>
+
+                    <!-- Center: Image -->
+                    <div class="tabs-image-container">
+                        <img id="tabImage" src="/images/Card-section2.webp" alt="Mobility solution">
+                    </div>
+
+                    <!-- Right Side: Dynamic Content -->
+                    <div class="tabs-content-box" id="tabContentBox">
+                        <span class="tab-badge" id="tabBadge">+3,000 bike references</span>
+                        <h3 class="tab-title" id="tabTitleText">We actually equip you.</h3>
+                        <p class="tab-desc" id="tabDescText">
+                            We give you access to our marketplace designed for the commute. Your teams pick, order, ride. And the Sustainable Mobility Allowance handles the rest.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
 
         <!-- =====================================
              PRICING SECTION
@@ -600,8 +398,6 @@
 
         </section>
 
-
-
         <!-- =====================================
              CONTACT SECTION
         ====================================== -->
@@ -622,16 +418,12 @@
 
             </div>
 
-            <a href="mailto:hello@beetogreen.com" class="discover-btn">
+            <a href="mailto:hello@Highwages.com" class="discover-btn">
                 Contact us
             </a>
-
         </section>
 
-
     </main>
-
-
 
     <!-- =====================================
          FOOTER
@@ -640,23 +432,21 @@
     <footer class="footer">
 
         <a href="#home" class="logo">
-            Beetogreen
+            Highwages
         </a>
 
         <p>
-            © <span id="year"></span> Beetogreen. All rights reserved.
+            © <span id="year"></span> Highwages. All rights reserved.
         </p>
 
         <a href="#home">
             Back to top ↑
         </a>
-
     </footer>
-
-
 
     <!-- JAVASCRIPT -->
 
+    <script src="js/components.js"></script>
     <script src="js/script.js"></script>
 
 </body>

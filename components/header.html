@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Header Fix</title>
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+/* ==============================
+   GLOBAL
+============================== */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    background-color: #0a1b15;
+    height: 100vh;
+}
+
+/* ==============================
+   HEADER
+============================== */
+.header {
+    background: #fff;
+    padding: 0 25px;
+    border-radius: 12px;
+    
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 40px);
+    max-width: 1400px;
+    
+    z-index: 1000;
+    box-sizing: border-box;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 70px;
+}
+
+/* ==============================
+   LOGO
+============================== */
+.logo {
+    font-family: 'Outfit', sans-serif;
+    font-size: 24px; /* Slightly larger for the logo */
+    font-weight: 700;
+    color: #000;
+    text-decoration: none;
+    white-space: nowrap;
+    flex: 1;
+}
+
+/* ==============================
+   NAVIGATION
+============================== */
+.main-nav {
+    display: flex;
+    justify-content: center;
+    flex: 2;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 32px;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+    height: 100%;
+}
+
+.nav-links > li {
+    position: static;
+    height: 100%;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #111;
+    font-weight: 500;
+    font-size: 17px; /* Increased text size */
+    height: 70px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.2s;
+}
+
+.nav-link:hover {
+    color: #555;
+}
+
+/* ==============================
+   MEGA MENU
+============================== */
+.mega-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    border-radius: 0 0 16px 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    padding: 40px;
+    gap: 40px;
+    border-top: 1px solid #f0f0f0;
+    box-sizing: border-box;
+    z-index: 1001;
+}
+
+.dropdown-container:hover .mega-menu {
+    display: grid;
+}
+
+.solutions-menu {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.simple-menu {
+    grid-template-columns: repeat(2, 1fr);
+    min-height: auto;
+}
+
+/* ==============================
+   MENU COLUMNS
+============================== */
+.mega-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.col-between {
+    justify-content: space-between;
+    min-height: 280px;
+}
+
+.simple-menu .col-between {
+    min-height: auto;
+}
+
+/* ==============================
+   BADGES
+============================== */
+.badge {
+    display: inline-block;
+    border: 1px solid #e5e5e5;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 15px;
+    color: #666;
+    margin-bottom: 25px;
+    font-family: 'DM Sans', sans-serif;
+}
+
+/* ==============================
+   MENU LINKS
+============================== */
+.mega-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.mega-list li {
+    margin-bottom: 18px;
+}
+
+.mega-list a {
+    text-decoration: none;
+    font-family: 'Outfit', sans-serif;
+    font-size: 35px; /* Adjusted to fit the new font */
+    font-weight: 600;
+    color: #111;
+    transition: color 0.2s;
+}
+
+.mega-list a:hover {
+    color: #666;
+}
+
+/* ==============================
+   SOCIAL & LEGAL LINKS
+============================== */
+.socials {
+    display: flex;
+    gap: 12px;
+}
+
+.socials a {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #111;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.socials a:hover {
+    background: #f9f9f9;
+}
+
+.legal-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.legal-links a {
+    text-decoration: none;
+    color: #888;
+    font-size: 14px;
+}
+
+.legal-links a:hover {
+    color: #111;
+}
+
+/* ==============================
+   MENU IMAGE
+============================== */
+.mega-img {
+    width: 100%;
+    height: 100%;
+    min-height: 280px;
+    background-color: #f0f0f0;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+/* ==============================
+   RIGHT SIDE ACTIONS
+============================== */
+.header-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+    flex: 1;
+    white-space: nowrap;
+}
+
+/* Language */
+.lang-switch {
+    font-weight: 600;
+    font-size: 15px; /* Slightly larger */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #111;
+    margin-right: 8px;
+}
+
+/* Buttons - Base Styles */
+.btn {
+    position: relative;
+    overflow: hidden; /* Fill effect ne button ni bahar jata rokva */
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 15px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s ease; /* Khali text color mate transition */
+    z-index: 1; /* Text ne aagal rakhva */
+}
+
+/* Pseudo-element for Fill Animation */
+.btn::before {
+    content: "";
+    position: absolute;
+    top: 100%; /* Starting position niche thi */
+    left: 50%;
+    transform: translateX(-50%) translateY(0);
+    width: 200%;
+    height: 200%;
+    border-radius: 50%; 
+    transition: transform 0.4s ease-in-out;
+    z-index: -1; 
+}
+
+.btn:hover::before {
+    transform: translateX(-50%) translateY(-50%);
+}
+
+/* Log in button colors */
+.btn-login {
+    background-color: #d9f743;
+    color: #000;
+}
+
+.btn-login::before {
+    background-color: #0a1b15; /* Hover fill color */
+}
+
+.btn-login:hover {
+    color: #fff;
+}
+
+/* Book a demo button colors */
+.btn-demo {
+    background-color: #0a1b15;
+    color: #fff;
+}
+
+.btn-demo::before {
+    background-color: #d9f743; /* Hover fill color */
+}
+
+.btn-demo:hover {
+    color: #111;
+}
+
+/* ==============================
+   RESPONSIVE
+============================== */
+@media (max-width: 1100px) {
+    .nav-links { gap: 20px; }
+    .btn { padding: 10px 14px; font-size: 14px; }
+}
+
+@media (max-width: 900px) {
+    .header-actions, .main-nav { display: none; }
+    .logo { flex: none; }
+}
+
+/* =========================================
+   SOCIAL MEDIA ICONS (Updated - Clean Look)
+========================================= */
+.socials {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Icons vachhe no gap */
+}
+
+.socials a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    text-decoration: none;
+}
+
+.socials a i,
+.socials a svg {
+    font-size: 20px;
+    color: #071b14; 
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover effect */
+.socials a:hover i,
+.socials a:hover svg {
+    color: #748b25; 
+    transform: translateY(-3px);
+}
+
+</style>
+</head>
+<body>
+
+<!-- ==============================
+     HEADER HTML
+============================== -->
+<header class="header" id="header">
+    <div class="header-container">
+        
+        <!-- LOGO -->
+        <a href="/" class="logo">Highwages</a>
+        
+        <!-- CENTER NAVIGATION -->
+        <nav class="main-nav">
+            <ul class="nav-links">
+                
+                <!-- SOLUTIONS -->
+                <li class="dropdown-container">
+                    <a href="#" class="nav-link">Solutions</a>
+                    
+                    <div class="mega-menu solutions-menu">
+                        <div class="mega-column col-between">
+                            <div>
+                                <span class="badge">Our Solutions</span>
+                                <ul class="mega-list">
+                                    <li><a href="#">For employees</a></li>
+                                    <li><a href="#">For employers</a></li>
+                                </ul>
+                            </div>
+                            <div class="socials">
+                                <!-- Instagram -->
+                                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                                    <i class="fa-brands fa-instagram"></i>
+                                </a>
+                                <!-- LinkedIn -->
+                                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                                    <i class="fa-brands fa-linkedin-in"></i>
+                                </a>
+                                <!-- TikTok -->
+                                <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                                    <i class="fa-brands fa-tiktok"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="mega-column col-between">
+                            <div>
+                                <span class="badge">Join us</span>
+                                <ul class="mega-list">
+                                    <li><a href="#">Become a partner</a></li>
+                                </ul>
+                            </div>
+                            <div class="legal-links">
+                                <a href="#">Legal notice</a>
+                                <a href="#">Privacy policy</a>
+                                <a href="#">Terms</a>
+                            </div>
+                        </div>
+
+                        <div class="mega-column">
+                            <img src="../images/nav_sol.webp" alt="Partners" class="mega-img">
+                        </div>
+                    </div>
+                </li>
+
+                <!-- PRICING -->
+                <li class="dropdown-container">
+                    <a href="#" class="nav-link">Pricing</a>
+                    
+                    <div class="mega-menu solutions-menu">
+                        <div class="mega-column col-between">
+                            <div>
+                                <span class="badge">Our Pricing</span>
+                                <ul class="mega-list">
+                                    <li><a href="#">For employees</a></li>
+                                    <li><a href="#">For employers</a></li>
+                                </ul>
+                            </div>
+                            <div class="socials">
+                                <!-- Instagram -->
+                                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                                    <i class="fa-brands fa-instagram"></i>
+                                </a>
+                                <!-- LinkedIn -->
+                                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                                    <i class="fa-brands fa-linkedin-in"></i>
+                                </a>
+                                <!-- TikTok -->
+                                <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                                    <i class="fa-brands fa-tiktok"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="mega-column col-between">
+                            <div>
+                                <span class="badge">Join us</span>
+                                <ul class="mega-list">
+                                    <li><a href="#">Become a partner</a></li>
+                                </ul>
+                            </div>
+                            <div class="legal-links">
+                                <a href="#">Legal notice</a>
+                                <a href="#">Privacy policy</a>
+                                <a href="#">Terms</a>
+                            </div>
+                        </div>
+
+                        <div class="mega-column">
+                            <img src="../images/nav_tarifs.webp" alt="Pricing" class="mega-img">
+                        </div>
+                    </div>
+                </li>
+
+                <!-- RESOURCES -->
+                <li class="dropdown-container">
+                    <a href="#" class="nav-link">Resources</a>
+                    
+                    <div class="mega-menu solutions-menu">
+                        <div class="mega-column col-between">
+                            <div>
+                                <span class="badge">Our resources</span>
+                                <ul class="mega-list">
+                                    <li><a href="#">Blog</a></li>
+                                    <li><a href="#">Newsroom</a></li>
+                                </ul>
+                            </div>
+                            <div class="socials">
+                                <!-- Instagram -->
+                                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                                    <i class="fa-brands fa-instagram"></i>
+                                </a>
+                                <!-- LinkedIn -->
+                                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                                    <i class="fa-brands fa-linkedin-in"></i>
+                                </a>
+                                <!-- TikTok -->
+                                <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                                    <i class="fa-brands fa-tiktok"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="mega-column col-between">
+                            <div>
+                                <span class="badge">Join us</span>
+                                <ul class="mega-list">
+                                    <li><a href="#">Become a partner</a></li>
+                                </ul>
+                            </div>
+                            <div class="legal-links">
+                                <a href="#">Legal notice</a>
+                                <a href="#">Privacy policy</a>
+                                <a href="#">Terms</a>
+                            </div>
+                        </div>
+
+                        <div class="mega-column">
+                            <img src="../images/helmet.png" alt="Resources" class="mega-img">
+                        </div>
+                    </div>
+                </li>
+
+                <!-- CONTACT -->
+                <li>
+                    <a href="#" class="nav-link">Contact</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- RIGHT SIDE BUTTONS -->
+        <div class="header-actions">
+            <!-- LANGUAGE -->
+            <div class="lang-switch">
+                <span>🇬🇧</span>
+                <span>EN</span>
+            </div>
+            <!-- LOGIN -->
+            <a href="#" class="btn btn-login">
+                Log in
+            </a>
+            <!-- BOOK A DEMO -->
+            <a href="#" class="btn btn-demo">
+                Book a demo
+            </a>
+        </div>
+        
+    </div>
+</header>
+
+</body>
+</html>
