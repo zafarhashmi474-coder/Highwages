@@ -1,17 +1,21 @@
+
 /* =========================================
-   INTRO ANIMATION
+   HIGHWAGES INTRO CONTROL
 ========================================= */
-const introScreen = document.getElementById("introScreen");
 
 window.addEventListener("load", function () {
-    setTimeout(function () {
-        if (introScreen) introScreen.classList.add("hide");
-    }, 4000);
-});
 
-setTimeout(() => {
-    if (introScreen) introScreen.classList.add('hide');
-}, 3000);
+    const introScreen = document.getElementById("introScreen");
+
+    if (!introScreen) return;
+
+    setTimeout(function () {
+
+        introScreen.classList.add("hide");
+
+    }, 5100);
+
+});
 
 
 /* =====================================
@@ -93,3 +97,296 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 });
+
+/* =====================================
+   BENEFITS TOGGLE & SCROLL ANIMATION
+====================================== */
+document.addEventListener("DOMContentLoaded", function () {
+    const toggleButtons = document.querySelectorAll(".toggle-btn");
+    const benefitGrids = document.querySelectorAll(".benefits-grid");
+    const cardButtons = document.querySelectorAll(".card-btn");
+
+    // 1. Scroll Detector for Buttons (Intersection Observer)
+    const btnObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Jyare button screen par aave tyare visible class add thase
+                entry.target.classList.add("btn-visible");
+            }
+        });
+    }, {
+        threshold: 0.1, // 10% button dekhay etle animation chalu thay
+        rootMargin: "0px 0px -20px 0px"
+    });
+
+    // Baddhi buttons par observer lagavi do
+    if (cardButtons.length > 0) {
+        cardButtons.forEach(btn => btnObserver.observe(btn));
+    }
+
+    // 2. Toggle functionality
+    if (toggleButtons.length > 0) {
+        toggleButtons.forEach(btn => {
+            btn.addEventListener("click", function () {
+                
+                // Active class remove karo
+                toggleButtons.forEach(b => b.classList.remove("active"));
+                this.classList.add("active");
+
+                const targetId = this.getAttribute("data-target");
+
+                // Badha grids hide karo
+                benefitGrids.forEach(grid => {
+                    grid.classList.add("hidden");
+                    
+                    // Hidden thayela card na buttons mathi visible class kadhi lyo,
+                    // jethi biji var tab open thay to fari thi properly animate thai shake.
+                    const btns = grid.querySelectorAll(".card-btn");
+                    btns.forEach(b => b.classList.remove("btn-visible"));
+                });
+
+                // Target grid show karo (CSS auto-animation chalu karse)
+                const targetGrid = document.getElementById(targetId);
+                if (targetGrid) {
+                    targetGrid.classList.remove("hidden");
+                }
+            });
+        });
+    }
+});
+
+/* =====================================
+   BACKGROUND LOOP SCROLL DETECTOR
+====================================== */
+document.addEventListener("DOMContentLoaded", function () {
+    
+    const stackCards = document.querySelectorAll(".stack-card:not(.stack-image-card)");
+    
+    // Intersection Observer for drawing the SVG loop
+    const cardObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Card 40% screen par aave etle draw animation start thase
+                entry.target.classList.add("draw-loop");
+            } else {
+                // Reverse scroll vakhate fari loop reset thase
+                entry.target.classList.remove("draw-loop");
+            }
+        });
+    }, {
+        threshold: 0.4 
+    });
+
+    if (stackCards.length > 0) {
+        stackCards.forEach(card => {
+            cardObserver.observe(card);
+        });
+    }
+});
+
+/* =====================================
+   MARKETPLACE SCROLL ANIMATIONS ('H' LOGO & TEXT)
+====================================== */
+document.addEventListener("DOMContentLoaded", function () {
+    const animatedH = document.querySelector(".market-animated-h");
+    const marketCard = document.querySelector(".market-card");
+
+    if (marketCard) {
+        const marketObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    if (animatedH) animatedH.classList.add("h-visible");
+                    
+                    entry.target.classList.add("content-visible");
+                } else {
+                    if (animatedH) animatedH.classList.remove("h-visible");
+                    entry.target.classList.remove("content-visible");
+                }
+            });
+        }, {
+            threshold: 0.3
+        });
+
+        marketObserver.observe(marketCard);
+    }
+});
+
+/* =====================================
+   NETWORK SECTION SCROLL ANIMATION
+====================================== */
+document.addEventListener("DOMContentLoaded", function () {
+    const networkContainer = document.querySelector(".network-container");
+
+    if (networkContainer) {
+        const netObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("content-visible");
+                } else {
+                    entry.target.classList.remove("content-visible");
+                }
+            });
+        }, {
+            threshold: 0.3 
+        });
+
+        netObserver.observe(networkContainer);
+    }
+});
+
+/* =====================================
+   TESTIMONIAL SLIDER & 10s TIMER
+====================================== */
+document.addEventListener("DOMContentLoaded", function () {
+    const slides = document.querySelectorAll(".testi-slide");
+    const prevBtn = document.getElementById("prevTesti");
+    const nextBtn = document.getElementById("nextTesti");
+    const counterDisplay = document.getElementById("testiCounter");
+    const progressCircle = document.querySelector(".progress-circle");
+    
+    if (!slides.length) return;
+
+    let currentIndex = 0;
+    const totalSlides = slides.length;
+    const slideDuration = 10000; // 10 seconds
+    const circumference = 138; // Circle perimeter
+    
+    let timerInterval;
+    let startTime;
+
+    function updateCounter() {
+        const current = String(currentIndex + 1).padStart(2, '0');
+        const total = String(totalSlides).padStart(2, '0');
+        counterDisplay.textContent = `${current} / ${total}`;
+    }
+
+    function showSlide(index) {
+        // Hide all
+        slides.forEach(slide => slide.classList.remove("active"));
+        // Show current
+        slides[index].classList.add("active");
+        updateCounter();
+        resetTimer();
+    }
+
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % totalSlides;
+        showSlide(currentIndex);
+    }
+
+    function prevSlide() {
+        currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+        showSlide(currentIndex);
+    }
+
+    // Animation frame timer for smooth SVG circle drawing
+    function animateTimer(timestamp) {
+        if (!startTime) startTime = timestamp;
+        const elapsed = timestamp - startTime;
+        
+        // Calculate progress (0 to 1)
+        let progress = elapsed / slideDuration;
+        
+        if (progress >= 1) {
+            nextSlide();
+            return; // resetTimer will restart the animation loop
+        }
+        
+        // Update SVG stroke-dashoffset
+        const offset = circumference - (progress * circumference);
+        progressCircle.style.strokeDashoffset = offset;
+        
+        timerInterval = requestAnimationFrame(animateTimer);
+    }
+
+    function resetTimer() {
+        cancelAnimationFrame(timerInterval);
+        progressCircle.style.strokeDashoffset = circumference;
+        startTime = null;
+        timerInterval = requestAnimationFrame(animateTimer);
+    }
+
+    // Button Listeners
+    nextBtn.addEventListener("click", nextSlide);
+    prevBtn.addEventListener("click", prevSlide);
+
+    // Initialize
+    updateCounter();
+    resetTimer(); // Start loop
+});
+
+/* =====================================
+   TOUR SECTION SCROLL ANIMATION
+====================================== */
+document.addEventListener("DOMContentLoaded", function () {
+    const tourCard = document.querySelector(".tour-card");
+    const tourH = document.querySelector(".tour-animated-h");
+
+    if (tourCard) {
+        const tourObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    tourCard.classList.add("content-visible");
+                    if (tourH) tourH.classList.add("h-visible");
+                } else {
+                    tourCard.classList.remove("content-visible");
+                    if (tourH) tourH.classList.remove("h-visible");
+                }
+            });
+        }, {
+            threshold: 0.3
+        });
+
+        tourObserver.observe(tourCard);
+    }
+});
+
+/* =====================================
+   FAQ ACCORDION SCRIPT
+====================================== */
+document.addEventListener("DOMContentLoaded", function () {
+    const faqItems = document.querySelectorAll(".faq-item");
+
+    if (!faqItems.length) return;
+
+    faqItems.forEach(item => {
+        const questionBtn = item.querySelector(".faq-question");
+        const answerDiv = item.querySelector(".faq-answer");
+
+        // Set initial max-height for default active item
+        if (item.classList.contains("active")) {
+            answerDiv.style.maxHeight = answerDiv.scrollHeight + "px";
+        }
+
+        questionBtn.addEventListener("click", () => {
+            const isOpen = item.classList.contains("active");
+
+            // Close all items (Accordion behavior)
+            faqItems.forEach(otherItem => {
+                otherItem.classList.remove("active");
+                otherItem.querySelector(".faq-answer").style.maxHeight = null;
+            });
+
+            // If it wasn't open, open it
+            if (!isOpen) {
+                item.classList.add("active");
+                answerDiv.style.maxHeight = answerDiv.scrollHeight + "px";
+            }
+        });
+    });
+});
+
+/* =====================================
+   FOOTER DYNAMIC YEAR
+===================================== */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const yearElement = document.getElementById("year");
+
+    if (yearElement) {
+        yearElement.textContent = new Date().getFullYear();
+    }
+
+});
+

@@ -21,7 +21,7 @@ html {
 }
 
 body {
-    font-family: "DM Sans", sans-serif;
+    font-family: "Parkinsans", sans-serif;
     overflow-x: hidden;
     background: var(--white);
     color: var(--black);
@@ -39,19 +39,224 @@ button {
 /* =========================================
    INTRO ANIMATION
 ========================================= */
-
 .intro-screen {
     position: fixed;
     inset: 0;
     width: 100%;
     height: 100vh;
-    background: var(--dark-green);
+    height: 100dvh;
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 9999;
-    transition: opacity 0.9s ease, visibility 0.9s ease;
+    overflow: hidden;
+    background:
+        radial-gradient(
+            ellipse at 50% 90%,
+            rgba(0, 110, 72, 0.28),
+            transparent 55%
+        ),
+        radial-gradient(
+            ellipse at 50% 10%,
+            rgba(45, 35, 55, 0.35),
+            transparent 60%
+        ),
+        #050b09;
+    z-index: 99999;
+    opacity: 1;
+    visibility: visible;
+    transition:
+        opacity 0.7s ease,
+        visibility 0.7s ease;
 }
+
+/* =========================================
+   BACKGROUND GLOW
+========================================= */
+
+.intro-screen::before {
+    content: "";
+    position: absolute;
+    width: 380px;
+    height: 380px;
+    background: rgba(30, 190, 105, 0.12);
+    border-radius: 50%;
+    filter: blur(110px);
+    animation: introGlow 3s ease-in-out infinite alternate;
+    pointer-events: none;
+}
+
+@keyframes introGlow {
+    from {
+        transform: scale(0.85);
+        opacity: 0.5;
+    }
+    to {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+}
+
+/* =========================================
+   MAIN LOGO
+========================================= */
+
+.intro-logo {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    z-index: 2;
+    opacity: 1;
+    animation:
+        introLogoExit 0.7s ease-in-out 4.35s forwards;
+}
+
+/* =========================================
+   LOOP SYMBOL
+========================================= */
+
+.h-icon {
+    display: block;
+    width: clamp(95px, 10vw, 135px);
+    height: auto;
+    flex-shrink: 0;
+    overflow: visible;
+    filter:
+        drop-shadow(0 0 10px rgba(230,255,66,0.4))
+        drop-shadow(0 0 25px rgba(120,230,70,0.2));
+}
+
+/* LOOP DRAW */
+
+.h-path {
+    stroke-dasharray: 350;
+    stroke-dashoffset: 350;
+    opacity: 0;
+    animation:
+        introDrawH 1.25s
+        cubic-bezier(0.65,0,0.35,1)
+        0.15s forwards;
+}
+
+/* IMPORTANT: LOOP ANIMATION KEYFRAME */
+
+@keyframes introDrawH {
+    0% {
+        stroke-dashoffset: 350;
+        opacity: 0;
+    }
+    15% {
+        opacity: 1;
+    }
+    100% {
+        stroke-dashoffset: 0;
+        opacity: 1;
+    }
+}
+
+/* ========================================
+   HIGHWAGES WORDMARK
+========================================= */
+
+.intro-word {
+    display: flex;
+    align-items: center;
+    font-family: "Parkinsans", sans-serif;
+    font-size: clamp(43px, 5.8vw, 78px);
+    font-weight: 600;
+    letter-spacing: -0.065em;
+    line-height: 1;
+    margin-left: 0;
+    white-space: nowrap;
+}
+
+/* ALL LETTERS */
+
+.intro-letter {
+    display: inline-block;
+    color: #e6ff42;
+    opacity: 0;
+    transform: translateX(-12px);
+    filter: blur(5px);
+    animation:
+        introLetterReveal 0.35s ease-out forwards;
+    text-shadow:
+        0 0 12px rgba(230,255,66,0.25),
+        0 0 30px rgba(130,220,65,0.12);
+}
+
+/* FIRST H LETTER */
+
+.intro-h-letter {
+    font-weight: 700;
+    color: #e6ff42;
+    animation-delay: 1.05s;
+    margin-left: 3px;
+}
+
+/* REMAINING LETTERS */
+
+.intro-letter:nth-child(2) {
+    animation-delay: 1.18s;
+}
+.intro-letter:nth-child(3) {
+    animation-delay: 1.31s;
+}
+.intro-letter:nth-child(4) {
+    animation-delay: 1.44s;
+}
+.intro-letter:nth-child(5) {
+    animation-delay: 1.57s;
+}
+.intro-letter:nth-child(6) {
+    animation-delay: 1.70s;
+}
+.intro-letter:nth-child(7) {
+    animation-delay: 1.83s;
+}
+.intro-letter:nth-child(8) {
+    animation-delay: 1.96s;
+}
+.intro-letter:nth-child(9) {
+    animation-delay: 2.09s;
+}
+
+/* IMPORTANT: TEXT ANIMATION KEYFRAME */
+
+@keyframes introLetterReveal {
+    0% {
+        opacity: 0;
+        transform: translateX(-12px);
+        filter: blur(5px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+        filter: blur(0);
+    }
+}
+
+/* =========================================
+   LOGO EXIT ANIMATION
+========================================= */
+
+@keyframes introLogoExit {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+        filter: blur(0);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.92);
+        filter: blur(12px);
+    }
+}
+
+/* =========================================
+   INTRO HIDE
+========================================= */
 
 .intro-screen.hide {
     opacity: 0;
@@ -59,61 +264,73 @@ button {
     pointer-events: none;
 }
 
-.intro-logo {
-    display: flex;
-    align-items: center;
-    animation: shrinkLogo 0.6s ease forwards 2.4s;
+
+/* =========================================
+   TABLET RESPONSIVE
+========================================= */
+
+@media (max-width: 768px) {
+
+    .h-icon {
+        width: 85px;
+    }
+
+    .intro-word {
+        font-size: 52px;
+    }
+
 }
 
-.h-icon {
-    height: clamp(50px, 7vw, 90px); 
-    width: auto;
-    margin-right: 2px;
+/* =========================================
+   MOBILE RESPONSIVE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .intro-logo {
+        max-width: 95%;
+    }
+
+    .h-icon {
+        width: clamp(65px, 12vw, 80px);
+    }
+
+    .intro-word {
+        font-size: clamp(35px, 8vw, 48px);
+        letter-spacing: -0.065em;
+    }
+
 }
 
-.h-path {
-    stroke-dasharray: 300;
-    stroke-dashoffset: 300;
-    /* Line draw animation */
-    animation: drawLine 1s ease forwards 0.2s;
+/* SMALL MOBILE */
+
+@media (max-width: 380px) {
+
+    .h-icon {
+        width: 55px;
+    }
+
+    .intro-word {
+        font-size: 32px;
+    }
+
 }
 
-.rest-of-word {
-    font-family: "Outfit", sans-serif;
-    font-size: clamp(40px, 6vw, 85px);
-    font-weight: 600;
-    color: var(--lime);
-    letter-spacing: -3px;
-    opacity: 0;
-    transform: translateX(-15px);
-    animation: fadeText 0.8s ease forwards 1.2s;
-    text-shadow: 0 0 35px rgba(230, 255, 66, 0.15);
-}
+/* =========================================
+   REDUCED MOTION
+========================================= */
 
-/* --- KEYFRAMES --- */
-@keyframes drawLine {
-    to {
-        stroke-dashoffset: 0;
+@media (prefers-reduced-motion: reduce) {
+
+    .h-path,
+    .intro-letter,
+    .intro-logo,
+    .intro-screen::before {
+        animation-duration: 0.01ms !important;
+        animation-delay: 0ms !important;
     }
 }
 
-@keyframes fadeText {
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes shrinkLogo {
-    0% {
-        transform: scale(1);
-        opacity: 1;
-    }
-    100% {
-        transform: scale(0);
-        opacity: 0;
-    }
-}
 
 /* =========================================
    HEADER / NAVBAR
@@ -148,7 +365,7 @@ button {
 /* LOGO */
 
 .logo {
-    font-family: "Outfit", sans-serif;
+    font-family: "Parkinsans", sans-serif;
     font-size: 35px;
     font-weight: 600;
     letter-spacing: -2px;
@@ -412,7 +629,7 @@ button {
 /* MAIN HEADING */
 
 .hero-title {
-    font-family: "Outfit", sans-serif;
+    font-family: "Parkinsans", sans-serif;
     font-size: clamp(65px, 7.8vw, 138px);
     font-weight: 900;
     line-height: 0.98;
@@ -612,7 +829,7 @@ button {
 .about-section h2,
 .solutions-section h2,
 .resources-section h2 {
-    font-family: "Outfit", sans-serif;
+    font-family: "Parkinsans", sans-serif;
     font-size: clamp(42px, 6vw, 76px);
     font-weight: 800;
     line-height: 1.05;
@@ -672,7 +889,7 @@ button {
 }
 
 .solution-card h3 {
-    font-family: "Outfit", sans-serif;
+    font-family: "Parkinsans", sans-serif;
     font-size: 30px;
     margin-top: 40px;
     margin-bottom: 10px;
@@ -705,77 +922,12 @@ button {
 }
 
 .pricing-section h2 {
-    font-family: "Outfit", sans-serif;
+    font-family: "Parkinsans", sans-serif;
     font-size: clamp(48px, 7vw, 90px);
     font-weight: 800;
     line-height: 1;
     letter-spacing: -4px;
     margin: 25px 0 40px;
-}
-
-/* =========================================
-   RESOURCES SECTION
-========================================= */
-
-.resources-section {
-    padding: 120px 8%;
-    text-align: center;
-    background: var(--light-bg);
-}
-
-.resources-section p:last-child {
-    margin-top: 20px;
-    color: #657168;
-    font-size: 18px;
-}
-
-/* =========================================
-   CONTACT SECTION
-========================================= */
-
-.contact-section {
-    padding: 100px 8%;
-    background: var(--lime);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.contact-section .section-label {
-    color: #465416;
-}
-
-.contact-section h2 {
-    font-family: "Outfit", sans-serif;
-    font-size: clamp(48px, 7vw, 90px);
-    line-height: 0.98;
-    letter-spacing: -4px;
-    margin-top: 20px;
-}
-
-/* =========================================
-   FOOTER
-========================================= */
-
-.footer {
-    padding: 35px 5%;
-    background: var(--dark-green);
-    color: var(--white);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-}
-
-.footer .logo {
-    color: var(--lime);
-    font-size: 29px;
-}
-
-.footer p,
-.footer > a:last-child {
-    font-size: 13px;
-    color: #d1d8d2;
 }
 
 /* =========================================
@@ -992,11 +1144,6 @@ button {
         align-items: flex-start;
         gap: 30px;
     }
-
-    .footer {
-        flex-wrap: wrap;
-        justify-content: space-between;
-    }
 }
 
 /* =========================================
@@ -1125,7 +1272,7 @@ button {
 }
 
 .activate-title {
-    font-family: "Outfit", sans-serif;
+    font-family: "Parkinsans", sans-serif;
     font-size: clamp(65px, 7.2vw, 120px);
     font-weight: 900;
     line-height: 1.12;
@@ -1312,7 +1459,7 @@ button {
 }
 
 .promo-card-content h3 {
-    font-family: "Outfit", sans-serif;
+    font-family: "Parkinsans", sans-serif;
     font-size: 49px;
     font-weight: 900;
     line-height: 0.95;
@@ -1320,7 +1467,7 @@ button {
 }
 
 .promo-card-content p {
-    font-family: "Outfit", sans-serif;
+    font-family: "Parkinsans", sans-serif;
     font-size: 32px;
     font-weight: 700;
     margin-top: 32px;
@@ -1975,7 +2122,7 @@ button {
 }
 
 .dynamic-main-title {
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Parkinsans', sans-serif;
     font-size: clamp(42px, 5.2vw, 68px);
     font-weight: 800;
     line-height: 1.15;
@@ -2016,7 +2163,7 @@ button {
     background: none;
     border: none;
     text-align: left;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Parkinsans', sans-serif;
     font-size: 20px;
     font-weight: 600;
     color: rgba(0, 0, 0, 0.35); /* Inactive option color */
@@ -2070,7 +2217,7 @@ button {
 }
 
 .tab-badge {
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Parkinsans', sans-serif;
     font-size: 14px;
     font-weight: 700;
     text-transform: uppercase;
@@ -2080,7 +2227,7 @@ button {
 }
 
 .tab-title {
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Parkinsans', sans-serif;
     font-size: clamp(32px, 3.5vw, 46px);
     font-weight: 800;
     line-height: 1.15;
@@ -2089,7 +2236,7 @@ button {
 }
 
 .tab-desc {
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Parkinsans', sans-serif;
     font-size: 17px;
     line-height: 1.6;
     transition: color 0.4s ease;
@@ -2110,5 +2257,1869 @@ button {
     }
     .dynamic-main-title {
         font-size: 36px;
+    }
+}
+
+/* =========================================
+   BENEFITS / TOGGLE SECTION
+========================================= */
+
+.benefits-section {
+    padding: 60px 5% 100px;
+    background: var(--white);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Toggle Switch */
+.toggle-wrapper {
+    display: inline-flex;
+    background-color: #f3eee3;
+    padding: 8px;
+    border-radius: 50px;
+    margin-bottom: 60px;
+}
+
+.toggle-btn {
+    background: transparent;
+    border: none;
+    padding: 15px 40px;
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--dark-green);
+    border-radius: 40px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: "Parkinsans", sans-serif;
+}
+
+.toggle-btn.active {
+    background-color: var(--dark-green);
+    color: var(--lime);
+}
+
+/* Grid Layout for Cards */
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    width: 100%;
+    max-width: 1350px;
+}
+
+.benefits-grid.hidden {
+    display: none;
+}
+
+/* Individual Card Styling */
+.benefit-card {
+    border-radius: 25px;
+    padding: 50px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 550px;
+}
+
+.benefit-card h3 {
+    font-family: "Parkinsans", sans-serif;
+    font-size: clamp(40px, 4.5vw, 62px);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -2px;
+    margin-bottom: 40px;
+}
+
+.benefit-card ul {
+    list-style-position: inside;
+    padding: 0;
+}
+
+.benefit-card ul li {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+.card-btn {
+    display: block;
+    text-align: center;
+    padding: 20px;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: 800;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+.card-btn:hover {
+    transform: translateY(-5px);
+}
+
+/* --- Color Themes for Cards --- */
+
+/* Green Card */
+.card-green {
+    background-color: #122820;
+    color: #ffffff;
+}
+.card-green h3 { color: #d1efd9; }
+.card-green ul li { color: #ffffff; }
+.card-green .card-btn {
+    background-color: #d1efd9;
+    color: #122820;
+}
+
+/* Brown Card */
+.card-brown {
+    background-color: #4b3014;
+    color: #ffffff;
+}
+.card-brown h3 { color: #f9e9a4; }
+.card-brown ul li { color: #f9e9a4; }
+.card-brown .card-btn {
+    background-color: #f9e9a4;
+    color: #4b3014;
+}
+
+/* Orange Card */
+.card-orange {
+    background-color: #e45826;
+    color: #ffffff;
+}
+.card-orange h3 { color: #fad4c5; }
+.card-orange ul li { color: #ffffff; }
+.card-orange .card-btn {
+    background-color: #f9bba6;
+    color: #c83d16;
+}
+
+/* Responsive (Tablet & Mobile) */
+@media (max-width: 1050px) {
+    .benefits-grid {
+        grid-template-columns: 1fr;
+    }
+    .benefit-card {
+        min-height: auto;
+    }
+}
+
+/* --- Light Color Themes for Employee Cards --- */
+
+/* Light Orange Card */
+.card-light-orange {
+    background-color: #faede6; /* Light peach background */
+    color: #df4e22; /* Dark orange text */
+}
+.card-light-orange h3 { color: #df4e22; }
+.card-light-orange ul li { color: #df4e22; }
+.card-light-orange .card-btn {
+    background-color: #df4e22;
+    color: #ffffff;
+}
+
+/* Light Purple Card */
+.card-light-purple {
+    background-color: #f2ebfc; /* Light purple background */
+    color: #4b1f9b; /* Dark purple text */
+}
+.card-light-purple h3 { color: #4b1f9b; }
+.card-light-purple ul li { color: #4b1f9b; }
+.card-light-purple .card-btn {
+    background-color: #4b1f9b;
+    color: #ffffff;
+}
+
+/* Light Blue Card */
+.card-light-blue {
+    background-color: #ebf4f9; /* Light blue background */
+    color: #0b3861; /* Dark blue text */
+}
+.card-light-blue h3 { color: #0b3861; }
+.card-light-blue ul li { color: #0b3861; }
+.card-light-blue .card-btn {
+    background-color: #0b3861;
+    color: #ffffff;
+}
+
+/* Main Title Styling for Benefits Section */
+.benefits-main-title {
+    font-family: "Parkinsans", sans-serif;
+    font-size: clamp(48px, 6.5vw, 85px); /* Responsive font size */
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -3px;
+    text-align: center;
+    color: var(--dark-green);
+    margin-bottom: 45px; /* Title ane toggle switch vachhe ni jagya */
+    max-width: 1200px;
+}
+
+/* =========================================
+   CARD & TEXT ANIMATIONS (ON TOGGLE)
+========================================= */
+
+/* Cards background fade in */
+.benefits-grid:not(.hidden) .benefit-card {
+    animation: cardFadeIn 0.4s ease forwards;
+    opacity: 0;
+}
+
+/* Card andar nu text slide up thase */
+.benefits-grid:not(.hidden) .card-content h3,
+.benefits-grid:not(.hidden) .card-content ul {
+    animation: textSlideUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+/* Staggered delays (Ek pachi ek animation aavva mate) */
+.benefits-grid:not(.hidden) .benefit-card:nth-child(1) { animation-delay: 0s; }
+.benefits-grid:not(.hidden) .benefit-card:nth-child(1) .card-content h3 { animation-delay: 0.1s; }
+.benefits-grid:not(.hidden) .benefit-card:nth-child(1) .card-content ul { animation-delay: 0.2s; }
+
+.benefits-grid:not(.hidden) .benefit-card:nth-child(2) { animation-delay: 0.1s; }
+.benefits-grid:not(.hidden) .benefit-card:nth-child(2) .card-content h3 { animation-delay: 0.2s; }
+.benefits-grid:not(.hidden) .benefit-card:nth-child(2) .card-content ul { animation-delay: 0.3s; }
+
+.benefits-grid:not(.hidden) .benefit-card:nth-child(3) { animation-delay: 0.2s; }
+.benefits-grid:not(.hidden) .benefit-card:nth-child(3) .card-content h3 { animation-delay: 0.3s; }
+.benefits-grid:not(.hidden) .benefit-card:nth-child(3) .card-content ul { animation-delay: 0.4s; }
+
+@keyframes cardFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes textSlideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================================
+   BUTTON SCROLL ANIMATION
+========================================= */
+
+.card-btn {
+    position: relative;
+    overflow: hidden; 
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: 800;
+    text-decoration: none;
+    text-align: center;
+    border: 1px solid transparent; 
+    z-index: 1; 
+
+    /* Button initially hide rakhelu che */
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.4s ease, border-color 0.4s ease, color 0.4s ease;
+}
+
+/* Jyare user scroll karse tyare JS aa class add karse */
+.card-btn.btn-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Hover effects */
+.card-btn.btn-visible:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 255, 255, 0.3);
+    transition: transform 0.3s ease; /* Hover mate transition fast karvu */
+}
+
+/* Fill Circle for hover */
+.card-btn::before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(0);
+    width: 250%;
+    height: 250%;
+    border-radius: 50%;
+    transition: transform 0.5s ease-in-out;
+    z-index: -1;
+}
+
+.card-btn.btn-visible:hover::before {
+    transform: translateX(-50%) translateY(-50%); 
+}
+
+/* =========================================
+   COMPANIES (DARK CARDS) BUTTON COLORS
+========================================= */
+
+/* Green Card */
+.card-green .card-btn {
+    background-color: #d1efd9; /* Normal background */
+    color: #122820; /* Normal text */
+}
+.card-green .card-btn::before {
+    background-color: #122820; /* Fill color */
+}
+.card-green .card-btn:hover {
+    color: #ffffff; /* Text color after hover */
+}
+
+/* Brown Card */
+.card-brown .card-btn {
+    background-color: #f9e9a4;
+    color: #4b3014;
+}
+.card-brown .card-btn::before {
+    background-color: #4b3014;
+}
+.card-brown .card-btn:hover {
+    color: #ffffff;
+}
+
+/* Orange Card */
+.card-orange .card-btn {
+    background-color: #f9bba6;
+    color: #c83d16;
+}
+.card-orange .card-btn::before {
+    background-color: #c83d16;
+}
+.card-orange .card-btn:hover {
+    color: #ffffff;
+}
+
+/* =========================================
+   EMPLOYEES (LIGHT CARDS) BUTTON COLORS
+========================================= */
+
+/* Light Orange Card */
+.card-light-orange .card-btn {
+    background-color: #df4e22; 
+    color: #ffffff;
+}
+.card-light-orange .card-btn::before {
+    background-color: #ffffff; 
+}
+.card-light-orange .card-btn:hover {
+    color: #df4e22;
+}
+
+/* Light Purple Card */
+.card-light-purple .card-btn {
+    background-color: #4b1f9b;
+    color: #ffffff;
+}
+.card-light-purple .card-btn::before {
+    background-color: #ffffff;
+}
+.card-light-purple .card-btn:hover {
+    color: #4b1f9b;
+}
+
+/* Light Blue Card */
+.card-light-blue .card-btn {
+    background-color: #0b3861;
+    color: #ffffff;
+}
+.card-light-blue .card-btn::before {
+    background-color: #ffffff;
+}
+.card-light-blue .card-btn:hover {
+    color: #0b3861;
+}
+
+/* =========================================
+   SCROLL STACKING SECTION (STICKY CARDS)
+========================================= */
+
+.scroll-stack-section {
+    position: relative;
+    width: 100%;
+    padding: 0 4%; 
+    box-sizing: border-box;
+}
+
+.stack-image-wrapper {
+    position: sticky;
+    top: 0;
+    width: 100%; 
+    height: 100vh;
+    left: 0; 
+    margin-left: -4%; 
+    margin-right: -4%; 
+    width: calc(100% + 8%);    
+    z-index: 1;
+}
+
+.stack-bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block; 
+    opacity: 0.9;
+}
+
+.stack-card {
+    position: sticky;
+    top: 3vh; 
+    width: 100%; 
+    height: 94vh; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-shadow: 0 -15px 40px rgba(0, 0, 0, 0.08); 
+    overflow: hidden;
+    z-index: 10;
+    border-radius: 40px 40px 0 0; 
+    margin: 0 auto;
+}
+
+/* Inner Content Wrapper */
+.stack-content {
+    max-width: 900px;
+    padding: 50px 5% 0; 
+    position: relative;
+    z-index: 2;
+}
+
+/* Section Title (H2) */
+.stack-content h2 {
+    font-family: "Parkinsans", sans-serif;
+    font-size: clamp(65px, 9vw, 110px);
+    font-weight: 900;
+    letter-spacing: -3px;
+    margin-bottom: 30px;
+}
+
+/* Section Paragraphs */
+.stack-content p {
+    font-size: clamp(24px, 3.5vw, 42px);
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -1px;
+}
+
+/* Colors (Badha cards mate) */
+.stack-purple { background-color: #f2ebfc; color: #4b1f9b; }
+.stack-peach { background-color: #fff1eb; color: #df4e22; }
+.stack-blue { background-color: #ebf4f9; color: #0b3861; }
+.stack-green { background-color: #eafaf1; color: #122820; }
+
+.wellbeing-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    text-align: left;
+}
+
+.big-percent {
+    font-family: "Parkinsans", sans-serif;
+    font-size: clamp(100px, 12vw, 160px);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -5px;
+}
+.wellbeing-text p {
+    max-width: 450px;
+    font-size: clamp(22px, 2.8vw, 36px);
+}
+
+.stack-peach h3 {
+    font-size: clamp(35px, 5vw, 55px);
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    margin-bottom: 25px;
+}
+.stack-peach p {
+    font-size: clamp(20px, 2.5vw, 28px);
+    font-weight: 600;
+}
+
+/* =========================================
+   BACKGROUND LOOP (SWIRL) ANIMATION
+========================================= */
+
+.card-bg-loop {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%; 
+    max-height: 90%;
+    z-index: 1; 
+    pointer-events: none; 
+}
+
+/* SVG Line Drawing Path */
+.card-bg-loop path {
+    fill: none;
+    stroke-width: 90;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 2500;
+    stroke-dashoffset: 2500;
+    transition: stroke-dashoffset 1.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.stack-purple .card-bg-loop path { stroke: #e3d4f7; }
+.stack-peach .card-bg-loop path { stroke: #fcd5c5; }
+.stack-blue .card-bg-loop path { stroke: #d0e7f5; }
+.stack-green .card-bg-loop path { stroke: #cbeedd; }
+
+.stack-card.draw-loop .card-bg-loop path {
+    stroke-dashoffset: 0;
+}
+
+/* =========================================
+   MARKETPLACE SECTION (HEIGHT FIX)
+========================================= */
+
+.marketplace-section {
+    padding: 60px 4% 50px; 
+    background-color: var(--white);
+    position: relative;
+    overflow: hidden; 
+}
+
+/* Purple Card Container (Reduced Height) */
+.market-card {
+    background-color: #4b1f9b; 
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; 
+    padding: 60px 8%; 
+    position: relative;
+    overflow: hidden;
+    min-height: 480px; 
+}
+
+/* Left Content */
+.market-content {
+    flex: 1;
+    max-width: 550px;
+    color: var(--white);
+    z-index: 2; 
+}
+
+.market-content h2 {
+    font-family: "Parkinsans", sans-serif;
+    font-size: clamp(42px, 5.5vw, 68px); 
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -2px;
+    color: #f6d3b4; 
+    margin-bottom: 20px;
+}
+
+.market-content p {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.5;
+    color: #e5d8f6;
+    margin-bottom: 35px;
+}
+
+/* Discover Button Styling */
+.market-content .discover-btn {
+    position: relative;
+    overflow: hidden; 
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px 35px;
+    background-color: #f6d3b4;
+    color: #4b1f9b;
+    font-size: 18px;
+    font-weight: 800;
+    border-radius: 12px;
+    border: 1px solid transparent; 
+    transition: color 0.4s ease, border-color 0.4s ease;
+    z-index: 1;
+    text-decoration: none;
+}
+.market-content .discover-btn::before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(0);
+    width: 250%;
+    height: 250%;
+    border-radius: 50%;
+    background-color: #4b1f9b;
+    transition: transform 0.5s ease-in-out;
+    z-index: -1;
+}
+.market-content .discover-btn:hover {
+    color: #f6d3b4;
+    border-color: rgba(246, 211, 180, 0.4);
+}
+.market-content .discover-btn:hover::before {
+    transform: translateX(-50%) translateY(-50%);
+}
+
+/* Right Tablet Image (Positioning Fix) */
+.market-image {
+    position: absolute; 
+    right: -35px;           
+    top: 50%;
+    transform: translateY(-50%) rotate(5deg); 
+    width: 690px; 
+    z-index: 2;
+    transition: transform 0.5s ease;
+}
+
+.market-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* .market-image:hover {
+    transform: translateY(-50%) rotate(2deg) scale(1.02);
+} */
+
+@media (max-width: 1050px) {
+    .market-image {
+        width: 450px;
+        right: -25px; 
+    }
+}
+
+/* =========================================
+   MARKETPLACE TEXT STAGGER ANIMATION
+========================================= */
+
+.market-content h2,
+.market-content p,
+.market-content .discover-btn {
+    opacity: 0;
+    transform: translateY(40px);
+}
+
+.market-card.content-visible .market-content h2 {
+    animation: marketSlideUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards;
+}
+
+.market-card.content-visible .market-content p {
+    animation: marketSlideUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.25s forwards;
+}
+
+.market-card.content-visible .market-content .discover-btn {
+    animation: marketSlideUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.4s forwards;
+}
+
+/* Keyframes for sliding up and fading in */
+@keyframes marketSlideUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================================
+   ANIMATED 'H' LOGO ON SCROLL (ROTATION ADDED)
+========================================= */
+
+.market-animated-h {
+    position: absolute;
+    bottom: -200px; 
+    left: 45%; 
+    width: 260px;
+    height: 260px;
+    z-index: 1;
+    opacity: 0.95;
+    transform: rotate(-45deg); 
+    transition: bottom 1.2s cubic-bezier(0.22, 1, 0.36, 1), 
+                transform 1.2s cubic-bezier(0.22, 1, 0.36, 1); 
+}
+
+.market-animated-h.h-visible {
+    bottom: -70px; 
+    transform: rotate(15deg); 
+}
+
+/* Mobile responsive mate thodu adjustment */
+@media (max-width: 850px) {
+    .market-animated-h {
+        left: 30%;
+        width: 180px;
+        height: 180px;
+        bottom: -150px;
+    }
+    .market-animated-h.h-visible {
+        bottom: -50px;
+    }
+}
+
+/* =========================================
+   PARTNER LOGOS SLIDER
+========================================= */
+
+.market-partners {
+    padding: 80px 0 40px;
+    text-align: center;
+}
+
+.partner-subtitle {
+    font-size: 17px;
+    color: #59665c;
+    font-weight: 600;
+    margin-bottom: 40px;
+}
+
+/* Slider Container */
+.partner-logo-slider {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 10%, #000 90%, transparent 100%);
+}
+
+.partner-logo-track {
+    display: flex;
+    width: max-content;
+    animation: partnerMarquee 15s linear infinite; 
+}
+
+/* Logo groups */
+.partner-logo-group {
+    display: flex;
+    align-items: center;
+    gap: 70px;
+    padding-right: 70px;
+}
+
+/* Individual Image styling */
+.partner-logo-group img {
+    height: 55px; 
+    object-fit: contain;
+    filter: grayscale(100%) opacity(0.8);
+    transition: filter 0.3s ease;
+}
+
+/* Hover effect */
+.partner-logo-group img:hover {
+    filter: grayscale(0%) opacity(1);
+}
+
+/* Scroll Animation Keyframes */
+@keyframes partnerMarquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); } 
+}
+
+/* =========================================
+   NETWORK / ONLINE SECTION
+========================================= */
+
+.network-section {
+    padding: 0 4% 100px; /* Baju mathi margin ane niche jagya */
+    background-color: var(--white);
+}
+
+.network-container {
+    background-color: #f7f3e8; /* Cream/Off-white background */
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 8% 0 0; /* Left padding 0 karan ke map bahar aave che */
+    position: relative;
+    min-height: 550px;
+}
+
+/* Left Image (Map) */
+.network-image {
+    flex: 1;
+    position: relative;
+    /* Image ne card ni thodi bahar (left and upar) kadhva mate negative margin */
+    margin-left: -5%;
+    margin-top: -50px;
+    margin-bottom: -50px;
+    z-index: 2;
+}
+
+.network-image img {
+    width: 100%;
+    max-width: 650px; /* Map ni size */
+    height: auto;
+    display: block;
+}
+
+/* Right Content */
+.network-content {
+    flex: 1;
+    max-width: 550px;
+    padding-left: 40px; /* Image thi thodi jagya */
+    color: #0b3861; /* Dark Blue Text */
+    z-index: 2;
+}
+
+.network-content h2 {
+    font-family: "Parkinsans", sans-serif;
+    font-size: clamp(40px, 5vw, 62px);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -2px;
+    margin-bottom: 20px;
+}
+
+.network-content p {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.6;
+    color: #4a5c6d;
+    margin-bottom: 35px;
+}
+
+/* Dark Blue Button Styling (With Fill Animation) */
+.network-btn {
+    position: relative;
+    overflow: hidden; 
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px 35px;
+    background-color: #0b3861; 
+    color: #ffffff; 
+    font-size: 17px;
+    font-weight: 800;
+    border-radius: 12px;
+    border: 1px solid #0b3861; 
+    transition: color 0.4s ease, border-color 0.4s ease;
+    z-index: 1;
+    text-decoration: none;
+}
+
+.network-btn::before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(0);
+    width: 250%;
+    height: 250%;
+    border-radius: 50%;
+    background-color: #f7f3e8; 
+    transition: transform 0.5s ease-in-out;
+    z-index: -1;
+}
+
+.network-btn:hover {
+    color: #0b3861; 
+    border-color: #0b3861; 
+}
+
+.network-btn:hover::before {
+    transform: translateX(-50%) translateY(-50%);
+}
+
+/* =========================================
+   NETWORK TEXT STAGGER ANIMATION
+========================================= */
+
+.network-content h2,
+.network-content p,
+.network-content .network-btn {
+    opacity: 0;
+    transform: translateY(40px);
+}
+
+.network-container.content-visible .network-content h2 {
+    animation: networkSlideUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards;
+}
+.network-container.content-visible .network-content p {
+    animation: networkSlideUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.25s forwards;
+}
+.network-container.content-visible .network-content .network-btn {
+    animation: networkSlideUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.4s forwards;
+}
+
+@keyframes networkSlideUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 950px) {
+    .network-container {
+        flex-direction: column;
+        padding: 40px 5%;
+        text-align: center;
+    }
+    .network-image {
+        margin: 0 auto 30px;
+    }
+    .network-content {
+        padding-left: 0;
+        margin: 0 auto;
+    }
+}
+
+/* =========================================
+   TESTIMONIAL SLIDER SECTION
+========================================= */
+
+.testimonial-section {
+    padding: 0 4% 100px;
+    background-color: var(--white);
+}
+
+.testimonial-container {
+    background-color: #fafafa;
+    border: 1px solid #e8e8e8;
+    border-radius: 20px;
+    display: flex;
+    align-items: flex-start;
+    padding: 80px 5%;
+    min-height: 500px;
+}
+
+/* --- Left Nav Buttons --- */
+.testi-nav {
+    display: flex;
+    gap: 15px;
+    margin-right: 8%;
+    padding-top: 10px;
+}
+
+.testi-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: transparent;
+    border: 1px solid #d1d1d1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    color: var(--dark-green);
+    transition: all 0.3s ease; 
+}
+
+.testi-btn:hover {
+    background: var(--dark-green);
+    border-color: var(--dark-green);
+    color: #ffffff; 
+}
+
+/* Next Button with Timer Animation */
+.next-btn {
+    border: none; 
+}
+.next-btn .arrow-icon {
+    position: absolute;
+    z-index: 2;
+}
+.timer-circle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: rotate(-90deg); /* Start from top */
+}
+.progress-circle {
+    stroke-dasharray: 138; /* 2 * PI * 22(radius) */
+    stroke-dashoffset: 138;
+    /* CSS transition nathi, aapanne JS thi control karishu */
+}
+
+/* --- Right Content Area --- */
+.testi-content-wrapper {
+    flex: 1;
+    position: relative;
+}
+
+.testi-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.testi-counter {
+    font-size: 18px;
+    color: #8c8c8c;
+    font-weight: 500;
+}
+
+.testi-header h3 {
+    font-family: "Parkinsans", sans-serif;
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: var(--dark-green);
+}
+
+/* --- Slides --- */
+.testi-slide {
+    display: none; /* Default hide */
+}
+
+.testi-slide.active {
+    display: block;
+    /* Slide up animation */
+    animation: testiSlideUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes testiSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.quote {
+    font-family: "Parkinsans", sans-serif;
+    font-size: clamp(32px, 4vw, 55px);
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -1.5px;
+    color: var(--dark-green);
+    margin-bottom: 50px;
+}
+
+.author {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.author img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.author h4 {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--dark-green);
+    margin-bottom: 4px;
+}
+
+.author span {
+    font-size: 16px;
+    color: #6c757d;
+    font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .testimonial-container {
+        flex-direction: column;
+        padding: 50px 5%;
+    }
+    .testi-nav {
+        margin-bottom: 40px;
+    }
+    .quote {
+        font-size: 28px;
+    }
+}
+
+/* =========================================
+   TOUR WRAPPED UP SECTION (FINAL FIX)
+========================================= */
+
+.tour-section {
+    padding: 0 4% 80px;
+    background-color: var(--white);
+    position: relative;
+    overflow: visible; 
+}
+
+/* Peach Card Container */
+.tour-card {
+    background-color: #f4c2b3; 
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 50px 7%; 
+    position: relative;
+    overflow: visible; 
+    min-height: 42px; 
+}
+
+/* Left Content */
+.tour-content {
+    flex: 1;
+    max-width: 600px; 
+    color: #00563c; /* Dark Green Text Color */
+    z-index: 2;
+}
+
+.tour-content h2 {
+    font-family: "Parkinsans", sans-serif;
+    font-size: clamp(36px, 4.2vw, 52px); 
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -2px;
+    color: #00563c; 
+    margin-bottom: 20px;
+}
+
+@media (max-width: 1100px) {
+    .tour-content h2 {
+        white-space: normal;
+    }
+}
+
+.tour-content p {
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 1.5;
+    color: #00563c;
+    margin-bottom: 30px;
+    max-width: 480px;
+}
+
+/* Button Styling */
+.tour-btn {
+    position: relative;
+    overflow: hidden; 
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 32px;
+    background-color: #00563c; 
+    color: #ffffff;
+    font-size: 17px;
+    font-weight: 800;
+    border-radius: 12px;
+    border: 1px solid #00563c; 
+    transition: color 0.4s ease, border-color 0.4s ease;
+    z-index: 1;
+    text-decoration: none;
+}
+
+.tour-btn::before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(0);
+    width: 250%;
+    height: 250%;
+    border-radius: 50%;
+    background-color: #f4c2b3; 
+    transition: transform 0.5s ease-in-out;
+    z-index: -1;
+}
+
+.tour-btn:hover {
+    color: #00563c; 
+    border-color: #00563c;
+}
+
+.tour-btn:hover::before {
+    transform: translateX(-50%) translateY(-50%);
+}
+
+/* Right Cyclist Image */
+.tour-image {
+    position: absolute;
+    right: -10px;
+    top: -90px; 
+    width: 580px;
+    z-index: 3; 
+    pointer-events: none;
+}
+
+.tour-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* =========================================
+   ANIMATED 'H' LOGO ON SCROLL (FIXED POSITION)
+========================================= */
+
+.tour-animated-h {
+    position: absolute;
+    /* Bottom ne adjust karyu chhe jethi card ni andar barabar set thay */
+    bottom: -110px; 
+    left: 42%; 
+    width: 180px; /* Size thodi proper kari chhe */
+    height: 180px;
+    z-index: 2;
+    opacity: 0.95;
+    transform: rotate(-45deg); 
+    transition: bottom 1.2s cubic-bezier(0.22, 1, 0.36, 1), 
+                transform 1.2s cubic-bezier(0.22, 1, 0.36, 1); 
+}
+
+.tour-animated-h.h-visible {
+    bottom: -40px; /* Card ni border par barabar baith jase */
+    transform: rotate(15deg); 
+}
+
+/* =========================================
+   TEXT STAGGER ANIMATION
+========================================= */
+.tour-content h2,
+.tour-content p,
+.tour-content .tour-btn {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.tour-card.content-visible .tour-content h2 {
+    animation: tourSlideUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards;
+}
+.tour-card.content-visible .tour-content p {
+    animation: tourSlideUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.25s forwards;
+}
+.tour-card.content-visible .tour-content .tour-btn {
+    animation: tourSlideUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.4s forwards;
+}
+
+@keyframes tourSlideUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 950px) {
+    .tour-card {
+        flex-direction: column;
+        padding: 40px 5%;
+        text-align: center;
+        overflow: hidden;
+    }
+    .tour-image {
+        position: relative;
+        right: auto;
+        top: auto;
+        width: 100%;
+        max-width: 400px;
+        margin-top: 20px;
+    }
+    .tour-content {
+        max-width: 100%;
+    }
+    .tour-animated-h {
+        left: 20%;
+        width: 130px;
+        height: 130px;
+    }
+}
+
+/* =========================================
+   FAQ / QUESTIONS SECTION
+========================================= */
+
+.faq-section {
+    padding: 100px 6%;
+    background-color: var(--white);
+}
+
+.faq-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 80px;
+    align-items: flex-start;
+}
+
+/* Left Title */
+.faq-title-wrap h2 {
+    font-family: "Parkinsans", sans-serif;
+    font-size: clamp(48px, 6vw, 75px);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -3px;
+    color: #00563c;
+    position: sticky;
+    top: 120px;
+}
+
+/* Right Accordion List */
+.faq-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.faq-item {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+/* Question Header Button */
+.faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 0;
+    text-align: left;
+    cursor: pointer;
+    font-family: "Parkinsans", sans-serif;
+    font-size: clamp(20px, 2.2vw, 28px);
+    font-weight: 700;
+    color: #00563c;
+    letter-spacing: -0.5px;
+    transition: color 0.3s ease;
+}
+
+.faq-question:hover {
+    color: #007551;
+}
+
+/* Plus / Minus Icon Animation */
+.faq-icon {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    margin-left: 20px;
+}
+
+.faq-icon::before,
+.faq-icon::after {
+    content: "";
+    position: absolute;
+    background-color: var(--dark-green);
+    transition: transform 0.3s ease;
+}
+
+/* Horizontal line (Plus) */
+.faq-icon::before {
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    transform: translateY(-50%);
+}
+
+/* Vertical line (Plus -> Minus banva mate rotate thase) */
+.faq-icon::after {
+    top: 0;
+    left: 50%;
+    width: 2px;
+    height: 100%;
+    transform: translateX(-50%);
+}
+
+/* Active item ma vertical line gayab thai jase etle minus (-) bani jase */
+.faq-item.active .faq-icon::after {
+    transform: translateX(-50%) rotate(90deg);
+    opacity: 0;
+}
+
+/* Answer Content (Smooth Slide Down) */
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.22, 1, 0.36, 1), padding 0.4s ease;
+    padding: 0 0;
+}
+
+.faq-answer p {
+    font-family: "Parkinsans", sans-serif;
+    font-size: 17px;
+    line-height: 1.7;
+    color: #59665c;
+    margin-bottom: 18px;
+}
+
+.faq-answer p:last-child {
+    margin-bottom: 25px;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .faq-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    .faq-title-wrap h2 {
+        position: static;
+    }
+}
+
+/* =========================================
+   FAQ SECTION BACKGROUND LOOP SHAPE
+========================================= */
+
+.faq-section {
+    padding: 100px 6%;
+    background-color: var(--white);
+    position: relative; /* Absolute shape mate relative rakhvu */
+    overflow: hidden;   /* Section ni bahar jatu shape hide karva */
+}
+
+/* Bottom Left Loop Shape */
+.faq-bg-loop {
+    position: absolute;
+    bottom: -150px;
+    left: -150px;
+    width: 550px;
+    height: 550px;
+    border: 90px solid #00563c; /* Dark green loop color */
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* FAQ Container ne upar rakhva mate z-index aapiye */
+.faq-container {
+    position: relative;
+    z-index: 2;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 80px;
+    align-items: flex-start;
+}
+
+
+/* =========================================
+   BEETOGREEN STYLE FOOTER
+========================================= */
+
+.site-footer {
+    width: 100%;
+    min-height: 700px;
+    padding: 65px 2.5% 45px;
+    background: #071b14;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 5px;
+    overflow: hidden;
+    font-family: "Parkinsans", sans-serif;
+}
+
+
+/* MAIN FOOTER GRID */
+
+.footer-main {
+    display: grid;
+    grid-template-columns: 1.8fr 0.95fr 0.95fr 0.8fr;
+    gap: 35px;
+    width: 100%;
+}
+
+
+/* BRAND */
+
+.footer-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.footer-logo {
+    font-size: clamp(65px, 6vw, 105px);
+    font-weight: 600;
+    letter-spacing: -5px;
+    line-height: 1;
+    color: #e6ff42;
+    white-space: nowrap;
+    margin-bottom: 45px;
+}
+
+.footer-brand h2 {
+    font-size: clamp(30px, 2.5vw, 44px);
+    line-height: 1.25;
+    font-weight: 600;
+    letter-spacing: -1.5px;
+    color: #d9fff0;
+}
+
+
+/* FOOTER COLUMNS */
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.footer-label {
+    color: #8c9c94;
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 38px;
+}
+
+
+/* NAVIGATION LINKS */
+
+.footer-link-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 38px;
+}
+
+.footer-link-group h3 {
+    color: #e6ff42;
+    font-size: 19px;
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+
+.footer-link-group a,
+.footer-legal-links a {
+    color: #e1fff2;
+    font-size: 17px;
+    font-weight: 400;
+    transition: color 0.3s ease;
+}
+
+.footer-link-group a:hover,
+.footer-legal-links a:hover {
+    color: #e6ff42;
+}
+
+
+/* LEGAL LINKS */
+
+.footer-legal-links {
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+}
+
+
+/* CONTACT BUTTONS */
+
+.footer-contact-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    margin-top: 62px;
+}
+
+.footer-contact-buttons .footer-label {
+    margin-bottom: 23px;
+}
+
+.footer-employee-btn,
+.footer-employer-btn {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    border-radius: 9px;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    border: 1px solid transparent;
+    transition: color 0.4s ease,
+                border-color 0.4s ease,
+                transform 0.3s ease;
+    z-index: 1;
+}
+
+.footer-employee-btn {
+    background: #008f63;
+    color: #e6ff42;
+}
+
+.footer-employee-btn:hover {
+    color: #071b14;
+    border-color: rgba(230, 255, 66, 0.5);
+    transform: translateY(-3px);
+}
+
+.footer-employer-btn {
+    background: #e6ff42;
+    color: #071b14;
+}
+
+.footer-employer-btn:hover {
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-3px);
+}
+
+.footer-employee-btn::before,
+.footer-employer-btn::before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(0);
+    width: 250%;
+    height: 250%;
+    border-radius: 50%;
+    transition: transform 0.5s ease-in-out;
+    z-index: -1;
+}
+
+.footer-employee-btn::before {
+    background-color: #e6ff42;
+}
+
+.footer-employer-btn::before {
+    background-color: #071b14;
+}
+
+.footer-employee-btn:hover::before,
+.footer-employer-btn:hover::before {
+    transform: translateX(-50%) translateY(-50%);
+}
+
+/* SOCIAL ICONS */
+
+.footer-social {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 18px;
+}
+
+.footer-social a {
+    width: 44px;
+    height: 44px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #d9fff0;
+    transition: all 0.3s ease;
+}
+
+.footer-social svg {
+    width: 19px;
+    height: 19px;
+}
+
+.footer-social a:hover {
+    background: #e6ff42;
+    color: #071b14;
+    border-color: #e6ff42;
+    transform: translateY(-4px);
+}
+
+
+/* FOOTER BOTTOM */
+
+.footer-bottom {
+    display: grid;
+    grid-template-columns: 1.8fr 0.95fr 0.95fr 0.8fr;
+    gap: 35px;
+    width: 100%;
+    margin-top: 100px;
+    align-items: start;
+}
+
+.footer-bottom-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.footer-bottom-column .footer-label {
+    margin-bottom: 42px;
+}
+
+.footer-bottom-text {
+    font-size: 17px;
+    line-height: 1.8;
+    color: #e1fff2;
+}
+
+.footer-copyright {
+    align-items: flex-start;
+}
+
+.footer-copyright .footer-label {
+    white-space: nowrap;
+}
+
+.back-to-top {
+    display: flex;
+    align-items: center;
+    gap: 17px;
+    color: #e1fff2;
+    font-size: 17px;
+    white-space: nowrap;
+    transition: color 0.3s ease;
+}
+
+.back-to-top span {
+    font-size: 25px;
+    transition: transform 0.3s ease;
+}
+
+.back-to-top:hover {
+    color: #e6ff42;
+}
+
+.back-to-top:hover span {
+    transform: translateY(-5px);
+}
+
+
+/* =========================================
+   FOOTER RESPONSIVE - TABLET
+========================================= */
+
+@media (max-width: 1050px) {
+
+    .site-footer {
+        padding: 55px 4%;
+    }
+
+    .footer-main {
+        grid-template-columns: 1.4fr 1fr 1fr;
+        row-gap: 60px;
+    }
+
+    .footer-brand {
+        grid-column: 1 / -1;
+    }
+
+    .footer-logo {
+        font-size: 75px;
+    }
+
+    .footer-bottom {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .footer-bottom-empty {
+        display: none;
+    }
+
+}
+
+
+/* =========================================
+   FOOTER RESPONSIVE - MOBILE
+========================================= */
+
+@media (max-width: 760px) {
+
+    .site-footer {
+        min-height: auto;
+        padding: 55px 6% 35px;
+    }
+
+    .footer-main {
+        grid-template-columns: 1fr 1fr;
+        gap: 45px 20px;
+    }
+
+    .footer-brand {
+        grid-column: 1 / -1;
+    }
+
+    .footer-logo {
+        font-size: clamp(48px, 12vw, 70px);
+        letter-spacing: -3px;
+        margin-bottom: 25px;
+    }
+
+    .footer-brand h2 {
+        font-size: 30px;
+    }
+
+    .footer-column {
+        min-width: 0;
+    }
+
+    .footer-label {
+        font-size: 12px;
+        margin-bottom: 25px;
+    }
+
+    .footer-link-group {
+        gap: 12px;
+        margin-bottom: 30px;
+    }
+
+    .footer-link-group h3 {
+        font-size: 16px;
+    }
+
+    .footer-link-group a,
+    .footer-legal-links a {
+        font-size: 14px;
+    }
+
+    .footer-contact-buttons {
+        margin-top: 45px;
+    }
+
+    .footer-contact-buttons .footer-label {
+        margin-bottom: 12px;
+    }
+
+    .footer-employee-btn,
+    .footer-employer-btn {
+        padding: 10px 12px;
+        font-size: 12px;
+    }
+
+    .footer-social {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        gap: 14px;
+    }
+
+    .footer-social a {
+        width: 40px;
+        height: 40px;
+    }
+
+    .footer-bottom {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        margin-top: 65px;
+        padding-top: 35px;
+        border-top: 1px solid rgba(255,255,255,0.15);
+    }
+
+    .footer-bottom-column .footer-label {
+        margin-bottom: 15px;
+    }
+
+    .footer-bottom-text,
+    .back-to-top {
+        font-size: 14px;
+    }
+
+    .footer-copyright {
+        gap: 15px;
+    }
+
+    .footer-copyright .footer-label {
+        margin-bottom: 5px;
     }
 }

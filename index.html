@@ -11,8 +11,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Google Font - Parkinsans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
+    <link href="https://fonts.googleapis.com/css2?family=Parkinsans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
 
@@ -20,19 +23,53 @@
 
 <body>
 
-    <!-- =====================================
-         INTRO ANIMATION
-    ====================================== -->
+    
+<!-- =========================================
+     HIGHWAGES INTRO
+========================================= -->
 
-    <div class="intro-screen" id="introScreen">
-        <div class="intro-logo">
-            <!-- 'H' letter in SVG for line drawing effect -->
-            <svg class="h-icon" viewBox="0 0 80 100">
-                <path class="h-path" d="M20,10 L20,90 M20,50 L60,50 M60,10 L60,90" fill="none" stroke="var(--lime)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-            <span class="rest-of-word">ighwages</span>
+
+<div class="intro-screen" id="introScreen">
+
+    <div class="intro-logo">
+
+        <!-- <svg class="h-icon" viewBox="0 0 100 100"
+             xmlns="http://www.w3.org/2000/svg">
+
+            <path class="h-path"
+                d="M 51 12
+                   C 34 2, 15 13, 19 29
+                   C 22 43, 40 44, 47 32
+                   C 53 20, 40 13, 31 21
+                   C 23 28, 29 40, 41 43
+                   C 56 47, 66 35, 66 19
+                   L 66 73
+                   C 66 91, 87 91, 88 74
+                   C 89 59, 75 51, 63 57
+                   C 55 61, 52 70, 56 77"
+                fill="none"
+                stroke="#e6ff42"
+                stroke-width="7"
+                stroke-linecap="round"
+                stroke-linejoin="round"/>
+        </svg> -->
+
+        <div class="intro-word">
+            <span class="intro-letter intro-h-letter">H</span>
+            <span class="intro-letter">i</span>
+            <span class="intro-letter">g</span>
+            <span class="intro-letter">h</span>
+            <span class="intro-letter">w</span>
+            <span class="intro-letter">a</span>
+            <span class="intro-letter">g</span>
+            <span class="intro-letter">e</span>
+            <span class="intro-letter">s</span>
         </div>
+
     </div>
+
+</div>
+
 
 
     <!-- =====================================
@@ -355,6 +392,240 @@
         </section>
 
         <!-- =====================================
+            BENEFITS / TOGGLE SECTION
+        ====================================== -->
+        <section class="benefits-section" id="benefits">
+
+            <!-- Main Title -->
+            <h2 class="benefits-main-title">
+                Cycling becomes an <br> employee benefit that's easy <br> to activate.
+            </h2>
+            
+            <!-- Toggle Switch -->
+            <div class="toggle-wrapper">
+                <button class="toggle-btn active" data-target="companies-view">Companies</button>
+                <button class="toggle-btn" data-target="employees-view">Employees</button>
+            </div>
+
+            <!-- Companies Cards View -->
+            <div class="benefits-grid" id="companies-view">
+                
+                <!-- Card 1: Green -->
+                <div class="benefit-card card-green">
+                    <div class="card-content">
+                        <h3>We genuinely make your life easier.</h3>
+                        <ul>
+                            <li>The Sustainable Mobility Allowance is activated, set up, and secured,</li>
+                            <li>We centralize all receipts,</li>
+                            <li>And we support you on the ground.</li>
+                        </ul>
+                    </div>
+                    <a href="#solutions" class="card-btn btn-green">See our solutions</a>
+                </div>
+
+                <!-- Card 2: Brown -->
+                <div class="benefit-card card-brown">
+                    <div class="card-content">
+                        <h3>With a decision that holds up.</h3>
+                        <ul>
+                            <li>No setup fees to plan for,</li>
+                            <li>No fleet to manage,</li>
+                            <li>Clear pricing, no surprises.</li>
+                        </ul>
+                    </div>
+                    <a href="#finance" class="card-btn btn-brown">Simulate financing cost</a>
+                </div>
+
+                <!-- Card 3: Orange -->
+                <div class="benefit-card card-orange">
+                    <div class="card-content">
+                        <h3>Less gas. More purpose.</h3>
+                        <ul>
+                            <li>Every km replaced counts,</li>
+                            <li>CO₂ savings are measured,</li>
+                            <li>The impact is visible, over time.</li>
+                        </ul>
+                    </div>
+                    <a href="#impact" class="card-btn btn-orange">Simulate your CO₂ impact</a>
+                </div>
+
+            </div>
+
+            <!-- Employees Cards View (Hidden by default) -->
+            <div class="benefits-grid hidden" id="employees-view">
+        
+                <!-- Light Orange Card -->
+                <div class="benefit-card card-light-orange">
+                    <div class="card-content">
+                        <h3>We genuinely make your life easier.</h3>
+                        <ul>
+                            <li>The Sustainable Mobility Allowance is activated, set up, and secured,</li>
+                            <li>We centralize all receipts,</li>
+                            <li>And we support you on the ground.</li>
+                        </ul>
+                    </div>
+                    <a href="#solutions" class="card-btn btn-light-orange">See our solutions</a>
+                </div>
+
+                <!-- Light Purple Card -->
+                <div class="benefit-card card-light-purple">
+                    <div class="card-content">
+                        <h3>Less gas. More purpose.</h3>
+                        <ul>
+                            <li>Every km replaced counts,</li>
+                            <li>CO₂ savings are measured,</li>
+                            <li>The impact is visible, over time.</li>
+                        </ul>
+                    </div>
+                    <a href="#impact" class="card-btn btn-light-purple">Simulate your CO₂ impact</a>
+                </div>
+
+                <!-- Light Blue Card -->
+                <div class="benefit-card card-light-blue">
+                    <div class="card-content">
+                        <h3>With a decision that holds up.</h3>
+                        <ul>
+                            <li>No setup fees to plan for,</li>
+                            <li>No fleet to manage,</li>
+                            <li>Clear pricing, no surprises.</li>
+                        </ul>
+                    </div>
+                    <a href="#finance" class="card-btn btn-light-blue">Simulate financing cost</a>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- =====================================
+            SCROLL STACKING SECTION
+        ====================================== -->
+        <section class="scroll-stack-section" id="impact-stack">
+
+            <!-- 1. Background Image Wrapper (Full Screen) -->
+            <div class="stack-image-wrapper">
+                <img src="/images/Card-section2.webp" alt="People cycling" class="stack-bg-img">
+            </div>
+
+            <!-- 2. Well-being Card -->
+            <div class="stack-card stack-purple">
+                <!-- SVG loop background mate -->
+                <svg class="card-bg-loop" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M 100,800 C 600,800 700,200 400,200 C 150,200 150,600 500,600 C 700,600 800,400 800,400" />
+                </svg>
+                <div class="stack-content">
+                    <h2>Well-being</h2>
+                    <div class="wellbeing-text">
+                        <span class="big-percent">81%</span>
+                        <p>of cyclists report improved overall well-being from active commuting.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Health Card -->
+            <div class="stack-card stack-peach">
+                <!-- SVG loop background mate -->
+                <svg class="card-bg-loop" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M 100,800 C 600,800 700,200 400,200 C 150,200 150,600 500,600 C 700,600 800,400 800,400" />
+                </svg>
+                <div class="stack-content">
+                    <h2>Health</h2>
+                    <h3>Lower risk of chronic diseases</h3>
+                    <p>Active mobility (including daily cycling) is linked to a reduced risk of cardiovascular disease, diabetes, and cancer.</p>
+                </div>
+            </div>
+
+            <!-- 4. Absenteeism Card -->
+            <div class="stack-card stack-blue">
+                <!-- SVG loop background mate -->
+                <svg class="card-bg-loop" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M 100,800 C 600,800 700,200 400,200 C 150,200 150,600 500,600 C 700,600 800,400 800,400" />
+                </svg>
+                <div class="stack-content">
+                    <h2>Absenteeism</h2>
+                    <p>20 to 30% fewer absence days among physically active workers (including regular cyclists) compared to sedentary ones.</p>
+                </div>
+            </div>
+
+            <!-- 5. Impact Card -->
+            <div class="stack-card stack-green">
+                <!-- SVG loop background mate -->
+                <svg class="card-bg-loop" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M 100,800 C 600,800 700,200 400,200 C 150,200 150,600 500,600 C 700,600 800,400 800,400" />
+                </svg>
+                <div class="stack-content">
+                    <h2>Impact</h2>
+                    <p>0.5 tons of CO₂ saved per year when an employee swaps their car for a bike on the commute.</p>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- =====================================
+            MARKETPLACE SECTION
+        ====================================== -->
+        <section class="marketplace-section" id="marketplace">
+
+            <!-- Purple Main Card -->
+            <div class="market-card">
+                
+                <!-- Left Side Content -->
+                <div class="market-content">
+                    <h2>The largest bike marketplace dedicated to employees.</h2>
+                    <p>
+                        Highwages helps companies transform employee mobility with a turnkey solution that funds, structures and rolls out bikes at work (no big deal).
+                    </p>
+                    <a href="#marketplace" class="discover-btn">Discover Highwages</a>
+                </div>
+
+                <!-- Right Side Tablet Image -->
+                <div class="market-image">
+                    <img src="/images/marketplaceNew.webp" alt="Tablet showing Highwages marketplace">
+                </div>
+
+                <!-- Large Decorative 'H' SVG (Animated on scroll) -->
+                <div class="market-animated-h">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Background Circle -->
+                        <circle cx="50" cy="50" r="50" fill="#f6d3b4" />
+                        <path d="M30,25 L30,75 M30,50 L70,50 M70,25 L70,75" 
+                            fill="none" stroke="#4b1f9b" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </div>
+
+            </div>
+
+            <!-- Partner Logos Section -->
+            <div class="market-partners">
+                <p class="partner-subtitle">We partner with France's leading bike brands</p>
+                
+                <div class="partner-logo-slider">
+                    <div class="partner-logo-track">
+                        <!-- Group 1 -->
+                        <div class="partner-logo-group">
+                            <img src="/images/logos/ellipse.webp" alt="Ellipse">
+                            <img src="/images/logos/gaya.webp" alt="Gaya">
+                            <img src="/images/logos/elwing.webp" alt="Elwing">
+                            <img src="/images/logos/jeanfourche.webp" alt="Jean Fourche">
+                            <img src="/images/logos/voltaire.webp" alt="Voltaire">
+                            <img src="/images/logos/bastille.webp" alt="Bastille">
+                        </div>
+                        <!-- Group 2 (For infinite loop) -->
+                        <div class="partner-logo-group" aria-hidden="true">
+                            <img src="/images/logos/ellipse.webp" alt="Ellipse">
+                            <img src="/images/logos/gaya.webp" alt="Gaya">
+                            <img src="/images/logos/elwing.webp" alt="Elwing">
+                            <img src="/images/logos/jeanfourche.webp" alt="Jean Fourche">
+                            <img src="/images/logos/voltaire.webp" alt="Voltaire">
+                            <img src="/images/logos/bastille.webp" alt="Bastille">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- =====================================
              PRICING SECTION
         ====================================== -->
 
@@ -377,50 +648,268 @@
         </section>
 
 
-
         <!-- =====================================
-             RESOURCES SECTION
+            NETWORK / ONLINE SECTION
         ====================================== -->
+        <section class="network-section" id="network">
+            
+            <div class="network-container">
+                
+                <!-- Left Side: Map Image -->
+                <div class="network-image">
+                    <img src="/images/Map_shape_all.webp" alt="Map of France with route loop">
+                </div>
 
-        <section class="resources-section" id="resources">
+                <!-- Right Side: Content -->
+                <div class="network-content">
+                    <h2>Yes, we're online.<br>But that's not all.</h2>
+                    <p>
+                        Our marketplace is 100% online. But your bike rides in the real world. That's why we rely on a network of partner shops across France.
+                    </p>
+                    <a href="#network" class="network-btn">Discover Highwages</a>
+                </div>
 
-            <p class="section-label">
-                EXPLORE
-            </p>
-
-            <h2>
-                Ideas, news & resources
-            </h2>
-
-            <p>
-                Discover our latest news, articles and resources.
-            </p>
+            </div>
 
         </section>
 
         <!-- =====================================
-             CONTACT SECTION
+            TESTIMONIAL SLIDER SECTION
         ====================================== -->
+        <section class="testimonial-section" id="testimonials">
+            <div class="testimonial-container">
+                
+                <!-- Left Side: Navigation Arrows & Timer -->
+                <div class="testi-nav">
+                    <button class="testi-btn prev-btn" id="prevTesti">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                    </button>
+                    
+                    <button class="testi-btn next-btn" id="nextTesti">
+                        <!-- SVG Circle Timer (Video ma chhe tem) -->
+                        <svg class="timer-circle" width="48" height="48" viewBox="0 0 48 48">
+                            <!-- Background Circle -->
+                            <circle cx="24" cy="24" r="22" fill="none" stroke="#e0e0e0" stroke-width="2" />
+                            <!-- Animated Progress Circle -->
+                            <circle class="progress-circle" cx="24" cy="24" r="22" fill="none" stroke="#071b14" stroke-width="2" />
+                        </svg>
+                        <svg class="arrow-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                    </button>
+                </div>
 
-        <section class="contact-section" id="contact">
+                <!-- Right Side: Testimonial Content -->
+                <div class="testi-content-wrapper">
+                    <div class="testi-header">
+                        <span class="testi-counter" id="testiCounter">01 / 05</span>
+                        <h3>Don't just take our word for it...</h3>
+                    </div>
 
-            <div>
+                    <!-- Slide 1 -->
+                    <div class="testi-slide active" data-index="1">
+                        <p class="quote">“We were pleasantly surprised by the impact of cycling on daily company life. It became a real collective movement that gradually brought people together around it.”</p>
+                        <div class="author">
+                            <img src="/images/portrait.webp" alt="Mara Kline">
+                            <div>
+                                <h4>Mara Kline</h4>
+                                <span>Northbay Produce Co.</span>
+                            </div>
+                        </div>
+                    </div>
 
-                <p class="section-label">
-                    GET IN TOUCH
-                </p>
+                    <!-- Slide 2 -->
+                    <div class="testi-slide" data-index="2">
+                        <p class="quote">“Setting up the Sustainable Mobility Allowance with BeeToGreen was disarmingly simple. Our teams are equipped, motivated, and riding every day.”</p>
+                        <div class="author">
+                            <img src="/images/portrait.webp" alt="Tom Vasseur">
+                            <div>
+                                <h4>Julien Reyes</h4>
+                                <span>Atelier Voltaire</span>
+                            </div>
+                        </div>
+                    </div>
 
-                <h2>
-                    Let's talk
-                    <br>
-                    mobility.
-                </h2>
+                    <!-- Slide 3 -->
+                    <div class="testi-slide" data-index="3">
+                        <p class="quote">“We saw a real shift in our mobility culture: fewer cars in the parking lot, more bikes, and most importantly, employees arriving at the office in a great mood.”</p>
+                        <div class="author">
+                            <img src="/images/portrait.webp" alt="Sarah Jenkins">
+                            <div>
+                                <h4>Camille Doré</h4>
+                                <span>Studio Bastille</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 4 -->
+                    <div class="testi-slide" data-index="4">
+                        <p class="quote">“Highwage's support is what made the difference for us. From bike racks to test rides, everything was designed to work from day one.”</p>
+                        <div class="author">
+                            <img src="/images/portrait.webp" alt="David Chen">
+                            <div>
+                                <h4>Tom Vasseur</h4>
+                                <span>Maison Ellipse</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 5  -->
+                    <div class="testi-slide" data-index="5">
+                        <p class="quote">“Beyond the environmental aspect, what convinced us was the impact on our teams' health and well-being. Today, we wouldn't go back for anything.”</p>
+                        <div class="author">
+                            <img src="/images/portrait.webp" alt="Inès Marchand">
+                            <div>
+                                <h4>Inès Marchand</h4>
+                                <span>Cycles Gaya</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================
+            TOUR WRAPPED UP SECTION
+        ====================================== -->
+        <section class="tour-section" id="tour">
+            <div class="tour-card">
+                
+                <!-- Left Side Content -->
+                <div class="tour-content">
+                    <h2>Right, that's the tour all wrapped up!</h2>
+                    <p>
+                        Our marketplace is 100% online. But your bike, it rides in the real world. That's why we work with a network of partner shops across France.
+                    </p>
+                    <a href="contact.html" class="tour-btn">Get in touch</a>
+                </div>
+
+                <!-- Right Side Cyclist Image -->
+                <div class="tour-image">
+                    <img src="/images/bike_green_smaller.webp" alt="Cyclist smiling">
+                </div>
+
+                <!-- Animated 'H' Logo (Dark green circle with lime 'H') -->
+                <div class="tour-animated-h">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Dark Green Background Circle -->
+                        <circle cx="50" cy="50" r="50" fill="#00563c" />
+                        <!-- Lime 'H' Path -->
+                        <path d="M30,25 L30,75 M30,50 L70,50 M70,25 L70,75" 
+                            fill="none" stroke="#e6ff42" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================
+            FAQ / QUESTIONS SECTION
+        ====================================== -->
+        <section class="faq-section" id="faq">
+
+            <div class="faq-bg-loop"></div>
+            <div class="faq-container">
+                
+                <!-- Left Side Title -->
+                <div class="faq-title-wrap">
+                    <h2>Got questions?</h2>
+                </div>
+
+                <!-- Right Side Accordion List -->
+                <div class="faq-list">
+                    
+                    <!-- Question 1 (Default Open) -->
+                    <div class="faq-item active">
+                        <button class="faq-question">
+                            <span>Can the FMD be implemented without collective bargaining (NAO)?</span>
+                            <span class="faq-icon"></span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Yes. The FMD does not need to be negotiated as part of a NAO to exist within a company.</p>
+                            <p>The Ministry of Ecological Transition clarifies that negotiating the implementation of the FMD is not mandatory, even though mobility topics must be addressed in NAO processes for certain companies with 50 or more employees and employee representatives.</p>
+                            <p>In practice, the FMD can therefore be implemented unilaterally by the employer, enabling a quick and positive rollout of the scheme.</p>
+                        </div>
+                    </div>
+
+                    <!-- Question 2 -->
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>Can the FMD be implemented unilaterally?</span>
+                            <span class="faq-icon"></span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Yes, employers can implement the Sustainable Mobility Package (FMD) unilaterally under specific regulatory guidelines to support employee active commuting.</p>
+                        </div>
+                    </div>
+
+                    <!-- Question 3 -->
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>Does Highwages support the implementation of the FMD?</span>
+                            <span class="faq-icon"></span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Highwages provides complete turnkey solutions to structure, fund, and manage employee mobility programs, including full support for FMD implementation.</p>
+                        </div>
+                    </div>
+
+                    <!-- Question 4 -->
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>How does the employee rollout work?</span>
+                            <span class="faq-icon"></span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>The rollout is seamless, ranging from digital catalog access and bike selection to direct delivery and administrative tracking.</p>
+                        </div>
+                    </div>
+
+                    <!-- Question 5 -->
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>What can employees do with the Highwages Marketplace?</span>
+                            <span class="faq-icon"></span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Employees can browse and order bikes, accessories, and maintenance packages directly through the online employee portal.</p>
+                        </div>
+                    </div>
+
+                    <!-- Question 6 -->
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>Is the scheme easy to administer?</span>
+                            <span class="faq-icon"></span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Yes, automated workflows and centralized dashboards make administration effortless for HR and finance teams.</p>
+                        </div>
+                    </div>
+
+                    <!-- Question 7 -->
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>Is the FMD financially and socially beneficial?</span>
+                            <span class="faq-icon"></span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>It offers tax exemptions for companies and employees while substantially improving workplace well-being and reducing carbon emissions.</p>
+                        </div>
+                    </div>
+
+                    <!-- Question 8 -->
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>Why choose Highwages?</span>
+                            <span class="faq-icon"></span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>We combine France's top bike brands with automated funding and management tools to make active commuting effortless.</p>
+                        </div>
+                    </div>
+
+                </div>
 
             </div>
-
-            <a href="mailto:hello@Highwages.com" class="discover-btn">
-                Contact us
-            </a>
         </section>
 
     </main>
@@ -429,20 +918,165 @@
          FOOTER
     ====================================== -->
 
-    <footer class="footer">
+    <footer class="site-footer" id="footer">
 
-        <a href="#home" class="logo">
-            Highwages
-        </a>
+        <div class="footer-main">
 
-        <p>
-            © <span id="year"></span> Highwages. All rights reserved.
-        </p>
+            <!-- LEFT: BRAND -->
+            <div class="footer-brand">
 
-        <a href="#home">
-            Back to top ↑
-        </a>
+                <a href="#home" class="footer-logo">
+                    Highwages
+                </a>
+
+                <h2>
+                    Choose sustainable<br>
+                    mobility
+                </h2>
+
+            </div>
+
+
+            <!-- MIDDLE: NAVIGATION -->
+            <div class="footer-column">
+
+                <p class="footer-label">NAVIGATION</p>
+
+                <div class="footer-link-group">
+
+                    <h3>Solutions</h3>
+                    <a href="#solutions">Employers</a>
+                    <a href="#solutions">Employees</a>
+                    <a href="#contact">Become a partner</a>
+
+                </div>
+
+                <div class="footer-link-group">
+
+                    <h3>Pricing</h3>
+                    <a href="#pricing">Employers</a>
+                    <a href="#pricing">Employees</a>
+
+                </div>
+
+                <div class="footer-link-group">
+
+                    <h3>Resources</h3>
+                    <a href="#resources">Blog</a>
+                    <a href="#resources">Newsroom</a>
+
+                </div>
+
+            </div>
+
+
+            <!-- RIGHT: LEGAL -->
+            <div class="footer-column">
+
+                <p class="footer-label">LEGAL</p>
+
+                <div class="footer-legal-links">
+
+                    <a href="#">Legal notice</a>
+                    <a href="#">Privacy</a>
+                    <a href="#">Terms</a>
+
+                </div>
+
+
+                <div class="footer-contact-buttons">
+
+                    <p class="footer-label">GET IN TOUCH</p>
+
+                    <a href="mailto:hello@Highwages.com"
+                    class="footer-employee-btn">
+                        I'm an employee
+                    </a>
+
+                    <a href="#contact"
+                    class="footer-employer-btn">
+                        I'm an employer
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- SOCIAL ICONS -->
+            <div class="footer-social">
+
+                <a href="#" aria-label="LinkedIn">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2ZM8.5 18H6V9h2.5ZM7.25 7.8a1.45 1.45 0 1 1 0-2.9 1.45 1.45 0 0 1 0 2.9ZM19 18h-2.5v-4.4c0-1.05-.02-2.4-1.46-2.4-1.46 0-1.69 1.14-1.69 2.32V18h-2.5V9h2.4v1.23h.04a2.64 2.64 0 0 1 2.38-1.31c2.54 0 3.33 1.67 3.33 3.84Z"/>
+                    </svg>
+                </a>
+
+                <a href="#" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="18" height="18" rx="5"/>
+                        <circle cx="12" cy="12" r="4"/>
+                        <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
+                    </svg>
+                </a>
+
+                <a href="#" aria-label="TikTok">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19.5 8.1a7.1 7.1 0 0 1-4.2-1.4v8.1a5.7 5.7 0 1 1-5-5.65v2.9a2.8 2.8 0 1 0 2 2.7V2h3a7.1 7.1 0 0 0 4.2 4.2Z"/>
+                    </svg>
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- FOOTER BOTTOM -->
+        <div class="footer-bottom">
+
+            <div class="footer-bottom-empty"></div>
+
+            <div class="footer-bottom-column">
+
+                <p class="footer-label">ADDRESS</p>
+
+                <p class="footer-bottom-text">
+                    Add your business address here
+                </p>
+
+            </div>
+
+
+            <div class="footer-bottom-column">
+
+                <p class="footer-label">CONTACT</p>
+
+                <a href="mailto:hello@Highwages.com"
+                class="footer-bottom-text">
+                    hello@Highwages.com
+                </a>
+
+            </div>
+
+
+            <div class="footer-bottom-column footer-copyright">
+
+                <p class="footer-label">
+                    © <span id="year"></span> Highwages
+                </p>
+
+                <a href="#home" class="back-to-top">
+                    Back to top
+                    <span>↑</span>
+                </a>
+
+            </div>
+
+        </div>
+
     </footer>
+
 
     <!-- JAVASCRIPT -->
 
