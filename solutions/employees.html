@@ -1,0 +1,1810 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Employees | Highwages Solutions</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Parkinsans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Parkinsans", sans-serif;
+            background: #ffffff;
+            color: #0b1e18;
+            overflow-x: hidden;
+        }
+
+        /* HEADER PLACEHOLDER */
+        #header-placeholder {
+            width: 100%;
+            position: absolute; 
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            background: transparent; 
+        }
+
+        /* FOOTER PLACEHOLDER (Extra space issue na aave ena mate block aapyu chhe) */
+        #footer-placeholder {
+            display: block;
+            width: 100%;
+        }
+
+        /* =========================================
+           HERO SECTION (FOR EMPLOYEES)
+           ========================================= */
+        .hero-employees {
+            width: 100%;
+            min-height: 100vh;
+            background-color: #06573c; 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            padding: 140px 20px 80px;
+        }
+
+        .bg-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        
+        .bg-loop-1 {
+            position: absolute;
+            top: -10%;
+            left: -5%;
+            width: 50vw;
+            height: 50vw;
+            min-width: 600px;
+            min-height: 600px;
+            border: 80px solid #086b4a; 
+            border-radius: 50%;
+            opacity: 0.6;
+        }
+
+        .bg-loop-2 {
+            position: absolute;
+            top: 15%;
+            right: -10%;
+            width: 60vw;
+            height: 60vw;
+            min-width: 700px;
+            min-height: 700px;
+            border: 100px solid #086b4a;
+            border-radius: 50%;
+            opacity: 0.6;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1000px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: textReveal 0.8s ease forwards;
+        }
+
+        .hero-label {
+            color: #d1f34d; 
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+        }
+
+        .hero-title {
+            color: #d1f34d; 
+            font-size: clamp(50px, 8vw, 110px); 
+            font-weight: 800;
+            line-height: 1.05;
+            letter-spacing: -2px;
+            margin-bottom: 35px;
+        }
+
+        .hero-subtitle {
+            color: #ffffff; 
+            font-size: clamp(18px, 2vw, 24px);
+            line-height: 1.5;
+            font-weight: 400;
+        }
+
+        @keyframes textReveal {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-employees { padding-top: 120px; }
+            .hero-title { letter-spacing: -1px; }
+            .bg-loop-1, .bg-loop-2 { border-width: 40px; }
+        }
+
+        /* =========================================
+           SUSTAINABLE MOBILITY SECTION 
+           ========================================= */
+        .mobility-section {
+            padding: 100px 20px;
+            text-align: center;
+            background-color: #ffffff;
+        }
+
+        .mobility-title {
+            font-size: clamp(32px, 5vw, 70px);
+            font-weight: 800;
+            color: #06573c;
+            margin-bottom: 15px;
+            letter-spacing: -1px;
+        }
+
+        .mobility-subtitle {
+            font-size: clamp(18px, 2vw, 22px);
+            font-weight: 600;
+            color: #06573c;
+            margin-bottom: 60px;
+        }
+
+        .fade-up-element {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .fade-up-element.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.3s; }
+
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            border-radius: 24px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            position: relative;
+        }
+
+        .card:nth-child(1) { background-color: #fbd6c6; } 
+        .card:nth-child(2) { background-color: #fbe5e8; } 
+        .card:nth-child(3) { background-color: #fbf5c6; } 
+
+        .card-image-container {
+            width: 100%;
+            height: 280px;
+            overflow: hidden;
+            border-radius: 24px 24px 0 0;
+        }
+
+        .card-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 40px 30px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card-title {
+            font-size: clamp(28px, 3.5vw, 42px);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 25px;
+            letter-spacing: -1px;
+        }
+
+        .card:nth-child(1) .card-title { color: #d64a2a; }
+        .card:nth-child(2) .card-title { color: #8e1c31; }
+        .card:nth-child(3) .card-title { color: #06573c; }
+
+        .char {
+            display: inline-block;
+            transform: translateY(100%);
+            opacity: 0;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
+        }
+
+        .card.in-view .char {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .card-desc {
+            font-size: clamp(15px, 1.5vw, 17px);
+            font-weight: 500;
+            line-height: 1.5;
+            margin-top: auto; 
+        }
+        
+        .card:nth-child(1) .card-desc { color: #d64a2a; }
+        .card:nth-child(2) .card-desc { color: #8e1c31; }
+        .card:nth-child(3) .card-desc { color: #06573c; }
+
+        /* =========================================
+           BOOST SECTION (VIDEO & BLUR EFFECT)
+           ========================================= */
+        .boost-section {
+            position: relative;
+            padding: 100px 20px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: url('https://images.unsplash.com/photo-1519003722824-194d4455aeb0?q=80&w=2000&auto=format&fit=crop') center/cover no-repeat;
+        }
+
+        .boost-video-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        .glass-panel {
+            position: relative;
+            z-index: 1;
+            background: rgba(30, 30, 30, 0.45); 
+            backdrop-filter: blur(30px); 
+            -webkit-backdrop-filter: blur(30px);
+            border-radius: 32px;
+            max-width: 1100px; 
+            padding: 120px 60px 250px 60px; 
+            width: 100%;
+            color: #fceb8d; 
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .boost-title {
+            font-size: clamp(42px, 6vw, 85px); 
+            font-weight: 800;
+            line-height: 1.05;
+            margin-bottom: 90px; 
+            letter-spacing: -1.5px;
+            max-width: 1000px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .boost-content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .boost-text {
+            font-size: clamp(20px, 2vw, 24px); 
+            font-weight: 500;
+            line-height: 1.6;
+            color: #fdf5c9; 
+        }
+
+        .boost-text p {
+            margin-bottom: 25px;
+        }
+
+        .yellow-graphic {
+            position: absolute;
+            bottom: -100px;
+            left: -30px;
+            width: 450px; 
+            height: 350px;
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .glass-panel { padding: 80px 30px 180px 30px; }
+            .boost-title { margin-bottom: 50px; }
+            .boost-content-grid { grid-template-columns: 1fr; gap: 30px; }
+            .yellow-graphic { width: 300px; height: 250px; bottom: -60px; left: -20px; }
+            .boost-text { font-size: 18px; }
+        }
+
+        /* =========================================
+           LONG TERM RENTAL SECTION
+           ========================================= */
+        .rental-section {
+            padding: 60px 4% 100px;
+            background-color: #ffffff;
+            position: relative;
+        }
+
+        .rental-card {
+            background-color: #138d4f; 
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 0; 
+            overflow: hidden;
+            min-height: 480px;
+            position: relative;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .rental-image-wrapper {
+            width: 48%;
+            height: 100%;
+            min-height: 480px;
+            position: relative;
+            background-color: #138d4f;
+            overflow: hidden;
+        }
+
+        .rental-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; 
+            object-position: left center;
+            display: block;
+            position: absolute;
+            top: 0;
+            left: -20px;
+            transform: scale(1.0);
+            transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+            mix-blend-mode: multiply; 
+        }
+
+        .rental-card.in-view .rental-image {
+            transform: scale(1.08); 
+        }
+
+        .rental-content {
+            width: 52%; 
+            padding: 60px 8% 60px 4%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            z-index: 2;
+        }
+
+        .rental-content h2 {
+            font-family: "Parkinsans", sans-serif;
+            font-size: clamp(40px, 5.5vw, 68px); 
+            font-weight: 800;
+            line-height: 1.05;
+            letter-spacing: -2.5px;
+            color: #d1f34d; 
+            margin-bottom: 40px;
+            max-width: 600px;
+        }
+
+        .rental-btn {
+            position: relative;
+            overflow: hidden;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #d1f34d; 
+            color: #071b14; 
+            padding: 20px 35px;
+            border-radius: 12px;
+            font-size: 17px;
+            font-weight: 800;
+            text-decoration: none;
+            border: 1px solid transparent;
+            transition: color 0.4s ease, border-color 0.4s ease;
+            z-index: 1;
+        }
+
+        .rental-btn::before {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(0);
+            width: 250%;
+            height: 250%;
+            border-radius: 50%;
+            background-color: #138d4f; 
+            transition: transform 0.5s ease-in-out;
+            z-index: -1;
+        }
+
+        .rental-btn:hover {
+            color: #d1f34d; 
+            border-color: #138d4f; 
+        }
+
+        .rental-btn:hover::before {
+            transform: translateX(-50%) translateY(-50%); 
+        }
+
+        .rental-content h2,
+        .rental-content .rental-btn {
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        .rental-card.in-view .rental-content h2 {
+            animation: rentalSlideUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards;
+        }
+
+        .rental-card.in-view .rental-content .rental-btn {
+            animation: rentalSlideUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards;
+        }
+
+        @keyframes rentalSlideUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 992px) {
+            .rental-card { flex-direction: column; }
+            .rental-image-wrapper { width: 100%; min-height: 350px; border-radius: 20px 20px 0 0; }
+            .rental-image { left: 0; }
+            .rental-content { width: 100%; padding: 50px 8%; text-align: center; align-items: center; }
+            .rental-content h2 { font-size: 38px; }
+        }
+
+        /* =========================================
+            PARTNER LOGOS SLIDER
+            ========================================= */
+        .market-partners {
+            padding: 80px 0 40px;
+            text-align: center;
+        }
+
+        .partner-subtitle {
+            font-size: 17px;
+            color: #59665c;
+            font-weight: 600;
+            margin-bottom: 40px;
+        }
+
+        .partner-logo-slider {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 10%, #000 90%, transparent 100%);
+        }
+
+        .partner-logo-track {
+            display: flex;
+            width: max-content;
+            animation: partnerMarquee 15s linear infinite; 
+        }
+
+        .partner-logo-group {
+            display: flex;
+            align-items: center;
+            gap: 70px;
+            padding-right: 70px;
+        }
+
+        .partner-logo-group img {
+            height: 55px; 
+            object-fit: contain;
+            filter: grayscale(100%) opacity(0.8);
+            transition: filter 0.3s ease;
+        }
+
+        .partner-logo-group img:hover {
+            filter: grayscale(0%) opacity(1);
+        }
+
+        @keyframes partnerMarquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); } 
+        }
+
+        /* =========================================
+               HOW IT WORKS SECTION STYLES
+               ========================================= */
+        .how-it-works-section {
+            padding: 100px 4% 120px;
+            background-color: #fceb8d;
+            color: #0b1e18;
+            overflow: hidden; 
+        }
+
+        .how-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .how-title {
+            font-family: "Parkinsans", sans-serif;
+            font-size: clamp(45px, 6vw, 75px);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -2px;
+            color: #3b2818;
+            margin-bottom: 60px;
+        }
+
+        .how-video-wrapper {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto 80px;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+            aspect-ratio: 16 / 9;
+            background-color: #e0d5a3;
+        }
+
+        .how-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .how-cards-container {
+            display: flex;
+            gap: 30px;
+            overflow-x: auto;
+            padding: 20px 0 30px;
+            padding-left: calc((100% - 450px) / 2);
+            padding-right: calc((100% - 450px) / 2);
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+
+        .how-cards-container::-webkit-scrollbar { display: none; }
+
+        .how-card {
+            flex: 0 0 450px;
+            min-height: 280px;
+            border-radius: 20px;
+            padding: 45px 35px;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            scroll-snap-align: center;
+            background-color: #dfcd8e;
+            color: #ffffff;
+            transition: background-color 0.4s ease, color 0.4s ease, transform 0.4s ease;
+            transform: scale(0.98);
+        }
+
+        .how-card.is-active {
+            background-color: #3b2818;
+            color: #ffffff;
+            transform: scale(1);
+        }
+
+        .how-card-title {
+            font-family: "Parkinsans", sans-serif;
+            font-size: 32px;
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -1px;
+            margin-bottom: 25px;
+            color: #ffffff;
+        }
+
+        .how-card.is-active .how-card-title { color: #fceb8d; }
+
+        .how-card-text {
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 1.5;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .how-card.is-active .how-card-text { color: #ffffff; }
+
+        @media (max-width: 768px) {
+            .how-card { flex: 0 0 82vw; padding: 35px 25px; min-height: 240px; }
+            .how-card-title { font-size: 26px; }
+            .how-cards-container { padding-left: 9vw; padding-right: 9vw; }
+            .how-scrollbar { width: 180px; }
+        }
+
+        .how-scrollbar {
+            display: block;
+            position: relative;
+            width: 55%;
+            max-width: 850px;
+            height: 6px;
+            background: rgba(59, 40, 24, 0.15);
+            border-radius: 20px;
+            margin: 25px auto 0;
+            cursor: pointer;
+        }
+
+        .how-scrollbar-thumb {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 65px;
+            height: 6px;
+            background: #3b2818;
+            border-radius: 20px;
+            cursor: grab;
+        }
+
+        .how-scrollbar:hover .how-scrollbar-thumb { height: 9px; top: -1.5px; }
+        .how-scrollbar-thumb:active { cursor: grabbing; }
+
+        /* =========================================
+            TESTIMONIAL SLIDER SECTION
+            ========================================= */
+        .testimonial-section {
+            padding: 0 4% 100px;
+            background-color: var(--white);
+        }
+
+        .testimonial-container {
+            background-color: #fafafa;
+            border: 1px solid #e8e8e8;
+            border-radius: 20px;
+            display: flex;
+            align-items: flex-start;
+            padding: 80px 5%;
+            min-height: 500px;
+        }
+
+        .testi-nav {
+            display: flex;
+            gap: 15px;
+            margin-right: 8%;
+            padding-top: 10px;
+        }
+
+        .testi-btn {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: transparent;
+            border: 1px solid #d1d1d1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            position: relative;
+            color: var(--dark-green);
+            transition: all 0.3s ease; 
+        }
+
+        .testi-btn:hover {
+            background: var(--dark-green);
+            border-color: var(--dark-green);
+            color: #ffffff; 
+        }
+
+        .next-btn { border: none; }
+        .next-btn .arrow-icon { position: absolute; z-index: 2; }
+        .timer-circle { position: absolute; top: 0; left: 0; transform: rotate(-90deg); }
+        .progress-circle { stroke-dasharray: 138; stroke-dashoffset: 138; }
+
+        .testi-content-wrapper { flex: 1; position: relative; }
+
+        .testi-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .testi-counter { font-size: 18px; color: #8c8c8c; font-weight: 500; }
+        .testi-header h3 { font-family: "Parkinsans", sans-serif; font-size: 26px; font-weight: 700; letter-spacing: -0.5px; color: var(--dark-green); }
+
+        .testi-slide { display: none; }
+        .testi-slide.active { display: block; animation: testiSlideUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+
+        @keyframes testiSlideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .quote {
+            font-family: "Parkinsans", sans-serif;
+            font-size: clamp(32px, 4vw, 55px);
+            font-weight: 500;
+            line-height: 1.15;
+            letter-spacing: -1.5px;
+            color: var(--dark-green);
+            margin-bottom: 50px;
+        }
+
+        .author { display: flex; align-items: center; gap: 20px; }
+        .author img { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; }
+        .author h4 { font-size: 20px; font-weight: 600; color: var(--dark-green); margin-bottom: 4px; }
+        .author span { font-size: 16px; color: #6c757d; font-weight: 500; }
+
+        @media (max-width: 900px) {
+            .testimonial-container { flex-direction: column; padding: 50px 5%; }
+            .testi-nav { margin-bottom: 40px; }
+            .quote { font-size: 28px; }
+        }
+
+        /* =========================================
+               CHAT / CONTACT SECTION STYLES
+               ========================================= */
+        .chat-section {
+            padding: 50px 4% 100px;
+            background-color: var(--white);
+        }
+
+        .chat-container {
+            position: relative;
+            max-width: 1400px;
+            margin: 0 auto;
+            background-color: #062f5f; 
+            border-radius: 20px;
+            padding: 100px 5%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden; 
+            min-height: 550px;
+        }
+
+        .chat-loop {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chat-loop svg { width: 100%; height: 100%; object-fit: cover; opacity: 0.95; }
+
+        .chat-content {
+            position: relative;
+            z-index: 2; 
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .chat-label { font-size: 18px; font-weight: 500; color: #ffffff; margin-bottom: 25px; }
+
+        .chat-title {
+            font-family: "Parkinsans", sans-serif;
+            font-size: clamp(48px, 6.5vw, 85px); 
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -2px;
+            color: #ffffff;
+            margin-bottom: 50px;
+        }
+
+        .chat-btn {
+            position: relative;
+            overflow: hidden;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f2ecfb; 
+            color: #062f5f; 
+            padding: 22px 38px;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 800;
+            text-decoration: none;
+            border: 1px solid transparent;
+            transition: color 0.4s ease, border-color 0.4s ease;
+            z-index: 1;
+        }
+
+        .chat-btn::before {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(0);
+            width: 250%;
+            height: 250%;
+            border-radius: 50%;
+            background-color: #2b50d5; 
+            transition: transform 0.5s ease-in-out;
+            z-index: -1;
+        }
+
+        .chat-btn:hover { color: #ffffff; border-color: rgba(255, 255, 255, 0.4); }
+        .chat-btn:hover::before { transform: translateX(-50%) translateY(-50%); }
+
+        .chat-content .chat-label,
+        .chat-content .chat-title,
+        .chat-content .chat-btn {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .chat-container.in-view .chat-label { animation: chatSlideUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards; }
+        .chat-container.in-view .chat-title { animation: chatSlideUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.25s forwards; }
+        .chat-container.in-view .chat-btn { animation: chatSlideUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.4s forwards; }
+
+        @keyframes chatSlideUp { to { opacity: 1; transform: translateY(0); } }
+
+        @media (max-width: 768px) {
+            .chat-container { padding: 70px 6%; min-height: 400px; }
+            .chat-title { margin-bottom: 35px; }
+        }
+
+        /* =====================================
+            FAQ / QUESTIONS SECTION
+        ====================================== */
+        .faq-section {
+            padding: 100px 6%;
+            background-color: var(--white);
+            position: relative;
+            overflow: hidden; 
+        }
+
+        .faq-container {
+            position: relative;
+            z-index: 2;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.6fr;
+            gap: 80px;
+            align-items: flex-start;
+        }
+
+        .faq-title-wrap h2 {
+            font-family: "Parkinsans", sans-serif;
+            font-size: clamp(48px, 6vw, 75px);
+            font-weight: 800;
+            line-height: 1.05;
+            letter-spacing: -3px;
+            color: #9e2b5e; 
+            position: sticky;
+            top: 120px;
+        }
+
+        .faq-list { display: flex; flex-direction: column; }
+        .faq-item { border-bottom: 1px solid #e5e5e5; }
+        .faq-item:last-child { border-bottom: none; }
+
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 35px 0; 
+            text-align: left;
+            cursor: pointer;
+            font-family: "Parkinsans", sans-serif;
+            font-size: clamp(22px, 2.5vw, 32px); 
+            font-weight: 700;
+            color: #9e2b5e; 
+            letter-spacing: -0.5px;
+            transition: color 0.3s ease;
+        }
+
+        .faq-question:hover { color: #7a1d47; }
+        .faq-question span:first-child { padding-right: 30px; line-height: 1.3; }
+
+        .faq-icon { position: relative; width: 24px; height: 24px; flex-shrink: 0; }
+        .faq-icon::before,
+        .faq-icon::after {
+            content: "";
+            position: absolute;
+            background-color: #9e2b5e; 
+            transition: transform 0.3s ease;
+        }
+
+        .faq-icon::before { top: 50%; left: 0; width: 100%; height: 2px; transform: translateY(-50%); }
+        .faq-icon::after { top: 0; left: 50%; width: 2px; height: 100%; transform: translateX(-50%); }
+        .faq-item.active .faq-icon::after { transform: translateX(-50%) rotate(90deg); opacity: 0; }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.22, 1, 0.36, 1), padding 0.4s ease;
+            padding: 0 0;
+        }
+
+        .faq-answer p {
+            font-family: "Parkinsans", sans-serif;
+            font-size: 18px; 
+            line-height: 1.7;
+            color: #333333; 
+            margin-bottom: 18px;
+        }
+
+        .faq-answer p:last-child { margin-bottom: 35px; }
+
+        @media (max-width: 992px) {
+            .faq-container { grid-template-columns: 1fr; gap: 30px; }
+            .faq-title-wrap h2 { position: static; font-size: 40px; margin-bottom: 20px; }
+            .faq-question { padding: 25px 0; font-size: 20px; }
+        }
+
+        .faq-bg-loop { display: none; }
+
+        /* =========================================
+        TOUR WRAPPED UP SECTION (FINAL FIX)
+        ========================================= */
+        .tour-section {
+            padding: 5% 4% 80px;
+            background-color: var(--white);
+            position: relative;
+            overflow: visible; 
+        }
+
+        .tour-card {
+            background-color: #f4c2b3; 
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 100px 7%;            
+            position: relative;
+            overflow: visible; 
+            min-height: 480px; 
+        }
+
+        .tour-content {
+            flex: 1;
+            max-width: 600px; 
+            color: #00563c; 
+            z-index: 2;
+        }
+
+        .tour-content h2 {
+            font-family: "Parkinsans", sans-serif;
+            font-size: clamp(36px, 4.2vw, 52px); 
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -2px;
+            color: #00563c; 
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 1100px) { .tour-content h2 { white-space: normal; } }
+
+        .tour-content p {
+            font-size: 17px;
+            font-weight: 500;
+            line-height: 1.5;
+            color: #00563c;
+            margin-bottom: 30px;
+            max-width: 480px;
+        }
+
+        .tour-btn {
+            position: relative;
+            overflow: hidden; 
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 32px;
+            background-color: #00563c; 
+            color: #ffffff;
+            font-size: 17px;
+            font-weight: 800;
+            border-radius: 12px;
+            border: 1px solid #00563c; 
+            transition: color 0.4s ease, border-color 0.4s ease;
+            z-index: 1;
+            text-decoration: none;
+        }
+
+        .tour-btn::before {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(0);
+            width: 250%;
+            height: 250%;
+            border-radius: 50%;
+            background-color: #f4c2b3; 
+            transition: transform 0.5s ease-in-out;
+            z-index: -1;
+        }
+
+        .tour-btn:hover { color: #00563c; border-color: #00563c; }
+        .tour-btn:hover::before { transform: translateX(-50%) translateY(-50%); }
+
+        .tour-image {
+            position: absolute;
+            right: -10px;
+            top: -90px; 
+            width: 580px;
+            z-index: 3; 
+            pointer-events: none;
+        }
+
+        .tour-image img { display: block; width: 100%; height: auto; }
+
+        .tour-animated-h {
+            position: absolute;
+            bottom: -110px; 
+            left: 42%; 
+            width: 180px; 
+            height: 180px;
+            z-index: 2;
+            opacity: 0.95;
+            transform: rotate(-45deg); 
+            transition: bottom 1.2s cubic-bezier(0.22, 1, 0.36, 1), transform 1.2s cubic-bezier(0.22, 1, 0.36, 1); 
+        }
+
+        .tour-animated-h.h-visible { bottom: -40px; transform: rotate(15deg); }
+
+        .tour-content h2,
+        .tour-content p,
+        .tour-content .tour-btn {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .tour-card.content-visible .tour-content h2 { animation: tourSlideUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards; }
+        .tour-card.content-visible .tour-content p { animation: tourSlideUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.25s forwards; }
+        .tour-card.content-visible .tour-content .tour-btn { animation: tourSlideUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.4s forwards; }
+
+        @keyframes tourSlideUp { to { opacity: 1; transform: translateY(0); } }
+
+        @media (max-width: 950px) {
+            .tour-card { flex-direction: column; padding: 40px 5%; text-align: center; overflow: hidden; }
+            .tour-image { position: relative; right: auto; top: auto; width: 100%; max-width: 400px; margin-top: 20px; }
+            .tour-content { max-width: 100%; }
+            .tour-animated-h { left: 20%; width: 130px; height: 130px; }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER PLACEHOLDER -->
+    <div id="header-placeholder"></div>
+
+    <!-- HERO SECTION FOR EMPLOYEES -->
+    <main class="hero-employees">
+        <div class="bg-shapes">
+            <div class="bg-loop-1"></div>
+            <div class="bg-loop-2"></div>
+        </div>
+
+        <div class="hero-content">
+            <p class="hero-label">FOR EMPLOYEES</p>
+            <h1 class="hero-title">Your bike for the<br>daily commute</h1>
+            <p class="hero-subtitle">
+                Made accessible by your employer<br>
+                (and a little bit by us too).
+            </p>
+        </div>
+    </main>
+
+    <!-- SUSTAINABLE MOBILITY SECTION -->
+    <section class="mobility-section">
+        <h2 class="mobility-title fade-up-element delay-1">The Sustainable Mobility Allowance</h2>
+        <p class="mobility-subtitle fade-up-element delay-2">Here's the lowdown</p>
+
+        <div class="card-container">
+            <div class="card">
+                <div class="card-image-container">
+                    <img src="/images/helmet.png" alt="Person with bike helmet" class="card-image">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title split-text">A bike you'll love, without breaking the bank.</h3>
+                    <p class="card-desc">With your employer's contribution and the related tax benefits, you get a quality bike at a reduced price.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-image-container">
+                    <img src="/images/shape_man.webp" alt="Person smiling" class="card-image">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title split-text">Commutes that breathe easier and so do you</h3>
+                    <p class="card-desc">Fewer traffic jams, fewer packed trains. Cycling is often faster, less stressful, and a great way to start the day on the right foot.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-image-container">
+                    <img src="/images/kids.webp" alt="Family on bike" class="card-image">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title split-text">A bike for work, and for life.</h3>
+                    <p class="card-desc">Standard, electric, folding, cargo... Browse a marketplace of 3,000+ models from the top brands and pick the one that truly fits your rides.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BOOST SECTION -->
+    <section class="boost-section">
+        
+        <video class="boost-video-bg" autoplay loop muted playsinline>
+            <source src="/images/hero-bg.mp4" type="video/mp4">
+        </video>
+
+        <!-- Frosted Glass Container -->
+        <div class="glass-panel">
+            <h2 class="boost-title fade-up-element">It's a boost from your employer for your daily commute.</h2>
+            
+            <div class="boost-content-grid">
+                <div class="fade-up-element delay-1">
+                    <div class="boost-text">
+                        <p>Concretely, your employer can contribute up to €800 per year for trips made with more sustainable transport: electric bike, carpooling, scooter or public transit.</p>
+                    </div>
+                </div>
+                <div class="fade-up-element delay-2">
+                    <div class="boost-text">
+                        <p>Concretely, your employer can contribute up to €800 per year for trips made with more sustainable transport: electric bike, carpooling, scooter or public transit.</p>
+                        <p>And good news: this contribution is directly usable on our marketplace.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Loop Design -->
+            <div class="yellow-graphic">
+                <svg viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M 0,400 C 50,200 150,50 300,100 C 450,150 400,350 250,300 C 150,260 200,150 350,250 L 450,300" fill="none" stroke="#fceb8d" stroke-width="70" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- LONG TERM RENTAL SECTION -->
+    <section class="rental-section">
+        <div class="rental-card scroll-trigger">
+            
+            <!-- Left Side Image -->
+            <div class="rental-image-wrapper">
+                <img src="/images/bike_brand.png" alt="Bike Phone Mount" class="rental-image">
+            </div>
+
+            <!-- Right Side Content -->
+            <div class="rental-content">
+                <h2>Long-term rental available</h2>
+                <a href="#" class="rental-btn">See the details</a>
+            </div>
+
+        </div>
+
+        <div class="market-partners">
+                <p class="partner-subtitle">We partner with France's leading bike brands</p>
+                
+                <div class="partner-logo-slider">
+                    <div class="partner-logo-track">
+                        <!-- Group 1 -->
+                        <div class="partner-logo-group">
+                            <img src="/images/logos/ellipse.webp" alt="Ellipse">
+                            <img src="/images/logos/gaya.webp" alt="Gaya">
+                            <img src="/images/logos/elwing.webp" alt="Elwing">
+                            <img src="/images/logos/jeanfourche.webp" alt="Jean Fourche">
+                            <img src="/images/logos/voltaire.webp" alt="Voltaire">
+                            <img src="/images/logos/bastille.webp" alt="Bastille">
+                        </div>
+                        <!-- Group 2 (For infinite loop) -->
+                        <div class="partner-logo-group" aria-hidden="true">
+                            <img src="/images/logos/ellipse.webp" alt="Ellipse">
+                            <img src="/images/logos/gaya.webp" alt="Gaya">
+                            <img src="/images/logos/elwing.webp" alt="Elwing">
+                            <img src="/images/logos/jeanfourche.webp" alt="Jean Fourche">
+                            <img src="/images/logos/voltaire.webp" alt="Voltaire">
+                            <img src="/images/logos/bastille.webp" alt="Bastille">
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <!-- HOW IT WORKS SECTION -->
+    <section class="how-it-works-section">
+        <div class="how-container">
+            <h2 class="how-title">How does it work<br>with Beetogreen?</h2>
+            
+            <div class="how-video-wrapper">
+                <video class="how-video" autoplay loop muted playsinline poster="/images/video-placeholder.jpg">
+                    <source src="/images/video_1144x436_564128.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+
+            <div class="how-cards-container">
+                <div class="how-card card-light">
+                    <h3 class="how-card-title">Talk to your company about it</h3>
+                    <p class="how-card-text">BeeToGreen is an employee perk. If your company hasn't set it up yet, just mention it. We'll take care of the rest.</p>
+                </div>
+                <div class="how-card card-dark">
+                    <h3 class="how-card-title">Your company activates BeeToGreen</h3>
+                    <p class="how-card-text">Once signed up, your company gives you access to the platform. And that's when things get interesting.</p>
+                </div>
+                <div class="how-card card-light">
+                    <h3 class="how-card-title">Choose your bike</h3>
+                    <p class="how-card-text">Classic, electric, folding, cargo. Browse over 3,000 bikes from the leading brands and find the one that truly fits you.</p>
+                </div>
+                <div class="how-card card-dark">
+                    <h3 class="how-card-title">Ride! Your bike is ready.</h3>
+                    <p class="how-card-text">For getting to work, running errands, enjoying the weekend, or in short, for riding more... and stress-free.</p>
+                </div>
+            </div>
+
+            <div class="how-scrollbar">
+                <div class="how-scrollbar-thumb"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIAL SLIDER SECTION -->
+    <section class="testimonial-section" id="testimonials">
+        <div class="testimonial-container">
+            
+            <div class="testi-nav">
+                <button class="testi-btn prev-btn" id="prevTesti">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                </button>
+                <button class="testi-btn next-btn" id="nextTesti">
+                    <svg class="timer-circle" width="48" height="48" viewBox="0 0 48 48">
+                        <circle cx="24" cy="24" r="22" fill="none" stroke="#e0e0e0" stroke-width="2" />
+                        <circle class="progress-circle" cx="24" cy="24" r="22" fill="none" stroke="#071b14" stroke-width="2" />
+                    </svg>
+                    <svg class="arrow-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                </button>
+            </div>
+
+            <div class="testi-content-wrapper">
+                <div class="testi-header">
+                    <span class="testi-counter" id="testiCounter">01 / 05</span>
+                    <h3>Don't just take our word for it...</h3>
+                </div>
+
+                <div class="testi-slide active" data-index="1">
+                    <p class="quote">“We were pleasantly surprised by the impact of cycling on daily company life. It became a real collective movement that gradually brought people together around it.”</p>
+                    <div class="author">
+                        <img src="/images/portrait.webp" alt="Mara Kline">
+                        <div>
+                            <h4>Mara Kline</h4>
+                            <span>Northbay Produce Co.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testi-slide" data-index="2">
+                    <p class="quote">“Setting up the Sustainable Mobility Allowance with BeeToGreen was disarmingly simple. Our teams are equipped, motivated, and riding every day.”</p>
+                    <div class="author">
+                        <img src="/images/portrait.webp" alt="Tom Vasseur">
+                        <div>
+                            <h4>Julien Reyes</h4>
+                            <span>Atelier Voltaire</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testi-slide" data-index="3">
+                    <p class="quote">“We saw a real shift in our mobility culture: fewer cars in the parking lot, more bikes, and most importantly, employees arriving at the office in a great mood.”</p>
+                    <div class="author">
+                        <img src="/images/portrait.webp" alt="Sarah Jenkins">
+                        <div>
+                            <h4>Camille Doré</h4>
+                            <span>Studio Bastille</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testi-slide" data-index="4">
+                    <p class="quote">“Highwage's support is what made the difference for us. From bike racks to test rides, everything was designed to work from day one.”</p>
+                    <div class="author">
+                        <img src="/images/portrait.webp" alt="David Chen">
+                        <div>
+                            <h4>Tom Vasseur</h4>
+                            <span>Maison Ellipse</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testi-slide" data-index="5">
+                    <p class="quote">“Beyond the environmental aspect, what convinced us was the impact on our teams' health and well-being. Today, we wouldn't go back for anything.”</p>
+                    <div class="author">
+                        <img src="/images/portrait.webp" alt="Inès Marchand">
+                        <div>
+                            <h4>Inès Marchand</h4>
+                            <span>Cycles Gaya</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CHAT / CONTACT SECTION -->
+    <section class="chat-section">
+        <div class="chat-container">
+            <div class="chat-loop">
+                <svg viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M 300,700 C 150,550 200,200 450,180 C 700,160 800,450 600,650 C 450,800 650,50 -50,50" 
+                          fill="none" stroke="#2b50d5" stroke-width="140" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <div class="chat-content">
+                <span class="chat-label">Let's chat?</span>
+                <h2 class="chat-title">Let's chat and you'll see,<br>it's a breeze!</h2>
+                <a href="/contact.html" class="chat-btn">Get in touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ / QUESTIONS SECTION -->
+    <section class="faq-section" id="faq">
+        <div class="faq-bg-loop"></div>
+        <div class="faq-container">
+            <div class="faq-title-wrap">
+                <h2>Got questions?</h2>
+            </div>
+            <div class="faq-list">
+                
+                <div class="faq-item active">
+                    <button class="faq-question">
+                        <span>Is the contractual relationship between the company and BeeToGreen, or between the employee and BeeToGreen?</span>
+                        <span class="faq-icon"></span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>The contractual relationship around equipment is exclusively between the employee and BeeToGreen.</p>
+                        <p>The company makes the scheme available (FMD, communication, Marketplace access), but is not a party to the purchase or rental contract entered into by the employee.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>What happens if an employee has purchased their bike and leaves the company?</span>
+                        <span class="faq-icon"></span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>In the case of a purchase, there is no specific issue related to the employee's departure. The bike belongs to them outright, and the end of their employment contract has no impact on the ownership of their equipment or on the company.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Does the employee own the bike under a long-term rental (LLD)?</span>
+                        <span class="faq-icon"></span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>No. Under a long-term rental agreement, the bike remains the property of the financier/leaser for the entire duration of the contract, even if the employee has paid all scheduled instalments.</p>
+                        <p>The employee has a right of use governed by the contract, but does not own the bike unless the conditions for a potential buyout have been met.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>What happens if an employee leaves the company during thier LLD?</span>
+                        <span class="faq-icon"></span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>If the employee leaves the company mid-contract, BeeToGreen takes responsibility for ensuring proper follow-up with the employee.</p>
+                        <p>The employee remains liable for the instalments set out in the contract, including after their departure, unless an early termination arrangement is put in place.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Are there solutions to end a contract early?</span>
+                        <span class="faq-icon"></span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes. Options exist to terminate contracts ahead of schedule (bike return, buyout, case-by-case solutions depending on the contractual framework).</p>
+                        <p>BeeToGreen supports the employee in exploring these options and navigating the associated steps, in order to find the most suitable solution for their situation.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Is there any risk or constraint for the company if an employee leaves mid-contract?</span>
+                        <span class="faq-icon"></span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>No. The company is not contractually bound by the employee's LLD and does not bear the risk associated with their individual contract.</p>
+                        <p>BeeToGreen manages the relationship with the employee directly, ensuring that an employee's departure has no operational or financial impact on the company.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- TOUR WRAPPED UP SECTION -->
+    <section class="tour-section" id="tour">
+        <div class="tour-card">
+            <div class="tour-content">
+                <h2>Well that's about it</h2>
+                <p>
+                    Our marketplace is 100% online. But your bike, it rides in the real world. That's why we work with a network of partner shops across France.
+                </p>
+                <a href="/contact.html" class="tour-btn">Get in touch</a>
+            </div>
+            <div class="tour-image">
+                <img src="/images/bike_green_smaller.webp" alt="Cyclist smiling">
+            </div>
+            <div class="tour-animated-h">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="50" fill="#00563c" />
+                    <path d="M30,25 L30,75 M30,50 L70,50 M70,25 L70,75" 
+                        fill="none" stroke="#e6ff42" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER PLACEHOLDER -->
+    <div id="footer-placeholder"></div>
+
+    <!-- MAIN JAVASCRIPT LOGIC (Header & Footer Loads Here) -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            
+            // 1. Fetch Header
+            fetch('../components/header.html')
+                .then(response => {
+                    if (!response.ok) throw new Error('Header load nathi thayu!');
+                    return response.text();
+                })
+                .then(data => {
+                    document.getElementById('header-placeholder').innerHTML = data;
+                })
+                .catch(error => console.error("Header Error:", error));
+            
+            // 2. Fetch Footer (Ahiya theek thi load thase)
+            fetch('../components/footer.html')
+                .then(response => {
+                    if (!response.ok) throw new Error('Footer load nathi thayu!');
+                    return response.text();
+                })
+                .then(data => {
+                    document.getElementById('footer-placeholder').innerHTML = data;
+                    
+                    // Footer ma set the year dynamically pachi aavu padse
+                    setTimeout(() => {
+                        const yearSpan = document.getElementById('year');
+                        if(yearSpan) {
+                            yearSpan.textContent = new Date().getFullYear();
+                        }
+                    }, 500);
+                })
+                .catch(error => console.error("Footer Error:", error));
+
+        });
+    </script>
+
+    <!-- Split Text Animations -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const splitTexts = document.querySelectorAll('.split-text');
+            splitTexts.forEach(text => {
+                const words = text.innerText.split(' ');
+                text.innerHTML = '';
+                words.forEach((word, wordIndex) => {
+                    const wordSpan = document.createElement('span');
+                    wordSpan.style.display = 'inline-block';
+                    wordSpan.style.overflow = 'hidden';
+                    wordSpan.style.verticalAlign = 'top'; 
+                    const chars = word.split('');
+                    chars.forEach((char, charIndex) => {
+                        const charSpan = document.createElement('span');
+                        charSpan.classList.add('char');
+                        charSpan.innerText = char;
+                        charSpan.style.transitionDelay = `${(wordIndex * 0.05) + (charIndex * 0.02)}s`; 
+                        wordSpan.appendChild(charSpan);
+                    });
+                    text.appendChild(wordSpan);
+                    if (wordIndex < words.length - 1) {
+                        text.appendChild(document.createTextNode('\u00A0'));
+                    }
+                });
+            });
+
+            const observerOptions = { root: null, rootMargin: '0px', threshold: 0.2 };
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                    } else {
+                        entry.target.classList.remove('in-view');
+                    }
+                });
+            }, observerOptions);
+
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => observer.observe(card));
+
+            const fadeElements = document.querySelectorAll('.fade-up-element');
+            fadeElements.forEach(el => observer.observe(el));
+        });
+    </script>
+
+    <!-- Scroll Trigger Observers -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const observerOptions = { root: null, rootMargin: '0px', threshold: 0.25 };
+            const rentalObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                    } else {
+                        entry.target.classList.remove('in-view'); 
+                    }
+                });
+            }, observerOptions);
+            const scrollCards = document.querySelectorAll('.scroll-trigger, .chat-container');
+            scrollCards.forEach(card => rentalObserver.observe(card));
+        });
+    </script>
+
+    <!-- Horizontal Scroll Cards Script -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const container = document.querySelector(".how-cards-container");
+            const cards = document.querySelectorAll(".how-card");
+            const scrollbar = document.querySelector(".how-scrollbar");
+            const thumb = document.querySelector(".how-scrollbar-thumb");
+
+            if (!container || !scrollbar || !thumb) return;
+
+            let isDragging = false;
+            let startX = 0;
+            let startScroll = 0;
+
+            function updateActiveCard() {
+                const containerCenter = container.getBoundingClientRect().left + container.clientWidth / 2;
+                let closestCard = null;
+                let minDistance = Infinity;
+                cards.forEach(card => {
+                    const rect = card.getBoundingClientRect();
+                    const cardCenter = rect.left + rect.width / 2;
+                    const distance = Math.abs(containerCenter - cardCenter);
+                    if (distance < minDistance) {
+                        minDistance = distance;
+                        closestCard = card;
+                    }
+                });
+                cards.forEach(card => {
+                    card.classList.toggle("is-active", card === closestCard);
+                });
+            }
+
+            function updateScrollbar() {
+                const maxScroll = container.scrollWidth - container.clientWidth;
+                const maxThumbMove = scrollbar.clientWidth - thumb.offsetWidth;
+                const progress = maxScroll > 0 ? container.scrollLeft / maxScroll : 0;
+                thumb.style.transform = `translateX(${progress * maxThumbMove}px)`;
+            }
+
+            container.addEventListener("scroll", function () {
+                updateActiveCard();
+                updateScrollbar();
+            });
+
+            window.addEventListener("resize", function () {
+                updateActiveCard();
+                updateScrollbar();
+            });
+
+            thumb.addEventListener("pointerdown", function (e) {
+                isDragging = true;
+                startX = e.clientX;
+                startScroll = container.scrollLeft;
+                thumb.setPointerCapture(e.pointerId);
+                e.preventDefault();
+            });
+
+            thumb.addEventListener("pointermove", function (e) {
+                if (!isDragging) return;
+                const maxScroll = container.scrollWidth - container.clientWidth;
+                const maxThumbMove = scrollbar.clientWidth - thumb.offsetWidth;
+                if (maxThumbMove <= 0) return;
+                const movement = e.clientX - startX;
+                container.scrollLeft = startScroll + (movement / maxThumbMove) * maxScroll;
+            });
+
+            function stopDragging() { isDragging = false; }
+
+            thumb.addEventListener("pointerup", stopDragging);
+            thumb.addEventListener("pointercancel", stopDragging);
+
+            scrollbar.addEventListener("pointerdown", function (e) {
+                if (e.target === thumb) return;
+                const rect = scrollbar.getBoundingClientRect();
+                const maxThumbMove = scrollbar.clientWidth - thumb.offsetWidth;
+                const maxScroll = container.scrollWidth - container.clientWidth;
+                const clickPosition = e.clientX - rect.left;
+                const thumbPosition = Math.max(0, Math.min(maxThumbMove, clickPosition - thumb.offsetWidth / 2));
+                container.scrollTo({ left: (thumbPosition / maxThumbMove) * maxScroll, behavior: "smooth" });
+            });
+
+            requestAnimationFrame(function () {
+                if (cards.length > 0) {
+                    cards[0].scrollIntoView({ behavior: "instant", block: "nearest", inline: "center" });
+                }
+                updateActiveCard();
+                updateScrollbar();
+            });
+        });
+    </script>
+
+    <!-- Testimonial Slider Script -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const slides = document.querySelectorAll(".testi-slide");
+            const prevBtn = document.getElementById("prevTesti");
+            const nextBtn = document.getElementById("nextTesti");
+            const counterDisplay = document.getElementById("testiCounter");
+            const progressCircle = document.querySelector(".progress-circle");
+            
+            if (!slides.length) return;
+
+            let currentIndex = 0;
+            const totalSlides = slides.length;
+            const slideDuration = 10000; 
+            const circumference = 138; 
+            
+            let timerInterval;
+            let startTime;
+
+            function updateCounter() {
+                const current = String(currentIndex + 1).padStart(2, '0');
+                const total = String(totalSlides).padStart(2, '0');
+                counterDisplay.textContent = `${current} / ${total}`;
+            }
+
+            function showSlide(index) {
+                slides.forEach(slide => slide.classList.remove("active"));
+                slides[index].classList.add("active");
+                updateCounter();
+                resetTimer();
+            }
+
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % totalSlides;
+                showSlide(currentIndex);
+            }
+
+            function prevSlide() {
+                currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+                showSlide(currentIndex);
+            }
+
+            function animateTimer(timestamp) {
+                if (!startTime) startTime = timestamp;
+                const elapsed = timestamp - startTime;
+                let progress = elapsed / slideDuration;
+                if (progress >= 1) {
+                    nextSlide();
+                    return; 
+                }
+                const offset = circumference - (progress * circumference);
+                progressCircle.style.strokeDashoffset = offset;
+                timerInterval = requestAnimationFrame(animateTimer);
+            }
+
+            function resetTimer() {
+                cancelAnimationFrame(timerInterval);
+                progressCircle.style.strokeDashoffset = circumference;
+                startTime = null;
+                timerInterval = requestAnimationFrame(animateTimer);
+            }
+
+            nextBtn.addEventListener("click", nextSlide);
+            prevBtn.addEventListener("click", prevSlide);
+
+            updateCounter();
+            resetTimer(); 
+        });
+    </script>
+
+    <!-- FAQ Accordion Script -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const faqItems = document.querySelectorAll(".faq-item");
+            if (!faqItems.length) return;
+
+            faqItems.forEach(item => {
+                const questionBtn = item.querySelector(".faq-question");
+                const answerDiv = item.querySelector(".faq-answer");
+
+                if (item.classList.contains("active")) {
+                    answerDiv.style.maxHeight = answerDiv.scrollHeight + "px";
+                }
+
+                questionBtn.addEventListener("click", () => {
+                    const isOpen = item.classList.contains("active");
+
+                    faqItems.forEach(otherItem => {
+                        otherItem.classList.remove("active");
+                        otherItem.querySelector(".faq-answer").style.maxHeight = null;
+                    });
+
+                    if (!isOpen) {
+                        item.classList.add("active");
+                        answerDiv.style.maxHeight = answerDiv.scrollHeight + "px";
+                    }
+                });
+            });
+        });
+    </script>
+
+    <!-- Tour Section Scroll Animation Script -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const tourCard = document.querySelector(".tour-card");
+            const tourH = document.querySelector(".tour-animated-h");
+
+            if (tourCard) {
+                const tourObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            tourCard.classList.add("content-visible");
+                            if (tourH) tourH.classList.add("h-visible");
+                        } else {
+                            tourCard.classList.remove("content-visible");
+                            if (tourH) tourH.classList.remove("h-visible");
+                        }
+                    });
+                }, { threshold: 0.3 });
+
+                tourObserver.observe(tourCard);
+            }
+        });
+    </script>
+        
+</body>
+</html>

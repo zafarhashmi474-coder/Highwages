@@ -1,40 +1,423 @@
-<!-- components/footer.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Footer Component</title>
+
+<!-- Font Awesome icon (jo Header ma na lidhu hoy to) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 <style>
-    /* =========================================
-       FOOTER
-    ========================================= */
-    .footer {
-        padding: 35px 5%;
-        background: var(--dark-green);
-        color: var(--white);
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 20px;
-    }
+/* =========================================
+   BEETOGREEN STYLE FOOTER (Component Style)
+========================================= */
 
-    .footer .logo {
-        color: var(--lime);
-        font-size: 29px;
-    }
+.site-footer {
+    width: 100%;
+    min-height: 700px;
+    padding: 65px 2.5% 45px;
+    background: #071b14;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 5px;
+    overflow: hidden;
+    font-family: "Parkinsans", sans-serif;
+}
 
-    .footer p,
-    .footer > a:last-child {
-        font-size: 13px;
-        color: #d1d8d2;
-    }
+/* MAIN FOOTER GRID */
+.footer-main {
+    display: grid;
+    grid-template-columns: 1.8fr 0.95fr 0.95fr 0.8fr;
+    gap: 35px;
+    width: 100%;
+}
 
-    /* Mobile Responsive */
-    @media (max-width: 760px) {
-        .footer {
-            flex-wrap: wrap;
-            justify-content: space-between;
-        }
-    }
+/* BRAND */
+.footer-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.footer-logo {
+    font-size: clamp(65px, 6vw, 105px);
+    font-weight: 600;
+    letter-spacing: -5px;
+    line-height: 1;
+    color: #e6ff42;
+    white-space: nowrap;
+    margin-bottom: 45px;
+    text-decoration: none;
+}
+
+.footer-brand h2 {
+    font-size: clamp(30px, 2.5vw, 44px);
+    line-height: 1.25;
+    font-weight: 600;
+    letter-spacing: -1.5px;
+    color: #d9fff0;
+}
+
+/* FOOTER COLUMNS */
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.footer-label {
+    color: #8c9c94;
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 38px;
+}
+
+/* NAVIGATION LINKS */
+.footer-link-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 38px;
+}
+
+.footer-link-group h3 {
+    color: #e6ff42;
+    font-size: 19px;
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+
+.footer-link-group a,
+.footer-legal-links a {
+    color: #e1fff2;
+    font-size: 17px;
+    font-weight: 400;
+    transition: color 0.3s ease;
+    text-decoration: none;
+}
+
+.footer-link-group a:hover,
+.footer-legal-links a:hover {
+    color: #e6ff42;
+}
+
+/* LEGAL LINKS */
+.footer-legal-links {
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+}
+
+/* CONTACT BUTTONS */
+.footer-contact-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    margin-top: 62px;
+}
+
+.footer-contact-buttons .footer-label {
+    margin-bottom: 23px;
+}
+
+.footer-employee-btn,
+.footer-employer-btn {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    border-radius: 9px;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    border: 1px solid transparent;
+    transition: color 0.4s ease, border-color 0.4s ease, transform 0.3s ease;
+    z-index: 1;
+}
+
+.footer-employee-btn {
+    background: #008f63;
+    color: #e6ff42;
+}
+
+.footer-employee-btn:hover {
+    color: #071b14;
+    border-color: rgba(230, 255, 66, 0.5);
+    transform: translateY(-3px);
+}
+
+.footer-employer-btn {
+    background: #e6ff42;
+    color: #071b14;
+}
+
+.footer-employer-btn:hover {
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-3px);
+}
+
+.footer-employee-btn::before,
+.footer-employer-btn::before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(0);
+    width: 250%;
+    height: 250%;
+    border-radius: 50%;
+    transition: transform 0.5s ease-in-out;
+    z-index: -1;
+}
+
+.footer-employee-btn::before { background-color: #e6ff42; }
+.footer-employer-btn::before { background-color: #071b14; }
+
+.footer-employee-btn:hover::before,
+.footer-employer-btn:hover::before {
+    transform: translateX(-50%) translateY(-50%);
+}
+
+/* SOCIAL ICONS */
+.footer-social {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 18px;
+}
+
+.footer-social a {
+    width: 44px;
+    height: 44px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #d9fff0;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.footer-social i {
+    font-size: 19px;
+}
+
+.footer-social a:hover {
+    background: #e6ff42;
+    color: #071b14;
+    border-color: #e6ff42;
+    transform: translateY(-4px);
+}
+
+/* FOOTER BOTTOM */
+.footer-bottom {
+    display: grid;
+    grid-template-columns: 1.8fr 0.95fr 0.95fr 0.8fr;
+    gap: 35px;
+    width: 100%;
+    margin-top: 100px;
+    align-items: start;
+}
+
+.footer-bottom-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.footer-bottom-column .footer-label {
+    margin-bottom: 42px;
+}
+
+.footer-bottom-text {
+    font-size: 17px;
+    line-height: 1.8;
+    color: #e1fff2;
+    text-decoration: none;
+}
+
+.footer-copyright {
+    align-items: flex-start;
+}
+
+.footer-copyright .footer-label {
+    white-space: nowrap;
+}
+
+.back-to-top {
+    display: flex;
+    align-items: center;
+    gap: 17px;
+    color: #e1fff2;
+    font-size: 17px;
+    white-space: nowrap;
+    transition: color 0.3s ease;
+    text-decoration: none;
+}
+
+.back-to-top span {
+    font-size: 25px;
+    transition: transform 0.3s ease;
+}
+
+.back-to-top:hover {
+    color: #e6ff42;
+}
+
+.back-to-top:hover span {
+    transform: translateY(-5px);
+}
+
+/* =========================================
+   FOOTER RESPONSIVE - TABLET
+========================================= */
+@media (max-width: 1050px) {
+    .site-footer { padding: 55px 4%; }
+    .footer-main { grid-template-columns: 1.4fr 1fr 1fr; row-gap: 60px; }
+    .footer-brand { grid-column: 1 / -1; }
+    .footer-logo { font-size: 75px; }
+    .footer-bottom { grid-template-columns: 1fr 1fr 1fr; }
+    .footer-bottom-empty { display: none; }
+}
+
+/* =========================================
+   FOOTER RESPONSIVE - MOBILE
+========================================= */
+@media (max-width: 760px) {
+    .site-footer { min-height: auto; padding: 55px 6% 35px; }
+    .footer-main { grid-template-columns: 1fr 1fr; gap: 45px 20px; }
+    .footer-brand { grid-column: 1 / -1; }
+    .footer-logo { font-size: clamp(48px, 12vw, 70px); letter-spacing: -3px; margin-bottom: 25px; }
+    .footer-brand h2 { font-size: 30px; }
+    .footer-column { min-width: 0; }
+    .footer-label { font-size: 12px; margin-bottom: 25px; }
+    .footer-link-group { gap: 12px; margin-bottom: 30px; }
+    .footer-link-group h3 { font-size: 16px; }
+    .footer-link-group a, .footer-legal-links a { font-size: 14px; }
+    .footer-contact-buttons { margin-top: 45px; }
+    .footer-contact-buttons .footer-label { margin-bottom: 12px; }
+    .footer-employee-btn, .footer-employer-btn { padding: 10px 12px; font-size: 12px; }
+    .footer-social { grid-column: 1 / -1; grid-row: 2; gap: 14px; }
+    .footer-social a { width: 40px; height: 40px; }
+    .footer-bottom { grid-template-columns: 1fr; gap: 30px; margin-top: 65px; padding-top: 35px; border-top: 1px solid rgba(255,255,255,0.15); }
+    .footer-bottom-column .footer-label { margin-bottom: 15px; }
+    .footer-bottom-text, .back-to-top { font-size: 14px; }
+    .footer-copyright { gap: 15px; }
+    .footer-copyright .footer-label { margin-bottom: 5px; }
+}
 </style>
+</head>
+<body>
 
-<footer class="footer">
-    <div class="logo">Highwages</div>
-    <p>&copy; 2026 Highwages Placement Services. All rights reserved.</p>
-    <a href="#privacy">Privacy Policy</a>
+<!-- =====================================
+     FOOTER HTML CONTENT
+====================================== -->
+<footer class="site-footer" id="footer">
+    <div class="footer-main">
+
+        <!-- LEFT: BRAND -->
+        <div class="footer-brand">
+            <a href="/" class="footer-logo">Highwages</a>
+            <h2>Choose sustainable<br>mobility</h2>
+        </div>
+
+        <!-- MIDDLE: NAVIGATION -->
+        <div class="footer-column">
+            <p class="footer-label">NAVIGATION</p>
+            <div class="footer-link-group">
+                <h3>Solutions</h3>
+                <a href="../solutions/employees.html">Employers</a>
+                <a href="../solutions/employees.html">Employees</a>
+                <a href="/contact.html">Become a partner</a>
+            </div>
+            <div class="footer-link-group">
+                <h3>Pricing</h3>
+                <a href="#pricing">Employers</a>
+                <a href="#pricing">Employees</a>
+            </div>
+            <div class="footer-link-group">
+                <h3>Resources</h3>
+                <a href="#resources">Blog</a>
+                <a href="#resources">Newsroom</a>
+            </div>
+        </div>
+
+        <!-- RIGHT: LEGAL & CONTACT -->
+        <div class="footer-column">
+            <p class="footer-label">LEGAL</p>
+            <div class="footer-legal-links">
+                <a href="#">Legal notice</a>
+                <a href="#">Privacy policy</a>
+                <a href="#">Terms</a>
+            </div>
+
+            <div class="footer-contact-buttons">
+                <p class="footer-label">GET IN TOUCH</p>
+                <a href="mailto:hello@Highwages.com" class="footer-employee-btn">I'm an employee</a>
+                <a href="/contact.html" class="footer-employer-btn">I'm an employer</a>
+            </div>
+        </div>
+
+        <!-- SOCIAL ICONS -->
+        <div class="footer-social">
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <i class="fa-brands fa-linkedin-in"></i>
+            </a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                <i class="fa-brands fa-tiktok"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- FOOTER BOTTOM -->
+    <div class="footer-bottom">
+        <div class="footer-bottom-empty"></div>
+        
+        <div class="footer-bottom-column">
+            <p class="footer-label">ADDRESS</p>
+            <p class="footer-bottom-text">Add your business address here</p>
+        </div>
+
+        <div class="footer-bottom-column">
+            <p class="footer-label">CONTACT</p>
+            <a href="mailto:hello@Highwages.com" class="footer-bottom-text">hello@Highwages.com</a>
+        </div>
+
+        <div class="footer-bottom-column footer-copyright">
+            <p class="footer-label">© <span id="year">2026</span> Highwages</p>
+            <a href="#" class="back-to-top" id="backToTopBtn">
+                Back to top <span>↑</span>
+            </a>
+        </div>
+    </div>
 </footer>
+
+<script>
+    // Set Current Year Dynamically
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Smooth scroll to top functionality
+    document.getElementById('backToTopBtn').addEventListener('click', function(e) {
+        e.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+</script>
+
+</body>
+</html>

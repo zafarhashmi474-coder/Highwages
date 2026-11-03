@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal Notice | Highwages</title>
+    
+    <!-- Google Font: Parkinsans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Parkinsans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* =========================================
+           GLOBAL STYLES
+           ========================================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Parkinsans", sans-serif;
+            background-color: #ffffff;
+            color: #333333;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* HEADER PLACEHOLDER */
+        #header-placeholder {
+            width: 100%;
+            position: absolute; 
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            background: transparent; 
+        }
+
+        /* =========================================
+           GLOBAL ANIMATIONS (SPLIT TEXT)
+           ========================================= */
+        .split-text .char {
+            display: inline-block;
+            transform: translateY(100%);
+            opacity: 0;
+            transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.6s ease;
+        }
+        
+        .split-text.in-view .char {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* =========================================
+           LEGAL HEADER SECTION
+           ========================================= */
+        .legal-header {
+            padding: 160px 20px 80px; 
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .legal-title {
+            font-size: clamp(45px, 6vw, 75px);
+            font-weight: 800;
+            color: #0c3829; /* Dark Green */
+            letter-spacing: -2px;
+            margin-bottom: 20px;
+        }
+
+        .legal-updated {
+            font-size: 16px;
+            color: #888888;
+            margin-bottom: 30px;
+        }
+
+        .legal-intro-text {
+            font-size: 18px;
+            color: #333333;
+            margin-bottom: 20px;
+        }
+
+        .legal-intro-text p {
+            margin-bottom: 15px;
+        }
+
+        /* =========================================
+           MAIN LEGAL CONTENT (SIDEBAR + CONTENT)
+           ========================================= */
+        .legal-main-container {
+            max-width: 1200px;
+            margin: 0 auto 100px;
+            padding: 0 4%;
+            display: flex;
+            align-items: flex-start;
+            gap: 60px;
+        }
+
+        /* ---------------------------------
+           LEFT SIDEBAR (STICKY INDEX)
+           --------------------------------- */
+        .legal-sidebar {
+            width: 250px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 120px; 
+        }
+
+        .sidebar-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #888888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        .sidebar-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .sidebar-link {
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            color: #888888;
+            padding-left: 15px;
+            border-left: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar-link:hover {
+            color: #0c3829;
+        }
+
+        /* ACTIVE STATE FOR SIDEBAR LINK */
+        .sidebar-link.active {
+            color: #0c3829; 
+            font-weight: 700;
+            border-left: 3px solid #0c3829; 
+        }
+
+        /* ---------------------------------
+           RIGHT CONTENT AREA
+           --------------------------------- */
+        .legal-content-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+        }
+
+        .content-section h2 {
+            font-size: 32px;
+            font-weight: 800;
+            color: #0c3829; 
+            margin-bottom: 25px;
+            letter-spacing: -1px;
+        }
+
+        .content-section p {
+            font-size: 17px;
+            color: #444444;
+            margin-bottom: 20px;
+        }
+
+        .content-section strong {
+            font-weight: 700;
+            color: #222222;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            .legal-main-container {
+                flex-direction: column;
+                gap: 40px;
+            }
+            .legal-sidebar {
+                width: 100%;
+                position: relative;
+                top: 0;
+            }
+            .sidebar-nav {
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+            .sidebar-link {
+                border-left: none;
+                border-bottom: 3px solid transparent;
+                padding-left: 0;
+                padding-bottom: 5px;
+            }
+            .sidebar-link.active {
+                border-left: none;
+                border-bottom: 3px solid #0c3829;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER PLACEHOLDER -->
+    <div id="header-placeholder"></div>
+
+    <!-- LEGAL HEADER TEXT -->
+    <header class="legal-header">
+        <h1 class="legal-title split-text">Privacy Policy</h1>
+        <p class="legal-updated">Last updated: May 2026</p>
+        <div class="legal-intro-text">
+            <p>BeeToGreen (hereinafter 'we') is concerned about the protection of your personal data. We are committed to ensuring the best level of protection for your data in accordance with the Data Protection Act of January 6, 1978 and Regulation (EU) 2016/679 of the European Parliament and of the Council of April 27, 2016 relating to the protection of individuals with regard to the processing of Personal Data of a personal nature, General Data Protection Regulation (GDPR).</p>
+            <p>By browsing our site, you declare that you accept our Personal Data Protection Policy. This Policy, coupled with our General Conditions of Use, thus formalizes the contractual relationship between the "BeeToGreen" platform and its users.</p>
+            <p>The term 'Personal Data' hereinafter refers to any information relating to an identified or identifiable natural person who can be identified, directly or indirectly, in particular by reference to an identifier, such as a name, an identification number, location data, an online identifier.</p>
+            <p>Thus, the data we collect may include your strictly personal data, in that they allow you to be identified as a particular person. Conversely, some data does not allow us to identify you directly, such as your browsing data (the type of browser, Terminal and operating system, the path followed on the Site, etc.) but are likewise considered as Personal Data because they are attached and/or traceable to the former.</p>
+            <p>The purpose of this Personal Data Protection Policy is to present the following terms to you:</p>
+            <p>
+                • Who collects your data? <br>
+                • What personal data is collected? <br>
+                • What are the associated data collection rules? <br>
+                • Why is the data collected? <br>
+                • How is your data protected? 
+            </p>
+            <p>If you disagree with our terms, you can choose to no longer browse our site or exercise your erasure rights.</p>
+            <p>We invite users of the "BeeToGreen" platform to regularly refer to our Policy, which will change to adapt to legislative and regulatory changes to the GDPR as well as to the Data Protection Act. For any information on the protection of personal data, you can also consult the website of the Commission Informatique et Libertés (CNIL).</p>
+        </div>
+    </header>
+
+    <!-- MAIN LEGAL CONTAINER -->
+    <main class="legal-main-container">
+        
+        <!-- LEFT SIDEBAR INDEX -->
+        <aside class="legal-sidebar">
+            <h3 class="sidebar-title">CONTENTS</h3>
+            <nav class="sidebar-nav">
+                <a href="#collects-data" class="sidebar-link active">Who collects your data?</a>
+                <a href="#data-collected" class="sidebar-link">Data collected on the BeeToGreen platform</a>
+                <a href="#bank-data" class="sidebar-link">Bank data</a>
+                <a href="#data-retention" class="sidebar-link">Data retention rules</a>
+                <a href="#access" class="sidebar-link">Who has access to your data?</a>
+                <a href="#hosting" class="sidebar-link">Hosting of your data</a>
+                <a href="#exercise" class="sidebar-link">Exercise your rights</a>
+                <a href="#data-secured" class="sidebar-link">How is your data secured?</a>
+            </nav>
+        </aside>
+
+        <!-- RIGHT CONTENT -->
+        <div class="legal-content-area">
+            
+            <section id="collects-data" class="content-section">
+                <h2 class="split-text">Who collects your data?</h2>
+                <p>BEETOGREEN SAS, a simplified joint-stock company with capital of €30,000, registered with the Paris RCS under number 882 703 531 and whose head office is located at 47 Rue Voltaire 92300 Levallois-Perret France, provides a platform under the name 'BeeToGreen' accessible from the website it operates (www.beetogreen.com).</p>
+                <p>As part of the provision of its services in relation to the Platform, BEETOGREEN SAS is required to collect and process Personal Data concerning users, in order to enable it to manage the contractual relationship. In this context, BEETOGREEN SAS is required to set up data processing, in compliance with the GDPR, the purposes of which are the management of customers (including the management of contractual relations, orders, invoices, accounting), and more generally the management of operations allowing it to provide the functionalities necessary for navigation on our platform.</p>
+            </section>
+
+            <section id="data-collected" class="content-section">
+                <h2 class="split-text">Data collected on the BeeToGreen platform</h2>
+                <p>• Data entered directly by your company and by you, when creating your account or modifying your profile.</p>
+                <p>• Data that we collect automatically as a result of your actions on the platform.</p>
+                <p> <b> Data entered by the company and the user </b></p>
+                <p>The mandatory or optional nature of the data is indicated to you at the time of collection: last name, first name, postal address, email address, telephone number.</p>
+                <p><b>Data filled in automatically</b></p>
+                <p>Certain data is collected automatically as a result of your actions on the site: navigation data, order history. We also carry out audience measurements: for example, we measure the number of page views, the number of visits to the site, as well as the activity of visitors to the site and their frequency of return. Finally, we collect data using cookies.</p>
+                <p>Certain personal data (namely last name, first name, postal address, email address, telephone number and for payment purposes your banking data by our payment providers Alma and Stripe) must be collected in order for you to benefit from our services. If this information is not completed, you cannot access the products on the BeeToGreen platform.</p>
+            </section>
+
+            <section id="bank-data" class="content-section">
+                <h2 class="split-text">Bank data</h2>
+                <p>For payment purposes, bank details are collected and stored by our PCI-DSS certified payment providers Alma and Stripe.</p>
+                <p>This standard is an international security standard whose objectives are to ensure the confidentiality and integrity of cardholder data, and thus secure the protection of card and transaction data. Alma and Stripe encrypt the data and only store it for technical purposes (for example: the reimbursement of a purchase, in the event of fraudulent behavior) for a period of 3 years. Encrypted payment data is stored in secure data centers in Europe.</p>
+            </section>
+
+            <section id="data-retention" class="content-section">
+                <h2 class="split-text">Data retention rules</h2>
+                <p>Your Personal Data concerning your account are kept during the subscription period to the BeeToGreen platform, contracted by your company. Those concerning your browsing and/or your behavior on the site are kept for a period of 13 months from your last activity on the site unless otherwise provided by law. At the end of this period, your account is considered 'inactive' and will be automatically deactivated.</p>             
+                <p>However, at the end of these aforementioned deadlines, including as necessary from your request for deletion, your personal data may be subject to intermediate archiving in order to meet our legal, accounting and tax obligations (such as the obligation to store invoices for a period of 10 years as set out in Article L.123-22 of the Commercial Code) and/or at least during the applicable limitation period (such as the limitation period common law of 5 years enshrined in article 2224 of the Civil Code).</p>
+            </section>
+
+            <section id="access" class="content-section">
+                <h2 class="split-text">Who has access to your data?</h2>
+                <p>The data collected on the BeeToGreen site are exclusively intended for the BeeToGreen company. Under no circumstances will BeeToGreen transmit your personal data to third parties for other purposes such as commercial and/or promotional.</p>
+                <p>Personal data may be transmitted to companies - subcontractors - to which BeeToGreen uses in the context of the execution of services and orders, in particular management, execution, processing and payment.</p>
+                <p>The data necessary for the creation of an order form and the delivery of your order (company, email address, name, first name, postal address, telephone number) are communicated to our Selling partners for the respective orders.</p>
+            </section>
+
+            <section id="hosting" class="content-section">
+                <h2 class="split-text">Hosting of your data</h2>
+                <p>The servers containing the data collected by BeeToGreen are hosted in Europe.</p>
+            </section>
+
+            <section id="exercise" class="content-section">
+                <h2 class="split-text">Exercise your rights</h2>
+                <p>To exercise your Specific Rights for the attention of BeeToGreen, you can choose to send your request:</p>
+                <p>
+                    • By e-mail to the following address: contact@beetogreen.com <br>
+                    • By post to our Data Protection Officer at the following address:
+                </p>
+                <p>
+                    BeeToGreen Legal Department <br> 
+                    47 rue Voltaire <br> 
+                    92300 Levallois-Perret, France
+                </p>
+                <p>A response will be sent to you within one (1) month maximum following the date of receipt of your request. If necessary, this period may be extended by two months by BeeToGreen which will alert you, taking into account the complexity and/or the number of requests.</p>
+                <p>In the event of a request for deletion of your Data and/or in the event of exercise of your right to request the deletion of your Data, we may however keep them in the form of intermediate Archiving, for the period necessary to satisfy our legal, accounting and tax obligations and in particular, in order to prevent possible illicit behavior after the deletion of your account (re-use of your old account by a third party).</p>
+                <p>It is specified as necessary that the request to delete your employee account from the platform is not interpreted by BeeToGreen as an express request to exercise your right of opposition, limitation or deletion for legitimate reasons. Your employee account is therefore rendered inactive and the Data concerning you is subject to interim Archiving under the conditions and for the periods indicated above.</p>
+            </section>
+
+            <section id="data-secured" class="content-section">
+                <h2 class="split-text">How is your data secured?</h2>
+                <p>BeeToGreen protects your personal data by putting in place technical and organizational measures to ensure the security of the processing of personal data and the confidentiality thereof.</p>
+                <p>As such, BeeToGreen takes all necessary precautions, with regard to the nature of the data and the risks presented by the processing, in order to preserve the security of the data and, in particular, to prevent them from being distorted, damaged, or that unauthorized third parties have access to it: authentication procedures with personal and secure access via confidential usernames and passwords, encryption of certain data, etc.</p>
+                <p>We remind you, however, that you are responsible for the data concerning you that you transmit to BeeToGreen and that as such, you contribute to the protection of your personal data by complying with good practices in the use of your IT tools.</p>
+                <p>You are informed that without adequate security measures (examples: secure configuration of your web browser, update of anti-virus programs, firewall software, non- use of software from questionable sources, etc.), you run the risk that the data and passwords you use to protect your data may be disclosed to unauthorized third parties.</p>
+            </section>
+        </div>
+
+    </main>
+
+    <!-- JAVASCRIPT FOR HEADER INJECTION -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Fetch Header
+            fetch('../components/header.html')
+                .then(response => {
+                    if (!response.ok) throw new Error('Header load nathi thayu!');
+                    return response.text();
+                })
+                .then(data => {
+                    document.getElementById('header-placeholder').innerHTML = data;
+                })
+                .catch(error => console.error("Header Error:", error));
+        });
+    </script>
+
+    <!-- JAVASCRIPT FOR SCROLL SPY (HIGHLIGHTING LEFT INDEX) -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const sections = document.querySelectorAll(".content-section");
+            const navLinks = document.querySelectorAll(".sidebar-link");
+
+            // Function to update active link
+            function updateActiveLink() {
+                let currentSection = "";
+
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    // Adjust 150px offset to trigger slightly before the section hits the top
+                    if (window.scrollY >= sectionTop - 150) {
+                        currentSection = section.getAttribute("id");
+                    }
+                });
+
+                // Set active class on corresponding link
+                navLinks.forEach(link => {
+                    link.classList.remove("active");
+                    if (link.getAttribute("href").includes(currentSection)) {
+                        link.classList.add("active");
+                    }
+                });
+            }
+
+            // Run on scroll
+            window.addEventListener("scroll", updateActiveLink);
+            
+            // Run once on load to highlight correct section
+            updateActiveLink();
+
+            // Smooth scrolling when clicking a link
+            navLinks.forEach(link => {
+                link.addEventListener("click", function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute("href").substring(1);
+                    const targetSection = document.getElementById(targetId);
+                    
+                    if(targetSection) {
+                        window.scrollTo({
+                            top: targetSection.offsetTop - 100, // Offset for sticky header/spacing
+                            behavior: "smooth"
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+
+    <!-- JAVASCRIPT FOR SPLIT TEXT ANIMATION -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            
+            // 1. Split Text Preparation
+            const splitTexts = document.querySelectorAll('.split-text');
+            
+            if (splitTexts.length > 0) {
+                splitTexts.forEach(titleSplit => {
+                    const words = titleSplit.innerHTML.split(/<br>|\s+/); 
+                    titleSplit.innerHTML = '';
+                    
+                    words.forEach((word, wordIndex) => {
+                        if (word === "") {
+                            titleSplit.appendChild(document.createElement('br'));
+                            return;
+                        }
+                        
+                        const wordSpan = document.createElement('span');
+                        wordSpan.style.display = 'inline-block';
+                        wordSpan.style.overflow = 'hidden';
+                        wordSpan.style.verticalAlign = 'top'; 
+                        
+                        const chars = word.split('');
+                        chars.forEach((char, charIndex) => {
+                            const charSpan = document.createElement('span');
+                            charSpan.classList.add('char');
+                            charSpan.innerText = char;
+                            charSpan.style.transitionDelay = `${(wordIndex * 0.08) + (charIndex * 0.02)}s`; 
+                            wordSpan.appendChild(charSpan);
+                        });
+
+                        titleSplit.appendChild(wordSpan);
+                        titleSplit.appendChild(document.createTextNode('\u00A0')); 
+                    });
+                });
+            }
+
+            // 2. Intersection Observer Setup
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15 
+            };
+
+            const mainObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all .split-text elements
+            const animatedTitles = document.querySelectorAll('.split-text');
+            animatedTitles.forEach(title => mainObserver.observe(title));
+
+            // Hero section ni main title ne instantly load karavva mate
+            setTimeout(() => {
+                const heroTitle = document.querySelector('.legal-title');
+                if(heroTitle) heroTitle.classList.add('in-view');
+            }, 100);
+
+        });
+    </script>
+
+</body>
+</html>

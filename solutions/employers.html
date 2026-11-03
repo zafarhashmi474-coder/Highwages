@@ -1,0 +1,1916 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Employers | Highwages Solutions</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Parkinsans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Parkinsans", sans-serif;
+            background: #ffffff;
+            color: #0b1e18;
+            overflow-x: hidden;
+        }
+
+        /* HEADER PLACEHOLDER */
+        #header-placeholder {
+            width: 100%;
+            position: absolute; 
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            background: transparent; 
+        }
+
+        /* FOOTER PLACEHOLDER */
+        #footer-placeholder {
+            display: block;
+            width: 100%;
+        }
+
+        /* =========================================
+           HERO SECTION (FOR EMPLOYERS)
+           ========================================= */
+        .hero-employers {
+            width: 100%;
+            min-height: 100vh;
+            background-color: #df4e22; 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            padding: 140px 20px 80px;
+        }
+
+        .bg-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        
+        .bg-loop-emp-1 {
+            position: absolute;
+            top: -15%;
+            left: -10%;
+            width: 55vw;
+            height: 55vw;
+            min-width: 650px;
+            min-height: 650px;
+            border: 110px solid #c7bdef; 
+            border-radius: 50%;
+            opacity: 0.95;
+        }
+
+        .bg-loop-emp-2 {
+            position: absolute;
+            top: 10%;
+            right: -10%;
+            width: 60vw;
+            height: 60vw;
+            min-width: 700px;
+            min-height: 700px;
+            border: 130px solid #c7bdef; 
+            border-radius: 50%;
+            opacity: 0.95;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1000px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            opacity: 0;
+            transform: translateY(40px);
+            animation: heroReveal 0.8s ease forwards;
+        }
+
+        .hero-label {
+            color: #d1f34d; 
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+        }
+
+        .hero-title {
+            color: #d1f34d; 
+            font-size: clamp(60px, 10vw, 130px); 
+            font-weight: 900; 
+            line-height: 1.05;
+            letter-spacing: -3px;
+            margin-bottom: 35px;
+        }
+
+        .hero-title .char {
+            display: inline-block;
+            transform: translateY(100%);
+            opacity: 0;
+            transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.6s ease;
+        }
+        .hero-title.in-view .char {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .hero-subtitle {
+            color: #d1f34d; 
+            font-size: clamp(18px, 2vw, 24px);
+            line-height: 1.5;
+            font-weight: 500;
+        }
+
+        @keyframes heroReveal {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            .hero-employers { padding-top: 120px; }
+            .hero-title { letter-spacing: -1.5px; }
+            .bg-loop-emp-1 { border-width: 60px; min-width: 400px; min-height: 400px;}
+            .bg-loop-emp-2 { border-width: 70px; min-width: 450px; min-height: 450px;}
+        }
+
+        /* =========================================
+           ACTIVATING MOBILITY SECTION (STICKY IMAGE)
+           ========================================= */
+        .activating-section {
+            padding: 100px 4% 120px;
+            background-color: #fff0f5;
+            position: relative;
+        }
+
+        .activating-title {
+            font-family: "Parkinsans", sans-serif;
+            font-size: clamp(45px, 6vw, 75px);
+            font-weight: 800;
+            line-height: 1.05;
+            letter-spacing: -2px;
+            text-align: center;
+            color: #b32a5a;
+            margin-bottom: 80px;
+        }
+
+        .activating-title .char {
+            display: inline-block;
+            transform: translateY(100%);
+            opacity: 0;
+            transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.6s ease;
+        }
+
+        .activating-title.in-view .char {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .activating-container {
+            display: flex;
+            align-items: flex-start;
+            max-width: 1400px;
+            margin: 0 auto;
+            gap: 40px;
+        }
+
+        .sticky-image-wrapper {
+            position: sticky;
+            top: 120px;
+            width: 48%; 
+            height: calc(100vh - 160px); 
+            min-height: 600px;
+            border-radius: 20px;
+            overflow: hidden;
+            opacity: 0;
+            transform: scale(0.95);
+            transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .sticky-image-wrapper.in-view {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .sticky-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .scrolling-cards-wrapper {
+            width: 52%;
+            display: flex;
+            flex-direction: column;
+            gap: 30px; 
+        }
+
+        .act-card {
+            background-color: #a41c50; 
+            color: #ffffff;
+            border-radius: 20px;
+            padding: 50px 45px;
+            opacity: 0;
+            transform: translateY(60px);
+            transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .act-card.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .act-card h3 {
+            font-family: "Parkinsans", sans-serif;
+            font-size: clamp(32px, 3.5vw, 45px);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -1px;
+            margin-bottom: 25px;
+            color: #ffffff;
+        }
+
+        .act-card ul {
+            list-style-type: disc; 
+            padding-left: 25px;
+        }
+
+        .act-card li {
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 1.6;
+            margin-bottom: 12px;
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        @media (max-width: 992px) {
+            .activating-container {
+                flex-direction: column; 
+            }
+            .sticky-image-wrapper {
+                position: relative;
+                top: 0;
+                width: 100%;
+                height: 400px;
+                min-height: auto;
+                margin-bottom: 20px;
+            }
+            .scrolling-cards-wrapper {
+                width: 100%;
+            }
+        }
+
+        /* =========================================
+           SERVICES (NO BLIND SPOTS) SECTION
+           ========================================= */
+        .services-section {
+            padding: 100px 0 120px;
+            background-color: #ffffff;
+            text-align: center;
+            overflow: hidden; 
+        }
+
+        .services-title {
+            font-family: "Parkinsans", sans-serif;
+            font-size: clamp(40px, 5.5vw, 65px);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -2px;
+            color: #0b1e18;
+            margin-bottom: 50px;
+        }
+        
+        .services-title .char {
+            display: inline-block;
+            transform: translateY(100%);
+            opacity: 0;
+            transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.6s ease;
+        }
+        .services-title.in-view .char {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* TABS (Radio Button Style) */
+        .services-tabs {
+            display: inline-flex;
+            background-color: #f7f3e8; 
+            border-radius: 50px;
+            padding: 8px;
+            margin-bottom: 60px;
+            gap: 5px;
+        }
+
+        .service-tab-btn {
+            background: transparent;
+            border: none;
+            padding: 15px 35px;
+            font-size: 16px;
+            font-weight: 700;
+            color: #0b1e18;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: "Parkinsans", sans-serif;
+        }
+
+        /* Active Tab Colors */
+        .service-tab-btn.active[data-target="tab1"] { background-color: #3b5bdb; color: #ffffff; } 
+        .service-tab-btn.active[data-target="tab2"] { background-color: #b197fc; color: #ffffff; } 
+        .service-tab-btn.active[data-target="tab3"] { background-color: #9e2b5e; color: #ffffff; } 
+        .service-tab-btn.active[data-target="tab4"] { background-color: #00563c; color: #ffffff; } 
+
+        /* HORIZONTAL SCROLL CONTAINER */
+        .services-scroll-wrapper {
+            position: relative;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .services-cards-container {
+            display: flex;
+            gap: 30px;
+            overflow-x: auto;
+            padding: 0 4% 40px;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            scrollbar-width: none; 
+            -ms-overflow-style: none; 
+        }
+
+        .services-cards-container::-webkit-scrollbar {
+            display: none; 
+        }
+
+        /* INDIVIDUAL CARD - UPDATED FOR WIDE LAYOUT */
+        .service-card {
+            flex: 0 0 92%; 
+            max-width: 1300px;
+            height: 600px; 
+            border-radius: 32px; 
+            display: flex;
+            align-items: stretch;
+            scroll-snap-align: center;
+            overflow: hidden;
+            transition: transform 0.4s ease, opacity 0.4s ease;
+            opacity: 0.5; 
+            transform: scale(0.95);
+        }
+
+        .service-card.is-active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Card Colors */
+        .card-blue { background-color: #3b5bdb; color: #ffffff; }
+        .card-purple { background-color: #b197fc; color: #ffffff; }
+        .card-maroon { background-color: #9e2b5e; color: #ffffff; }
+        .card-green { background-color: #00563c; color: #ffffff; }
+
+        /* Card Image - UPDATED */
+        .service-card-image {
+            width: 45%; 
+            position: relative;
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        .service-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            mix-blend-mode: multiply;
+            opacity: 0.9;
+        }
+
+        /* Card Content - UPDATED */
+        .service-card-content {
+            width: 55%; 
+            padding: 60px 80px 60px 60px; 
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .service-card-content h3 {
+            font-size: clamp(32px, 3.5vw, 48px); 
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -1.5px;
+            margin-bottom: 20px;
+            max-width: 600px;
+        }
+
+        .service-card-content p {
+            font-size: 17px; 
+            font-weight: 500;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.95);
+            max-width: 650px;
+        }
+
+        .service-card-content ul {
+            list-style-type: disc;
+            padding-left: 20px;
+            margin-top: 5px;
+        }
+
+        .service-card-content li {
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 1.5;
+            margin-bottom: 10px;
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        /* CUSTOM SCROLLBAR */
+        .service-scrollbar-wrapper {
+            position: relative;
+            width: 50%;
+            max-width: 600px;
+            height: 4px;
+            background: #e0e0e0;
+            margin: 0 auto;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .service-scrollbar-thumb {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 25%; 
+            background: #0b1e18;
+            border-radius: 10px;
+            transition: background-color 0.3s ease;
+            cursor: grab;
+        }
+        
+        .service-scrollbar-thumb:active {
+            cursor: grabbing;
+        }
+
+        @media (max-width: 992px) {
+            .services-tabs {
+                flex-wrap: wrap;
+                justify-content: center;
+                border-radius: 20px;
+                padding: 15px;
+            }
+            .service-card {
+                flex-direction: column;
+                height: auto;
+                min-height: auto;
+                flex: 0 0 90%;
+            }
+            .service-card-image {
+                width: 100%;
+                height: 300px;
+            }
+            .service-card-content {
+                width: 100%;
+                padding: 40px 30px;
+            }
+            .service-card-content h3 {
+                font-size: 35px;
+            }
+        }
+
+        /* =========================================
+           BOOST SECTION (VIDEO & BLUR EFFECT)
+           ========================================= */
+        .boost-section {
+            position: relative;
+            padding: 100px 20px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: url('https://images.unsplash.com/photo-1519003722824-194d4455aeb0?q=80&w=2000&auto=format&fit=crop') center/cover no-repeat;
+        }
+
+        .boost-video-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        .glass-panel {
+            position: relative;
+            z-index: 1;
+            background: rgba(30, 30, 30, 0.45); 
+            backdrop-filter: blur(30px); 
+            -webkit-backdrop-filter: blur(30px);
+            border-radius: 32px;
+            max-width: 1100px; 
+            padding: 120px 60px 250px 60px; 
+            width: 100%;
+            color: #D4F5E0; 
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .boost-title {
+            font-size: clamp(42px, 6vw, 85px); 
+            font-weight: 800;
+            line-height: 1.05;
+            margin-bottom: 90px; 
+            letter-spacing: -1.5px;
+            max-width: 1000px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .boost-content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .boost-text {
+            font-size: clamp(20px, 2vw, 24px); 
+            font-weight: 500;
+            line-height: 1.6;
+            color: #D4F5E0; 
+        }
+
+        .boost-text p {
+            margin-bottom: 25px;
+        }
+
+        .yellow-graphic {
+            position: absolute;
+            bottom: -100px;
+            left: -30px;
+            width: 450px; 
+            height: 350px;
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .glass-panel { padding: 80px 30px 180px 30px; }
+            .boost-title { margin-bottom: 50px; }
+            .boost-content-grid { grid-template-columns: 1fr; gap: 30px; }
+            .yellow-graphic { width: 300px; height: 250px; bottom: -60px; left: -20px; }
+            .boost-text { font-size: 18px; }
+        }
+
+        /* =========================================
+           TURNKEY SOLUTION SECTION STYLES
+           ========================================= */
+           .turnkey-section {
+            padding: 100px 4% 120px;
+            background-color: #ffffff;
+            position: relative;
+        }
+
+        .turnkey-title {
+            font-family: "Parkinsans", sans-serif;
+            font-size: clamp(40px, 5.5vw, 65px);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -2px;
+            text-align: center;
+            color: #4b1f9b; 
+            margin-bottom: 80px;
+        }
+
+        .turnkey-title .char {
+            display: inline-block;
+            transform: translateY(100%);
+            opacity: 0;
+            transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.6s ease;
+        }
+
+        .turnkey-title.in-view .char {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .turnkey-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr; 
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .turnkey-card {
+            background-color: #4b1f9b; 
+            color: #ffffff;
+            border-radius: 20px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .turnkey-content {
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .turnkey-content h3 {
+            font-family: "Parkinsans", sans-serif;
+            font-size: clamp(35px, 4vw, 52px);
+            font-weight: 800;
+            line-height: 1.05;
+            letter-spacing: -1px;
+            color: #f6d3b4; 
+            margin-bottom: 30px;
+        }
+
+        .turnkey-content p {
+            font-size: 17px;
+            font-weight: 400;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #e5d8f6; 
+        }
+
+        .turnkey-content ul {
+            list-style-type: disc;
+            padding-left: 20px;
+            margin-bottom: 25px;
+        }
+
+        .turnkey-content li {
+            font-size: 17px;
+            font-weight: 400;
+            line-height: 1.6;
+            margin-bottom: 10px;
+            color: #e5d8f6;
+        }
+
+        .card-right {
+            background-color: transparent; 
+            border: 3px solid #4b1f9b; 
+        }
+
+        .card-right .turnkey-image {
+            width: 100%;
+            height: 400px; 
+            overflow: hidden;
+            border-radius: 17px 17px 0 0;
+            background-color: #4b1f9b; 
+            padding: 20px 20px 0 20px; 
+        }
+
+        .card-right .turnkey-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px 10px 0 0; 
+        }
+
+        .card-right .turnkey-content {
+            background-color: #4b1f9b;
+            border-radius: 0 0 17px 17px;
+        }
+
+        .turnkey-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f6d3b4; 
+            color: #4b1f9b;
+            padding: 18px 30px;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 800;
+            text-decoration: none;
+            margin-top: auto; 
+            transition: background-color 0.3s ease, color 0.3s ease;
+            width: 100%; 
+            text-align: center;
+            opacity: 0; 
+            transform: translateY(30px);
+        }
+
+        .turnkey-btn:hover {
+            background-color: #e5bb97;
+        }
+
+        .turnkey-btn.in-view {
+            animation: btnSlideUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        @keyframes btnSlideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .turnkey-grid {
+                grid-template-columns: 1fr;
+            }
+            .turnkey-content {
+                padding: 35px;
+            }
+        }
+
+        /* =========================================
+           CHAT / CONTACT SECTION STYLES
+           ========================================= */
+        .chat-section {
+            padding: 50px 4% 100px;
+            background-color: var(--white);
+        }
+
+        .chat-container {
+            position: relative;
+            max-width: 1400px;
+            margin: 0 auto;
+            /* AHIYA GREEN COLOR KARYO CHHE */
+            background-color: #0b7a54; 
+            border-radius: 20px;
+            padding: 100px 5%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden; 
+            min-height: 550px;
+        }
+
+        .chat-loop {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* AHIYA LOOP NO GREEN COLOR KARYO CHHE */
+        .chat-loop svg path {
+            stroke: #096a48;
+        }
+
+        .chat-content {
+            position: relative;
+            z-index: 2; 
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            
+            /* AHIYA TEXT MATE DEFAULT ANIMATION HIDE KARYU CHHE */
+            opacity: 0; 
+        }
+
+        /* AHIYA TEXT COLOR YELLOW KARYO CHHE */
+        .chat-label { 
+            font-size: 18px; 
+            font-weight: 500; 
+            color: #d1f34d; 
+            margin-bottom: 25px; 
+        }
+
+        .chat-title {
+            font-family: "Parkinsans", sans-serif;
+            font-size: clamp(48px, 6.5vw, 85px); 
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -2px;
+            /* AHIYA TEXT COLOR YELLOW KARYO CHHE */
+            color: #d1f34d;
+            margin-bottom: 50px;
+        }
+
+        /* AHIYA BUTTON COLOR YELLOW ANE HOVER PAR GREEN KARYO CHHE */
+        .chat-btn {
+            position: relative;
+            overflow: hidden;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #d1f34d; 
+            color: #0b1e18; 
+            padding: 22px 38px;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 800;
+            text-decoration: none;
+            border: 1px solid transparent;
+            transition: color 0.4s ease, border-color 0.4s ease;
+            z-index: 1;
+        }
+
+        .chat-btn::before {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(0);
+            width: 250%;
+            height: 250%;
+            border-radius: 50%;
+            background-color: #0b7a54; 
+            transition: transform 0.5s ease-in-out;
+            z-index: -1;
+        }
+
+        .chat-btn:hover { color: #d1f34d; border-color: rgba(209, 243, 77, 0.4); }
+        .chat-btn:hover::before { transform: translateX(-50%) translateY(-50%); }
+
+        /* Scroll Text Animation Set Kariyu Che */
+        .chat-content.in-view {
+            animation: chatSlideUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        @keyframes chatSlideUp { to { opacity: 1; transform: translateY(0); } }
+
+        @media (max-width: 768px) {
+            .chat-container { padding: 70px 6%; min-height: 400px; }
+            .chat-title { margin-bottom: 35px; }
+        }
+
+        /* =========================================
+            FAQ / QUESTIONS SECTION (BLUE THEME)
+            ========================================= */
+        .faq-section {
+            padding: 120px 6%;
+            background-color: #ffffff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .faq-container {
+            position: relative;
+            z-index: 2;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.6fr;
+            gap: 80px;
+            align-items: flex-start;
+        }
+
+        /* Left Title */
+        .faq-title-wrap h2 {
+            font-family: "Parkinsans", sans-serif;
+            font-size: clamp(48px, 6vw, 65px);
+            font-weight: 800;
+            line-height: 1.05;
+            letter-spacing: -3px;
+            color: #2b50d5; /* Bright Blue matching screenshot */
+            position: sticky;
+            top: 120px;
+        }
+
+        /* Right Accordion List */
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        /* Question Header Button */
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 35px 0;
+            text-align: left;
+            cursor: pointer;
+            font-family: "Parkinsans", sans-serif;
+            font-size: clamp(22px, 2.5vw, 30px);
+            font-weight: 700;
+            color: #2b50d5; /* Blue text color */
+            letter-spacing: -0.5px;
+            transition: color 0.3s ease;
+        }
+
+        .faq-question:hover {
+            color: #1d3db8;
+        }
+
+        .faq-question span:first-child {
+            padding-right: 30px;
+            line-height: 1.3;
+        }
+
+        /* Plus / Minus Icon Animation */
+        .faq-icon {
+            position: relative;
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+        }
+
+        .faq-icon::before,
+        .faq-icon::after {
+            content: "";
+            position: absolute;
+            background-color: #2b50d5; /* Blue Icon Color */
+            transition: transform 0.3s ease;
+        }
+
+        /* Horizontal line (Plus) */
+        .faq-icon::before {
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            transform: translateY(-50%);
+        }
+
+        /* Vertical line (Plus -> Minus) */
+        .faq-icon::after {
+            top: 0;
+            left: 50%;
+            width: 2px;
+            height: 100%;
+            transform: translateX(-50%);
+        }
+
+        .faq-item.active .faq-icon::after {
+            transform: translateX(-50%) rotate(90deg);
+            opacity: 0;
+        }
+
+        /* Answer Content */
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.22, 1, 0.36, 1), padding 0.4s ease;
+            padding: 0 0;
+        }
+
+        .faq-answer p {
+            font-family: "Parkinsans", sans-serif;
+            font-size: 18px;
+            line-height: 1.7;
+            color: #4a5568; /* Dark grey answer text */
+            margin-bottom: 18px;
+        }
+
+        .faq-answer p:last-child {
+            margin-bottom: 35px;
+        }
+
+        /* Background Loop Shape */
+        .faq-bg-loop {
+            position: absolute;
+            bottom: -100px;
+            left: -100px;
+            width: 500px;
+            height: 500px;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .faq-bg-loop svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .faq-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .faq-title-wrap h2 {
+                position: static;
+                font-size: 40px;
+                margin-bottom: 20px;
+            }
+            .faq-question {
+                padding: 25px 0;
+                font-size: 20px;
+            }
+        }
+
+        /* =========================================
+        TOUR WRAPPED UP SECTION (FINAL FIX)
+        ========================================= */
+        .tour-section {
+            padding: 5% 4% 80px;
+            background-color: var(--white);
+            position: relative;
+            overflow: visible; 
+        }
+
+        .tour-card {
+            background-color: #f4c2b3; 
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 100px 7%;            
+            position: relative;
+            overflow: visible; 
+            min-height: 480px; 
+        }
+
+        .tour-content {
+            flex: 1;
+            max-width: 600px; 
+            color: #00563c; 
+            z-index: 2;
+        }
+
+        .tour-content h2 {
+            font-family: "Parkinsans", sans-serif;
+            font-size: clamp(36px, 4.2vw, 52px); 
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -2px;
+            color: #00563c; 
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 1100px) { .tour-content h2 { white-space: normal; } }
+
+        .tour-content p {
+            font-size: 17px;
+            font-weight: 500;
+            line-height: 1.5;
+            color: #00563c;
+            margin-bottom: 30px;
+            max-width: 480px;
+        }
+
+        .tour-btn {
+            position: relative;
+            overflow: hidden; 
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 32px;
+            background-color: #00563c; 
+            color: #ffffff;
+            font-size: 17px;
+            font-weight: 800;
+            border-radius: 12px;
+            border: 1px solid #00563c; 
+            transition: color 0.4s ease, border-color 0.4s ease;
+            z-index: 1;
+            text-decoration: none;
+        }
+
+        .tour-btn::before {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(0);
+            width: 250%;
+            height: 250%;
+            border-radius: 50%;
+            background-color: #f4c2b3; 
+            transition: transform 0.5s ease-in-out;
+            z-index: -1;
+        }
+
+        .tour-btn:hover { color: #00563c; border-color: #00563c; }
+        .tour-btn:hover::before { transform: translateX(-50%) translateY(-50%); }
+
+        .tour-image {
+            position: absolute;
+            right: -10px;
+            top: -90px; 
+            width: 580px;
+            z-index: 3; 
+            pointer-events: none;
+        }
+
+        .tour-image img { display: block; width: 100%; height: auto; }
+
+        .tour-animated-h {
+            position: absolute;
+            bottom: -110px; 
+            left: 42%; 
+            width: 180px; 
+            height: 180px;
+            z-index: 2;
+            opacity: 0.95;
+            transform: rotate(-45deg); 
+            transition: bottom 1.2s cubic-bezier(0.22, 1, 0.36, 1), transform 1.2s cubic-bezier(0.22, 1, 0.36, 1); 
+        }
+
+        .tour-animated-h.h-visible { bottom: -40px; transform: rotate(15deg); }
+
+        .tour-content h2,
+        .tour-content p,
+        .tour-content .tour-btn {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .tour-card.content-visible .tour-content h2 { animation: tourSlideUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards; }
+        .tour-card.content-visible .tour-content p { animation: tourSlideUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.25s forwards; }
+        .tour-card.content-visible .tour-content .tour-btn { animation: tourSlideUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.4s forwards; }
+
+        @keyframes tourSlideUp { to { opacity: 1; transform: translateY(0); } }
+
+        @media (max-width: 950px) {
+            .tour-card { flex-direction: column; padding: 40px 5%; text-align: center; overflow: hidden; }
+            .tour-image { position: relative; right: auto; top: auto; width: 100%; max-width: 400px; margin-top: 20px; }
+            .tour-content { max-width: 100%; }
+            .tour-animated-h { left: 20%; width: 130px; height: 130px; }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER PLACEHOLDER -->
+    <div id="header-placeholder"></div>
+
+    <!-- HERO SECTION FOR EMPLOYERS -->
+    <main class="hero-employers">
+        
+        <!-- Abstract Background Loops -->
+        <div class="bg-shapes">
+            <div class="bg-loop-emp-1"></div>
+            <div class="bg-loop-emp-2"></div>
+        </div>
+
+        <!-- Main Content with Animation -->
+        <div class="hero-content">
+            <p class="hero-label">FOR COMPANIES</p>
+            <h1 class="hero-title split-text">Mobility.<br>Reinvented.</h1>
+            <p class="hero-subtitle">
+                Give your team a cycling experience<br>
+                they won't soon forget.
+            </p>
+        </div>
+
+    </main>
+
+    <!-- =========================================
+         ACTIVATING MOBILITY SECTION (STICKY IMAGE)
+         ========================================= -->
+    <section class="activating-section">
+        
+        <h2 class="activating-title split-text">
+            Activating mobility<br>
+            means activating<br>
+            engagement.
+        </h2>
+
+        <div class="activating-container">
+            
+            <div class="sticky-image-wrapper">
+                <img src="/images/helmet.png" alt="Beetogreen Helmet" class="sticky-image">
+            </div>
+
+            <div class="scrolling-cards-wrapper">
+                
+                <div class="act-card fade-up-card">
+                    <h3>Employer brand &<br>attractiveness</h3>
+                    <ul>
+                        <li>Attract talent that cares about environmental issues.</li>
+                        <li>Retain employees through a concrete benefit.</li>
+                        <li>Strengthen your image as a committed company.</li>
+                    </ul>
+                </div>
+
+                <div class="act-card fade-up-card">
+                    <h3>Well-being and<br>performance</h3>
+                    <ul>
+                        <li>Encourage regular physical activity.</li>
+                        <li>Reduce absenteeism related to sedentary lifestyles.</li>
+                        <li>Foster a more dynamic company culture.</li>
+                    </ul>
+                </div>
+
+                <div class="act-card fade-up-card">
+                    <h3>Environmental<br>impact</h3>
+                    <ul>
+                        <li>Reduce your transport-related carbon emissions.</li>
+                        <li>Highlight measurable impact indicators.</li>
+                        <li>Contribute to your ESG goals.</li>
+                        <li>Activate a scheme compliant with URSSAF regulations.</li>
+                    </ul>
+                </div>
+
+                <div class="act-card fade-up-card">
+                    <h3>Financial<br>performance</h3>
+                    <ul>
+                        <li>Optimise your mobility budgets.</li>
+                        <li>Benefit from a social-charge-exempt scheme (FMD).</li>
+                        <li>Simplify administrative management.</li>
+                        <li>Cut costs linked to parking and company car fleets.</li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- BOOST SECTION -->
+    <section class="boost-section">
+        
+        <video class="boost-video-bg" autoplay loop muted playsinline>
+            <source src="/images/hero-bg.mp4" type="video/mp4">
+        </video>
+
+        <!-- Frosted Glass Container -->
+        <div class="glass-panel">
+            <h2 class="boost-title fade-up-element">The Sustainable Mobility Allowance deserves better than a drawer.</h2>
+            
+            <div class="boost-content-grid">
+                <div class="fade-up-element delay-1">
+                    <div class="boost-text">
+                        <p>The Sustainable Mobility Allowance(FMD) is a public scheme that encourages greener commutes: cycling, carpooling, public transport outside subscriptionss, or shared mobility.</p>
+                    </div>
+                </div>
+                <div class="fade-up-element delay-2">
+                    <div class="boost-text">
+                        <p>-> Employer side <br> Up to $800 per employee, exempt from social charges. A simple lever to activate, easy to integrateinto CSR and QWL strategy.</p>
+                        <p>-> Employee side <br> A real boost to a bike (purchase, lease, gear). And above all, a bike of your own, actually used every day.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Loop Design -->
+            <div class="yellow-graphic">
+                <svg viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M 0,400 C 50,200 150,50 300,100 C 450,150 400,350 250,300 C 150,260 200,150 350,250 L 450,300" fill="none" stroke="#D4F5E0" stroke-width="70" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================
+         TURNKEY SOLUTION SECTION
+         ========================================= -->
+    <section class="turnkey-section">
+        
+        <h2 class="turnkey-title split-text">
+            Our turnkey solution.<br>
+            Built around two<br>
+            complementary pillars.
+        </h2>
+
+        <div class="turnkey-grid">
+            
+            <div class="turnkey-card">
+                <div class="turnkey-content">
+                    <h3>A B2B<br>marketplace<br>dedicated to<br>corporate cycling</h3>
+                    <p>A dedicated, free marketplace made available to your employees, with FMD-compliant partner merchants.</p>
+                    
+                    <p>On their own, they can:</p>
+                    <ul>
+                        <li>choose their bike (classic, electric, cargo...)</li>
+                        <li>select their gear</li>
+                        <li>add services (maintenance, insurance...)</li>
+                    </ul>
+
+                    <p>We centralise the offer, ensure FMD compliance and simplify all the management for you.</p>
+                    
+                    <a href="#" class="turnkey-btn fade-up-card">Ask a demo</a>
+                </div>
+            </div>
+
+            <div class="turnkey-card card-right">
+                <div class="turnkey-image">
+                    <img src="/images/solution_card.webp" alt="Woman smiling with phone">
+                </div>
+                <div class="turnkey-content">
+                    <h3>Services to support you in<br>rolling out the scheme.</h3>
+                    <p>We help you turn cycling into a real solution within your company by:</p>
+                    <ul>
+                        <li>laying the groundwork (FMD, rules, communication),</li>
+                        <li>creating the right conditions for it to work (parking, maintenance...),</li>
+                        <li>making your teams want to get into it (test rides, talks with experts),</li>
+                        <li>and embedding these habits over time (training, safety, best practices).</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- =========================================
+         SERVICES WITH NO BLIND SPOTS SECTION
+         ========================================= -->
+    <section class="services-section">
+        
+        <!-- Animated Title -->
+        <h2 class="services-title split-text">Our services <br>with no blind spots</h2>
+
+        <!-- Tabs Navigation -->
+        <div class="services-tabs">
+            <button class="service-tab-btn active" data-target="tab1">Bike parking</button>
+            <button class="service-tab-btn" data-target="tab2">Employee test rides</button>
+            <button class="service-tab-btn" data-target="tab3">Safety on the saddle</button>
+            <button class="service-tab-btn" data-target="tab4">Bike maintenance</button>
+        </div>
+
+        <!-- Horizontal Scrolling Container -->
+        <div class="services-scroll-wrapper">
+            <div class="services-cards-container">
+                
+                <!-- Card 1: Blue -->
+                <div class="service-card card-blue is-active" id="tab1">
+                    <div class="service-card-image">
+                        <img src="/images/parking-velo.webp" alt="Bike parking">
+                    </div>
+                    <div class="service-card-content">
+                        <h3>We can talk about it.<br>Or we can test it.</h3>
+                        <p>Nothing replaces real-world experience. We organise test formats directly at your sites so your teams can try, compare and picture themselves commuting by bike.</p>
+                        <p>We adapt to your preferences:</p>
+                        <ul>
+                            <li>On-site workshop: to discover and ask all your questions to our bike experts.</li>
+                            <li>5 days on your own: your teams live the bike commute in real conditions.</li>
+                            <li>Cycling team building: a collective experience to raise awareness differently.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Card 2: Purple -->
+                <div class="service-card card-purple" id="tab2">
+                    <div class="service-card-image">
+                        <img src="/images/robert-bye-tG36rvCeqng-unsplash.webp" alt="Employee test rides">
+                    </div>
+                    <div class="service-card-content">
+                        <h3>We can talk about it.<br>Or we can test it.</h3>
+                        <p>Nothing replaces real-world experience. We organise test formats directly at your sites so your teams can try, compare and picture themselves commuting by bike.</p>
+                        <p>We adapt to your preferences:</p>
+                        <ul>
+                            <li>On-site workshop: to discover and ask all your questions to our bike experts.</li>
+                            <li>5 days on your own: your teams live the bike commute in real conditions.</li>
+                            <li>Cycling team building: a collective experience to raise awareness differently.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Card 3: Maroon -->
+                <div class="service-card card-maroon" id="tab3">
+                    <div class="service-card-image">
+                        <img src="/images/helmet.png" alt="Safety on saddle">
+                    </div>
+                    <div class="service-card-content">
+                        <h3>We can talk about it.<br>Or we can test it.</h3>
+                        <p>Nothing replaces real-world experience. We organise test formats directly at your sites so your teams can try, compare and picture themselves commuting by bike.</p>
+                        <p>We adapt to your preferences:</p>
+                        <ul>
+                            <li>On-site workshop: to discover and ask all your questions to our bike experts.</li>
+                            <li>5 days on your own: your teams live the bike commute in real conditions.</li>
+                            <li>Cycling team building: a collective experience to raise awareness differently.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Card 4: Green -->
+                <div class="service-card card-green" id="tab4">
+                    <div class="service-card-image">
+                        <img src="/images/kids.webp" alt="Bike maintenance">
+                    </div>
+                    <div class="service-card-content">
+                        <h3>We can talk about it.<br>Or we can test it.</h3>
+                        <p>Nothing replaces real-world experience. We organise test formats directly at your sites so your teams can try, compare and picture themselves commuting by bike.</p>
+                        <p>We adapt to your preferences:</p>
+                        <ul>
+                            <li>On-site workshop: to discover and ask all your questions to our bike experts.</li>
+                            <li>5 days on your own: your teams live the bike commute in real conditions.</li>
+                            <li>Cycling team building: a collective experience to raise awareness differently.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Custom Scrollbar -->
+            <div class="service-scrollbar-wrapper">
+                <div class="service-scrollbar-thumb"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CHAT / CONTACT SECTION -->
+    <section class="chat-section">
+        <div class="chat-container">
+            <div class="chat-loop">
+                <svg viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M 300,700 C 150,550 200,200 450,180 C 700,160 800,450 600,650 C 450,800 650,50 -50,50" 
+                          fill="none" stroke-width="140" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <div class="chat-content scroll-trigger">
+                <span class="chat-label">Shall we chat?</span>
+                <h2 class="chat-title">Let's have a chat<br>you'll see, it's pretty cool!</h2>
+                <a href="/contact.html" class="chat-btn">Get in touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- =====================================
+        FAQ / QUESTIONS SECTION (EMPLOYERS BLUE)
+    ====================================== -->
+    <section class="faq-section" id="faq">
+
+        <!-- Background Loop Shape -->
+        <div class="faq-bg-loop">
+            <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+                <path d="M 0,600 C 100,300 300,100 600,200 C 500,500 200,600 0,600" fill="none" stroke="#2b50d5" stroke-width="120" stroke-linecap="round" opacity="0.15"/>
+            </svg>
+        </div>
+
+        <div class="faq-container">
+            
+            <!-- Left Side Title -->
+            <div class="faq-title-wrap">
+                <h2>Got questions?</h2>
+            </div>
+
+            <!-- Right Side Accordion List -->
+            <div class="faq-list">
+                
+                <!-- Question 1 (Default Open) -->
+                <div class="faq-item active">
+                    <button class="faq-question">
+                        <span>What is the Sustainable Mobility Allowance (FMD)?</span>
+                        <span class="faq-icon"></span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>The Sustainable Mobility Allowance (FMD) is a financial scheme set up by the government to encourage more sustainable commuting practices, such as cycling, carpooling, or public transit.</p>
+                        <p>Employers can contribute up to €800 per year per employee, completely exempt from social charges and income tax.</p>
+                    </div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>How much does it cost my company?</span>
+                        <span class="faq-icon"></span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Implementing the FMD through Highwages has no setup fees and requires zero fleet management. The financial contribution is entirely flexible and up to what the company chooses to allocate, while generating significant social charge exemptions.</p>
+                    </div>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Which types of bikes are eligible?</span>
+                        <span class="faq-icon"></span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>All types of bikes are eligible—classic city bikes, electric bikes (e-bikes), cargo bikes, and folding bikes from our marketplace comprising over 3,000 top brand references.</p>
+                    </div>
+                </div>
+
+                <!-- Question 4 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>How does the rollout work?</span>
+                        <span class="faq-icon"></span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>The rollout is completely turnkey. We handle communication, provide access to our online marketplace, manage employer contributions, and coordinate direct home or partner shop delivery for employees.</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- TOUR WRAPPED UP SECTION -->
+    <section class="tour-section" id="tour">
+        <div class="tour-card">
+            <div class="tour-content">
+                <h2>Well that's about it</h2>
+                <p>
+                    Our marketplace is 100% online. But your bike, it rides in the real world. That's why we work with a network of partner shops across France.
+                </p>
+                <a href="/contact.html" class="tour-btn">Get in touch</a>
+            </div>
+            <div class="tour-image">
+                <img src="/images/BTG-Yellow.webp" alt="Cyclist smiling">
+            </div>
+            <div class="tour-animated-h">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="50" fill="#00563c" />
+                    <path d="M30,25 L30,75 M30,50 L70,50 M70,25 L70,75" 
+                        fill="none" stroke="#e6ff42" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- FOOTER PLACEHOLDER -->
+    <div id="footer-placeholder"></div>
+
+    <!-- MAIN JAVASCRIPT LOGIC -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            
+            // 1. Fetch Header
+            fetch('../components/header.html')
+                .then(response => {
+                    if (!response.ok) throw new Error('Header load nathi thayu!');
+                    return response.text();
+                })
+                .then(data => {
+                    document.getElementById('header-placeholder').innerHTML = data;
+                })
+                .catch(error => console.error("Header Error:", error));
+            
+            // 2. Fetch Footer
+            fetch('../components/footer.html')
+                .then(response => {
+                    if (!response.ok) throw new Error('Footer load nathi thayu!');
+                    return response.text();
+                })
+                .then(data => {
+                    document.getElementById('footer-placeholder').innerHTML = data;
+                    
+                    setTimeout(() => {
+                        const yearSpan = document.getElementById('year');
+                        if(yearSpan) {
+                            yearSpan.textContent = new Date().getFullYear();
+                        }
+                    }, 500);
+                })
+                .catch(error => console.error("Footer Error:", error));
+
+        });
+    </script>
+
+    <!-- SPLIT TEXT AND SCROLL ANIMATIONS -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            
+            // Apply split text animation to all elements with class .split-text
+            const splitTexts = document.querySelectorAll('.split-text');
+            
+            if (splitTexts.length > 0) {
+                splitTexts.forEach(titleSplit => {
+                    const words = titleSplit.innerHTML.split(/<br>|\s+/); 
+                    titleSplit.innerHTML = '';
+                    
+                    words.forEach((word, wordIndex) => {
+                        if (word === "") {
+                            titleSplit.appendChild(document.createElement('br'));
+                            return;
+                        }
+                        
+                        const wordSpan = document.createElement('span');
+                        wordSpan.style.display = 'inline-block';
+                        wordSpan.style.overflow = 'hidden';
+                        wordSpan.style.verticalAlign = 'top'; 
+                        
+                        const chars = word.split('');
+                        chars.forEach((char, charIndex) => {
+                            const charSpan = document.createElement('span');
+                            charSpan.classList.add('char');
+                            charSpan.innerText = char;
+                            charSpan.style.transitionDelay = `${(wordIndex * 0.08) + (charIndex * 0.02)}s`; 
+                            wordSpan.appendChild(charSpan);
+                        });
+
+                        titleSplit.appendChild(wordSpan);
+                        titleSplit.appendChild(document.createTextNode('\u00A0')); 
+                    });
+                });
+            }
+
+            // Intersection Observer for scroll animations
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.2 
+            };
+
+            const mainObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe elements
+            const animatedTitles = document.querySelectorAll('.split-text');
+            animatedTitles.forEach(title => mainObserver.observe(title));
+            
+            const stickyImg = document.querySelector('.sticky-image-wrapper');
+            if(stickyImg) mainObserver.observe(stickyImg);
+
+            const actCards = document.querySelectorAll('.fade-up-card');
+            actCards.forEach(card => mainObserver.observe(card));
+
+            // Small delay to trigger hero title animation on load
+            setTimeout(() => {
+                const heroTitle = document.querySelector('.hero-title');
+                if(heroTitle) heroTitle.classList.add('in-view');
+            }, 100);
+
+        });
+    </script>
+
+    <!-- SERVICES (NO BLIND SPOTS) LOGIC -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            
+            const tabContainer = document.querySelector('.services-cards-container');
+            const tabButtons = document.querySelectorAll('.service-tab-btn');
+            const cards = document.querySelectorAll('.service-card');
+            const scrollbar = document.querySelector('.service-scrollbar-wrapper');
+            const thumb = document.querySelector('.service-scrollbar-thumb');
+
+            if (!tabContainer || !scrollbar || !thumb) return;
+
+            let isDragging = false;
+            let startX = 0;
+            let startScroll = 0;
+            
+            // Map tab buttons to their respective card colors for the active state
+            const tabColors = {
+                'tab1': '#3b5bdb', // Blue
+                'tab2': '#b197fc', // Purple
+                'tab3': '#9e2b5e', // Maroon
+                'tab4': '#00563c'  // Green
+            };
+
+            // 1. Click on Tab Buttons to scroll to specific card
+            tabButtons.forEach((btn, index) => {
+                btn.addEventListener('click', () => {
+                    // Update button active state
+                    tabButtons.forEach(b => {
+                        b.classList.remove('active');
+                        b.style.backgroundColor = 'transparent';
+                        b.style.color = '#0b1e18';
+                    });
+                    
+                    btn.classList.add('active');
+                    const targetId = btn.getAttribute('data-target');
+                    btn.style.backgroundColor = tabColors[targetId];
+                    btn.style.color = '#ffffff';
+
+                    // Scroll container to the card
+                    const targetCard = document.getElementById(targetId);
+                    if(targetCard) {
+                        targetCard.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'nearest',
+                            inline: 'center'
+                        });
+                    }
+                });
+            });
+
+            // 2. Update active card & tab based on scroll position
+            function updateActiveState() {
+                const containerCenter = tabContainer.getBoundingClientRect().left + tabContainer.clientWidth / 2;
+                
+                let closestCard = null;
+                let closestDistance = Infinity;
+                let activeIndex = 0;
+
+                cards.forEach((card, index) => {
+                    const rect = card.getBoundingClientRect();
+                    const cardCenter = rect.left + rect.width / 2;
+                    const distance = Math.abs(containerCenter - cardCenter);
+
+                    if (distance < closestDistance) {
+                        closestDistance = distance;
+                        closestCard = card;
+                        activeIndex = index;
+                    }
+                });
+
+                // Update cards opacity/scale
+                cards.forEach(card => card.classList.remove('is-active'));
+                if (closestCard) closestCard.classList.add('is-active');
+
+                // Sync tab buttons with scroll position (only if not currently animating from a click)
+                tabButtons.forEach(b => {
+                    b.classList.remove('active');
+                    b.style.backgroundColor = 'transparent';
+                    b.style.color = '#0b1e18';
+                });
+                
+                const currentBtn = tabButtons[activeIndex];
+                if(currentBtn) {
+                    currentBtn.classList.add('active');
+                    const targetId = currentBtn.getAttribute('data-target');
+                    currentBtn.style.backgroundColor = tabColors[targetId];
+                    currentBtn.style.color = '#ffffff';
+                }
+            }
+
+            // 3. Custom Scrollbar Logic
+            function updateScrollbar() {
+                const maxScroll = tabContainer.scrollWidth - tabContainer.clientWidth;
+                const maxThumbMove = scrollbar.clientWidth - thumb.offsetWidth;
+                
+                // Prevent division by zero
+                if (maxScroll <= 0) return; 
+
+                const progress = tabContainer.scrollLeft / maxScroll;
+                thumb.style.transform = `translateX(${progress * maxThumbMove}px)`;
+            }
+
+            tabContainer.addEventListener('scroll', () => {
+                updateActiveState();
+                updateScrollbar();
+            });
+
+            window.addEventListener('resize', () => {
+                updateActiveState();
+                updateScrollbar();
+            });
+
+            // 4. Drag Custom Scrollbar
+            thumb.addEventListener('pointerdown', (e) => {
+                isDragging = true;
+                startX = e.clientX;
+                startScroll = tabContainer.scrollLeft;
+                thumb.setPointerCapture(e.pointerId);
+                e.preventDefault();
+            });
+
+            thumb.addEventListener('pointermove', (e) => {
+                if (!isDragging) return;
+                const maxScroll = tabContainer.scrollWidth - tabContainer.clientWidth;
+                const maxThumbMove = scrollbar.clientWidth - thumb.offsetWidth;
+                
+                if (maxThumbMove <= 0) return;
+
+                const movement = e.clientX - startX;
+                tabContainer.scrollLeft = startScroll + (movement / maxThumbMove) * maxScroll;
+            });
+
+            function stopDragging() {
+                isDragging = false;
+            }
+
+            thumb.addEventListener('pointerup', stopDragging);
+            thumb.addEventListener('pointercancel', stopDragging);
+
+            // Click on scrollbar track
+            scrollbar.addEventListener('pointerdown', (e) => {
+                if (e.target === thumb) return;
+                
+                const rect = scrollbar.getBoundingClientRect();
+                const maxThumbMove = scrollbar.clientWidth - thumb.offsetWidth;
+                const maxScroll = tabContainer.scrollWidth - tabContainer.clientWidth;
+                
+                const clickPosition = e.clientX - rect.left;
+                const thumbPosition = Math.max(0, Math.min(maxThumbMove, clickPosition - thumb.offsetWidth / 2));
+                
+                tabContainer.scrollTo({
+                    left: (thumbPosition / maxThumbMove) * maxScroll,
+                    behavior: 'smooth'
+                });
+            });
+
+            // Initial setup
+            setTimeout(() => {
+                updateActiveState();
+                updateScrollbar();
+            }, 100);
+
+        });
+    </script>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.25 
+            };
+
+            const rentalObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                    } else {
+                        entry.target.classList.remove('in-view'); 
+                    }
+                });
+            }, observerOptions);
+
+            // Chat section ne observe karavava scroll-trigger aapyu che
+            const scrollCards = document.querySelectorAll('.scroll-trigger');
+            scrollCards.forEach(card => rentalObserver.observe(card));
+
+        });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const faqItems = document.querySelectorAll(".faq-item");
+            if (!faqItems.length) return;
+
+            faqItems.forEach(item => {
+                const questionBtn = item.querySelector(".faq-question");
+                const answerDiv = item.querySelector(".faq-answer");
+
+                if (item.classList.contains("active")) {
+                    answerDiv.style.maxHeight = answerDiv.scrollHeight + "px";
+                }
+
+                questionBtn.addEventListener("click", () => {
+                    const isOpen = item.classList.contains("active");
+
+                    faqItems.forEach(otherItem => {
+                        otherItem.classList.remove("active");
+                        otherItem.querySelector(".faq-answer").style.maxHeight = null;
+                    });
+
+                    if (!isOpen) {
+                        item.classList.add("active");
+                        answerDiv.style.maxHeight = answerDiv.scrollHeight + "px";
+                    }
+                });
+            });
+        });
+    </script>
+
+    <!-- Tour Section Scroll Animation Script -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const tourCard = document.querySelector(".tour-card");
+            const tourH = document.querySelector(".tour-animated-h");
+
+            if (tourCard) {
+                const tourObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            tourCard.classList.add("content-visible");
+                            if (tourH) tourH.classList.add("h-visible");
+                        } else {
+                            tourCard.classList.remove("content-visible");
+                            if (tourH) tourH.classList.remove("h-visible");
+                        }
+                    });
+                }, { threshold: 0.3 });
+
+                tourObserver.observe(tourCard);
+            }
+        });
+    </script>
+        
+</body>
+</html>

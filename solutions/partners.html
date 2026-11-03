@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Become a Partner | Highwages Solutions</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Parkinsans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Parkinsans", sans-serif;
+            background: #ffffff;
+            color: #0b1e18;
+            overflow-x: hidden;
+        }
+
+        /* HEADER PLACEHOLDER */
+        #header-placeholder {
+            width: 100%;
+            position: absolute; 
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            background: transparent; 
+        }
+
+        /* FOOTER PLACEHOLDER */
+        #footer-placeholder {
+            display: block;
+            width: 100%;
+        }
+
+        /* =========================================
+           GLOBAL ANIMATIONS (SPLIT TEXT & FADE UP)
+           ========================================= */
+        /* Split Text Header Animation */
+        .split-text .char {
+            display: inline-block;
+            transform: translateY(100%);
+            opacity: 0;
+            transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.6s ease;
+        }
+        
+        .split-text.in-view .char {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* Paragraphs & Small text fade up animation */
+        .fade-up-text {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .fade-up-text.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* =========================================
+           HERO SECTION (BECOME A PARTNER)
+           ========================================= */
+        .hero-partner {
+            width: 100%;
+            min-height: auto;
+            height: auto;
+            background-color: #062f5f;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            padding: 150px 20px 0;
+        }
+
+        .hero-content {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            height: auto;
+            flex-shrink: 0;
+            overflow: visible;
+        }
+
+        .hero-title {
+            color: #d4f2e7;
+            font-size: clamp(55px, 8.5vw, 120px);
+            font-weight: 900;
+            line-height: 1.05;
+            letter-spacing: -3px;
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 768px) {
+            .hero-partner { padding-top: 130px; }
+            .hero-title { letter-spacing: -1.5px; }
+        }
+
+        /* =========================================
+           REACH NEW CUSTOMERS SECTION
+           ========================================= */
+        .reach-section {
+            padding: 20px 4% 120px;
+            background-color: #062f5f;
+            position: relative;
+        }
+
+        .reach-container {
+            display: flex;
+            align-items: flex-start; 
+            max-width: 1400px;
+            margin: 0 auto;
+            gap: 50px;
+        }
+
+        .reach-card-left {
+            width: 45%;
+            background-color: #d4f2e7; 
+            color: #062f5f;
+            border-radius: 30px;
+            padding: 80px 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            flex-shrink: 0;
+            height: 610px;
+            margin-top: 100px;
+        }
+
+        .reach-card-left h2 {
+            font-family: "Parkinsans", sans-serif;
+            font-size: clamp(40px, 4.5vw, 65px);
+            font-weight: 900;
+            line-height: 1.05;
+            letter-spacing: -2px;
+            margin-bottom: 35px;
+        }
+
+        .reach-card-left p {
+            font-size: 30px;
+            font-weight: 600;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            color: #0c3829;
+        }
+
+        .reach-image-wrapper {
+            position: sticky;
+            top: 100px;
+            width: 58%;
+            height: 850px;
+            min-height: 850px;
+            border-radius: 30px;
+            overflow: visible;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0; /* Animation mate */
+            transform: scale(0.95);
+            transition: opacity 1s ease, transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .reach-image-wrapper.in-view {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .reach-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transform: scale(1.2);
+            display: block;
+            border-radius: 30px;
+        }
+
+        /* =========================================
+           BIGGEST FRENCH BICYCLE BRANDS SECTION
+           ========================================= */
+        .brands-section {
+            padding: 40px 4% 100px;
+            background-color: #ffffff; 
+            position: relative;
+        }
+
+        .brands-card {
+            background-color: #0a1f17; 
+            border-radius: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1350px;
+            margin: 0 auto;
+            padding: 70px 60px 70px 75px; 
+            position: relative;
+            overflow: visible; 
+            min-height: 450px;
+        }
+
+        .brands-content {
+            flex: 1;
+            max-width: 620px; 
+            z-index: 2;
+        }
+
+        .brands-content h2 {
+            font-family: "Parkinsans", sans-serif;
+            font-size: clamp(38px, 4.2vw, 54px); 
+            font-weight: 900;
+            line-height: 1.15;
+            letter-spacing: -2px;
+            color: #d1f34d; 
+            margin-bottom: 25px;
+            max-width: 680px;
+        }
+
+        .brands-content p {
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 1.6;
+            color: #ffffff;
+            max-width: 540px;
+        }
+
+        .brands-image-wrapper {
+            position: absolute;
+            right: -60px; 
+            top: 50%;
+            transform: translateY(-50%);
+            width: 580px; 
+            z-index: 5;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 1s ease 0.3s;
+        }
+
+        .brands-card.in-view .brands-image-wrapper {
+            opacity: 1;
+        }
+
+        .brands-image-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        @media (max-width: 992px) {
+            .brands-card {
+                flex-direction: column;
+                padding: 50px 30px;
+                text-align: center;
+                overflow: hidden;
+            }
+            .brands-image-wrapper {
+                position: relative;
+                top: auto;
+                right: auto;
+                transform: none;
+                width: 100%;
+                max-width: 450px;
+                margin-top: 30px;
+            }
+            .reach-container {
+                flex-direction: column; 
+            }
+            .reach-card-left {
+                width: 100%;
+                padding: 50px 30px;
+                margin-bottom: 30px;
+            }
+            .reach-image-wrapper {
+                position: relative;
+                top: 0;
+                width: 100%;
+                height: 450px;
+                min-height: auto;
+            }
+            .reach-image {
+                transform: scale(1);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-partner {
+                padding: 130px 20px 0;
+            }
+            .reach-section {
+                padding: 20px 4% 60px;
+            }
+        }
+
+        /* =========================================
+            PARTNER LOGOS SLIDER
+            ========================================= */
+        .market-partners {
+            margin-top: 80px;
+            padding: 80px 0 40px;
+            text-align: center;
+        }
+
+        .partner-subtitle {
+            font-size: 17px;
+            color: #59665c;
+            font-weight: 600;
+            margin-bottom: 40px;
+        }
+
+        .partner-logo-slider {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 10%, #000 90%, transparent 100%);
+        }
+
+        .partner-logo-track {
+            display: flex;
+            width: max-content;
+            animation: partnerMarquee 15s linear infinite; 
+        }
+
+        .partner-logo-group {
+            display: flex;
+            align-items: center;
+            gap: 70px;
+            padding-right: 70px;
+        }
+
+        .partner-logo-group img {
+            height: 55px; 
+            object-fit: contain;
+            filter: grayscale(100%) opacity(0.8);
+            transition: filter 0.3s ease;
+        }
+
+        .partner-logo-group img:hover {
+            filter: grayscale(0%) opacity(1);
+        }
+
+        @keyframes partnerMarquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); } 
+        }
+
+        /* =========================================
+           REAL BENEFITS FOR YOU SECTION
+           ========================================= */
+        .benefits-section {
+            padding: 100px 4% 120px;
+            background-color: #ffffff; /* White background */
+            text-align: center;
+        }
+
+        .benefits-title {
+            font-family: "Parkinsans", sans-serif;
+            font-size: clamp(45px, 6vw, 75px);
+            font-weight: 900;
+            line-height: 1.05;
+            letter-spacing: -2px;
+            color: #0c3829; /* Dark Green Title */
+            margin-bottom: 70px;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* 2 Columns */
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Basic Card Style (Non-clickable) */
+        .benefit-card {
+            border-radius: 20px;
+            padding: 80px 60px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            text-align: left;
+            min-height: 350px;
+        }
+
+        .benefit-card h3 {
+            font-family: "Parkinsans", sans-serif;
+            font-size: clamp(35px, 4vw, 55px);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -1.5px;
+            margin: 0;
+        }
+
+        /* Card Specific Colors based on screenshots */
+        
+        .card-dark-blue {
+            background-color: #062f5f; 
+            color: #ffffff;
+        }
+
+        .card-purple {
+            background-color: #4b1f9b; 
+            color: #f6d3b4; /* Peach/Light Orange text */
+        }
+
+        .card-maroon {
+            background-color: #a41c50; 
+            color: #ffffff;
+        }
+
+        .card-orange {
+            background-color: #df4e22; 
+            color: #fdf5c9; /* Light Yellow text */
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .benefits-grid {
+                grid-template-columns: 1fr; /* Stack on mobile */
+                gap: 20px;
+            }
+            .benefit-card {
+                padding: 50px 40px;
+                min-height: auto;
+            }
+        }
+
+        /* =========================================
+           HOW DOES IT WORK SECTION
+           ========================================= */
+        .how-it-works-section {
+            padding: 100px 4% 150px;
+            background-color: #ffffff; /* White background matching screenshot */
+            position: relative;
+        }
+
+        .how-container {
+            display: flex;
+            align-items: flex-start; 
+            max-width: 1400px;
+            margin: 0 auto;
+            gap: 40px;
+        }
+
+        /* Left Side: Sticky Title */
+        .how-sticky-left {
+            position: sticky;
+            top: 150px; /* Offset from top while scrolling */
+            width: 40%; 
+            padding-right: 20px;
+        }
+
+        .how-title {
+            font-family: "Parkinsans", sans-serif;
+            font-size: clamp(55px, 7vw, 70px); /* Big size matching screenshot */
+            font-weight: 900;
+            line-height: 1.05;
+            letter-spacing: -3px;
+            color: #0c3829; /* Dark Green Title */
+            margin: 0;
+        }
+
+        /* Right Side: Scrolling Cards Container */
+        .how-scrolling-right {
+            width: 60%;
+            display: flex;
+            flex-direction: column;
+            gap: 30px; /* Space between cards */
+        }
+
+        /* Individual Scroll Card */
+        .how-card {
+            border-radius: 24px;
+            padding: 70px 60px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            text-align: left;
+            position: relative;
+            overflow: hidden; /* For background shapes */
+        }
+
+        /* Shared Background Graphic for all cards (the loop shape) */
+        .how-card::before {
+            content: "";
+            position: absolute;
+            bottom: -80px;
+            right: -80px;
+            width: 500px;
+            height: 500px;
+            background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M 0,100 C 50,0 100,50 50,100" fill="none" stroke="rgba(0,0,0,0.1)" stroke-width="20" stroke-linecap="round"/></svg>');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.8;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .how-card h3 {
+            font-family: "Parkinsans", sans-serif;
+            font-size: clamp(35px, 4.5vw, 55px);
+            font-weight: 900;
+            line-height: 1.1;
+            letter-spacing: -1.5px;
+            margin: 0;
+            position: relative;
+            z-index: 1; /* Keep text above background graphic */
+        }
+
+        /* Specific Card Colors */
+        
+        /* Card 1: Light Yellow */
+        .card-light-yellow {
+            background-color: #fcf8e3; /* Light yellow background */
+            color: #5a3d16; /* Dark brown/gold text */
+        }
+
+        /* Card 2: Light Peach/Orange */
+        .card-light-peach {
+            background-color: #f7cebe; /* Peach background */
+            color: #b94220; /* Dark orange/red text */
+        }
+
+        /* Card 3: Light Blue */
+        .card-light-blue {
+            background-color: #9cd1f0; /* Light blue background */
+            color: #1a4971; /* Dark blue text */
+        }
+
+        /* Card 4: Light Cream */
+        .card-light-cream {
+            background-color: #f4ebd8; /* Light cream background */
+            color: #4a3411; /* Dark brown text */
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            .how-container {
+                flex-direction: column; 
+                gap: 50px;
+            }
+            .how-sticky-left {
+                position: relative;
+                top: 0;
+                width: 100%;
+                text-align: center;
+                padding-right: 0;
+            }
+            .how-scrolling-right {
+                width: 100%;
+            }
+            .how-card {
+                padding: 50px 40px;
+            }
+        }
+        
+        /* =========================================
+           VIDEO CHAT SECTION
+           ========================================= */
+        .video-chat-section {
+            padding: 50px 4% 100px;
+            background-color: #ffffff; 
+        }
+
+        .video-chat-container {
+            position: relative;
+            max-width: 1400px;
+            margin: 0 auto;
+            border-radius: 30px;
+            padding: 100px 5%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden; 
+            min-height: 550px;
+        }
+
+        /* Video Styling */
+        .chat-bg-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        /* Black overlay video ni upar */
+        .chat-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4); 
+            z-index: 2;
+        }
+
+        /* Content Styling */
+        .video-chat-content {
+            position: relative;
+            z-index: 3; 
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #d4f2e7; /* Light Mint Green text */
+        }
+
+        .video-chat-label {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 25px;
+        }
+
+        .video-chat-title {
+            font-family: "Parkinsans", sans-serif;
+            font-size: clamp(40px, 6vw, 85px); 
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -2px;
+            margin-bottom: 45px;
+        }
+
+        /* Animated Button */
+        .video-chat-btn {
+            position: relative;
+            overflow: hidden;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #d4f2e7; 
+            color: #062f5f; /* Dark Blue text */
+            padding: 22px 40px;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 800;
+            text-decoration: none;
+            border: 1px solid transparent;
+            transition: color 0.4s ease, border-color 0.4s ease;
+            z-index: 1;
+        }
+
+        .video-chat-btn::before {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(0);
+            width: 250%;
+            height: 250%;
+            border-radius: 50%;
+            background-color: #062f5f; 
+            transition: transform 0.5s ease-in-out;
+            z-index: -1;
+        }
+
+        .video-chat-btn:hover {
+            color: #d4f2e7;
+            border-color: rgba(212, 242, 231, 0.4);
+        }
+
+        .video-chat-btn:hover::before {
+            transform: translateX(-50%) translateY(-50%);
+        }
+
+        @media (max-width: 768px) {
+            .video-chat-container {
+                padding: 70px 6%;
+                min-height: 400px;
+            }
+            .video-chat-title {
+                margin-bottom: 35px;
+            }
+        }
+
+        /* =========================================
+        TOUR WRAPPED UP SECTION (FINAL FIX)
+        ========================================= */
+        .tour-section {
+            padding: 5% 4% 80px;
+            background-color: #fcf8e3; 
+            position: relative;
+            overflow: visible; 
+        }
+
+        .tour-card {
+            background-color: #fcf8e3; 
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 100px 7%;            
+            position: relative;
+            overflow: visible; 
+            min-height: 480px; 
+        }
+
+        .tour-content {
+            flex: 1;
+            max-width: 600px; 
+            color: #3b2314; 
+            z-index: 2;
+        }
+
+        .tour-content h2 {
+            font-family: "Parkinsans", sans-serif;
+            font-size: clamp(36px, 4.2vw, 52px); 
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -2px;
+            color: #3b2314; 
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 1100px) { .tour-content h2 { white-space: normal; } }
+
+        .tour-content p {
+            font-size: 17px;
+            font-weight: 500;
+            line-height: 1.5;
+            color: #3b2314;
+            margin-bottom: 30px;
+            max-width: 480px;
+        }
+
+        .tour-btn {
+            position: relative;
+            overflow: hidden; 
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 32px;
+            background-color: #3b2314; 
+            color: #ffffff;
+            font-size: 17px;
+            font-weight: 800;
+            border-radius: 12px;
+            border: 1px solid #3b2314; 
+            transition: color 0.4s ease, border-color 0.4s ease;
+            z-index: 1;
+            text-decoration: none;
+        }
+
+        .tour-btn::before {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(0);
+            width: 250%;
+            height: 250%;
+            border-radius: 50%;
+            background-color: #f4c2b3; 
+            transition: transform 0.5s ease-in-out;
+            z-index: -1;
+        }
+
+        .tour-btn:hover { color: #3b2314; border-color: #3b2314; }
+        .tour-btn:hover::before { transform: translateX(-50%) translateY(-50%); }
+
+        .tour-image {
+            position: absolute;
+            right: -10px;
+            top: -90px; 
+            width: 580px;
+            z-index: 3; 
+            pointer-events: none;
+        }
+
+        .tour-image img { display: block; width: 100%; height: auto; }
+
+        .tour-animated-h {
+            position: absolute;
+            bottom: -110px; 
+            left: 42%; 
+            width: 180px; 
+            height: 180px;
+            z-index: 2;
+            opacity: 0.95;
+            transform: rotate(-45deg); 
+            transition: bottom 1.2s cubic-bezier(0.22, 1, 0.36, 1), transform 1.2s cubic-bezier(0.22, 1, 0.36, 1); 
+        }
+
+        .tour-animated-h.h-visible { bottom: -40px; transform: rotate(15deg); }
+
+        .tour-content h2,
+        .tour-content p,
+        .tour-content .tour-btn {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .tour-card.content-visible .tour-content h2 { animation: tourSlideUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards; }
+        .tour-card.content-visible .tour-content p { animation: tourSlideUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.25s forwards; }
+        .tour-card.content-visible .tour-content .tour-btn { animation: tourSlideUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.4s forwards; }
+
+        @keyframes tourSlideUp { to { opacity: 1; transform: translateY(0); } }
+
+        @media (max-width: 950px) {
+            .tour-card { flex-direction: column; padding: 40px 5%; text-align: center; overflow: hidden; }
+            .tour-image { position: relative; right: auto; top: auto; width: 100%; max-width: 400px; margin-top: 20px; }
+            .tour-content { max-width: 100%; }
+            .tour-animated-h { left: 20%; width: 130px; height: 130px; }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER PLACEHOLDER -->
+    <div id="header-placeholder"></div>
+
+    <!-- HERO SECTION -->
+    <main class="hero-partner">
+        <div class="hero-content">
+            <h1 class="hero-title split-text">Become a<br>BeeToGreen<br>partner</h1>
+        </div>
+    </main>
+
+    <!-- REACH NEW CUSTOMERS SECTION -->
+    <section class="reach-section">
+        <div class="reach-container">
+            
+            <!-- Left Info Card -->
+            <div class="reach-card-left">
+                <h2 class="split-text">Reach new <br>customers</h2>
+                <p class="fade-up-text" style="transition-delay: 0.1s;">Workplace cycling is booming. Your future customers are already out there.</p>
+                <p class="fade-up-text" style="transition-delay: 0.2s;">With BeeToGreen, you reach them easily. You keep your role: advise, sell, build loyalty.</p>
+            </div>
+
+            <!-- Right Sticky Image -->
+            <div class="reach-image-wrapper">
+                <img src="/images/green-ice-bike.webp" alt="Cyclist smiling" class="reach-image">
+            </div>
+
+        </div>
+    </section>
+
+    <!-- =========================================
+         BIGGEST FRENCH BICYCLE BRANDS SECTION
+         ========================================= -->
+    <section class="brands-section">
+        <div class="brands-card">
+            
+            <!-- Left Side Content -->
+            <div class="brands-content">
+                <h2 class="split-text">We work with the<br>biggest<br>French bicycle brands.</h2>
+                <p class="fade-up-text" style="transition-delay: 0.2s;">Our marketplace is 100% online. But your bike, on the other hand, is out there in the real world. That's why we rely on a network of partner shops all over France.</p>
+            </div>
+
+            <!-- Right Side Image (PATH UPDATED) -->
+            <div class="brands-image-wrapper">
+                <img src="/images/BTG-Yellow.webp" alt="Partner bicycling with yellow loop graphic">
+            </div>
+
+        </div>
+
+        <div class="market-partners">
+                <div class="partner-logo-slider">
+                    <div class="partner-logo-track">
+                        <!-- Group 1 -->
+                        <div class="partner-logo-group">
+                            <img src="/images/logos/ellipse.webp" alt="Ellipse">
+                            <img src="/images/logos/gaya.webp" alt="Gaya">
+                            <img src="/images/logos/elwing.webp" alt="Elwing">
+                            <img src="/images/logos/jeanfourche.webp" alt="Jean Fourche">
+                            <img src="/images/logos/voltaire.webp" alt="Voltaire">
+                            <img src="/images/logos/bastille.webp" alt="Bastille">
+                        </div>
+                        <!-- Group 2 (For infinite loop) -->
+                        <div class="partner-logo-group" aria-hidden="true">
+                            <img src="/images/logos/ellipse.webp" alt="Ellipse">
+                            <img src="/images/logos/gaya.webp" alt="Gaya">
+                            <img src="/images/logos/elwing.webp" alt="Elwing">
+                            <img src="/images/logos/jeanfourche.webp" alt="Jean Fourche">
+                            <img src="/images/logos/voltaire.webp" alt="Voltaire">
+                            <img src="/images/logos/bastille.webp" alt="Bastille">
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <!-- =========================================
+         REAL BENEFITS FOR YOU SECTION
+         ========================================= -->
+    <section class="benefits-section">
+        
+        <!-- Animated Title -->
+        <h2 class="benefits-title split-text">Real benefits for you</h2>
+
+        <div class="benefits-grid">
+            
+            <!-- Card 1: Dark Blue -->
+            <div class="benefit-card card-dark-blue">
+                <h3 class="split-text">Qualified and<br>supported customers</h3>
+            </div>
+
+            <!-- Card 2: Purple -->
+            <div class="benefit-card card-purple">
+                <h3 class="split-text">Zero paperwork and<br>we love that!</h3>
+            </div>
+
+            <!-- Card 3: Maroon -->
+            <div class="benefit-card card-maroon">
+                <h3 class="split-text">Additional revenue<br>streams<br>(Maintenance, click,<br>collect and Rental)</h3>
+            </div>
+
+            <!-- Card 4: Orange -->
+            <div class="benefit-card card-orange">
+                <h3 class="split-text">Become eligible for<br>mobility cards (FMD)</h3>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- =========================================
+         HOW DOES IT WORK SECTION (STICKY LEFT, SCROLLING RIGHT)
+         ========================================= -->
+    <section class="how-it-works-section">
+        <div class="how-container">
+            
+            <!-- Left Side: Sticky Title -->
+            <div class="how-sticky-left">
+                <h2 class="how-title split-text">How does it<br>work?</h2>
+            </div>
+
+            <!-- Right Side: Scrolling Cards -->
+            <div class="how-scrolling-right">
+                
+                <!-- Card 1: Light Yellow -->
+                <div class="how-card card-light-yellow">
+                    <h3 class="split-text">Sign a partnership<br>agreement</h3>
+                </div>
+
+                <!-- Card 2: Light Orange/Peach -->
+                <div class="how-card card-light-peach">
+                    <h3 class="split-text">Access a supplier portal.<br>Simple process for<br>in-store sales.</h3>
+                </div>
+
+                <!-- Card 3: Light Blue -->
+                <div class="how-card card-light-blue">
+                    <h3 class="split-text">Payment processing via<br>BeeToGreen to allow<br>employees to use their<br>employer mobility<br>budget.</h3>
+                </div>
+
+                <!-- Card 4: Light Cream -->
+                <div class="how-card card-light-cream">
+                    <h3 class="split-text">Automatic invoicing and<br>payment of the sale<br>amount minus<br>commission.</h3>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================
+         VIDEO CHAT SECTION
+         ========================================= -->
+    <section class="video-chat-section">
+        <div class="video-chat-container">
+            
+            <!-- Background Video -->
+            <video class="chat-bg-video" autoplay loop muted playsinline>
+                <!-- AHIYA TAMARA VIDEO NO SACHO PATH MUKJO -->
+                <source src="/images/hero-bg.mp4" type="video/mp4">
+            </video>
+
+            <!-- Dark Overlay text clear vachva mate -->
+            <div class="chat-overlay"></div>
+
+            <!-- Main Content (Fade Up Animation sathe) -->
+            <div class="video-chat-content fade-up-text">
+                <span class="video-chat-label">Shall we chat?</span>
+                <h2 class="video-chat-title">Let's have a chat and<br>you'll see, it's pretty cool!</h2>
+                <a href="/contact.html" class="video-chat-btn">Get in touch</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- TOUR WRAPPED UP SECTION -->
+    <section class="tour-section" id="tour">
+        <div class="tour-card">
+            <div class="tour-content">
+                <h2>Well that's about it</h2>
+                <p>
+                    Our marketplace is 100% online. But your bike, it rides in the real world. That's why we work with a network of partner shops across France.
+                </p>
+                <a href="/contact.html" class="tour-btn">Get in touch</a>
+            </div>
+            <div class="tour-image">
+                <img src="/images/BTG-Yellow.webp" alt="Cyclist smiling">
+            </div>
+            <div class="tour-animated-h">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="50" fill="#3b2314" />
+                    <path d="M30,25 L30,75 M30,50 L70,50 M70,25 L70,75" 
+                        fill="none" stroke="#e6ff42" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER PLACEHOLDER -->
+    <div id="footer-placeholder"></div>
+
+    <!-- MAIN JAVASCRIPT LOGIC -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            
+            // 1. Fetch Header
+            fetch('../components/header.html')
+                .then(response => {
+                    if (!response.ok) throw new Error('Header load nathi thayu!');
+                    return response.text();
+                })
+                .then(data => {
+                    document.getElementById('header-placeholder').innerHTML = data;
+                })
+                .catch(error => console.error("Header Error:", error));
+            
+            // 2. Fetch Footer
+            fetch('../components/footer.html')
+                .then(response => {
+                    if (!response.ok) throw new Error('Footer load nathi thayu!');
+                    return response.text();
+                })
+                .then(data => {
+                    document.getElementById('footer-placeholder').innerHTML = data;
+                    
+                    setTimeout(() => {
+                        const yearSpan = document.getElementById('year');
+                        if(yearSpan) {
+                            yearSpan.textContent = new Date().getFullYear();
+                        }
+                    }, 500);
+                })
+                .catch(error => console.error("Footer Error:", error));
+
+        });
+    </script>
+
+    <!-- ANIMATIONS LOGIC -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            
+            // 1. Split Text Preparation
+            const splitTexts = document.querySelectorAll('.split-text');
+            
+            if (splitTexts.length > 0) {
+                splitTexts.forEach(titleSplit => {
+                    const words = titleSplit.innerHTML.split(/<br>|\s+/); 
+                    titleSplit.innerHTML = '';
+                    
+                    words.forEach((word, wordIndex) => {
+                        if (word === "") {
+                            titleSplit.appendChild(document.createElement('br'));
+                            return;
+                        }
+                        
+                        const wordSpan = document.createElement('span');
+                        wordSpan.style.display = 'inline-block';
+                        wordSpan.style.overflow = 'hidden';
+                        wordSpan.style.verticalAlign = 'top'; 
+                        
+                        const chars = word.split('');
+                        chars.forEach((char, charIndex) => {
+                            const charSpan = document.createElement('span');
+                            charSpan.classList.add('char');
+                            charSpan.innerText = char;
+                            charSpan.style.transitionDelay = `${(wordIndex * 0.08) + (charIndex * 0.02)}s`; 
+                            wordSpan.appendChild(charSpan);
+                        });
+
+                        titleSplit.appendChild(wordSpan);
+                        titleSplit.appendChild(document.createTextNode('\u00A0')); 
+                    });
+                });
+            }
+
+            // 2. Intersection Observer Setup
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15 
+            };
+
+            const mainObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe Titles
+            const animatedTitles = document.querySelectorAll('.split-text');
+            animatedTitles.forEach(title => mainObserver.observe(title));
+
+            // Observe Paragraphs (fade up text)
+            const fadeUpTexts = document.querySelectorAll('.fade-up-text');
+            fadeUpTexts.forEach(text => mainObserver.observe(text));
+
+            // Observe Images & Cards
+            const animatedElements = document.querySelectorAll('.reach-image-wrapper, .brands-card');
+            animatedElements.forEach(el => mainObserver.observe(el));
+
+            // Hero section instantly triggers on load
+            setTimeout(() => {
+                const heroTitle = document.querySelector('.hero-title');
+                if(heroTitle) heroTitle.classList.add('in-view');
+            }, 100);
+
+        });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const tourCard = document.querySelector(".tour-card");
+            const tourH = document.querySelector(".tour-animated-h");
+
+            if (tourCard) {
+                const tourObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            tourCard.classList.add("content-visible");
+                            if (tourH) tourH.classList.add("h-visible");
+                        } else {
+                            tourCard.classList.remove("content-visible");
+                            if (tourH) tourH.classList.remove("h-visible");
+                        }
+                    });
+                }, { threshold: 0.3 });
+
+                tourObserver.observe(tourCard);
+            }
+        });
+    </script>
+        
+</body>
+</html>

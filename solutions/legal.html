@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal Notice | Highwages</title>
+    
+    <!-- Google Font: Parkinsans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Parkinsans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* =========================================
+           GLOBAL STYLES
+           ========================================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Parkinsans", sans-serif;
+            background-color: #ffffff;
+            color: #333333;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* HEADER PLACEHOLDER */
+        #header-placeholder {
+            width: 100%;
+            position: absolute; 
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            background: transparent; 
+        }
+
+        /* =========================================
+           GLOBAL ANIMATIONS (SPLIT TEXT)
+           ========================================= */
+        .split-text .char {
+            display: inline-block;
+            transform: translateY(100%);
+            opacity: 0;
+            transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.6s ease;
+        }
+        
+        .split-text.in-view .char {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* =========================================
+           LEGAL HEADER SECTION
+           ========================================= */
+        .legal-header {
+            padding: 160px 20px 80px; 
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .legal-title {
+            font-size: clamp(45px, 6vw, 75px);
+            font-weight: 800;
+            color: #0c3829; /* Dark Green */
+            letter-spacing: -2px;
+            margin-bottom: 20px;
+        }
+
+        .legal-updated {
+            font-size: 16px;
+            color: #888888;
+            margin-bottom: 30px;
+        }
+
+        .legal-intro-text {
+            font-size: 18px;
+            color: #333333;
+            margin-bottom: 20px;
+        }
+
+        .legal-intro-text p {
+            margin-bottom: 15px;
+        }
+
+        /* =========================================
+           MAIN LEGAL CONTENT (SIDEBAR + CONTENT)
+           ========================================= */
+        .legal-main-container {
+            max-width: 1200px;
+            margin: 0 auto 100px;
+            padding: 0 4%;
+            display: flex;
+            align-items: flex-start;
+            gap: 60px;
+        }
+
+        /* ---------------------------------
+           LEFT SIDEBAR (STICKY INDEX)
+           --------------------------------- */
+        .legal-sidebar {
+            width: 250px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 120px; 
+        }
+
+        .sidebar-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #888888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        .sidebar-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .sidebar-link {
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            color: #888888;
+            padding-left: 15px;
+            border-left: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar-link:hover {
+            color: #0c3829;
+        }
+
+        /* ACTIVE STATE FOR SIDEBAR LINK */
+        .sidebar-link.active {
+            color: #0c3829; 
+            font-weight: 700;
+            border-left: 3px solid #0c3829; 
+        }
+
+        /* ---------------------------------
+           RIGHT CONTENT AREA
+           --------------------------------- */
+        .legal-content-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+        }
+
+        .content-section h2 {
+            font-size: 32px;
+            font-weight: 800;
+            color: #0c3829; 
+            margin-bottom: 25px;
+            letter-spacing: -1px;
+        }
+
+        .content-section p {
+            font-size: 17px;
+            color: #444444;
+            margin-bottom: 20px;
+        }
+
+        .content-section strong {
+            font-weight: 700;
+            color: #222222;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            .legal-main-container {
+                flex-direction: column;
+                gap: 40px;
+            }
+            .legal-sidebar {
+                width: 100%;
+                position: relative;
+                top: 0;
+            }
+            .sidebar-nav {
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+            .sidebar-link {
+                border-left: none;
+                border-bottom: 3px solid transparent;
+                padding-left: 0;
+                padding-bottom: 5px;
+            }
+            .sidebar-link.active {
+                border-left: none;
+                border-bottom: 3px solid #0c3829;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER PLACEHOLDER -->
+    <div id="header-placeholder"></div>
+
+    <!-- LEGAL HEADER TEXT -->
+    <header class="legal-header">
+        <h1 class="legal-title split-text">Legal notice</h1>
+        <p class="legal-updated">Last updated: May 2026</p>
+        <div class="legal-intro-text">
+            <p>Highwages Solutions — Sustainable mobility marketplace</p>
+            <p>By using the website, you accept without reservation these legal notices and terms of use.<br>
+               We invite you to read them carefully and to consult them regularly, as they may be modified at any time and without prior notice.</p>
+        </div>
+    </header>
+
+    <!-- MAIN LEGAL CONTAINER -->
+    <main class="legal-main-container">
+        
+        <!-- LEFT SIDEBAR INDEX -->
+        <aside class="legal-sidebar">
+            <h3 class="sidebar-title">CONTENTS</h3>
+            <nav class="sidebar-nav">
+                <a href="#site-publisher" class="sidebar-link active">Site publisher</a>
+                <a href="#hosting" class="sidebar-link">Hosting</a>
+                <a href="#development" class="sidebar-link">Development</a>
+                <a href="#terms-of-use" class="sidebar-link">Terms of use</a>
+                <a href="#services-provided" class="sidebar-link">Services provided</a>
+                <a href="#contractual" class="sidebar-link">Contractual limitations</a>
+                <a href="#intellectual" class="sidebar-link">Intellectual property</a>
+                <a href="#personal-data" class="sidebar-link">Personal data and cookies</a>
+                <a href="#disputes" class="sidebar-link">Disputes and applicable law</a>
+            </nav>
+        </aside>
+
+        <!-- RIGHT CONTENT -->
+        <div class="legal-content-area">
+            
+            <section id="site-publisher" class="content-section">
+                <h2 class="split-text">Site publisher</h2>
+                <p>Company name: Highwages Solutions</p>
+                <p>Legal form: Simplified joint-stock company</p>
+                <p>Share capital: 38,976.79 €</p>
+                <p>Registered office: 47 rue Voltaire, 92300 Levallois-Perret, France</p>
+                <p>Trade register (RCS): 882 703 531 R.C.S. Paris</p>
+                <p>SIRET: 882 703 531 00013</p>
+                <p>Contact email: contact@highwages.com</p>
+            </section>
+
+            <section id="hosting" class="content-section">
+                <h2 class="split-text">Hosting</h2>
+                <p>Host: OVH SAS</p>
+                <p>Address: 2 rue Kellermann, 59100 Roubaix, France</p>
+                <p>Phone: +33 9 72 10 10 07</p>
+                <p>Website: www.ovh.com</p>
+            </section>
+
+            <section id="development" class="content-section">
+                <h2 class="split-text">Development</h2>
+                <p>The Highwages website is designed and developed by the internal technical teams of Highwages Solutions.</p>
+            </section>
+
+            <section id="terms-of-use" class="content-section">
+                <h2 class="split-text">Terms of use</h2>
+                <p><strong>Acceptance of the terms</strong><br>
+                Use of the website implies full and unconditional acceptance of these legal notices, as well as of the General Terms of Use applicable to the services offered on the marketplace. These terms may be modified at any time; users are invited to consult them regularly.</p>
+                
+                <p><strong>Configuration and accessibility</strong><br>
+                For optimal use of the site, we recommend using the latest versions of standard web browsers. We endeavor to keep the site accessible 24 hours a day, 7 days a week, except in the event of scheduled maintenance operations or force majeure.</p>
+                
+                <p><strong>Hyperlinks</strong><br>
+                The website may contain hyperlinks to third-party websites. Highwages has no control over the content of these sites and disclaims any liability with regard to their content, availability, or the practices of their publishers.</p>
+                
+                <p><strong>User behavior</strong><br>
+                The user undertakes to use the site in accordance with its purpose, not to harm its integrity or that of its users, and to comply with applicable laws and regulations.</p>
+            </section>
+
+            <section id="services-provided" class="content-section">
+                <h2 class="split-text">Services provided</h2>
+                <p>Highwages operates a marketplace dedicated to sustainable mobility, offering:</p>
+                <p>
+                    • A catalog of mobility products (bicycles, scooters, accessories) from partner suppliers.<br>
+                    • Long-term rental (LTR) solutions with integrated insurance.<br>
+                    • Management of sustainable mobility programs for partner companies (allowances, mobility budget reporting).<br>
+                    • Access to information content related to responsible mobility.
+                </p>
+                <p>The information published on the site is provided for information purposes only and is not exhaustive. It is subject to change at any time. Highwages reserves the right to modify, suspend, or terminate access to all or part of the site without prior notice.</p>
+                <p>The essential characteristics, prices, terms of sale and delivery of products and services are specified on the product sheets and in the applicable General Terms of Sale.</p>
+            </section>
+
+            <section id="contractual" class="content-section">
+                <h2 class="split-text">Contractual limitations on data</h2>
+                <p>BeeToGreen endeavours to the best of its ability to ensure the accuracy and updating of information published on its site, the content of which it reserves the right to correct at any time and without prior notice. However, BeeToGreen cannot guarantee the accuracy, precision or completeness of the information made available.</p>
+                <p>As a result, BeeToGreen disclaims all liability:</p>
+                <p>
+                    • For any imprecision, inaccuracy or omission relating to information available on the site; <br>
+                    • For any damage resulting from fraudulent intrusion by a third party leading to a modification of the information made available;<br>
+                    • More generally, for any damage, direct or indirect, whatever its causes, origins, nature or consequences, resulting from access to the site or from the impossibility of accessing it;<br>
+                    • For use of the site and/or any credit given to any information coming directly or indirectly from the site.
+                </p>
+                <p>The user acknowledges using the information and tools made available under their sole responsibility. Any downloading of content from the site is done at the user's own risk, who alone is responsible for any damage suffered by their computer equipment or any loss of data resulting from this download.</p>
+            </section>
+
+            <section id="intellectual" class="content-section">
+                <h2 class="split-text">Intellectual property</h2>
+                <p>All content on the site (texts, images, photographs, illustrations, logos, trademarks, videos, sounds, source code, databases, layouts) is the exclusive property of BeeToGreen or its partners, and is protected by French and international intellectual property law.</p>
+                <p>Any reproduction, representation, modification, publication, adaptation or exploitation, in whole or in part, of any of these elements, by any process whatsoever and on any medium whatsoever, without the prior written authorization of BeeToGreen, is prohibited and would constitute an infringement punishable under Articles L.335-2 et seq. and L.122-4 of the French Intellectual Property Code.</p>
+                <p>The trademarks and logos appearing on the site are registered trademarks. Any total or partial reproduction of these trademarks or logos, made from elements of the site, without the express authorization of BeeToGreen or their respective owners, is prohibited within the meaning of Articles L.713-2 et seq. of the French Intellectual Property Code.</p>
+            </section>
+
+            <section id="personal-data" class="content-section">
+                <h2 class="split-text">Personal data and cookies</h2>
+                <p>The beetogreen.com website may automatically collect standard information (IP address, browser type, pages viewed, visit duration, source of arrival) for the purposes of statistics, service improvement and audience measurement. This information is processed in accordance with our privacy policy.</p>
+                <p>The site may ask you to accept cookies and trackers for purposes of statistics, audience measurement, marketing attribution and operation of the marketplace. You can accept, refuse or personalize your choice at any time via the cookie banner (link "Manage my cookies" at the foot of each page).</p>
+                <p><b>Your rights</b></p>
+                <p>In accordance with the GDPR and the French Data Protection Act (Law No. 78-17 as amended), you have the following rights:</p>
+                <p>
+                    • Right of access, rectification, erasure; <br>
+                    • Right to data portability; <br>
+                    • Right to object to and restrict processing; <br>
+                    • Right to withdraw consent at any time; <br>
+                    • Right to define post-mortem directives (Art. 40-1 of the French Data Protection Act).
+                </p>
+                <p>These rights can be exercised by email at privacy@beetogreen.com, with our Data Protection Officer at dpo@beetogreen.com, or by post to the address of the registered office. You may also lodge a complaint with the CNIL (the French data protection authority).</p>
+                <p>The detail of the processing operations (purposes, legal bases, retention periods, cookies, subcontractors, transfers outside the EU) is described in our Privacy Policy, accessible from each page of the site.</p>
+            </section>
+
+            <section id="disputes" class="content-section">
+                <h2 class="split-text">Disputes and applicable law</h2>
+                <p>These legal notices are governed by French law. Any dispute relating to their interpretation or execution falls within the exclusive jurisdiction of the French courts.</p>
+                <p>Failing amicable resolution and subject to legal provisions protecting consumers, the courts of Paris shall have sole jurisdiction to hear any dispute relating to this site or its use.</p>
+                <p>For any question relating to these legal notices, you can contact us by email at contact@beetogreen.com or by post to the address of the registered office.</p>
+            </section>
+
+        </div>
+
+    </main>
+
+    <!-- JAVASCRIPT FOR HEADER INJECTION -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Fetch Header
+            fetch('../components/header.html')
+                .then(response => {
+                    if (!response.ok) throw new Error('Header load nathi thayu!');
+                    return response.text();
+                })
+                .then(data => {
+                    document.getElementById('header-placeholder').innerHTML = data;
+                })
+                .catch(error => console.error("Header Error:", error));
+        });
+    </script>
+
+    <!-- JAVASCRIPT FOR SCROLL SPY (HIGHLIGHTING LEFT INDEX) -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const sections = document.querySelectorAll(".content-section");
+            const navLinks = document.querySelectorAll(".sidebar-link");
+
+            // Function to update active link
+            function updateActiveLink() {
+                let currentSection = "";
+
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    // Adjust 150px offset to trigger slightly before the section hits the top
+                    if (window.scrollY >= sectionTop - 150) {
+                        currentSection = section.getAttribute("id");
+                    }
+                });
+
+                // Set active class on corresponding link
+                navLinks.forEach(link => {
+                    link.classList.remove("active");
+                    if (link.getAttribute("href").includes(currentSection)) {
+                        link.classList.add("active");
+                    }
+                });
+            }
+
+            // Run on scroll
+            window.addEventListener("scroll", updateActiveLink);
+            
+            // Run once on load to highlight correct section
+            updateActiveLink();
+
+            // Smooth scrolling when clicking a link
+            navLinks.forEach(link => {
+                link.addEventListener("click", function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute("href").substring(1);
+                    const targetSection = document.getElementById(targetId);
+                    
+                    if(targetSection) {
+                        window.scrollTo({
+                            top: targetSection.offsetTop - 100, // Offset for sticky header/spacing
+                            behavior: "smooth"
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+
+    <!-- JAVASCRIPT FOR SPLIT TEXT ANIMATION -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            
+            // 1. Split Text Preparation
+            const splitTexts = document.querySelectorAll('.split-text');
+            
+            if (splitTexts.length > 0) {
+                splitTexts.forEach(titleSplit => {
+                    const words = titleSplit.innerHTML.split(/<br>|\s+/); 
+                    titleSplit.innerHTML = '';
+                    
+                    words.forEach((word, wordIndex) => {
+                        if (word === "") {
+                            titleSplit.appendChild(document.createElement('br'));
+                            return;
+                        }
+                        
+                        const wordSpan = document.createElement('span');
+                        wordSpan.style.display = 'inline-block';
+                        wordSpan.style.overflow = 'hidden';
+                        wordSpan.style.verticalAlign = 'top'; 
+                        
+                        const chars = word.split('');
+                        chars.forEach((char, charIndex) => {
+                            const charSpan = document.createElement('span');
+                            charSpan.classList.add('char');
+                            charSpan.innerText = char;
+                            charSpan.style.transitionDelay = `${(wordIndex * 0.08) + (charIndex * 0.02)}s`; 
+                            wordSpan.appendChild(charSpan);
+                        });
+
+                        titleSplit.appendChild(wordSpan);
+                        titleSplit.appendChild(document.createTextNode('\u00A0')); 
+                    });
+                });
+            }
+
+            // 2. Intersection Observer Setup
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15 
+            };
+
+            const mainObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all .split-text elements
+            const animatedTitles = document.querySelectorAll('.split-text');
+            animatedTitles.forEach(title => mainObserver.observe(title));
+
+            // Hero section ni main title ne instantly load karavva mate
+            setTimeout(() => {
+                const heroTitle = document.querySelector('.legal-title');
+                if(heroTitle) heroTitle.classList.add('in-view');
+            }, 100);
+
+        });
+    </script>
+
+</body>
+</html>
