@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Header Fix</title>
+<title>Header</title>
 
 <!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,34 +13,23 @@
 
 <style>
 /* ==============================
-   GLOBAL
-============================== */
-/* body {
-    margin: 0;
-    padding: 0;
-    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-    background-color: #0a1b15;
-    height: 100vh;
-} */
-
-/* ==============================
-   HEADER
+   HEADER (SIZE INCREASED)
 ============================== */
 .header {
     background: #fff;
-    padding: 0 25px;
-    border-radius: 12px;
+    padding: 0 35px;
+    border-radius: 15px;
     
     position: fixed;
-    top: 20px;
+    top: 25px;
     left: 50%;
     transform: translateX(-50%);
     width: calc(100% - 40px);
-    max-width: 1400px;
+    max-width: 1500px;
     
     z-index: 1000;
     box-sizing: border-box;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
 }
 
 .header-container {
@@ -48,7 +37,7 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    height: 70px;
+    height: 90px;
 }
 
 /* ==============================
@@ -56,7 +45,7 @@
 ============================== */
 .logo {
     font-family: 'Outfit', sans-serif;
-    font-size: 24px; /* Slightly larger for the logo */
+    font-size: 30px; 
     font-weight: 700;
     color: #000;
     text-decoration: none;
@@ -76,7 +65,7 @@
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 32px;
+    gap: 40px; 
     margin: 0;
     padding: 0;
     align-items: center;
@@ -84,7 +73,7 @@
 }
 
 .nav-links > li {
-    position: static;
+    position: static; 
     height: 100%;
 }
 
@@ -92,8 +81,8 @@
     text-decoration: none;
     color: #111;
     font-weight: 500;
-    font-size: 17px; /* Increased text size */
-    height: 70px;
+    font-size: 19px; 
+    height: 90px; 
     display: flex;
     align-items: center;
     gap: 6px;
@@ -105,35 +94,30 @@
 }
 
 /* ==============================
-   MEGA MENU
+   MEGA MENU (DROPDOWN)
 ============================== */
 .mega-menu {
     display: none;
     position: absolute;
     top: 100%;
-    left: 0;
-    width: 100%;
+    left: 0; 
+    width: 100%; 
     background: #fff;
-    border-radius: 0 0 16px 16px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-    padding: 40px;
-    gap: 40px;
+    border-radius: 0 0 16px 16px; 
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    
+    padding: 60px 40px; 
+    
     border-top: 1px solid #f0f0f0;
     box-sizing: border-box;
     z-index: 1001;
+    
+    grid-template-columns: repeat(3, 1fr);
+    gap: 60px; 
 }
 
 .dropdown-container:hover .mega-menu {
     display: grid;
-}
-
-.solutions-menu {
-    grid-template-columns: repeat(3, 1fr);
-}
-
-.simple-menu {
-    grid-template-columns: repeat(2, 1fr);
-    min-height: auto;
 }
 
 /* ==============================
@@ -146,11 +130,7 @@
 
 .col-between {
     justify-content: space-between;
-    min-height: 280px;
-}
-
-.simple-menu .col-between {
-    min-height: auto;
+    min-height: 350px; 
 }
 
 /* ==============================
@@ -159,16 +139,16 @@
 .badge {
     display: inline-block;
     border: 1px solid #e5e5e5;
-    padding: 6px 14px;
+    padding: 8px 18px; 
     border-radius: 20px;
-    font-size: 15px;
-    color: #666;
-    margin-bottom: 25px;
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 40px; 
     font-family: 'DM Sans', sans-serif;
 }
 
 /* ==============================
-   MENU LINKS
+   MENU LINKS (UPDATED WITH UNDERLINE)
 ============================== */
 .mega-list {
     list-style: none;
@@ -177,58 +157,88 @@
 }
 
 .mega-list li {
-    margin-bottom: 18px;
+    margin-bottom: 25px; 
 }
 
 .mega-list a {
     text-decoration: none;
     font-family: 'Outfit', sans-serif;
-    font-size: 35px; /* Adjusted to fit the new font */
+    font-size: 32px; 
     font-weight: 600;
     color: #111;
     transition: color 0.2s;
+    
+    /* Position relative to contain the animated underline */
+    position: relative;
+    display: inline-block;
+}
+
+/* Black Underline Animation */
+.mega-list a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px; /* Thodu text thi niche */
+    width: 0; /* Initial width 0 */
+    height: 3px; /* Thickness of the underline */
+    background-color: #111; /* Black line */
+    transition: width 0.3s ease;
 }
 
 .mega-list a:hover {
-    color: #666;
+    color: #000;
+}
+
+/* Expand line on hover */
+.mega-list a:hover::after {
+    width: 100%; 
 }
 
 /* ==============================
-   SOCIAL & LEGAL LINKS
+   SOCIAL ICONS
 ============================== */
 .socials {
     display: flex;
-    gap: 12px;
+    align-items: center;
+    gap: 25px; 
 }
 
 .socials a {
-    width: 40px;
-    height: 40px;
-    border: 1px solid #e5e5e5;
-    border-radius: 8px;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
+    background: transparent;
+    border: none;
     text-decoration: none;
-    color: #111;
-    font-weight: bold;
-    font-size: 12px;
 }
 
-.socials a:hover {
-    background: #f9f9f9;
+.socials a i,
+.socials a svg {
+    font-size: 22px;
+    color: #071b14; 
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
+.socials a:hover i,
+.socials a:hover svg {
+    color: #748b25; 
+    transform: translateY(-3px);
+}
+
+/* ==============================
+   LEGAL LINKS
+============================== */
 .legal-links {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 15px; 
 }
 
 .legal-links a {
     text-decoration: none;
     color: #888;
-    font-size: 14px;
+    font-size: 15px;
+    transition: color 0.2s;
 }
 
 .legal-links a:hover {
@@ -241,10 +251,10 @@
 .mega-img {
     width: 100%;
     height: 100%;
-    min-height: 280px;
+    min-height: 350px; 
     background-color: #f0f0f0;
     object-fit: cover;
-    border-radius: 12px;
+    border-radius: 16px;
 }
 
 /* ==============================
@@ -254,44 +264,41 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    gap: 12px;
+    gap: 15px;
     flex: 1;
     white-space: nowrap;
 }
 
-/* Language */
 .lang-switch {
     font-weight: 600;
-    font-size: 15px; /* Slightly larger */
+    font-size: 17px; 
     cursor: pointer;
     display: flex;
     align-items: center;
     gap: 6px;
     color: #111;
-    margin-right: 8px;
+    margin-right: 12px;
 }
 
-/* Buttons - Base Styles */
 .btn {
     position: relative;
-    overflow: hidden; /* Fill effect ne button ni bahar jata rokva */
+    overflow: hidden; 
     text-decoration: none;
-    padding: 10px 20px;
-    border-radius: 8px;
+    padding: 14px 28px; 
+    border-radius: 10px;
     font-weight: 600;
-    font-size: 15px;
+    font-size: 17px; 
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    transition: color 0.3s ease; /* Khali text color mate transition */
-    z-index: 1; /* Text ne aagal rakhva */
+    transition: color 0.3s ease; 
+    z-index: 1; 
 }
 
-/* Pseudo-element for Fill Animation */
 .btn::before {
     content: "";
     position: absolute;
-    top: 100%; /* Starting position niche thi */
+    top: 100%; 
     left: 50%;
     transform: translateX(-50%) translateY(0);
     width: 200%;
@@ -301,88 +308,31 @@
     z-index: -1; 
 }
 
-.btn:hover::before {
-    transform: translateX(-50%) translateY(-50%);
-}
+.btn:hover::before { transform: translateX(-50%) translateY(-50%); }
 
-/* Log in button colors */
-.btn-login {
-    background-color: #d9f743;
-    color: #000;
-}
+.btn-login { background-color: #d9f743; color: #000; }
+.btn-login::before { background-color: #0a1b15; }
+.btn-login:hover { color: #fff; }
 
-.btn-login::before {
-    background-color: #0a1b15; /* Hover fill color */
-}
-
-.btn-login:hover {
-    color: #fff;
-}
-
-/* Book a demo button colors */
-.btn-demo {
-    background-color: #0a1b15;
-    color: #fff;
-}
-
-.btn-demo::before {
-    background-color: #d9f743; /* Hover fill color */
-}
-
-.btn-demo:hover {
-    color: #111;
-}
+.btn-demo { background-color: #0a1b15; color: #fff; }
+.btn-demo::before { background-color: #d9f743; }
+.btn-demo:hover { color: #111; }
 
 /* ==============================
    RESPONSIVE
 ============================== */
-@media (max-width: 1100px) {
+@media (max-width: 1200px) {
     .nav-links { gap: 20px; }
-    .btn { padding: 10px 14px; font-size: 14px; }
+    .nav-link { font-size: 16px; }
+    .btn { padding: 12px 20px; font-size: 15px; }
+    .header-container { height: 80px; }
+    .nav-link { height: 80px; }
 }
 
 @media (max-width: 900px) {
     .header-actions, .main-nav { display: none; }
     .logo { flex: none; }
 }
-
-/* =========================================
-   SOCIAL MEDIA ICONS (Updated - Clean Look)
-========================================= */
-.socials {
-    display: flex;
-    align-items: center;
-    gap: 20px; /* Icons vachhe no gap */
-}
-
-.socials a {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-    padding: 0 !important;
-    text-decoration: none;
-}
-
-.socials a i,
-.socials a svg {
-    font-size: 20px;
-    color: #071b14; 
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-    transition: color 0.3s ease, transform 0.3s ease;
-}
-
-/* Hover effect */
-.socials a:hover i,
-.socials a:hover svg {
-    color: #748b25; 
-    transform: translateY(-3px);
-}
-
 </style>
 </head>
 <body>
@@ -400,11 +350,12 @@
         <nav class="main-nav">
             <ul class="nav-links">
                 
-                <!-- SOLUTIONS -->
+                <!-- SOLUTIONS DROPDOWN -->
                 <li class="dropdown-container">
                     <a href="#" class="nav-link">Solutions</a>
                     
-                    <div class="mega-menu solutions-menu">
+                    <div class="mega-menu">
+                        <!-- Column 1 -->
                         <div class="mega-column col-between">
                             <div>
                                 <span class="badge">Our Solutions</span>
@@ -414,21 +365,13 @@
                                 </ul>
                             </div>
                             <div class="socials">
-                                <!-- Instagram -->
-                                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                                    <i class="fa-brands fa-instagram"></i>
-                                </a>
-                                <!-- LinkedIn -->
-                                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                                    <i class="fa-brands fa-linkedin-in"></i>
-                                </a>
-                                <!-- TikTok -->
-                                <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
-                                    <i class="fa-brands fa-tiktok"></i>
-                                </a>
+                                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
+                                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin-in"></i></a>
+                                <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-tiktok"></i></a>
                             </div>
                         </div>
 
+                        <!-- Column 2 -->
                         <div class="mega-column col-between">
                             <div>
                                 <span class="badge">Join us</span>
@@ -443,46 +386,40 @@
                             </div>
                         </div>
 
+                        <!-- Column 3 (Image) -->
                         <div class="mega-column">
-                            <img src="../images/nav_sol.webp" alt="Partners" class="mega-img">
+                            <img src="/images/nav_sol.webp" alt="Partners" class="mega-img">
                         </div>
                     </div>
                 </li>
 
-                <!-- PRICING -->
+                <!-- PRICING DROPDOWN -->
                 <li class="dropdown-container">
                     <a href="#" class="nav-link">Pricing</a>
                     
-                    <div class="mega-menu solutions-menu">
+                    <div class="mega-menu">
+                        <!-- Column 1 -->
                         <div class="mega-column col-between">
                             <div>
                                 <span class="badge">Our Pricing</span>
                                 <ul class="mega-list">
-                                    <li><a href="#">For employees</a></li>
-                                    <li><a href="#">For employers</a></li>
+                                    <li><a href="/pricing/employees.html">For employees</a></li>
+                                    <li><a href="/pricing/employers.html">For employers</a></li>
                                 </ul>
                             </div>
                             <div class="socials">
-                                <!-- Instagram -->
-                                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                                    <i class="fa-brands fa-instagram"></i>
-                                </a>
-                                <!-- LinkedIn -->
-                                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                                    <i class="fa-brands fa-linkedin-in"></i>
-                                </a>
-                                <!-- TikTok -->
-                                <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
-                                    <i class="fa-brands fa-tiktok"></i>
-                                </a>
+                                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
+                                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin-in"></i></a>
+                                <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-tiktok"></i></a>
                             </div>
                         </div>
 
+                        <!-- Column 2 -->
                         <div class="mega-column col-between">
                             <div>
                                 <span class="badge">Join us</span>
                                 <ul class="mega-list">
-                                    <li><a href="#">Become a partner</a></li>
+                                    <li><a href="/solutions/partners.html">Become a partner</a></li>
                                 </ul>
                             </div>
                             <div class="legal-links">
@@ -492,46 +429,40 @@
                             </div>
                         </div>
 
+                        <!-- Column 3 (Image) -->
                         <div class="mega-column">
-                            <img src="../images/nav_tarifs.webp" alt="Pricing" class="mega-img">
+                            <img src="/images/nav_tarifs.webp" alt="Pricing" class="mega-img">
                         </div>
                     </div>
                 </li>
 
-                <!-- RESOURCES -->
+                <!-- RESOURCES DROPDOWN -->
                 <li class="dropdown-container">
                     <a href="#" class="nav-link">Resources</a>
                     
-                    <div class="mega-menu solutions-menu">
+                    <div class="mega-menu">
+                        <!-- Column 1 -->
                         <div class="mega-column col-between">
                             <div>
                                 <span class="badge">Our resources</span>
                                 <ul class="mega-list">
-                                    <li><a href="#">Blog</a></li>
-                                    <li><a href="#">Newsroom</a></li>
+                                    <li><a href="/resources/blog.html">Blog</a></li>
+                                    <li><a href="/resources/newsroom.html">Newsroom</a></li>
                                 </ul>
                             </div>
                             <div class="socials">
-                                <!-- Instagram -->
-                                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                                    <i class="fa-brands fa-instagram"></i>
-                                </a>
-                                <!-- LinkedIn -->
-                                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                                    <i class="fa-brands fa-linkedin-in"></i>
-                                </a>
-                                <!-- TikTok -->
-                                <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
-                                    <i class="fa-brands fa-tiktok"></i>
-                                </a>
+                                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
+                                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin-in"></i></a>
+                                <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-tiktok"></i></a>
                             </div>
                         </div>
 
+                        <!-- Column 2 -->
                         <div class="mega-column col-between">
                             <div>
                                 <span class="badge">Join us</span>
                                 <ul class="mega-list">
-                                    <li><a href="#">Become a partner</a></li>
+                                    <li><a href="/solutions/partners.html">Become a partner</a></li>
                                 </ul>
                             </div>
                             <div class="legal-links">
@@ -541,8 +472,9 @@
                             </div>
                         </div>
 
+                        <!-- Column 3 (Image) -->
                         <div class="mega-column">
-                            <img src="../images/helmet.png" alt="Resources" class="mega-img">
+                            <img src="/images/helmet.png" alt="Resources" class="mega-img">
                         </div>
                     </div>
                 </li>

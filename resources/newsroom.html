@@ -1,0 +1,1470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Newsroom | Highwages Solutions</title>
+    
+    <!-- Google Font: Parkinsans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Parkinsans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* =========================================
+           GLOBAL STYLES
+           ========================================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Parkinsans", sans-serif;
+            background-color: #ffffff; 
+            color: #333333;
+            overflow-x: hidden;
+        }
+
+        /* HEADER & FOOTER PLACEHOLDERS */
+        #header-placeholder {
+            width: 100%;
+            position: absolute; 
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            background: transparent; 
+        }
+
+        #footer-placeholder {
+            display: block;
+            width: 100%;
+        }
+
+        /* =========================================
+           ANIMATIONS (SPLIT TEXT & FADE UP)
+           ========================================= */
+        .split-text .char {
+            display: inline-block;
+            transform: translateY(100%);
+            opacity: 0;
+            transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.6s ease;
+        }
+        
+        .split-text.in-view .char {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .fade-up-text {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .fade-up-text.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* =========================================
+           NEWSROOM HERO SECTION (SPACING FIXED)
+           ========================================= */
+        .newsroom-hero {
+            padding: 160px 4% 80px; 
+            max-width: 1800px; /* Full page width */
+            margin: 0 auto;
+        }
+
+        .newsroom-title {
+            font-family: "Parkinsans", sans-serif;
+            font-size: clamp(60px, 9vw, 110px);
+            font-weight: 900;
+            color: #0c3829; 
+            line-height: 1;
+            letter-spacing: -3px;
+            margin-bottom: 60px;
+        }
+
+        .featured-article {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+        }
+
+        .article-content {
+            flex: 1;
+            max-width: 700px;
+        }
+
+        .article-meta {
+            font-size: 14px;
+            font-weight: 600;
+            color: #6b7280; 
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        .article-title {
+            font-family: "Parkinsans", sans-serif;
+            font-size: clamp(35px, 4vw, 55px);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -1.5px;
+            color: #1a2e28;
+            margin-bottom: 25px;
+        }
+
+        .article-excerpt {
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 1.6;
+            color: #4a5a68;
+            margin-bottom: 35px;
+        }
+
+        .read-btn {
+            position: relative;
+            overflow: hidden;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #0b1e18; 
+            color: #ffffff;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 700;
+            text-decoration: none;
+            border: 1px solid transparent;
+            transition: color 0.4s ease, border-color 0.4s ease;
+            z-index: 1;
+        }
+
+        .read-btn::before {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(0);
+            width: 250%;
+            height: 250%;
+            border-radius: 50%;
+            background-color: #d1f34d; 
+            transition: transform 0.5s ease-in-out;
+            z-index: -1;
+        }
+
+        .read-btn:hover {
+            color: #0b1e18;
+            border-color: #0b1e18;
+        }
+
+        .read-btn:hover::before {
+            transform: translateX(-50%) translateY(-50%);
+        }
+
+        .article-image-wrapper {
+            flex: 1.2;
+            width: 100%;
+            border-radius: 25px;
+            overflow: hidden;
+            display: flex;
+            position: relative; 
+        }
+
+        .article-image {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); 
+        }
+
+        .article-image-wrapper:hover .article-image {
+            transform: scale(1.08); 
+        }
+
+        /* =========================================
+           LATEST ARTICLES SECTION (SPACING FIXED)
+           ========================================= */
+        .latest-articles-section {
+            padding: 80px 4% 120px;
+            max-width: 1800px; /* Full page width */
+            margin: 0 auto;
+        }
+
+        .section-label {
+            font-size: 14px;
+            font-weight: 700;
+            color: #6b7280; 
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 30px;
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); 
+            gap: 20px;
+        }
+
+        .article-card {
+            position: relative;
+            display: block;
+            border-radius: 20px;
+            overflow: hidden;
+            text-decoration: none;
+            height: 450px; 
+        }
+
+        .card-image-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .card-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); 
+        }
+
+        .card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.3) 40%, rgba(0, 0, 0, 0) 100%);
+            z-index: 2;
+        }
+
+        .card-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px 25px;
+            z-index: 3;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+
+        .card-title {
+            font-family: "Parkinsans", sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1.4;
+            margin-bottom: 20px;
+        }
+
+        .card-read {
+            font-size: 12px;
+            font-weight: 700;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .arrow {
+            display: inline-block;
+            margin-left: 5px;
+            transition: transform 0.3s ease;
+        }
+
+        /* ==== HOVER EFFECTS ==== */
+        .article-card:hover .card-image { transform: scale(1.08); }
+        .article-card:hover .arrow { transform: translateX(5px); }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .articles-grid { grid-template-columns: repeat(2, 1fr); }
+            .featured-article { flex-direction: column; gap: 40px; }
+            .article-content { max-width: 100%; }
+            .article-image-wrapper { flex: 1; }
+        }
+
+        @media (max-width: 768px) {
+            .newsroom-hero { padding-top: 130px; }
+            .newsroom-title { letter-spacing: -1.5px; margin-bottom: 40px; }
+            .articles-grid { grid-template-columns: 1fr; }
+            .article-card { height: 350px; }
+        }
+
+        /* =========================================
+        ALL PRESS FEATURES SECTION
+        ========================================= */
+
+        .press-features-section {
+            width: 100%;
+            max-width: 1800px;
+            margin: 0 auto;
+            padding: 10px 2.3% 100px;
+            color: #0b211a;
+        }
+
+        .press-features-label {
+            font-size: 17px;
+            line-height: 1.4;
+            font-weight: 400;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #53616a;
+            padding: 0 0 32px;
+            border-bottom: 1px solid #e1e5e2;
+        }
+
+        /* Article Row */
+
+        .press-feature-row {
+            display: grid;
+            grid-template-columns: 155px 200px minmax(0, 1fr) 32px;
+            align-items: center;
+            column-gap: 24px;
+            min-height: 86px;
+            padding: 19px 14px;
+            border-bottom: 1px solid #e1e5e2;
+            color: inherit;
+            text-decoration: none;
+            transition: background-color .35s ease, padding .35s ease;
+            overflow: hidden;
+        }
+
+        .press-feature-date,
+        .press-feature-source {
+            font-size: 14px;
+            line-height: 1.5;
+            font-weight: 500;
+            letter-spacing: .7px;
+            text-transform: uppercase;
+            color: #52616a;
+            transition: color .35s ease, transform .4s ease;
+        }
+
+        /* Animated Headline */
+
+        .press-feature-title-wrap {
+            display: block;
+            overflow: hidden;
+        }
+
+        .press-feature-title {
+            display: block;
+            font-size: clamp(17px, 1.45vw, 24px);
+            line-height: 1.45;
+            font-weight: 500;
+            letter-spacing: -.35px;
+            color: #071c15;
+            transform: translateY(115%);
+            opacity: 0;
+            transition: color .35s ease,
+                        transform .55s cubic-bezier(.22, 1, .36, 1);
+        }
+
+        .press-feature-row.is-visible .press-feature-title {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* Arrow */
+
+        .press-feature-arrow {
+            justify-self: end;
+            font-size: 25px;
+            line-height: 1;
+            color: #0b211a;
+            transform: translate(0, 0);
+            transition: transform .35s ease, color .35s ease;
+        }
+
+        /* Hover Effects */
+
+        .press-feature-row:hover {
+            background: #f3f8e9;
+            padding-left: 22px;
+            padding-right: 22px;
+        }
+
+        .press-feature-row:hover .press-feature-date,
+        .press-feature-row:hover .press-feature-source {
+            color: #587d21;
+            transform: translateX(3px);
+        }
+
+        .press-feature-row:hover .press-feature-title {
+            color: #426b18;
+            transform: translate(8px, 0);
+        }
+
+        .press-feature-row:hover .press-feature-arrow {
+            color: #426b18;
+            transform: translate(5px, -5px);
+        }
+
+        /* Pagination */
+
+        .press-pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            margin-top: 48px;
+        }
+
+        .press-page-btn {
+            width: 50px;
+            height: 50px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 0;
+            border-radius: 10px;
+            background: transparent;
+            color: #0b211a;
+            font-family: inherit;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: color .25s ease,
+                        background-color .25s ease,
+                        transform .25s ease;
+        }
+
+        .press-page-btn:hover:not(:disabled) {
+            background: #e9f6b4;
+            transform: translateY(-3px);
+        }
+
+        .press-page-btn.active {
+            background: #0b211a;
+            color: #fff;
+        }
+
+        .press-page-btn.active:hover {
+            background: #d6fa42;
+            color: #0b211a;
+        }
+
+        .press-page-btn:disabled {
+            color: #b9c0bc;
+            cursor: not-allowed;
+        }
+
+        .press-page-btn.arrow-btn {
+            font-size: 23px;
+        }
+
+        /* Tablet Responsive */
+
+        @media (max-width: 900px) {
+            .press-feature-row {
+                grid-template-columns: 130px 150px minmax(0, 1fr) 24px;
+                column-gap: 15px;
+            }
+
+            .press-features-section {
+                padding-left: 3%;
+                padding-right: 3%;
+            }
+        }
+
+        /* Mobile Responsive */
+
+        @media (max-width: 650px) {
+            .press-features-section {
+                padding: 20px 5% 70px;
+            }
+
+            .press-features-label {
+                font-size: 14px;
+                padding-bottom: 22px;
+            }
+
+            .press-feature-row {
+                grid-template-columns: 1fr 24px;
+                gap: 5px 12px;
+                padding: 17px 8px;
+                min-height: auto;
+            }
+
+            .press-feature-date {
+                grid-column: 1;
+                font-size: 11px;
+            }
+
+            .press-feature-source {
+                grid-column: 1;
+                font-size: 11px;
+            }
+
+            .press-feature-title-wrap {
+                grid-column: 1;
+                grid-row: 3;
+                margin-top: 5px;
+            }
+
+            .press-feature-title {
+                font-size: 16px;
+                line-height: 1.45;
+            }
+
+            .press-feature-arrow {
+                grid-column: 2;
+                grid-row: 1 / span 3;
+                font-size: 22px;
+            }
+
+            .press-feature-row:hover {
+                padding-left: 13px;
+                padding-right: 13px;
+            }
+
+            .press-pagination {
+                margin-top: 32px;
+                gap: 5px;
+            }
+
+            .press-page-btn {
+                width: 43px;
+                height: 43px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .press-feature-title,
+            .press-feature-row,
+            .press-feature-arrow,
+            .press-page-btn {
+                transition: none !important;
+            }
+        }
+
+        /* =========================================
+        MEDIA KIT SECTION
+        ========================================= */
+
+        .media-kit-section {
+            width: calc(100% - 4.5%);
+            max-width: 1800px;
+            margin: 0 auto 100px;
+            padding: 65px 4%;
+            border: 1px solid #e2e6e3;
+            border-radius: 30px;
+            background: #ffffff;
+            color: #0b211a;
+        }
+
+        /* Main Layout */
+
+        .media-kit-main {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 60px;
+        }
+
+        /* Left Content */
+
+        .media-kit-label {
+            font-size: 16px;
+            font-weight: 400;
+            letter-spacing: 1.3px;
+            color: #52616a;
+            text-transform: uppercase;
+            margin-bottom: 22px;
+        }
+
+        .media-kit-heading {
+            font-size: clamp(48px, 5vw, 68px);
+            line-height: 1.05;
+            font-weight: 800;
+            letter-spacing: -2.5px;
+            color: #0b211a;
+            margin-bottom: 38px;
+        }
+
+        /* Download Kit Button */
+
+        .media-kit-download {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 23px 39px;
+            min-height: 74px;
+            border-radius: 15px;
+            background: #0b211a;
+            color: #ffffff;
+            font-family: inherit;
+            font-size: 17px;
+            font-weight: 700;
+            text-decoration: none;
+            overflow: hidden;
+            isolation: isolate;
+            transition: color .4s ease;
+        }
+
+        .media-kit-download::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: #d9ff3f;
+            transform: translateY(101%);
+            transition: transform .45s cubic-bezier(.76, 0, .24, 1);
+            z-index: -1;
+        }
+
+        .media-kit-download:hover::before {
+            transform: translateY(0);
+        }
+
+        .media-kit-download:hover {
+            color: #0b211a;
+        }
+
+        /* Right Asset Grid */
+
+        .media-kit-assets {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        /* Individual Asset Button */
+
+        .media-kit-asset {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            min-height: 80px;
+            padding: 18px 22px;
+            border-radius: 16px;
+            background: #e7e9e8;
+            color: #0b211a;
+            text-decoration: none;
+            overflow: hidden;
+            isolation: isolate;
+            transition: color .35s ease;
+        }
+
+        .media-kit-asset::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: #d9ff3f;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform .45s cubic-bezier(.76, 0, .24, 1);
+            z-index: -1;
+        }
+
+        .media-kit-asset:hover::before {
+            transform: scaleX(1);
+        }
+
+        /* Asset Left Side */
+
+        .media-kit-asset-left {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            min-width: 0;
+        }
+
+        .media-kit-asset-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            width: 28px;
+            height: 28px;
+        }
+
+        .media-kit-asset-icon svg {
+            width: 27px;
+            height: 27px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .media-kit-asset-name {
+            font-size: 19px;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        /* Download Arrow */
+
+        .media-kit-asset-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            width: 22px;
+            height: 22px;
+            border: 2px solid currentColor;
+            border-radius: 50%;
+            font-size: 15px;
+            line-height: 1;
+            transition: transform .35s ease;
+        }
+
+        .media-kit-asset:hover .media-kit-asset-arrow {
+            transform: translateY(3px);
+        }
+
+        /* Bottom Contact Area */
+
+        .media-kit-contact {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 48px;
+            padding-top: 40px;
+            border-top: 1px solid #e2e6e3;
+            font-size: 20px;
+            flex-wrap: wrap;
+        }
+
+        .media-kit-contact-label {
+            color: #52616a;
+            font-weight: 400;
+        }
+
+        .media-kit-email {
+            color: #071c15;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color .3s ease;
+        }
+
+        .media-kit-email:hover {
+            color: #789d00;
+        }
+
+        /* Responsive */
+
+        @media (max-width: 900px) {
+
+            .media-kit-main {
+                grid-template-columns: 1fr;
+                gap: 45px;
+            }
+
+            .media-kit-heading {
+                font-size: 55px;
+            }
+
+        }
+
+        @media (max-width: 600px) {
+
+            .media-kit-section {
+                width: 92%;
+                padding: 35px 22px;
+                border-radius: 22px;
+                margin-bottom: 60px;
+            }
+
+            .media-kit-main {
+                gap: 35px;
+            }
+
+            .media-kit-heading {
+                font-size: 46px;
+                margin-bottom: 28px;
+            }
+
+            .media-kit-download {
+                min-height: 62px;
+                padding: 18px 28px;
+                font-size: 15px;
+            }
+
+            .media-kit-assets {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .media-kit-asset {
+                min-height: 70px;
+                padding: 15px 18px;
+            }
+
+            .media-kit-asset-name {
+                font-size: 17px;
+            }
+
+            .media-kit-contact {
+                margin-top: 32px;
+                padding-top: 27px;
+                font-size: 16px;
+                gap: 8px;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER PLACEHOLDER -->
+    <div id="header-placeholder"></div>
+
+    <!-- NEWSROOM HERO SECTION -->
+    <main class="newsroom-hero">
+        
+        <h1 class="newsroom-title split-text">Newsroom</h1>
+        
+        <div class="featured-article">
+            
+            <div class="article-content">
+                <div class="article-meta fade-up-text" style="transition-delay: 0.1s;">17 AOÛT 2026 • CLEANRIDER</div>
+                
+                <h2 class="article-title split-text">Corporate cycling: the<br>market is growing, but<br>education remains<br>a major challenge</h2>
+                
+                <p class="article-excerpt fade-up-text" style="transition-delay: 0.3s;">
+                    Provided their company has implemented it, the Sustainable Mobility Allowance enables any employee to finance their bike through employer support of up to €600 per year. Still relatively little known, this scheme is a powerful tool for decarbonising commuting, as explained by Antoine du Teilleul, co-founder of Beetogreen.
+                </p>
+                
+                <a href="#" class="read-btn fade-up-text" style="transition-delay: 0.4s;">Read article</a>
+            </div>
+
+            <div class="article-image-wrapper fade-up-text" style="transition-delay: 0.2s;">
+                <img src="/images/Article vélo en entreprise Newsroom.webp" alt="Man in jacket with blue bicycle" class="article-image">
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- LATEST ARTICLES SECTION -->
+    <section class="latest-articles-section">
+        <h3 class="section-label">LATEST ARTICLES</h3>
+        
+        <div class="articles-grid">
+            
+            <a href="#" class="article-card">
+                <div class="card-image-wrapper">
+                    <img src="/images/pexels-iglp11-13365563.webp" alt="French bicycle manufacturer partners" class="card-image">
+                    <div class="card-overlay"></div>
+                </div>
+                <div class="card-content">
+                    <h4 class="card-title">French bicycle manufacturer partners with BeeToGreen to offer Nakamura bikes to employees</h4>
+                    <span class="card-read">READ <span class="arrow">↗</span></span>
+                </div>
+            </a>
+
+            <a href="#" class="article-card">
+                <div class="card-image-wrapper">
+                    <img src="/images/Highwages Green Cycling Poster.png" alt="Beetogreen adds Intersport's Nakamura" class="card-image">
+                    <div class="card-overlay"></div>
+                </div>
+                <div class="card-content">
+                    <h4 class="card-title">Beetogreen adds Intersport's Nakamura bikes to its corporate mobility offering.</h4>
+                    <span class="card-read">READ <span class="arrow">↗</span></span>
+                </div>
+            </a>
+
+            <a href="#" class="article-card">
+                <div class="card-image-wrapper">
+                    <img src="/images/velo-nakamura.webp" alt="Beetogreen and MFC-Intersport join forces" class="card-image">
+                    <div class="card-overlay"></div>
+                </div>
+                <div class="card-content">
+                    <h4 class="card-title">Beetogreen and MFC-Intersport join forces</h4>
+                    <span class="card-read">READ <span class="arrow">↗</span></span>
+                </div>
+            </a>
+
+            <a href="#" class="article-card">
+                <div class="card-image-wrapper">
+                    <img src="/images/pexels-truckrun-19411371.webp" alt="Beetogreen and MFC-Intersport join forces to make cycling" class="card-image">
+                    <div class="card-overlay"></div>
+                </div>
+                <div class="card-content">
+                    <h4 class="card-title">Beetogreen and MFC-Intersport join forces to make cycling more accessible in the workplace.</h4>
+                    <span class="card-read">READ <span class="arrow">↗</span></span>
+                </div>
+            </a>
+
+        </div>
+    </section>
+
+    <!-- =========================================
+     ALL PRESS FEATURES SECTION
+    ========================================= -->
+
+    <section class="press-features-section">
+
+        <h2 class="press-features-label">
+            ALL PRESS FEATURES
+        </h2>
+
+        <div class="press-features-list" id="pressFeaturesList">
+        </div>
+
+        <!-- Pagination -->
+
+        <nav class="press-pagination">
+
+            <button
+                class="press-page-btn arrow-btn"
+                id="pressPrev"
+                type="button"
+                aria-label="Previous page">
+                ‹
+            </button>
+
+            <div id="pressPageNumbers"
+                style="display:flex; gap:12px; align-items:center;">
+            </div>
+
+            <button
+                class="press-page-btn arrow-btn"
+                id="pressNext"
+                type="button"
+                aria-label="Next page">
+                ›
+            </button>
+
+        </nav>
+
+    </section>
+
+    <!-- =========================================
+     MEDIA KIT SECTION
+    ========================================= -->
+
+    <section class="media-kit-section">
+        <div class="media-kit-main">
+
+            <!-- LEFT CONTENT -->
+            <div class="media-kit-content">
+                <p class="media-kit-label">
+                    FOR THE PRESS
+                </p>
+
+                <h2 class="media-kit-heading">
+                    Media Kit
+                </h2>
+
+                <a href="#" class="media-kit-download">
+                    Download the kit
+                </a>
+
+            </div>
+
+            <!-- RIGHT ASSET BUTTONS -->
+
+            <div class="media-kit-assets">
+                <!-- LOGOS -->
+
+                <a href="#" class="media-kit-asset">
+                    <span class="media-kit-asset-left">
+                        <span class="media-kit-asset-icon">
+                            <svg viewBox="0 0 24 24">
+                                <rect x="3" y="6" width="16" height="15" rx="1"></rect>
+                                <path d="M7 3h14v14"></path>
+                                <path d="m6 17 4-4 3 3 2-2 3 3"></path>
+                                <circle cx="15" cy="10" r="1"></circle>
+                            </svg>
+                        </span>
+
+                        <span class="media-kit-asset-name">
+                            Logos
+                        </span>
+
+                    </span>
+
+                    <span class="media-kit-asset-arrow">
+                        ↓
+                    </span>
+
+                </a>
+
+                <!-- PRODUCT ASSETS -->
+
+                <a href="#" class="media-kit-asset">
+                    <span class="media-kit-asset-left">
+                        <span class="media-kit-asset-icon">
+                            <svg viewBox="0 0 24 24">
+                                <circle cx="5" cy="17" r="3"></circle>
+                                <circle cx="19" cy="17" r="3"></circle>
+                                <path d="M8 17h8l-3-8H9"></path>
+                                <path d="m8 17-4-8h5"></path>
+                                <path d="M13 5h3"></path>
+                                <path d="M14 8h4l3 4"></path>
+                                <path d="M12 5l-2 3"></path>
+                            </svg>
+                        </span>
+
+                        <span class="media-kit-asset-name">
+                            Product assets
+                        </span>
+
+                    </span>
+
+                    <span class="media-kit-asset-arrow">
+                        ↓
+                    </span>
+
+                </a>
+
+                <!-- PHOTOS -->
+
+                <a href="#" class="media-kit-asset">
+                    <span class="media-kit-asset-left">
+
+                        <span class="media-kit-asset-icon">
+                            <svg viewBox="0 0 24 24">
+                                <rect x="3" y="5" width="18" height="16" rx="2"></rect>
+                                <circle cx="12" cy="13" r="4"></circle>
+                                <path d="M8 5l1-2h6l1 2"></path>
+                            </svg>
+                        </span>
+
+                        <span class="media-kit-asset-name">
+                            Photos
+                        </span>
+
+                    </span>
+
+                    <span class="media-kit-asset-arrow">
+                        ↓
+                    </span>
+
+                </a>
+                <!-- TYPOGRAPHY -->
+
+                <a href="#" class="media-kit-asset">
+                    <span class="media-kit-asset-left">
+
+                        <span class="media-kit-asset-icon"
+                            style="font-size:20px; font-weight:500;">
+                            Aa
+                        </span>
+
+                        <span class="media-kit-asset-name">
+                            Typography
+                        </span>
+
+                    </span>
+
+                    <span class="media-kit-asset-arrow">
+                        ↓
+                    </span>
+                </a>
+            </div>
+        </div>
+
+
+        <!-- CONTACT DETAILS -->
+
+        <div class="media-kit-contact">
+            <span class="media-kit-contact-label">
+                Let's talk?
+            </span>
+
+            <a href="mailto:presse@beetogreen.com"
+            class="media-kit-email">
+                presse@beetogreen.com
+            </a>
+
+        </div>
+
+    </section>
+
+    <!-- FOOTER PLACEHOLDER -->
+    <div id="footer-placeholder"></div>
+
+    <!-- JAVASCRIPT FOR HEADER/FOOTER -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch('../components/header.html')
+                .then(response => {
+                    if (!response.ok) throw new Error('Header load nathi thayu!');
+                    return response.text();
+                })
+                .then(data => {
+                    document.getElementById('header-placeholder').innerHTML = data;
+                })
+                .catch(error => console.error("Header Error:", error));
+            
+            fetch('../components/footer.html')
+                .then(response => {
+                    if (!response.ok) throw new Error('Footer load nathi thayu!');
+                    return response.text();
+                })
+                .then(data => {
+                    document.getElementById('footer-placeholder').innerHTML = data;
+                    
+                    setTimeout(() => {
+                        const yearSpan = document.getElementById('year');
+                        if(yearSpan) {
+                            yearSpan.textContent = new Date().getFullYear();
+                        }
+                    }, 500);
+                })
+                .catch(error => console.error("Footer Error:", error));
+        });
+    </script>
+
+    <!-- JAVASCRIPT FOR ANIMATIONS -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            
+            const splitTexts = document.querySelectorAll('.split-text');
+            if (splitTexts.length > 0) {
+                splitTexts.forEach(titleSplit => {
+                    const words = titleSplit.innerHTML.split(/<br>|\s+/); 
+                    titleSplit.innerHTML = '';
+                    
+                    words.forEach((word, wordIndex) => {
+                        if (word === "") {
+                            titleSplit.appendChild(document.createElement('br'));
+                            return;
+                        }
+                        const wordSpan = document.createElement('span');
+                        wordSpan.style.display = 'inline-block';
+                        wordSpan.style.overflow = 'hidden';
+                        wordSpan.style.verticalAlign = 'top'; 
+                        
+                        const chars = word.split('');
+                        chars.forEach((char, charIndex) => {
+                            const charSpan = document.createElement('span');
+                            charSpan.classList.add('char');
+                            charSpan.innerText = char;
+                            charSpan.style.transitionDelay = `${(wordIndex * 0.08) + (charIndex * 0.02)}s`; 
+                            wordSpan.appendChild(charSpan);
+                        });
+
+                        titleSplit.appendChild(wordSpan);
+                        titleSplit.appendChild(document.createTextNode('\u00A0')); 
+                    });
+                });
+            }
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15 
+            };
+
+            const mainObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                    }
+                });
+            }, observerOptions);
+
+            const animatedElements = document.querySelectorAll('.split-text, .fade-up-text');
+            animatedElements.forEach(el => mainObserver.observe(el));
+
+            setTimeout(() => {
+                const heroTitle = document.querySelector('.newsroom-title');
+                if(heroTitle) heroTitle.classList.add('in-view');
+            }, 100);
+
+        });
+    </script>
+
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    // ALL PRESS ARTICLES
+
+    const pressArticles = [
+
+        {
+            date: "17 AOÛT 2026",
+            source: "TOTALENERGIES",
+            title: "TotalEnergies supports its employees’ transition to cycling with BeeToGreen, an Île-de-France start-up selected as a winner of the PTZ programme.",
+            link: "#"
+        },
+
+        {
+            date: "21 NOV. 2025",
+            source: "LES ECHOS",
+            title: "In Essonne, Safran encourages its employees to cycle to work",
+            link: "#"
+        },
+
+        {
+            date: "21 NOV. 2025",
+            source: "OUEST FRANCE",
+            title: "This Essonne-based company wants to promote cycling to work by offering its employees a subsidy",
+            link: "#"
+        },
+
+        {
+            date: "16 JUIN 2025",
+            source: "LES ECHOS",
+            title: "In Saint-Denis, Beetogreen is helping SNCF get three times as many employees cycling to work",
+            link: "#"
+        },
+
+        {
+            date: "16 MAI 2025",
+            source: "LES ECHOS",
+            title: "In Saint-Denis, Beetogreen is helping SNCF triple the number of employees cycling to work",
+            link: "#"
+        },
+
+        {
+            date: "16 MAI 2025",
+            source: "CLEAN RIDER",
+            title: "Cycling to work: with this new initiative, SNCF wants to get its employees on bikes",
+            link: "#"
+        },
+
+        {
+            date: "14 FÉVR. 2025",
+            source: "RTL",
+            title: "6 p.m. News: End of e-bike purchase subsidy worries industry professionals",
+            link: "#"
+        },
+
+        {
+            date: "17 SEPT. 2024",
+            source: "AIRZEN RADIO",
+            title: "Mobility: Beetogreen gets employees cycling",
+            link: "#"
+        },
+
+        {
+            date: "21 MAI 2024",
+            source: "B SMART",
+            title: "The rise of cycling: supporting businesses",
+            link: "#"
+        },
+
+        {
+            date: "21 DÉC. 2023",
+            source: "MADDYNESS",
+            title: "Sustainable Mobility Allowance: the startups encouraging companies to embrace sustainable mobility",
+            link: "#"
+        },
+
+        {
+            date: "26 SEPT. 2023",
+            source: "LE PARISIEN",
+            title: "Great idea: getting my bike repaired at work",
+            link: "#"
+        },
+
+        {
+            date: "25 SEPT. 2023",
+            source: "LE PARISIEN",
+            title: "End of shared e-scooters in Paris: “We’re seeing a real shift” towards buying or renting",
+            link: "#"
+        },
+
+        {
+            date: "21 SEPT. 2023",
+            source: "L'ADN",
+            title: "Beetogreen announces €1.6 million fundraising round",
+            link: "#"
+        },
+
+        {
+            date: "20 JUIN 2023",
+            source: "CHALLENGES",
+            title: "How cycling is becoming a popular choice for commuting",
+            link: "#"
+        },
+
+        {
+            date: "17 SEPT. 2021",
+            source: "MADDYNESS",
+            title: "Beetogreen helps employees switch to cycling.",
+            link: "#"
+        }
+
+    ];
+
+
+    // PAGINATION SETTINGS
+
+    const itemsPerPage = 10;
+
+    let currentPage = 1;
+
+    const totalPages = Math.ceil(
+        pressArticles.length / itemsPerPage
+    );
+
+    const list = document.getElementById("pressFeaturesList");
+
+    const pageNumbers = document.getElementById("pressPageNumbers");
+
+    const prev = document.getElementById("pressPrev");
+
+    const next = document.getElementById("pressNext");
+
+
+    // RENDER ARTICLES
+
+    function renderPressPage(page) {
+
+        currentPage = page;
+
+        const start = (page - 1) * itemsPerPage;
+
+        const visibleArticles = pressArticles.slice(
+            start,
+            start + itemsPerPage
+        );
+
+
+        list.innerHTML = visibleArticles.map((article, index) => `
+
+            <a
+                class="press-feature-row"
+                href="${article.link}"
+                target="_blank"
+                rel="noopener noreferrer"
+                style="transition-delay:${index * 35}ms"
+            >
+
+                <span class="press-feature-date">
+                    ${article.date}
+                </span>
+
+                <span class="press-feature-source">
+                    ${article.source}
+                </span>
+
+                <span class="press-feature-title-wrap">
+
+                    <span class="press-feature-title">
+                        ${article.title}
+                    </span>
+
+                </span>
+
+                <span class="press-feature-arrow">
+                    ↗
+                </span>
+
+            </a>
+
+        `).join("");
+
+
+        // PAGE NUMBER BUTTONS
+
+        pageNumbers.innerHTML = "";
+
+        for (let i = 1; i <= totalPages; i++) {
+
+            const button = document.createElement("button");
+
+            button.type = "button";
+
+            button.className =
+                "press-page-btn" +
+                (i === currentPage ? " active" : "");
+
+            button.textContent = i;
+
+            button.setAttribute(
+                "aria-label",
+                "Go to page " + i
+            );
+
+            button.addEventListener("click", function () {
+
+                renderPressPage(i);
+
+            });
+
+            pageNumbers.appendChild(button);
+
+        }
+
+
+        // PREVIOUS / NEXT BUTTONS
+
+        prev.disabled = currentPage === 1;
+
+        next.disabled = currentPage === totalPages;
+
+
+        // TEXT ANIMATION
+
+        requestAnimationFrame(() => {
+
+            list.querySelectorAll(".press-feature-row")
+                .forEach((row, index) => {
+
+                    setTimeout(() => {
+
+                        row.classList.add("is-visible");
+
+                    }, 80 + index * 65);
+
+                });
+
+        });
+
+    }
+
+
+    // PREVIOUS PAGE
+
+    prev.addEventListener("click", function () {
+
+        if (currentPage > 1) {
+
+            renderPressPage(currentPage - 1);
+
+        }
+
+    });
+
+
+    // NEXT PAGE
+
+    next.addEventListener("click", function () {
+
+        if (currentPage < totalPages) {
+
+            renderPressPage(currentPage + 1);
+
+        }
+
+    });
+
+
+    // INITIAL PAGE
+
+    renderPressPage(1);
+
+});
+</script>
+</body>
+</html>

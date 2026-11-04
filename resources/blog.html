@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | Highwages Solutions</title>
+    
+    <!-- Google Font: Parkinsans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Parkinsans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* =========================================
+           GLOBAL STYLES
+           ========================================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Parkinsans", sans-serif;
+            background-color: #ffffff; /* White background */
+            color: #333333;
+            overflow-x: hidden;
+        }
+
+        /* HEADER & FOOTER PLACEHOLDERS */
+        #header-placeholder {
+            width: 100%;
+            position: absolute; 
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            background: transparent; 
+        }
+
+        #footer-placeholder {
+            display: block;
+            width: 100%;
+        }
+
+        /* =========================================
+           SPLIT TEXT ANIMATION
+           ========================================= */
+        .split-text .char {
+            display: inline-block;
+            transform: translateY(100%);
+            opacity: 0;
+            transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.6s ease;
+        }
+        
+        .split-text.in-view .char {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* =========================================
+           BLOG SECTION STYLES
+           ========================================= */
+        .blog-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 180px 4% 100px; /* Top padding accounts for absolute header */
+            min-height: 70vh;
+        }
+
+        .blog-title {
+            font-family: "Parkinsans", sans-serif;
+            font-size: clamp(60px, 10vw, 120px); /* Large text */
+            font-weight: 900;
+            color: #0c3829; /* Dark green/black */
+            line-height: 1;
+            letter-spacing: -3px;
+            margin-bottom: 40px;
+        }
+
+        .blog-filter {
+            font-size: 15px;
+            font-weight: 600;
+            color: #6b7280; /* Gray color */
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding-bottom: 20px;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 150px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .empty-state h3 {
+            font-family: "Parkinsans", sans-serif;
+            font-size: clamp(22px, 3vw, 30px);
+            font-weight: 700;
+            color: #9ca3af; /* Light gray text for empty state */
+        }
+
+        @media (max-width: 768px) {
+            .blog-container {
+                padding-top: 140px;
+            }
+            .blog-title {
+                letter-spacing: -1.5px;
+            }
+            .empty-state {
+                padding: 100px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER PLACEHOLDER -->
+    <div id="header-placeholder"></div>
+
+    <!-- MAIN BLOG SECTION -->
+    <main class="blog-container">
+        
+        <!-- Animated Title -->
+        <h1 class="blog-title split-text">Blog</h1>
+        
+        <!-- Subtitle / Filter -->
+        <div class="blog-filter">All Articles</div>
+        
+        <!-- Empty State Message -->
+        <div class="empty-state">
+            <h3>Aucun article trouvé pour cette sélection.</h3>
+        </div>
+
+    </main>
+
+    <!-- FOOTER PLACEHOLDER -->
+    <div id="footer-placeholder"></div>
+
+    <!-- JAVASCRIPT FOR HEADER/FOOTER -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Fetch Header
+            fetch('../components/header.html')
+                .then(response => {
+                    if (!response.ok) throw new Error('Header load nathi thayu!');
+                    return response.text();
+                })
+                .then(data => {
+                    document.getElementById('header-placeholder').innerHTML = data;
+                })
+                .catch(error => console.error("Header Error:", error));
+            
+            // Fetch Footer
+            fetch('../components/footer.html')
+                .then(response => {
+                    if (!response.ok) throw new Error('Footer load nathi thayu!');
+                    return response.text();
+                })
+                .then(data => {
+                    document.getElementById('footer-placeholder').innerHTML = data;
+                    
+                    // Update year dynamically in footer if span exists
+                    setTimeout(() => {
+                        const yearSpan = document.getElementById('year');
+                        if(yearSpan) {
+                            yearSpan.textContent = new Date().getFullYear();
+                        }
+                    }, 500);
+                })
+                .catch(error => console.error("Footer Error:", error));
+        });
+    </script>
+
+    <!-- JAVASCRIPT FOR SPLIT TEXT ANIMATION -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            
+            // 1. Split Text Preparation
+            const splitTexts = document.querySelectorAll('.split-text');
+            
+            if (splitTexts.length > 0) {
+                splitTexts.forEach(titleSplit => {
+                    const words = titleSplit.innerHTML.split(/<br>|\s+/); 
+                    titleSplit.innerHTML = '';
+                    
+                    words.forEach((word, wordIndex) => {
+                        if (word === "") {
+                            titleSplit.appendChild(document.createElement('br'));
+                            return;
+                        }
+                        
+                        const wordSpan = document.createElement('span');
+                        wordSpan.style.display = 'inline-block';
+                        wordSpan.style.overflow = 'hidden';
+                        wordSpan.style.verticalAlign = 'top'; 
+                        
+                        const chars = word.split('');
+                        chars.forEach((char, charIndex) => {
+                            const charSpan = document.createElement('span');
+                            charSpan.classList.add('char');
+                            charSpan.innerText = char;
+                            charSpan.style.transitionDelay = `${(wordIndex * 0.08) + (charIndex * 0.03)}s`; 
+                            wordSpan.appendChild(charSpan);
+                        });
+
+                        titleSplit.appendChild(wordSpan);
+                        titleSplit.appendChild(document.createTextNode('\u00A0')); 
+                    });
+                });
+            }
+
+            // 2. Add 'in-view' class immediately for the blog title on load
+            setTimeout(() => {
+                const heroTitle = document.querySelector('.blog-title');
+                if(heroTitle) heroTitle.classList.add('in-view');
+            }, 100);
+
+        });
+    </script>
+
+</body>
+</html>

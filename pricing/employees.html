@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Employees | BeeToGreen</title>
+    
+    <!-- Google Font: Parkinsans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Parkinsans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Parkinsans", sans-serif;
+            background-color: #0b221a; /* Dark Green Background */
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* HEADER PLACEHOLDER */
+        #header-placeholder {
+            width: 100%;
+            position: absolute; 
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            background: transparent; 
+        }
+
+        /* SPLIT TEXT ANIMATION */
+        .split-text .char {
+            display: inline-block;
+            transform: translateY(100%);
+            opacity: 0;
+            transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.6s ease;
+        }
+        
+        .split-text.in-view .char {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* =========================================
+           SCROLL SEQUENCE HERO SECTION
+           ========================================= */
+        .pricing-hero-sequence {
+            height: 400vh; /* 4 times viewport height to allow long scrolling */
+            position: relative;
+            background-color: #0b221a;
+        }
+
+        .sticky-container {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Initial Hero Content (Fades out on scroll) */
+        .initial-hero-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+            pointer-events: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* UPDATED YELLOW LOOP GRAPHIC (SIZE REDUCED TO PREVENT OVERLAP) */
+        .hero-graphic {
+            position: absolute;
+            left: -5vw;
+            bottom: -10vh; /* Thodu niche khasedyu */
+            width: 30vw; /* Size ochhi kari (45vw thi) */
+            max-width: 450px; /* Max size ochhi kari (650px thi) */
+            min-width: 250px; 
+            height: auto;
+            z-index: 8;
+            transform: rotate(-5deg); 
+            pointer-events: none;
+        }
+
+        .hero-title {
+            margin-top: 15vh;
+            font-size: clamp(45px, 6.5vw, 85px);
+            font-weight: 900;
+            line-height: 1.05;
+            letter-spacing: -2px;
+            color: #d1f34d; /* Lime Yellow */
+            text-align: center;
+            z-index: 10;
+        }
+
+        /* Run a Quote Button with Hover Animation */
+        .quote-btn-wrapper {
+            position: absolute;
+            top: calc(65% + 200px); 
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 15;
+            pointer-events: auto;
+        }
+
+        .quote-btn {
+            position: relative;
+            overflow: hidden;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #d1f34d;
+            color: #0b221a;
+            padding: 18px 40px;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 800;
+            text-decoration: none;
+            border: 1px solid transparent;
+            transition: color 0.4s ease, border-color 0.4s ease;
+            z-index: 1;
+        }
+
+        /* Hover animation background circle */
+        .quote-btn::before {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(0);
+            width: 250%;
+            height: 250%;
+            border-radius: 50%;
+            background-color: #0b221a; /* Dark green */
+            transition: transform 0.5s ease-in-out;
+            z-index: -1;
+        }
+
+        .quote-btn:hover {
+            color: #d1f34d;
+            border-color: rgba(209, 243, 77, 0.4);
+        }
+
+        .quote-btn:hover::before {
+            transform: translateX(-50%) translateY(-50%);
+        }
+
+        /* Video Wrapper (Uses Clip Path for circular to full screen animation) */
+        .video-full-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 5;
+            /* Initial circular shape at center-bottom */
+            clip-path: circle(180px at 50% 65%);
+            -webkit-clip-path: circle(180px at 50% 65%);
+            will-change: clip-path;
+        }
+
+        .video-full-wrapper video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Dark Overlay for Text Visibility */
+        .video-dark-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            opacity: 0;
+            z-index: 6;
+            pointer-events: none;
+        }
+
+        /* Scrolling Text Overlays */
+        .scroll-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) translateY(30px);
+            width: 90%;
+            max-width: 1000px;
+            text-align: center;
+            z-index: 8;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .scroll-text h2 {
+            font-family: "Parkinsans", sans-serif;
+            font-size: clamp(28px, 4vw, 50px); 
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -1.5px;
+            color: #ffffff;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .video-full-wrapper {
+                clip-path: circle(130px at 50% 65%);
+                -webkit-clip-path: circle(130px at 50% 65%);
+            }
+            .quote-btn-wrapper {
+                top: calc(65% + 150px);
+            }
+            .hero-graphic {
+                width: 200px;
+                left: -40px;
+                bottom: -20px;
+            }
+            .scroll-text h2 {
+                font-size: 24px;
+            }
+        }
+
+        /* =========================================
+           SIMULATE SECTION (APPEARS AFTER SCROLL)
+           ========================================= */
+        .simulate-section {
+            padding: 100px 4%;
+            background-color: #ffffff;
+            color: #0b221a;
+            text-align: center;
+            min-height: 500px;
+        }
+
+        .simulate-section h2 {
+            font-size: clamp(40px, 5vw, 65px);
+            font-weight: 900;
+            letter-spacing: -2px;
+        }
+
+        /* FOOTER PLACEHOLDER */
+        #footer-placeholder {
+            display: block;
+            width: 100%;
+        }
+
+        /* =========================================
+        TOUR WRAPPED UP SECTION
+        ========================================= */
+        .tour-section {
+            padding: 5% 4% 80px;
+            background-color: #ffffff; /* Light Cream Background */
+            position: relative;
+            overflow: visible; 
+        }
+
+        .tour-card {
+            background-color: #d3dce3; /* Light Cream Card Background */
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 100px 7%;            
+            position: relative;
+            overflow: visible; 
+            min-height: 480px; 
+        }
+
+        .tour-content {
+            flex: 1;
+            max-width: 600px; 
+            color: #2b3945; /* Dark Brown Text */
+            z-index: 2;
+        }
+
+        .tour-content h2 {
+            font-family: "Parkinsans", sans-serif;
+            font-size: clamp(36px, 6.2vw, 62px); 
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -2px;
+            color: #2b3945; /* Dark Brown Title */
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 1100px) { .tour-content h2 { white-space: normal; } }
+
+        .tour-content p {
+            font-size: 17px;
+            font-weight: 500;
+            line-height: 1.5;
+            color: #2b3945; /* Dark Brown Paragraph */
+            margin-bottom: 30px;
+            max-width: 480px;
+        }
+
+        .tour-btn {
+            position: relative;
+            overflow: hidden; 
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 32px;
+            background-color: #2b3945; /* Dark Brown Button Background */
+            color: #ffffff;
+            font-size: 17px;
+            font-weight: 800;
+            border-radius: 12px;
+            border: 1px solid #2b3945; 
+            transition: color 0.4s ease, border-color 0.4s ease;
+            z-index: 1;
+            text-decoration: none;
+        }
+
+        .tour-btn::before {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(0);
+            width: 250%;
+            height: 250%;
+            border-radius: 50%;
+            background-color: #f4c2b3; /* Peach color on hover */
+            transition: transform 0.5s ease-in-out;
+            z-index: -1;
+        }
+
+        .tour-btn:hover { color: #2b3945; border-color: #2b3945; }
+        .tour-btn:hover::before { transform: translateX(-50%) translateY(-50%); }
+
+        .tour-image {
+            position: absolute;
+            right: -10px;
+            top: -90px; 
+            width: 800px;
+            z-index: 3; 
+            pointer-events: none;
+        }
+
+        .tour-image img { display: block; width: 100%; height: auto; }
+
+        .tour-animated-h {
+            position: absolute;
+            bottom: -110px; 
+            left: 42%; 
+            width: 180px; 
+            height: 180px;
+            z-index: 2;
+            opacity: 0.95;
+            transform: rotate(-45deg); 
+            transition: bottom 1.2s cubic-bezier(0.22, 1, 0.36, 1), transform 1.2s cubic-bezier(0.22, 1, 0.36, 1); 
+        }
+
+        .tour-animated-h.h-visible { bottom: -40px; transform: rotate(15deg); }
+
+        .tour-content h2,
+        .tour-content p,
+        .tour-content .tour-btn {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .tour-card.content-visible .tour-content h2 { animation: tourSlideUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards; }
+        .tour-card.content-visible .tour-content p { animation: tourSlideUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.25s forwards; }
+        .tour-card.content-visible .tour-content .tour-btn { animation: tourSlideUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.4s forwards; }
+
+        @keyframes tourSlideUp { to { opacity: 1; transform: translateY(0); } }
+
+        @media (max-width: 950px) {
+            .tour-card { flex-direction: column; padding: 40px 5%; text-align: center; overflow: hidden; }
+            .tour-image { position: relative; right: auto; top: auto; width: 100%; max-width: 400px; margin-top: 20px; }
+            .tour-content { max-width: 100%; }
+            .tour-animated-h { left: 20%; width: 130px; height: 130px; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER PLACEHOLDER -->
+    <div id="header-placeholder"></div>
+
+    <!-- MAIN SCROLL ANIMATION SEQUENCE -->
+    <section class="pricing-hero-sequence">
+        <div class="sticky-container">
+            
+            <!-- Video Background (Starts as circle, grows to full screen) -->
+            <div class="video-full-wrapper">
+                <video autoplay loop muted playsinline>
+                    <source src="/images/hero-bg.mp4" type="video/mp4">
+                </video>
+            </div>
+            
+            <!-- Dark Overlay -->
+            <div class="video-dark-overlay"></div>
+
+            <!-- Initial Content (Title & Button) -->
+            <div class="initial-hero-content">
+                
+                <!-- SVG GRAPHIC FOR LOOP DESIGN -->
+                <svg class="hero-graphic" viewBox="0 0 500 600" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M -50 550 C 150 450, 450 200, 300 100 C 150 0, -50 250, 150 450 C 350 650, 250 750, 100 750" 
+                          fill="none" 
+                          stroke="#d1f34d" 
+                          stroke-width="85" 
+                          stroke-linecap="round"/>
+                </svg>
+                
+                <h1 class="hero-title split-text">Take care of yourself,<br>the planet,<br> and save money</h1>
+            </div>
+            
+            <div class="quote-btn-wrapper">
+                <a href="#quote" class="quote-btn">Run a quote</a>
+            </div>
+
+            <!-- Text Overlay 1 -->
+            <div class="scroll-text text-1">
+                <h2>Once the company has signed<br>the contract with BeeToGreen, all<br>employees can log in to the<br>platform.</h2>
+            </div>
+
+            <!-- Text Overlay 2 -->
+            <div class="scroll-text text-2">
+                <h2>The company's contribution is<br>either deducted directly from the<br>purchase price or refunded later<br>according to the terms defined<br>by the company.</h2>
+            </div>
+
+            <!-- Text Overlay 3 -->
+            <div class="scroll-text text-3">
+                <h2>BeeToGreen also supports you in<br>claiming public subsidies you<br>may be eligible for, depending<br>on where you live.</h2>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION AFTER VIDEO SCROLL -->
+    <section class="simulate-section">
+        <h2>Simulate the cost of a bike</h2>
+    </section>
+
+    <!-- =========================================
+         TOUR WRAPPED UP SECTION (UPDATED TEXT & COLOR)
+         ========================================= -->
+    <section class="tour-section" id="tour">
+        <div class="tour-card">
+            <div class="tour-content">
+                <h2>Try our solution integrating the Sustainable Mobility Allowance free of charge</h2>
+                <p>
+                    Our marketplace is 100% online. But your bike rides in the real world. That's why we rely on a network of partner shops across France.
+                </p>
+                <a href="/contact.html" class="tour-btn">Get in touch</a>
+            </div>
+            <div class="tour-image">
+                <img src="/images/BTG-Yellow.webp" alt="Cyclist smiling">
+            </div>
+            <div class="tour-animated-h">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Circle fill updated to Dark Brown -->
+                    <circle cx="50" cy="50" r="50" fill="#2b3945" />
+                    <path d="M30,25 L30,75 M30,50 L70,50 M70,25 L70,75" 
+                        fill="none" stroke="#e6ff42" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER PLACEHOLDER -->
+    <div id="footer-placeholder"></div>
+
+    <!-- JAVASCRIPT FOR HEADER/FOOTER -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Fetch Header
+            fetch('../components/header.html')
+                .then(response => {
+                    if (!response.ok) throw new Error('Header load nathi thayu!');
+                    return response.text();
+                })
+                .then(data => {
+                    document.getElementById('header-placeholder').innerHTML = data;
+                })
+                .catch(error => console.error("Header Error:", error));
+            
+            // Fetch Footer
+            fetch('../components/footer.html')
+                .then(response => {
+                    if (!response.ok) throw new Error('Footer load nathi thayu!');
+                    return response.text();
+                })
+                .then(data => {
+                    document.getElementById('footer-placeholder').innerHTML = data;
+                    setTimeout(() => {
+                        const yearSpan = document.getElementById('year');
+                        if(yearSpan) { yearSpan.textContent = new Date().getFullYear(); }
+                    }, 500);
+                })
+                .catch(error => console.error("Footer Error:", error));
+        });
+    </script>
+
+    <!-- JAVASCRIPT FOR SCROLL ANIMATION -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            
+            // Split Text Animation Initialize
+            const splitTexts = document.querySelectorAll('.split-text');
+            if (splitTexts.length > 0) {
+                splitTexts.forEach(titleSplit => {
+                    const words = titleSplit.innerHTML.split(/<br>|\s+/); 
+                    titleSplit.innerHTML = '';
+                    
+                    words.forEach((word, wordIndex) => {
+                        if (word === "") {
+                            titleSplit.appendChild(document.createElement('br'));
+                            return;
+                        }
+                        const wordSpan = document.createElement('span');
+                        wordSpan.style.display = 'inline-block';
+                        wordSpan.style.overflow = 'hidden';
+                        wordSpan.style.verticalAlign = 'top'; 
+                        
+                        const chars = word.split('');
+                        chars.forEach((char, charIndex) => {
+                            const charSpan = document.createElement('span');
+                            charSpan.classList.add('char');
+                            charSpan.innerText = char;
+                            charSpan.style.transitionDelay = `${(wordIndex * 0.08) + (charIndex * 0.02)}s`; 
+                            wordSpan.appendChild(charSpan);
+                        });
+                        titleSplit.appendChild(wordSpan);
+                        titleSplit.appendChild(document.createTextNode('\u00A0')); 
+                    });
+                });
+            }
+
+            // Show initial title immediately
+            setTimeout(() => {
+                const heroTitle = document.querySelector('.hero-title');
+                if(heroTitle) heroTitle.classList.add('in-view');
+            }, 100);
+
+            // ==========================================
+            // Scroll Sequence Logic
+            // ==========================================
+            const section = document.querySelector('.pricing-hero-sequence');
+            const videoWrapper = document.querySelector('.video-full-wrapper');
+            const initialContent = document.querySelector('.initial-hero-content');
+            const btn = document.querySelector('.quote-btn-wrapper');
+            const overlay = document.querySelector('.video-dark-overlay');
+            
+            const text1 = document.querySelector('.scroll-text.text-1');
+            const text2 = document.querySelector('.scroll-text.text-2');
+            const text3 = document.querySelector('.scroll-text.text-3');
+
+            window.addEventListener('scroll', () => {
+                if (!section) return;
+
+                const rect = section.getBoundingClientRect();
+                const sectionTop = rect.top;
+                const sectionHeight = rect.height;
+                const windowHeight = window.innerHeight;
+
+                // Calculate scroll progress from 0 to 1
+                let progress = -sectionTop / (sectionHeight - windowHeight);
+                progress = Math.max(0, Math.min(1, progress));
+
+                // 1. Expand Video Circle (0 to 0.25 progress)
+                const baseRadius = window.innerWidth < 768 ? 130 : 180;
+                const maxRadius = Math.max(window.innerWidth, window.innerHeight) * 1.2;
+
+                if (progress <= 0.25) {
+                    let p1 = progress / 0.25;
+                    let easeP1 = p1 * p1; // ease-in for smoother expansion
+                    let currentRadius = baseRadius + (maxRadius - baseRadius) * easeP1;
+                    
+                    videoWrapper.style.clipPath = `circle(${currentRadius}px at 50% 65%)`;
+                    videoWrapper.style.webkitClipPath = `circle(${currentRadius}px at 50% 65%)`;
+                    
+                    // Fade out initial elements
+                    let fadeOut = Math.max(0, 1 - (progress / 0.1));
+                    initialContent.style.opacity = fadeOut;
+                    btn.style.opacity = fadeOut;
+                    
+                    // Fade in dark overlay
+                    let overlayOpacity = Math.max(0, (progress - 0.1) / 0.15) * 0.6;
+                    overlay.style.opacity = overlayOpacity;
+                } else {
+                    videoWrapper.style.clipPath = `circle(${maxRadius}px at 50% 65%)`;
+                    videoWrapper.style.webkitClipPath = `circle(${maxRadius}px at 50% 65%)`;
+                    initialContent.style.opacity = 0;
+                    btn.style.opacity = 0;
+                    overlay.style.opacity = 0.6;
+                }
+
+                // Helper Function for Text animations
+                function updateText(el, start, end, currP) {
+                    if (currP > start && currP <= end) {
+                        let localP = (currP - start) / (end - start);
+                        let opacity = 1;
+                        let yOffset = 0;
+                        if(localP < 0.2) {
+                            opacity = localP / 0.2; // Fade In
+                            yOffset = 30 * (1 - opacity);
+                        } else if (localP > 0.8) {
+                            opacity = 1 - ((localP - 0.8) / 0.2); // Fade Out
+                            yOffset = -30 * (1 - opacity); 
+                        }
+                        el.style.opacity = opacity;
+                        el.style.transform = `translate(-50%, -50%) translateY(${yOffset}px)`;
+                    } else {
+                        el.style.opacity = 0;
+                    }
+                }
+
+                // 2. Text 1 Sequence (0.25 to 0.50)
+                updateText(text1, 0.25, 0.50, progress);
+                
+                // 3. Text 2 Sequence (0.50 to 0.75)
+                updateText(text2, 0.50, 0.75, progress);
+                
+                // 4. Text 3 Sequence (0.75 to 1.0)
+                if (progress > 0.75) {
+                    let localP = (progress - 0.75) / 0.25;
+                    let opacity = Math.min(1, localP / 0.2);
+                    let yOffset = 30 * (1 - opacity);
+                    text3.style.opacity = opacity;
+                    text3.style.transform = `translate(-50%, -50%) translateY(${yOffset}px)`;
+                } else {
+                    text3.style.opacity = 0;
+                }
+            });
+        });
+    </script>
+
+    <!-- Tour Section Scroll Animation Script -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const tourCard = document.querySelector(".tour-card");
+            const tourH = document.querySelector(".tour-animated-h");
+
+            if (tourCard) {
+                const tourObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            tourCard.classList.add("content-visible");
+                            if (tourH) tourH.classList.add("h-visible");
+                        } else {
+                            tourCard.classList.remove("content-visible");
+                            if (tourH) tourH.classList.remove("h-visible");
+                        }
+                    });
+                }, { threshold: 0.3 });
+
+                tourObserver.observe(tourCard);
+            }
+        });
+    </script>
+</body>
+</html>

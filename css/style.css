@@ -663,7 +663,7 @@ button {
 .hero-info {
     margin-top: 78px;
     font-size: 23px;
-    font-weight: 700;
+    font-weight: 200;
     line-height: 1.3;
     letter-spacing: -0.7px;
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
@@ -691,8 +691,8 @@ button {
    DISCOVER BUTTON (Fill from bottom)
 ========================================= */
 .discover-btn {
-    position: relative; /* Animation ne button ni andar rakhva */
-    overflow: hidden;   /* Circle bahar na jay ena mate */
+    position: relative; 
+    overflow: hidden;   
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -703,12 +703,11 @@ button {
     font-size: 19px;
     font-weight: 800;
     text-decoration: none;
-    border: 1px solid transparent; /* Hover par border dekhadva mate */
+    border: 1px solid transparent; 
     transition: color 0.4s ease, border-color 0.4s ease;
-    z-index: 1; /* Text ne upar rakhva */
+    z-index: 1; 
 }
 
-/* Bottom mathi aavtu dark circle */
 .discover-btn::before {
     content: "";
     position: absolute;
@@ -724,8 +723,8 @@ button {
 }
 
 .discover-btn:hover {
-    color: var(--white); /* Hover karta text white thase */
-    border-color: rgba(255, 255, 255, 0.3); /* White border aavse */
+    color: var(--white); 
+    border-color: rgba(255, 255, 255, 0.3); 
 }
 
 .discover-btn:hover::before {
@@ -745,13 +744,12 @@ button {
     font-size: 18px;
     font-weight: 800;
     text-decoration: none;
-    padding: 10px 15px; /* Hover fill mate thodi space aapi che */
+    padding: 10px 15px; 
     border-radius: 8px;
     transition: color 0.4s ease;
     z-index: 1;
 }
 
-/* Underline (CSS border ni jagya e element banavyo che jethi hide kari shakay) */
 .learn-btn::after {
     content: "";
     position: absolute;
@@ -763,7 +761,7 @@ button {
     transition: background-color 0.3s ease;
 }
 
-/* Bottom mathi aavtu lime circle */
+
 .learn-btn::before {
     content: "";
     position: absolute;
@@ -779,11 +777,11 @@ button {
 }
 
 .learn-btn:hover {
-    color: var(--dark-green); /* Hover karta text dark thai jase */
+    color: var(--dark-green); 
 }
 
 .learn-btn:hover::after {
-    background-color: transparent; /* Hover karta underline gayab thai jase */
+    background-color: transparent; 
 }
 
 .learn-btn:hover::before {
@@ -1503,18 +1501,12 @@ button {
 
 .mobility-logo-slider {
     position: absolute;
-
     left: 0;
     bottom: 30px;
-
     width: 100%;
-
     overflow: hidden;
-
     z-index: 5;
-
     pointer-events: auto;
-
     /* Smooth edge fade */
     -webkit-mask-image: linear-gradient(
         to right,
@@ -1523,7 +1515,6 @@ button {
         #000 97%,
         transparent 100%
     );
-
     mask-image: linear-gradient(
         to right,
         transparent 0%,
@@ -1532,7 +1523,6 @@ button {
         transparent 100%
     );
 }
-
 
 /* =========================================
    MOVING TRACK
@@ -1599,27 +1589,21 @@ button {
 
 .mobility-logo-item:hover img {
     transform: scale(1.06);
-
     opacity: 1;
 }
-
 
 /* =========================================
    INFINITE ANIMATION
 ========================================= */
 
 @keyframes mobilityLogoMove {
-
     0% {
         transform: translateX(0);
     }
-
     100% {
         transform: translateX(-50%);
     }
-
 }
-
 
 /* =========================================
    PAUSE WHEN HOVERING
@@ -1629,84 +1613,64 @@ button {
     animation-play-state: paused;
 }
 
-
 /* =========================================
    TABLET
 ========================================= */
 
 @media (max-width: 1100px) {
-
     .mobility-logo-slider {
         bottom: 25px;
     }
-
     .mobility-logo-group {
         gap: 45px;
 
         padding: 0 30px;
     }
-
     .mobility-logo-item {
         height: 65px;
     }
-
     .mobility-logo-item img {
         height: 55px;
-
         max-width: 180px;
     }
-
 }
-
 
 /* =========================================
    MOBILE
 ========================================= */
 
 @media (max-width: 760px) {
-
     .mobility-logo-slider {
         bottom: 20px;
     }
-
     .mobility-logo-track {
         animation-duration: 5s;
     }
-
     .mobility-logo-group {
         gap: 35px;
-
         padding: 0 20px;
     }
-
     .mobility-logo-item {
         height: 50px;
     }
-
     .mobility-logo-item img {
         height: 40px;
-
         max-width: 130px;
     }
-
 }
-
 
 /* =========================================
    SMALL MOBILE
 ========================================= */
 
 @media (max-width: 480px) {
-
     .mobility-logo-track {
         animation-duration: 5s;
     }
-
     .mobility-logo-group {
         gap: 25px;
         padding: 0 15px;
     }
-
     .mobility-logo-item img {
         height: 32px;
         max-width: 100px;
@@ -1718,7 +1682,6 @@ button {
 ========================================= */
 
 @media (max-width: 1100px) {
-
     .mobility-logo-group {
         gap: 60px;
         padding-right: 60px;
@@ -1779,100 +1742,65 @@ button {
     }
 }
 
-
-
 /* =========================================
    ACTIVATE SECTION LAYOUT
 ========================================= */
 
 .activate-section {
     position: relative;
-
     width: 100%;
-
     min-height: 830px;
-
     background: #071b14;
-
     color: #ffffff;
-
     overflow: hidden;
-
     display: flex;
-
     align-items: flex-start;
-
     justify-content: center;
-
     padding: 110px 5% 150px;
-
     isolation: isolate;
 }
-
 
 /* MAIN CONTENT */
 
 .activate-content {
     position: relative;
-
     z-index: 3;
-
     width: 100%;
-
     max-width: 1100px;
-
     text-align: center;
 }
-
 
 /* DESCRIPTION */
 
 .activate-description {
     max-width: 900px;
-
     margin: 30px auto 0;
-
     font-size: clamp(18px, 1.5vw, 24px);
-
     font-weight: 700;
-
     line-height: 1.5;
-
     color: #ffffff;
 }
-
 
 /* BOTTOM NOTE */
 
 .mobility-note {
     position: absolute;
-
     bottom: 145px;
-
     left: 50%;
-
     transform: translateX(-50%);
-
     width: 100%;
-
     padding: 0 20px;
-
     text-align: center;
-
     z-index: 4;
-
     font-size: 19px;
-
     font-weight: 600;
 }
-
 
 /* =========================================
    RESPONSIVE
 ========================================= */
 
 @media (max-width: 1100px) {
-
     .activate-section {
         min-height: 900px;
     }
@@ -1883,12 +1811,9 @@ button {
 
 }
 
-
 @media (max-width: 760px) {
-
     .activate-section {
         min-height: 1050px;
-
         padding: 100px 6% 180px;
     }
 
@@ -2103,27 +2028,27 @@ button {
 }
 
 /* =====================================
-   DYNAMIC TABS SECTION (UPDATED)
+   DYNAMIC TABS SECTION (ALIGNMENT & FONT FIXED)
 ====================================== */
 .dynamic-tabs-section {
-    padding: 80px 5% 100px;
+    padding: 100px 5% 120px;
     background-color: #f3f0ff;
     transition: background-color 0.4s ease;
 }
 
 .tabs-container {
-    max-width: 1250px;
+    max-width: 1300px; 
     margin: 0 auto;
 }
 
 .tabs-header-wrapper {
     text-align: center;
-    margin-bottom: 70px;
+    margin-bottom: 80px; 
 }
 
 .dynamic-main-title {
     font-family: 'Parkinsans', sans-serif;
-    font-size: clamp(42px, 5.2vw, 68px);
+    font-size: clamp(45px, 5.5vw, 75px);
     font-weight: 800;
     line-height: 1.15;
     text-align: center;
@@ -2133,30 +2058,25 @@ button {
     transition: color 0.4s ease;
 }
 
+/* =====================================
+   GRID ALIGNMENT FIX
+====================================== */
 .tabs-grid {
     display: grid;
-    grid-template-columns: 1fr 1.1fr 1.2fr;
-    gap: 50px;
-    align-items: center;
+    grid-template-columns: 1fr 1.3fr 1.3fr; 
+    gap: 60px;
+    align-items: stretch; 
 }
 
 /* Left Navigation Buttons */
 .tabs-nav {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    justify-content: flex-start; 
+    gap: 30px;
     position: relative;
-}
-
-.tabs-nav::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: rgba(0, 0, 0, 0.08);
-    z-index: 0;
+    padding: 0 0 20px 0; 
+    width: 100%; 
 }
 
 .tab-btn {
@@ -2164,33 +2084,42 @@ button {
     border: none;
     text-align: left;
     font-family: 'Parkinsans', sans-serif;
-    font-size: 20px;
+    font-size: 19px; /* Font size nani kari (22px thi 19px) */
     font-weight: 600;
-    color: rgba(0, 0, 0, 0.35); /* Inactive option color */
+    color: rgba(0, 0, 0, 0.35);
     cursor: pointer;
-    padding: 8px 0 8px 20px;
+    /* Left border kadhi lidhi etle padding-left 0 karyu */
+    padding: 12px 0 15px 0; 
     position: relative;
     transition: color 0.3s ease;
+    overflow: hidden; 
+    width: 100%; 
 }
 
-.tab-btn::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 2px;
-    background: transparent;
-    transition: background 0.3s ease;
-}
-
-/* Active class ne JavaScript thi dynamically theme color malse */
 .tab-btn.active {
     font-weight: 700;
 }
 
-.tab-btn.active::after {
-    background: currentColor; /* Active left vertical line match thase */
+/* --- AUTO PLAY PROGRESS BAR (SCROLLBAR) --- */
+.tab-progress-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0; /* Bar start from extreme left */
+    right: 0;
+    height: 3px;
+    background: rgba(0, 0, 0, 0.05); 
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.tab-btn.active .tab-progress-bar {
+    opacity: 1; 
+}
+
+.tab-progress-fill {
+    width: 0%;
+    height: 100%;
+    background-color: currentColor; 
 }
 
 /* Center Image Container */
@@ -2198,8 +2127,10 @@ button {
     width: 100%;
     border-radius: 28px;
     overflow: hidden;
-    aspect-ratio: 4/5;
+    aspect-ratio: 4/5; 
     background: rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: stretch;
 }
 
 .tabs-image-container img {
@@ -2213,52 +2144,75 @@ button {
 .tabs-content-box {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: center; 
+    padding: 20px 0;
 }
 
 .tab-badge {
     font-family: 'Parkinsans', sans-serif;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 700;
     text-transform: uppercase;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     letter-spacing: 0.5px;
     transition: color 0.4s ease;
 }
 
 .tab-title {
     font-family: 'Parkinsans', sans-serif;
-    font-size: clamp(32px, 3.5vw, 46px);
+    font-size: clamp(32px, 3.5vw, 48px);
     font-weight: 800;
     line-height: 1.15;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+    letter-spacing: -1.5px;
     transition: color 0.4s ease;
 }
 
 .tab-desc {
     font-family: 'Parkinsans', sans-serif;
-    font-size: 17px;
+    font-size: 18px;
+    font-weight: 500;
     line-height: 1.6;
     transition: color 0.4s ease;
 }
 
 /* Responsive */
-@media (max-width: 992px) {
+@media (max-width: 1100px) {
     .tabs-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
+        grid-template-columns: 1fr 1fr;
     }
     .tabs-nav {
+        grid-column: 1 / -1;
         flex-direction: row;
+        justify-content: flex-start;
         overflow-x: auto;
+        padding-bottom: 5px;
     }
-    .tabs-nav::before, .tab-btn::after {
-        display: none;
+    .tab-btn {
+        padding: 10px 0 15px;
+        white-space: nowrap;
+        width: auto; 
+        margin-right: 25px; /* Mobile ma horizontal scroll mate gap */
     }
-    .dynamic-main-title {
-        font-size: 36px;
+    .tab-progress-bar {
+        left: 0;
+        right: 0;
     }
 }
+
+@media (max-width: 768px) {
+    .tabs-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    .dynamic-main-title {
+        font-size: 38px;
+    }
+    .tabs-image-container {
+        aspect-ratio: 1/1; 
+    }
+}
+
 
 /* =========================================
    BENEFITS / TOGGLE SECTION
@@ -2447,13 +2401,13 @@ button {
 /* Main Title Styling for Benefits Section */
 .benefits-main-title {
     font-family: "Parkinsans", sans-serif;
-    font-size: clamp(48px, 6.5vw, 85px); /* Responsive font size */
+    font-size: clamp(48px, 6.5vw, 75px); /* Responsive font size */
     font-weight: 900;
     line-height: 1.05;
     letter-spacing: -3px;
     text-align: center;
     color: var(--dark-green);
-    margin-bottom: 45px; /* Title ane toggle switch vachhe ni jagya */
+    margin-bottom: 45px; 
     max-width: 1200px;
 }
 
@@ -2467,7 +2421,6 @@ button {
     opacity: 0;
 }
 
-/* Card andar nu text slide up thase */
 .benefits-grid:not(.hidden) .card-content h3,
 .benefits-grid:not(.hidden) .card-content ul {
     animation: textSlideUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
@@ -2475,7 +2428,6 @@ button {
     transform: translateY(30px);
 }
 
-/* Staggered delays (Ek pachi ek animation aavva mate) */
 .benefits-grid:not(.hidden) .benefit-card:nth-child(1) { animation-delay: 0s; }
 .benefits-grid:not(.hidden) .benefit-card:nth-child(1) .card-content h3 { animation-delay: 0.1s; }
 .benefits-grid:not(.hidden) .benefit-card:nth-child(1) .card-content ul { animation-delay: 0.2s; }
@@ -2516,14 +2468,11 @@ button {
     text-align: center;
     border: 1px solid transparent; 
     z-index: 1; 
-
-    /* Button initially hide rakhelu che */
     opacity: 0;
     transform: translateY(40px);
     transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.4s ease, border-color 0.4s ease, color 0.4s ease;
 }
 
-/* Jyare user scroll karse tyare JS aa class add karse */
 .card-btn.btn-visible {
     opacity: 1;
     transform: translateY(0);
@@ -2533,7 +2482,7 @@ button {
 .card-btn.btn-visible:hover {
     transform: translateY(-5px);
     border-color: rgba(255, 255, 255, 0.3);
-    transition: transform 0.3s ease; /* Hover mate transition fast karvu */
+    transition: transform 0.3s ease; 
 }
 
 /* Fill Circle for hover */
@@ -2706,7 +2655,6 @@ button {
     letter-spacing: -1px;
 }
 
-/* Colors (Badha cards mate) */
 .stack-purple { background-color: #f2ebfc; color: #4b1f9b; }
 .stack-peach { background-color: #fff1eb; color: #df4e22; }
 .stack-blue { background-color: #ebf4f9; color: #0b3861; }
@@ -3023,7 +2971,7 @@ button {
 ========================================= */
 
 .network-section {
-    padding: 0 4% 100px; /* Baju mathi margin ane niche jagya */
+    padding: 0 4% 100px; 
     background-color: var(--white);
 }
 
@@ -3033,7 +2981,7 @@ button {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 8% 0 0; /* Left padding 0 karan ke map bahar aave che */
+    padding: 0 8% 0 0; 
     position: relative;
     min-height: 550px;
 }
@@ -3042,7 +2990,6 @@ button {
 .network-image {
     flex: 1;
     position: relative;
-    /* Image ne card ni thodi bahar (left and upar) kadhva mate negative margin */
     margin-left: -5%;
     margin-top: -50px;
     margin-bottom: -50px;
@@ -3051,7 +2998,7 @@ button {
 
 .network-image img {
     width: 100%;
-    max-width: 650px; /* Map ni size */
+    max-width: 650px; 
     height: auto;
     display: block;
 }
@@ -3060,8 +3007,8 @@ button {
 .network-content {
     flex: 1;
     max-width: 550px;
-    padding-left: 40px; /* Image thi thodi jagya */
-    color: #0b3861; /* Dark Blue Text */
+    padding-left: 40px; 
+    color: #0b3861; 
     z-index: 2;
 }
 
@@ -3231,9 +3178,8 @@ button {
     transform: rotate(-90deg); /* Start from top */
 }
 .progress-circle {
-    stroke-dasharray: 138; /* 2 * PI * 22(radius) */
+    stroke-dasharray: 138; 
     stroke-dashoffset: 138;
-    /* CSS transition nathi, aapanne JS thi control karishu */
 }
 
 /* --- Right Content Area --- */
@@ -3456,10 +3402,9 @@ button {
 
 .tour-animated-h {
     position: absolute;
-    /* Bottom ne adjust karyu chhe jethi card ni andar barabar set thay */
     bottom: -110px; 
     left: 42%; 
-    width: 180px; /* Size thodi proper kari chhe */
+    width: 180px;
     height: 180px;
     z-index: 2;
     opacity: 0.95;
@@ -3469,7 +3414,7 @@ button {
 }
 
 .tour-animated-h.h-visible {
-    bottom: -40px; /* Card ni border par barabar baith jase */
+    bottom: -40px; 
     transform: rotate(15deg); 
 }
 
@@ -3615,7 +3560,6 @@ button {
     transform: translateY(-50%);
 }
 
-/* Vertical line (Plus -> Minus banva mate rotate thase) */
 .faq-icon::after {
     top: 0;
     left: 50%;
@@ -3624,7 +3568,6 @@ button {
     transform: translateX(-50%);
 }
 
-/* Active item ma vertical line gayab thai jase etle minus (-) bani jase */
 .faq-item.active .faq-icon::after {
     transform: translateX(-50%) rotate(90deg);
     opacity: 0;
@@ -3668,8 +3611,8 @@ button {
 .faq-section {
     padding: 100px 6%;
     background-color: var(--white);
-    position: relative; /* Absolute shape mate relative rakhvu */
-    overflow: hidden;   /* Section ni bahar jatu shape hide karva */
+    position: relative; 
+    overflow: hidden;   
 }
 
 /* Bottom Left Loop Shape */
@@ -3685,7 +3628,6 @@ button {
     z-index: 1;
 }
 
-/* FAQ Container ne upar rakhva mate z-index aapiye */
 .faq-container {
     position: relative;
     z-index: 2;
@@ -3726,7 +3668,6 @@ button {
     width: 100%;
 }
 
-
 /* BRAND */
 
 .footer-brand {
@@ -3753,7 +3694,6 @@ button {
     color: #d9fff0;
 }
 
-
 /* FOOTER COLUMNS */
 
 .footer-column {
@@ -3768,7 +3708,6 @@ button {
     font-weight: 500;
     margin-bottom: 38px;
 }
-
 
 /* NAVIGATION LINKS */
 
@@ -3800,7 +3739,6 @@ button {
     color: #e6ff42;
 }
 
-
 /* LEGAL LINKS */
 
 .footer-legal-links {
@@ -3808,7 +3746,6 @@ button {
     flex-direction: column;
     gap: 17px;
 }
-
 
 /* CONTACT BUTTONS */
 

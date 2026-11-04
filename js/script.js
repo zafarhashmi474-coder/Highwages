@@ -19,7 +19,7 @@ window.addEventListener("load", function () {
 
 
 /* =====================================
-   DYNAMIC TABS FUNCTIONALITY (UPDATED)
+   DYNAMIC TABS FUNCTIONALITY (AUTO PLAY)
 ====================================== */
 document.addEventListener("DOMContentLoaded", function () {
     const tabButtons = document.querySelectorAll(".tab-btn");
@@ -30,10 +30,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const tabDescText = document.getElementById("tabDescText");
     const dynamicSection = document.getElementById("dynamicTabs");
 
-    // 3 Tab Data configurations (Theme colors for each option)
     const tabData = [
         {
-            bgColor: "#f3f0ff", // Light Purple Theme
+            bgColor: "#f3f0ff", 
             themeColor: "#5b318e",
             image: "images/home_bg.webp",
             badge: "+3,000 bike references",
@@ -41,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
             desc: "We give you access to our marketplace designed for the commute. Your teams pick, order, ride. And the Sustainable Mobility Allowance handles the rest."
         },
         {
-            bgColor: "#fff1eb", // Light Peach / Orange Theme
+            bgColor: "#fff1eb", 
             themeColor: "#e55a24",
             image: "images/Card-section2.webp",
             badge: "+5,000 bike racks installed",
@@ -49,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
             desc: "Installation of secure bike racks, bike tests to find the right one, safety training to ride with confidence."
         },
         {
-            bgColor: "#eafaf1", // Light Green Theme
+            bgColor: "#eafaf1", 
             themeColor: "#1d6a44",
             image: "images/comment-section-3.webp",
             badge: "+10 cycling experts",
@@ -58,42 +57,107 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     ];
 
+    let currentIndex = 0;
+    let autoPlayInterval = null;
+    let animationFrame = null;
+    let startTime = null;
+    const duration = 5000; // 5 seconds mate
+    let isUserInteracted = false; 
+
+    // Helper: update tab interface
+    function updateTab(index) {
+        tabButtons.forEach(b => {
+            b.classList.remove("active");
+            b.style.color = ""; 
+            b.querySelector('.tab-progress-fill').style.width = '0%'; // reset fill
+        });
+        
+        tabButtons[index].classList.add("active");
+        const data = tabData[index];
+        tabButtons[index].style.color = data.themeColor;
+        
+        if (dynamicSection) dynamicSection.style.backgroundColor = data.bgColor;
+        if (mainTitle) mainTitle.style.color = data.themeColor;
+        if (tabBadge) tabBadge.style.color = data.themeColor;
+        if (tabTitleText) tabTitleText.style.color = data.themeColor;
+        if (tabDescText) tabDescText.style.color = data.themeColor;
+        
+        if (tabImage) {
+            tabImage.style.opacity = '0';
+            setTimeout(() => {
+                tabImage.src = data.image;
+                tabImage.style.opacity = '1';
+            }, 150);
+        }
+        
+        if (tabBadge) tabBadge.textContent = data.badge;
+        if (tabTitleText) tabTitleText.textContent = data.title;
+        if (tabDescText) tabDescText.textContent = data.desc;
+    }
+
+    // Custom Animation for Progress Bar
+    function animateProgress(timestamp) {
+        if (isUserInteracted) return; // Stop if clicked
+
+        if (!startTime) startTime = timestamp;
+        let progress = (timestamp - startTime) / duration;
+
+        if (progress > 1) {
+            progress = 1;
+        }
+
+        const activeFill = tabButtons[currentIndex].querySelector('.tab-progress-fill');
+        if (activeFill) {
+            activeFill.style.width = `${progress * 100}%`;
+        }
+
+        if (progress === 1) {
+            startTime = null; 
+            currentIndex++;
+            if (currentIndex < tabData.length) {
+                updateTab(currentIndex);
+                animationFrame = requestAnimationFrame(animateProgress);
+            } else {
+                // Last item pr stop thase
+                activeFill.style.width = '100%';
+                cancelAnimationFrame(animationFrame);
+            }
+        } else {
+            animationFrame = requestAnimationFrame(animateProgress);
+        }
+    }
+
     if (tabButtons.length > 0) {
+        // Init manually click logic
         tabButtons.forEach((btn, index) => {
             btn.addEventListener("click", function () {
-                // Remove active class from all buttons
-                tabButtons.forEach(b => {
-                    b.classList.remove("active");
-                    b.style.color = ""; // Reset inactive color
-                });
+                isUserInteracted = true; // Click karyu etle auto-play bandh
+                cancelAnimationFrame(animationFrame);
                 
-                // Add active class to clicked button
-                this.classList.add("active");
-
-                // Get corresponding data
-                const data = tabData[index];
+                // Click pachi current bar full kari nakho
+                tabButtons.forEach(b => { b.querySelector('.tab-progress-fill').style.width = '0%'; });
+                btn.querySelector('.tab-progress-fill').style.width = '100%';
                 
-                // Apply active text color to clicked button matching current theme
-                this.style.color = data.themeColor;
-                
-                // Apply background color, colors and content dynamically to all sections
-                if (dynamicSection) dynamicSection.style.backgroundColor = data.bgColor;
-                if (mainTitle) mainTitle.style.color = data.themeColor;
-                if (tabBadge) tabBadge.style.color = data.themeColor;
-                if (tabTitleText) tabTitleText.style.color = data.themeColor;
-                if (tabDescText) tabDescText.style.color = data.themeColor;
-                
-                // Inject content
-                if (tabImage) tabImage.src = data.image;
-                if (tabBadge) tabBadge.textContent = data.badge;
-                if (tabTitleText) tabTitleText.textContent = data.title;
-                if (tabDescText) tabDescText.textContent = data.desc;
+                currentIndex = index;
+                updateTab(index);
             });
         });
 
-        // Set initial color for default active tab on load
-        if (tabButtons[0]) {
-            tabButtons[0].style.color = tabData[0].themeColor;
+        // Initialize First Tab and start observer
+        updateTab(0);
+
+        // Run animation only when section is visible
+        const tabObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !isUserInteracted && currentIndex === 0 && !startTime) {
+                    startTime = performance.now();
+                    animationFrame = requestAnimationFrame(animateProgress);
+                }
+            });
+        }, { threshold: 0.3 });
+
+        if (dynamicSection) {
+            tabObserver.observe(dynamicSection);
         }
     }
 });
