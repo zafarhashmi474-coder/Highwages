@@ -4634,8 +4634,8 @@ button {
 
     .footer-main {
         display: flex;
-        flex-direction: column; /* Badhu upar niche (1 column) */
-        gap: 50px; /* Darek section vachhe moti gap */
+        flex-direction: column; 
+        gap: 50px;
     }
 
     /* Brand Section */
@@ -4675,7 +4675,7 @@ button {
 
     .footer-link-group a,
     .footer-legal-links a {
-        font-size: 16px; /* Text thoda mota readable mate */
+        font-size: 16px; 
     }
 
     .footer-legal-links {
@@ -4731,7 +4731,7 @@ button {
 
     .footer-copyright {
         display: flex;
-        flex-direction: row; /* Year ane Back to top ek line ma */
+        flex-direction: row; 
         justify-content: space-between;
         align-items: center;
         width: 100%;
@@ -4751,7 +4751,7 @@ button {
    MOBILE HEADER, NAVBAR & LOGOS (100% BEETOGREEN STYLE)
 ========================================= */
 @media (max-width: 768px) {
-    /* --- 1. HEADER (Z-index vadharyu jethi upar rahe) --- */
+    /* --- 1. HEADER  --- */
     .header {
         top: 10px !important;
         min-height: 70px !important;
@@ -4760,7 +4760,7 @@ button {
         display: flex !important;
         align-items: center !important;
         justify-content: space-between !important;
-        z-index: 9999 !important; /* Menu khule tyare upar rahe */
+        z-index: 9999 !important; 
     }
 
     .header-right {

@@ -456,14 +456,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-// EVENT DELEGATION: Direct Display Flex force karavva mate
+// EVENT DELEGATION: Direct Display 
 document.addEventListener("click", function (e) {
     // 1. Hamburger Icon Click Logic
     const toggleBtn = e.target.closest(".menu-toggle");
     if (toggleBtn) {
         const navbar = document.querySelector(".navbar");
         if (navbar) {
-            // Check karo ke menu pahela thi open chhe ke nai
             if (navbar.classList.contains("open")) {
                 navbar.classList.remove("open");
                 // Direct JS thi CSS force none karo
@@ -471,14 +470,12 @@ document.addEventListener("click", function (e) {
                 document.body.style.overflow = "";
             } else {
                 navbar.classList.add("open");
-                // Direct JS thi CSS force flex karo (Aa menu 100% open karavse)
                 navbar.style.setProperty("display", "flex", "important");
                 document.body.style.overflow = "hidden";
             }
         }
     }
 
-    // 2. Link par click thavathi menu bandh karvanu logic
     const navLink = e.target.closest(".navbar a");
     if (navLink) {
         const navbar = document.querySelector(".navbar");
@@ -499,9 +496,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const observer = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting) {
-            footer.classList.add("visible"); // Class add thase etle CSS animation chalu thase
+            footer.classList.add("visible"); 
         }
-    }, { threshold: 0.2 }); // Jyare 20% footer dekhay tyare trigger thay
+    }, { threshold: 0.2 }); 
 
     observer.observe(footer);
 });
