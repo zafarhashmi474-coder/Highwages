@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,28 +6,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Header</title>
 
-<!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
-/* ==============================
-   HEADER (SIZE INCREASED)
-============================== */
+/* =========================
+   DESKTOP HEADER
+========================= */
 .header {
     background: #fff;
     padding: 0 35px;
     border-radius: 15px;
-    
     position: fixed;
     top: 25px;
     left: 50%;
     transform: translateX(-50%);
     width: calc(100% - 40px);
     max-width: 1500px;
-    
     z-index: 1000;
     box-sizing: border-box;
     box-shadow: 0 6px 20px rgba(0,0,0,0.08);
@@ -40,12 +38,9 @@
     height: 90px;
 }
 
-/* ==============================
-   LOGO
-============================== */
 .logo {
     font-family: 'Outfit', sans-serif;
-    font-size: 30px; 
+    font-size: 30px;
     font-weight: 700;
     color: #000;
     text-decoration: none;
@@ -53,9 +48,6 @@
     flex: 1;
 }
 
-/* ==============================
-   NAVIGATION
-============================== */
 .main-nav {
     display: flex;
     justify-content: center;
@@ -65,7 +57,7 @@
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 40px; 
+    gap: 40px;
     margin: 0;
     padding: 0;
     align-items: center;
@@ -73,7 +65,7 @@
 }
 
 .nav-links > li {
-    position: static; 
+    position: static;
     height: 100%;
 }
 
@@ -81,8 +73,8 @@
     text-decoration: none;
     color: #111;
     font-weight: 500;
-    font-size: 19px; 
-    height: 90px; 
+    font-size: 19px;
+    height: 90px;
     display: flex;
     align-items: center;
     gap: 6px;
@@ -93,36 +85,28 @@
     color: #555;
 }
 
-/* ==============================
-   MEGA MENU (DROPDOWN)
-============================== */
+/* MEGA MENU */
 .mega-menu {
     display: none;
     position: absolute;
     top: 100%;
-    left: 0; 
-    width: 100%; 
+    left: 0;
+    width: 100%;
     background: #fff;
-    border-radius: 0 0 16px 16px; 
+    border-radius: 0 0 16px 16px;
     box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-    
-    padding: 60px 40px; 
-    
+    padding: 60px 40px;
     border-top: 1px solid #f0f0f0;
     box-sizing: border-box;
     z-index: 1001;
-    
     grid-template-columns: repeat(3, 1fr);
-    gap: 60px; 
+    gap: 60px;
 }
 
 .dropdown-container:hover .mega-menu {
     display: grid;
 }
 
-/* ==============================
-   MENU COLUMNS
-============================== */
 .mega-column {
     display: flex;
     flex-direction: column;
@@ -130,26 +114,20 @@
 
 .col-between {
     justify-content: space-between;
-    min-height: 350px; 
+    min-height: 350px;
 }
 
-/* ==============================
-   BADGES
-============================== */
 .badge {
     display: inline-block;
     border: 1px solid #e5e5e5;
-    padding: 8px 18px; 
+    padding: 8px 18px;
     border-radius: 20px;
     font-size: 14px;
     color: #888;
-    margin-bottom: 40px; 
+    margin-bottom: 40px;
     font-family: 'DM Sans', sans-serif;
 }
 
-/* ==============================
-   MENU LINKS (UPDATED WITH UNDERLINE)
-============================== */
 .mega-list {
     list-style: none;
     padding: 0;
@@ -157,50 +135,38 @@
 }
 
 .mega-list li {
-    margin-bottom: 25px; 
+    margin-bottom: 25px;
 }
 
 .mega-list a {
     text-decoration: none;
     font-family: 'Outfit', sans-serif;
-    font-size: 32px; 
+    font-size: 32px;
     font-weight: 600;
     color: #111;
-    transition: color 0.2s;
-    
-    /* Position relative to contain the animated underline */
     position: relative;
     display: inline-block;
 }
 
-/* Black Underline Animation */
 .mega-list a::after {
     content: '';
     position: absolute;
     left: 0;
-    bottom: -2px; /* Thodu text thi niche */
-    width: 0; /* Initial width 0 */
-    height: 3px; /* Thickness of the underline */
-    background-color: #111; /* Black line */
+    bottom: -2px;
+    width: 0;
+    height: 3px;
+    background-color: #111;
     transition: width 0.3s ease;
 }
 
-.mega-list a:hover {
-    color: #000;
-}
-
-/* Expand line on hover */
 .mega-list a:hover::after {
-    width: 100%; 
+    width: 100%;
 }
 
-/* ==============================
-   SOCIAL ICONS
-============================== */
 .socials {
     display: flex;
     align-items: center;
-    gap: 25px; 
+    gap: 25px;
 }
 
 .socials a {
@@ -215,23 +181,20 @@
 .socials a i,
 .socials a svg {
     font-size: 22px;
-    color: #071b14; 
+    color: #071b14;
     transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .socials a:hover i,
 .socials a:hover svg {
-    color: #748b25; 
+    color: #748b25;
     transform: translateY(-3px);
 }
 
-/* ==============================
-   LEGAL LINKS
-============================== */
 .legal-links {
     display: flex;
     flex-direction: column;
-    gap: 15px; 
+    gap: 15px;
 }
 
 .legal-links a {
@@ -245,21 +208,16 @@
     color: #111;
 }
 
-/* ==============================
-   MENU IMAGE
-============================== */
 .mega-img {
     width: 100%;
     height: 100%;
-    min-height: 350px; 
+    min-height: 350px;
     background-color: #f0f0f0;
     object-fit: cover;
     border-radius: 16px;
 }
 
-/* ==============================
-   RIGHT SIDE ACTIONS
-============================== */
+/* DESKTOP ACTIONS */
 .header-actions {
     display: flex;
     align-items: center;
@@ -271,7 +229,7 @@
 
 .lang-switch {
     font-weight: 600;
-    font-size: 17px; 
+    font-size: 17px;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -282,80 +240,437 @@
 
 .btn {
     position: relative;
-    overflow: hidden; 
+    overflow: hidden;
     text-decoration: none;
-    padding: 14px 28px; 
+    padding: 14px 28px;
     border-radius: 10px;
     font-weight: 600;
-    font-size: 17px; 
+    font-size: 17px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    transition: color 0.3s ease; 
-    z-index: 1; 
+    transition: color 0.3s ease;
+    z-index: 1;
 }
 
 .btn::before {
     content: "";
     position: absolute;
-    top: 100%; 
+    top: 100%;
     left: 50%;
     transform: translateX(-50%) translateY(0);
     width: 200%;
     height: 200%;
-    border-radius: 50%; 
+    border-radius: 50%;
     transition: transform 0.4s ease-in-out;
-    z-index: -1; 
+    z-index: -1;
 }
 
-.btn:hover::before { transform: translateX(-50%) translateY(-50%); }
-
-.btn-login { background-color: #d9f743; color: #000; }
-.btn-login::before { background-color: #0a1b15; }
-.btn-login:hover { color: #fff; }
-
-.btn-demo { background-color: #0a1b15; color: #fff; }
-.btn-demo::before { background-color: #d9f743; }
-.btn-demo:hover { color: #111; }
-
-/* ==============================
-   RESPONSIVE
-============================== */
-@media (max-width: 1200px) {
-    .nav-links { gap: 20px; }
-    .nav-link { font-size: 16px; }
-    .btn { padding: 12px 20px; font-size: 15px; }
-    .header-container { height: 80px; }
-    .nav-link { height: 80px; }
+.btn:hover::before {
+    transform: translateX(-50%) translateY(-50%);
 }
+
+.btn-login {
+    background-color: #d9f743;
+    color: #000;
+}
+
+.btn-login::before {
+    background-color: #0a1b15;
+}
+
+.btn-login:hover {
+    color: #fff;
+}
+
+.btn-demo {
+    background-color: #0a1b15;
+    color: #fff;
+}
+
+.btn-demo::before {
+    background-color: #d9f743;
+}
+
+.btn-demo:hover {
+    color: #111;
+}
+
+/* =========================
+   MOBILE MENU DEFAULT
+========================= */
+.mobile-menu-toggle,
+.mobile-header-actions,
+.mobile-menu-panel {
+    display: none;
+}
+
+/* =========================
+   TABLET AND MOBILE
+========================= */
+@media (max-width: 900px) {
+
+    .header {
+        top: 14px;
+        left: 14px;
+        right: 14px;
+        width: auto;
+        transform: none;
+        padding: 0 18px;
+        border-radius: 14px;
+    }
+
+    .header-container {
+        height: 76px;
+        min-height: 76px;
+    }
+
+    .header .logo {
+        flex: none;
+        font-size: 25px;
+        font-weight: 800;
+        letter-spacing: -1px;
+    }
+
+    .header .main-nav,
+    .header .header-actions {
+        display: none !important;
+    }
+
+    /* HIDDEN CHECKBOX */
+    .mobile-menu-toggle {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    /* MOBILE HEADER BUTTONS */
+    .mobile-header-actions {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+    }
+
+    .mobile-login-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 104px;
+        min-height: 48px;
+        padding: 0 18px;
+        border-radius: 12px;
+        background: #d9f743;
+        color: #071b14;
+        text-decoration: none;
+        font-family: 'Outfit', sans-serif;
+        font-size: 15px;
+        font-weight: 700;
+        white-space: nowrap;
+    }
+
+    /* HAMBURGER */
+    .mobile-menu-open {
+        width: 32px;
+        height: 34px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 6px;
+        cursor: pointer;
+    }
+
+    .mobile-menu-open span {
+        display: block;
+        width: 29px;
+        height: 3px;
+        border-radius: 5px;
+        background: #071b14;
+    }
+
+    /* FULL MOBILE MENU */
+    .mobile-menu-panel {
+        position: fixed;
+        inset: 12px;
+        z-index: 2000;
+        width: auto;
+        min-height: calc(100dvh - 24px);
+        max-height: calc(100dvh - 24px);
+        overflow-y: auto;
+        box-sizing: border-box;
+        padding: 18px;
+        border-radius: 14px;
+        background: #fff;
+        box-shadow: 0 10px 40px rgba(0,0,0,.22);
+        color: #071b14;
+    }
+
+    /* OPEN MENU */
+    .mobile-menu-toggle:checked ~ .mobile-menu-panel {
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* MENU TOP */
+    .mobile-menu-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 22px;
+    }
+
+    .mobile-menu-logo {
+        margin-right: auto;
+        color: #071b14;
+        text-decoration: none;
+        font-family: 'Outfit', sans-serif;
+        font-size: 26px;
+        font-weight: 800;
+        letter-spacing: -1px;
+    }
+
+    /* CLOSE BUTTON */
+    .mobile-menu-close {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 34px;
+        height: 42px;
+        color: #071b14;
+        font-family: Arial, sans-serif;
+        font-size: 34px;
+        font-weight: 300;
+        cursor: pointer;
+    }
+
+    /* MENU GRID */
+    .mobile-menu-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 24px 16px;
+    }
+
+    .mobile-menu-group {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        min-width: 0;
+    }
+
+    .mobile-menu-badge {
+        display: inline-flex;
+        align-items: center;
+        min-height: 30px;
+        padding: 0 12px;
+        margin-bottom: 12px;
+        border: 1px solid #d8dedb;
+        border-radius: 20px;
+        color: #89918d;
+        font-family: 'DM Sans', sans-serif;
+        font-size: 12px;
+        white-space: nowrap;
+    }
+
+    .mobile-menu-group > a {
+        display: block;
+        margin: 0 0 11px;
+        color: #071b14;
+        text-decoration: none;
+        font-family: 'Outfit', sans-serif;
+        font-size: 15px;
+        line-height: 1.35;
+        font-weight: 650;
+        overflow-wrap: anywhere;
+    }
+
+    /* MENU BOTTOM */
+    .mobile-menu-bottom {
+        margin-top: auto;
+        padding-top: 30px;
+    }
+
+    .mobile-demo-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        min-height: 48px;
+        border-radius: 9px;
+        background: #00885d;
+        color: #d9f743;
+        text-decoration: none;
+        font-family: 'Outfit', sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+    }
+
+    .mobile-menu-footer-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-top: 16px;
+    }
+
+    .mobile-language {
+        color: #071b14;
+        font-family: 'DM Sans', sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+    }
+
+    .mobile-socials {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .mobile-socials a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        border: 1px solid #d8dedb;
+        border-radius: 50%;
+        color: #071b14;
+        text-decoration: none;
+    }
+
+    .mobile-legal-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 14px;
+        margin-top: 18px;
+    }
+
+    .mobile-legal-links a {
+        color: #89918d;
+        text-decoration: none;
+        font-family: 'DM Sans', sans-serif;
+        font-size: 11px;
+    }
+}
+
+/* SMALL MOBILE */
+@media (max-width: 380px) {
+
+    .header {
+        left: 8px;
+        right: 8px;
+        padding: 0 13px;
+    }
+
+    .header-container {
+        height: 68px;
+        min-height: 68px;
+    }
+
+    .mobile-header-actions {
+        gap: 12px;
+    }
+
+    .mobile-login-btn {
+        min-width: 88px;
+        min-height: 44px;
+        padding: 0 13px;
+    }
+
+    .mobile-menu-panel {
+        inset: 8px;
+        max-height: calc(100dvh - 16px);
+        padding: 15px;
+    }
+
+    .mobile-menu-grid {
+        gap: 20px 12px;
+    }
+
+    .mobile-menu-group > a {
+        font-size: 14px;
+    }
+}
+
+
+/* FINAL MOBILE HEADER FIX */
 
 @media (max-width: 900px) {
-    .header-actions, .main-nav { display: none; }
-    .logo { flex: none; }
+
+    /* Show the SAME desktop login button */
+    .header .header-actions {
+        display: flex !important;
+        flex: 0 0 auto !important;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 0;
+        margin-left: auto;
+    }
+
+    /* Hide desktop-only items */
+    .header .header-actions .lang-switch,
+    .header .header-actions .btn-demo {
+        display: none !important;
+    }
+
+    /* Style the single shared login button */
+    .header .header-actions .btn-login {
+        display: inline-flex !important;
+        min-width: 88px;
+        min-height: 44px;
+        padding: 0 13px;
+        background: #d9f743;
+        color: #071b14;
+        border-radius: 12px;
+        font-size: 15px;
+        margin: 0;
+    }
+
+    /* Mobile section contains hamburger only */
+    .header .mobile-header-actions {
+        display: flex !important;
+        flex: 0 0 auto;
+        margin-left: 12px;
+    }
+
+    /* Menu remains closed initially */
+    .header .mobile-menu-panel {
+        display: none !important;
+    }
+
+    .header .mobile-menu-toggle:checked ~ .mobile-menu-panel {
+        display: flex !important;
+    }
 }
+
 </style>
 </head>
+
 <body>
 
-<!-- ==============================
-     HEADER HTML
-============================== -->
 <header class="header" id="header">
+
+    <!-- MOBILE MENU CHECKBOX -->
+    <input type="checkbox" id="mobileMenuToggle"
+           class="mobile-menu-toggle"
+           aria-label="Toggle navigation menu">
+
     <div class="header-container">
-        
+
         <!-- LOGO -->
         <a href="/" class="logo">Highwages</a>
-        
-        <!-- CENTER NAVIGATION -->
+
+        <!-- DESKTOP NAVIGATION -->
         <nav class="main-nav">
             <ul class="nav-links">
-                
-                <!-- SOLUTIONS DROPDOWN -->
+
+                <!-- SOLUTIONS -->
                 <li class="dropdown-container">
                     <a href="#" class="nav-link">Solutions</a>
-                    
+
                     <div class="mega-menu">
-                        <!-- Column 1 -->
+
                         <div class="mega-column col-between">
                             <div>
                                 <span class="badge">Our Solutions</span>
@@ -364,6 +679,7 @@
                                     <li><a href="/solutions/employers.html">For employers</a></li>
                                 </ul>
                             </div>
+
                             <div class="socials">
                                 <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
                                 <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin-in"></i></a>
@@ -371,7 +687,6 @@
                             </div>
                         </div>
 
-                        <!-- Column 2 -->
                         <div class="mega-column col-between">
                             <div>
                                 <span class="badge">Join us</span>
@@ -379,6 +694,7 @@
                                     <li><a href="/solutions/partners.html">Become a partner</a></li>
                                 </ul>
                             </div>
+
                             <div class="legal-links">
                                 <a href="/solutions/legal.html">Legal notice</a>
                                 <a href="/solutions/privacy-policy.html">Privacy policy</a>
@@ -386,19 +702,19 @@
                             </div>
                         </div>
 
-                        <!-- Column 3 (Image) -->
                         <div class="mega-column">
                             <img src="/images/nav_sol.webp" alt="Partners" class="mega-img">
                         </div>
+
                     </div>
                 </li>
 
-                <!-- PRICING DROPDOWN -->
+                <!-- PRICING -->
                 <li class="dropdown-container">
                     <a href="#" class="nav-link">Pricing</a>
-                    
+
                     <div class="mega-menu">
-                        <!-- Column 1 -->
+
                         <div class="mega-column col-between">
                             <div>
                                 <span class="badge">Our Pricing</span>
@@ -407,6 +723,7 @@
                                     <li><a href="/pricing/employers.html">For employers</a></li>
                                 </ul>
                             </div>
+
                             <div class="socials">
                                 <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
                                 <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin-in"></i></a>
@@ -414,7 +731,6 @@
                             </div>
                         </div>
 
-                        <!-- Column 2 -->
                         <div class="mega-column col-between">
                             <div>
                                 <span class="badge">Join us</span>
@@ -422,6 +738,7 @@
                                     <li><a href="/solutions/partners.html">Become a partner</a></li>
                                 </ul>
                             </div>
+
                             <div class="legal-links">
                                 <a href="/solutions/legal.html">Legal notice</a>
                                 <a href="/solutions/privacy-policy.html">Privacy policy</a>
@@ -429,19 +746,19 @@
                             </div>
                         </div>
 
-                        <!-- Column 3 (Image) -->
                         <div class="mega-column">
                             <img src="/images/nav_tarifs.webp" alt="Pricing" class="mega-img">
                         </div>
+
                     </div>
                 </li>
 
-                <!-- RESOURCES DROPDOWN -->
+                <!-- RESOURCES -->
                 <li class="dropdown-container">
                     <a href="#" class="nav-link">Resources</a>
-                    
+
                     <div class="mega-menu">
-                        <!-- Column 1 -->
+
                         <div class="mega-column col-between">
                             <div>
                                 <span class="badge">Our resources</span>
@@ -450,6 +767,7 @@
                                     <li><a href="/resources/newsroom.html">Newsroom</a></li>
                                 </ul>
                             </div>
+
                             <div class="socials">
                                 <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
                                 <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin-in"></i></a>
@@ -457,7 +775,6 @@
                             </div>
                         </div>
 
-                        <!-- Column 2 -->
                         <div class="mega-column col-between">
                             <div>
                                 <span class="badge">Join us</span>
@@ -465,6 +782,7 @@
                                     <li><a href="/solutions/partners.html">Become a partner</a></li>
                                 </ul>
                             </div>
+
                             <div class="legal-links">
                                 <a href="/solutions/legal.html">Legal notice</a>
                                 <a href="/solutions/privacy-policy.html">Privacy policy</a>
@@ -472,10 +790,10 @@
                             </div>
                         </div>
 
-                        <!-- Column 3 (Image) -->
                         <div class="mega-column">
                             <img src="/images/helmet.png" alt="Resources" class="mega-img">
                         </div>
+
                     </div>
                 </li>
 
@@ -483,27 +801,137 @@
                 <li>
                     <a href="/contact.html" class="nav-link">Contact</a>
                 </li>
+
             </ul>
         </nav>
 
-        <!-- RIGHT SIDE BUTTONS -->
+        <!-- DESKTOP ACTIONS -->
         <div class="header-actions">
-            <!-- LANGUAGE -->
+
             <div class="lang-switch">
                 <span>🇬🇧</span>
                 <span>EN</span>
             </div>
-            <!-- LOGIN -->
-            <a href="#" class="btn btn-login">
-                Log in
-            </a>
-            <!-- BOOK A DEMO -->
-            <a href="/contact.html" class="btn btn-demo">
+
+            <a href="#" class="btn btn-login">Log in</a>
+
+            <a href="/contact.html" class="btn btn-demo">Book a demo</a>
+
+        </div>
+
+        <!-- MOBILE ACTIONS -->
+        <div class="mobile-header-actions">
+
+            <label for="mobileMenuToggle"
+                class="mobile-menu-open"
+                aria-label="Open menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+
+        </div>
+
+    </div>
+
+    <!-- MOBILE NAVIGATION PANEL -->
+    <div class="mobile-menu-panel">
+
+        <div class="mobile-menu-top">
+
+            <a href="/" class="mobile-menu-logo">Highwages</a>
+
+            <label for="mobileMenuToggle"
+                class="mobile-menu-close"
+                aria-label="Close menu">&times;</label>
+
+        </div>
+
+        <div class="mobile-menu-grid">
+
+            <!-- SOLUTIONS -->
+            <div class="mobile-menu-group">
+
+                <span class="mobile-menu-badge">Our Solutions</span>
+
+                <a href="/solutions/employees.html">For employees</a>
+                <a href="/solutions/employers.html">For employers</a>
+
+            </div>
+
+            <!-- RESOURCES -->
+            <div class="mobile-menu-group">
+
+                <span class="mobile-menu-badge">Our Resources</span>
+
+                <a href="/resources/blog.html">Blog</a>
+                <a href="/resources/newsroom.html">Newsroom</a>
+
+            </div>
+
+            <!-- PRICING -->
+            <div class="mobile-menu-group">
+
+                <span class="mobile-menu-badge">Our Pricing</span>
+
+                <a href="/pricing/employees.html">For employees</a>
+                <a href="/pricing/employers.html">For employers</a>
+
+            </div>
+
+            <!-- JOIN US -->
+            <div class="mobile-menu-group">
+
+                <span class="mobile-menu-badge">Join us</span>
+
+                <a href="/solutions/partners.html">Become a partner</a>
+                <a href="/contact.html">Contact</a>
+
+            </div>
+
+        </div>
+
+        <!-- BOTTOM MENU -->
+        <div class="mobile-menu-bottom">
+
+            <a href="/contact.html" class="mobile-demo-btn">
                 Book a demo
             </a>
+
+            <div class="mobile-menu-footer-row">
+
+                <span class="mobile-language">🇬🇧 &nbsp; EN</span>
+
+                <div class="mobile-socials">
+
+                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+
+                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </a>
+
+                    <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-brands fa-tiktok"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="mobile-legal-links">
+
+                <a href="/solutions/legal.html">Legal notice</a>
+                <a href="/solutions/privacy-policy.html">Privacy policy</a>
+                <a href="/solutions/terms.html">Terms</a>
+
+            </div>
+
         </div>
-        
+
     </div>
+
 </header>
 
 </body>
