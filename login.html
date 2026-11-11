@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log in - Highwages</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            font-family: 'DM Sans', sans-serif;
+            background-color: #ffffff;
+            color: #111;
+            overflow-x: hidden;
+        }
+
+        .login-container {
+            display: flex;
+            min-height: 100vh;
+            width: 100%;
+        }
+
+        /* =========================================
+           LEFT SIDE (IMAGE & BRANDING)
+           ========================================= */
+        .left-panel {
+            flex: 1.2;
+            background-color: #0b5e40; /* Dark Green */
+            position: sticky;
+            top: 0;
+            height: 100vh; /* Keeps the left side fixed while the right side scrolls */
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            padding: 40px 60px;
+        }
+
+        .brand-logo {
+            font-family: 'Outfit', sans-serif;
+            font-size: 45px;
+            font-weight: 800;
+            color: #c9f2b8; /* Light Mint Green */
+            z-index: 5;
+            margin-bottom: 30px;
+            text-decoration: none;
+        }
+
+        .marketing-text {
+            font-family: 'Outfit', sans-serif;
+            position: relative;
+            z-index: 5;
+        }
+
+        .highlight-box {
+            display: inline-block;
+            background-color: #e53e3e; /* Red Box */
+            color: #d1f34d; /* Lime Yellow Text */
+            font-size: clamp(30px, 4vw, 55px);
+            font-weight: 800;
+            padding: 5px 20px;
+            border-radius: 8px;
+            line-height: 1.2;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+        }
+
+        .highlight-box.line-2 {
+            margin-bottom: 0;
+        }
+
+        /* Abstract Light Green Shapes (Using SVG as background) */
+        .bg-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0.9;
+        }
+
+        .hero-image {
+            position: absolute;
+            bottom: -40px; 
+            right: -90px; 
+            left: auto; 
+            transform: none; 
+            width: 80%; 
+            max-width: 500px;
+            z-index: 3;
+            object-fit: contain;
+        }
+
+        /* Floating Green Check Icon */
+        .floating-check {
+            position: absolute;
+            bottom: 40px;
+            left: 40px;
+            width: 50px;
+            height: 50px;
+            background-color: #4ade80;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 4;
+            color: white;
+            font-size: 24px;
+        }
+
+        /* =========================================
+           RIGHT SIDE (LOGIN FORM)
+           ========================================= */
+        .right-panel {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background-color: #ffffff;
+            position: relative;
+            padding: 40px 80px;
+        }
+
+        /* Language Switcher */
+        .lang-switcher {
+            align-self: flex-end;
+            font-size: 14px;
+            font-weight: 700;
+            color: #666;
+            margin-bottom: 40px;
+            display: flex;
+            gap: 15px;
+        }
+        .lang-switcher span { cursor: pointer; }
+        .lang-switcher span.active { color: #111; }
+
+        .form-wrapper {
+            max-width: 450px;
+            width: 100%;
+            margin: auto; /* Centers vertically and horizontally */
+        }
+
+        .form-wrapper h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: #0b221a; /* Dark Green text */
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .section-label {
+            font-size: 14px;
+            font-weight: 700;
+            color: #0b5e40;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        /* Social Login Buttons */
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 14px;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            text-decoration: none;
+            margin-bottom: 15px;
+            border: none;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+        .social-btn:hover { opacity: 0.9; }
+
+        /* MOBILITY CARD BUTTON WITH MARQUEE */
+        .btn-mobility {
+            position: relative;
+            overflow: hidden;
+            background-color: #fbbf24; 
+            color: #111;
+            padding: 0;
+            height: 52px; 
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            display: block; 
+        }
+
+        .marquee-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .marquee-content {
+            display: flex;
+            align-items: center;
+            gap: 30px; 
+            padding-left: 30px;
+            width: max-content;
+            animation: marquee-scroll 10s linear infinite; 
+        }
+
+        .marquee-content img {
+            height: 22px; 
+            width: auto;
+            border-radius: 4px;
+            display: block;
+            color: transparent; 
+        }
+
+        @keyframes marquee-scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); } 
+        }
+
+        /* TEXT OVERLAY (ABSOLUTE CENTER WITH SOLID BACKGROUND) */
+        .btn-text {
+            position: absolute; 
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%); 
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 15px;
+            font-weight: 700;
+            color: #ffffff; 
+            background-color: #fbbf24;
+            height: 100%; 
+            padding: 0 40px; 
+            text-shadow: none; 
+        }
+
+        .btn-microsoft {
+            background-color: #0284c7; /* Blue */
+            color: #fff;
+            gap: 10px;
+        }
+        
+        .btn-google {
+            background-color: #ef4444; /* Red */
+            color: #fff;
+            gap: 10px;
+        }
+
+        /* Divider */
+        .divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 30px 0;
+            color: #999;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        .divider::before, .divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid #e5e5e5;
+        }
+        .divider::before { margin-right: 15px; }
+        .divider::after { margin-left: 15px; }
+
+        /* Email Login Form */
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 16px;
+            border: 1px solid #e5e5e5;
+            border-radius: 8px;
+            font-size: 15px;
+            font-family: 'DM Sans', sans-serif;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        .input-group input:focus { border-color: #0b5e40; }
+        .input-group input::placeholder { color: #999; }
+
+        .forgot-pass {
+            display: block;
+            text-align: right;
+            font-size: 14px;
+            color: #0b5e40;
+            font-weight: 600;
+            text-decoration: underline;
+            margin-bottom: 20px;
+        }
+
+        .btn-login-submit {
+            width: 100%;
+            padding: 16px;
+            background-color: #052e16; /* Very Dark Green */
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .btn-login-submit:hover { background-color: #021a0c; }
+
+        .signup-link {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 14px;
+            color: #666;
+        }
+        .signup-link a {
+            color: #0b5e40;
+            font-weight: 600;
+            text-decoration: underline;
+        }
+
+        /* Floating Blue Chat Icon */
+        .floating-chat {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            width: 50px;
+            height: 50px;
+            background-color: #93c5fd;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            z-index: 100;
+        }
+        .floating-chat i { color: #1e3a8a; font-size: 24px; }
+
+        /* =========================================
+           RESPONSIVE DESIGN
+           ========================================= */
+        @media (max-width: 1024px) {
+            .left-panel { padding: 30px; }
+            .right-panel { padding: 30px; }
+        }
+
+        @media (max-width: 768px) {
+            .login-container {
+                flex-direction: column;
+            }
+
+            .left-panel {
+                flex: none;
+                position: relative;
+                height: 500px; /* Specific height for mobile */
+                padding: 30px 20px;
+                text-align: center;
+                align-items: center;
+            }
+
+            .highlight-box {
+                font-size: 28px;
+            }
+
+            .hero-image {
+                width: 95%;
+                bottom: 0;
+            }
+
+            .right-panel {
+                flex: none;
+                padding: 40px 20px;
+            }
+
+            .lang-switcher {
+                justify-content: center;
+                align-self: center;
+            }
+
+            .floating-check, .floating-chat {
+                display: none; /* Hide floating icons on small mobile */
+            }
+        }
+
+        /* =========================================
+           SIGN UP POPUP & FORGOT PASSWORD POPUP
+           ========================================= */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .signup-modal {
+            background-color: #ffffff;
+            width: 90%;
+            max-width: 480px;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+            transform: translateY(-20px);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.active .signup-modal {
+            transform: translateY(0);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 24px;
+            color: #999;
+            cursor: pointer;
+            border: none;
+            background: none;
+        }
+        .close-modal:hover { color: #333; }
+
+        .signup-modal h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 26px;
+            color: #111;
+            text-align: center;
+            margin-bottom: 25px;
+            line-height: 1.2;
+        }
+
+        .btn-signup-google {
+            width: 100%;
+            background-color: #4ade80; /* Light Green */
+            color: #fff;
+            padding: 14px;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .modal-label {
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .modal-input, .modal-select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+            margin-bottom: 20px;
+            outline: none;
+            font-family: 'DM Sans', sans-serif;
+        }
+        .modal-input:focus, .modal-select:focus { border-color: #4ade80; }
+
+        .btn-confirm {
+            width: 100%;
+            background-color: #a7f3d0; /* Very Light Green */
+            color: #065f46;
+            padding: 14px;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        .btn-have-account {
+            width: 100%;
+            background-color: #4ade80; /* Light Green */
+            color: #fff;
+            padding: 14px;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .btn-forgot-confirm {
+            width: 100%;
+            background-color: #4ade80; 
+            color: #fff;
+            padding: 14px;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .btn-forgot-confirm:hover { background-color: #22c55e; }
+
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        
+        <!-- LEFT PANEL -->
+        <div class="left-panel">
+            
+            <!-- Abstract background loops -->
+            <svg class="bg-shapes" viewBox="0 0 800 1000" xmlns="http://www.w3.org/2000/svg">
+                <path d="M-100,500 C150,200 400,300 300,600 C200,900 600,800 800,500" fill="none" stroke="#c9f2b8" stroke-width="120" stroke-linecap="round" opacity="0.8"/>
+            </svg>
+
+            <!-- Brand Logo -->
+            <a href="/" class="brand-logo">Highwages</a>
+
+            <!-- Marketing Text -->
+            <div class="marketing-text">
+                <div class="highlight-box">The bike solution</div><br>
+                <div class="highlight-box line-2">for employees.</div>
+            </div>
+
+            <!-- Man on Bike Image -->
+            <img src="../images/green-ice-bike.webp" alt="Man on bike smiling" class="hero-image" onerror="this.src='green-ice-bike.webp'">
+
+            <!-- Check Icon -->
+            <div class="floating-check">
+                <i class="fa-solid fa-check"></i>
+            </div>
+        </div>
+
+        <!-- RIGHT PANEL (FORM) -->
+        <div class="right-panel">
+            
+            <div class="lang-switcher">
+                <span>FR</span>
+                <span class="active">EN</span>
+                <span>NL</span>
+            </div>
+
+            <div class="form-wrapper">
+                <h1>Welcome back!</h1>
+
+                <span class="section-label">Log in with</span>
+
+                <!-- MOBILITY CARD BUTTON WITH CONTINUOUS SLIDER -->
+                <button class="social-btn btn-mobility">
+                    <!-- Marquee Background Logos -->
+                    <div class="marquee-container">
+                        <div class="marquee-content">
+                            <img src="/images/logos/skipr.png" alt="">
+                            <img src="/images/logos/arval.png" alt="">
+                            <img src="/images/logos/pluxee_small.png" alt="">
+                            <img src="/images/logos/moveCard.png" alt="">
+                            
+                            <img src="/images/logos/swile.png" alt="">
+                            <img src="/images/logos/worklife.png" alt="">
+                            <img src="/images/logos/Version-semirond.svg" alt="">
+                            <img src="/images/logos/R-icon.svg" alt="">
+
+                            <img src="/images/logos/skipr.png" alt="">
+                            <img src="/images/logos/arval.png" alt="">
+                            <img src="/images/logos/pluxee_small.png" alt="">
+                            <img src="/images/logos/moveCard.png" alt="">
+
+                            <img src="/images/logos/swile.png" alt="">
+                            <img src="/images/logos/worklife.png" alt="">
+                            <img src="/images/logos/Version-semirond.svg" alt="">
+                            <img src="/images/logos/R-icon.svg" alt="">
+                        </div>
+                    </div>
+                    
+                    <!-- Top Text -->
+                    <span class="btn-text">
+                        <i class="fa-solid fa-id-card"></i> Mobility card
+                    </span>
+                </button>
+                
+                <!-- Microsoft Button -->
+                <button class="social-btn btn-microsoft">
+                    <i class="fa-brands fa-windows"></i> Microsoft
+                </button>
+                
+                <!-- Google Button -->
+                <button class="social-btn btn-google">
+                    <i class="fa-brands fa-google"></i> Google
+                </button>
+
+                <!-- Divider -->
+                <div class="divider">OR</div>
+
+                <span class="section-label">Log in with your email address</span>
+
+                <!-- Standard Form -->
+                <form action="#" method="POST">
+                    <div class="input-group">
+                        <input type="email" placeholder="Email address" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" placeholder="Password" required>
+                    </div>
+
+                    <a href="#" class="forgot-pass" id="openForgotBtn">Forgot password</a>
+
+                    <button type="submit" class="btn-login-submit">Log in</button>
+                </form>
+
+                <div class="signup-link">
+                    Not registered yet? <a href="#" id="openModalBtn">Sign up</a>
+                </div>
+            </div>
+
+            <!-- Chat Icon -->
+            <div class="floating-chat">
+                <i class="fa-solid fa-message"></i>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- =========================================
+         SIGN UP MODAL (POPUP)
+         ========================================= -->
+    <div class="modal-overlay" id="signupModal">
+        <div class="signup-modal">
+            <button class="close-modal" id="closeModalBtn">&times;</button>
+            
+            <h2>Sign up to the<br>BeeToGreen platform</h2>
+            
+            <button class="btn-signup-google">
+                <i class="fa-brands fa-google"></i> Sign up with Google
+            </button>
+            
+            <label class="modal-label">I sign up with my work email</label>
+            <input type="email" class="modal-input" placeholder="Work email">
+            
+            <label class="modal-label">Language</label>
+            <select class="modal-select">
+                <option value="en">English</option>
+                <option value="fr">French</option>
+                <option value="nl">Dutch</option>
+            </select>
+            
+            <button class="btn-confirm">Confirm</button>
+            <button class="btn-have-account" id="haveAccountBtn">I already have an account</button>
+        </div>
+    </div>
+
+    <!-- =========================================
+         FORGOT PASSWORD MODAL (POPUP)
+         ========================================= -->
+    <div class="modal-overlay" id="forgotModal">
+        <div class="signup-modal" style="max-width: 420px;">
+            <button class="close-modal" id="closeForgotBtn">&times;</button>
+            
+            <h2 style="margin-bottom: 30px;">Forgot password?</h2>
+            
+            <input type="email" class="modal-input" placeholder="Email address" style="margin-bottom: 25px;">
+            
+            <button class="btn-forgot-confirm">Confirm</button>
+        </div>
+    </div>
+
+    <!-- JavaScript for Modals -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // --- 1. Sign Up Modal Logic ---
+            const signupModal = document.getElementById('signupModal');
+            const openSignupBtn = document.getElementById('openModalBtn');
+            const closeSignupBtn = document.getElementById('closeModalBtn');
+            const haveAccountBtn = document.getElementById('haveAccountBtn');
+
+            if(openSignupBtn) {
+                openSignupBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    signupModal.classList.add('active');
+                });
+            }
+
+            if(closeSignupBtn) closeSignupBtn.addEventListener('click', () => signupModal.classList.remove('active'));
+            if(haveAccountBtn) haveAccountBtn.addEventListener('click', () => signupModal.classList.remove('active'));
+
+            signupModal.addEventListener('click', (e) => {
+                if (e.target === signupModal) signupModal.classList.remove('active');
+            });
+
+
+            // --- 2. Forgot Password Modal Logic ---
+            const forgotModal = document.getElementById('forgotModal');
+            const openForgotBtn = document.getElementById('openForgotBtn');
+            const closeForgotBtn = document.getElementById('closeForgotBtn');
+
+            if(openForgotBtn) {
+                openForgotBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    forgotModal.classList.add('active');
+                });
+            }
+
+            if(closeForgotBtn) closeForgotBtn.addEventListener('click', () => forgotModal.classList.remove('active'));
+
+            forgotModal.addEventListener('click', (e) => {
+                if (e.target === forgotModal) forgotModal.classList.remove('active');
+            });
+
+        });
+    </script>
+</body>
+</html>
