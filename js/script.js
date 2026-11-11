@@ -502,3 +502,104 @@ document.addEventListener("DOMContentLoaded", () => {
 
     observer.observe(footer);
 });
+
+/* =====================================
+   PROMO CARD PARALLAX SCROLL EFFECT
+====================================== */
+document.addEventListener("DOMContentLoaded", function() {
+    const activateSection = document.querySelector(".activate-section");
+    const promoCard = document.querySelector(".promo-card");
+    let isScrolling = false;
+
+    if (activateSection && promoCard) {
+        window.addEventListener("scroll", function() {
+            if (!isScrolling) {
+                window.requestAnimationFrame(function() {
+                    if (window.innerWidth > 1100) {
+                        const rect = activateSection.getBoundingClientRect();
+                        const windowHeight = window.innerHeight;
+
+                        if (rect.top < windowHeight && rect.bottom > 0) {
+                            let scrollDistance = windowHeight - rect.top;
+                            
+                            let parallaxMove = scrollDistance * 0.12; 
+                            
+                            promoCard.style.marginTop = `-${parallaxMove}px`;
+                        }
+                    } else {
+                        promoCard.style.marginTop = "0px";
+                    }
+                    isScrolling = false;
+                });
+                isScrolling = true;
+            }
+        });
+    }
+});
+
+/* =====================================
+   CO2 CALCULATOR LOGIC
+====================================== */
+document.addEventListener("DOMContentLoaded", function () {
+    const empSlider = document.getElementById("range-emp");
+    const bikeSlider = document.getElementById("range-bike");
+    const remoteSlider = document.getElementById("range-remote");
+
+    const empVal = document.getElementById("val-emp");
+    const bikeVal = document.getElementById("val-bike");
+    const remoteVal = document.getElementById("val-remote");
+
+    const co2Total = document.getElementById("co2-total");
+    const eqCar = document.getElementById("eq-car");
+    const eqPlane = document.getElementById("eq-plane");
+    const eqHeat = document.getElementById("eq-heat");
+
+    function calculateImpact() {
+        const emp = parseInt(empSlider.value);
+        const bikeRatio = parseInt(bikeSlider.value);
+        const remoteRatio = parseInt(remoteSlider.value);
+
+        empVal.innerText = emp;
+        bikeVal.innerText = bikeRatio + "%";
+        remoteVal.innerText = remoteRatio + "%";
+
+        // (Calculations)
+        const baseCO2PerCyclist = 201.66; // Kg per year
+        const totalCyclists = emp * (bikeRatio / 100);
+        
+        // Remote work factor
+        const co2Saved = Math.round(totalCyclists * baseCO2PerCyclist * (1 - (remoteRatio / 100)));
+        
+        const carKm = Math.round(co2Saved * 5.18);
+        const planeKm = Math.round(co2Saved * 9.8);
+        const heatDays = Math.round(co2Saved * 0.054);
+
+        co2Total.innerText = co2Saved.toLocaleString('en-US');
+        eqCar.innerText = carKm.toLocaleString('en-US');
+        eqPlane.innerText = planeKm.toLocaleString('en-US');
+        eqHeat.innerText = heatDays.toLocaleString('en-US');
+    }
+
+    function updateSliderFill(slider) {
+        const value = (slider.value - slider.min) / (slider.max - slider.min) * 100;
+        slider.style.background = `linear-gradient(to right, #00563c ${value}%, #e0e0e0 ${value}%)`;
+    }
+
+    function initSliders() {
+        [empSlider, bikeSlider, remoteSlider].forEach(slider => {
+            if (slider) {
+                // Initial fill 
+                updateSliderFill(slider);
+                // On Drag event
+                slider.addEventListener("input", function() {
+                    updateSliderFill(this);
+                    calculateImpact();
+                });
+            }
+        });
+        
+        if(empSlider) calculateImpact();
+    }
+
+    initSliders();
+});

@@ -152,10 +152,33 @@
         }
 
         @media (max-width: 768px) {
-            .hero-employers { padding-top: 120px; }
-            .hero-title { letter-spacing: -1.5px; }
-            .bg-loop-emp-1 { border-width: 60px; min-width: 400px; min-height: 400px;}
-            .bg-loop-emp-2 { border-width: 70px; min-width: 450px; min-height: 450px;}
+            .hero-employers { 
+                padding-top: 140px; 
+                padding-bottom: 60px; 
+            }
+            .hero-title { 
+                font-size: clamp(40px, 12vw, 55px); 
+                letter-spacing: -1px; 
+                line-height: 1.05;
+                margin-bottom: 20px;
+            }
+            .hero-subtitle {
+                font-size: 16px;
+            }
+            .bg-loop-emp-1 { 
+                border-width: 90px; 
+                min-width: 380px; 
+                min-height: 380px;
+                top: -10%;
+                left: -35%;
+            }
+            .bg-loop-emp-2 { 
+                border-width: 110px; 
+                min-width: 420px; 
+                min-height: 420px;
+                top: 35%;
+                right: -40%;
+            }
         }
 
         /* =========================================
@@ -282,6 +305,45 @@
             }
             .scrolling-cards-wrapper {
                 width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            /* === ACTIVATING SECTION MOBILE FIX === */
+            .activating-section {
+                padding: 60px 20px 80px;
+            }
+            
+            .activating-title {
+                font-size: 32px; 
+                line-height: 1.15;
+                margin-bottom: 40px;
+                letter-spacing: -1px;
+            }
+
+            .sticky-image-wrapper {
+                height: 250px;
+                margin-bottom: 25px;
+                border-radius: 20px;
+            }
+
+            .scrolling-cards-wrapper {
+                gap: 20px; 
+            }
+
+            .act-card {
+                padding: 35px 25px; 
+                border-radius: 16px;
+            }
+
+            .act-card h3 {
+                font-size: 26px; 
+                margin-bottom: 15px;
+            }
+
+            .act-card li {
+                font-size: 16px; 
+                margin-bottom: 10px;
             }
         }
 
@@ -505,6 +567,85 @@
             }
         }
 
+        @media (max-width: 768px) {
+            /* === SERVICES SECTION (TABS & CARDS) MOBILE FIX === */
+            .services-section {
+                padding: 60px 0 80px; /* ઉપર-નીચેની જગ્યા એડજસ્ટ કરી */
+            }
+
+            .services-title {
+                font-size: 30px; /* ટાઇટલની સાઈઝ નાની કરી જેથી 2 લાઇનમાં આવી જાય */
+                line-height: 1.15;
+                margin-bottom: 30px;
+                padding: 0 15px; /* આજુબાજુ થોડી જગ્યા આપી */
+                letter-spacing: -1px;
+            }
+
+            /* --- Tabs (બટન્સ) નું સેટિંગ --- */
+            .services-tabs {
+                display: flex;
+                flex-wrap: nowrap; /* બટન્સ ને એક જ લાઇનમાં રાખવા માટે */
+                margin: 0 15px 30px;
+                padding: 5px;
+                border-radius: 40px;
+                gap: 0;
+            }
+
+            .service-tab-btn {
+                flex: 1; /* બધા બટન્સ ને એકસરખી જગ્યા મળશે */
+                padding: 10px 5px;
+                font-size: 12px; /* ફોન્ટ નાના કર્યા */
+                line-height: 1.2;
+                white-space: normal; /* લાંબા શબ્દોને નીચેની લાઇનમાં આવવા દેશે (દા.ત. Employee \n test rides) */
+                text-align: center;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 30px;
+            }
+
+            /* --- Cards (કાર્ડ્સ) નું સેટિંગ --- */
+            .services-cards-container {
+                padding: 0 15px 20px;
+                gap: 15px;
+            }
+
+            .service-card {
+                flex: 0 0 100%; 
+                border-radius: 20px;
+                height: auto; 
+            }
+
+            .service-card-image {
+                display: none; 
+            }
+
+            .service-card-content {
+                width: 100%;
+                padding: 30px 20px; 
+            }
+
+            .service-card-content h3 {
+                font-size: 26px; 
+                margin-bottom: 15px;
+                line-height: 1.15;
+            }
+
+            .service-card-content p, 
+            .service-card-content li {
+                font-size: 15px;
+                line-height: 1.5;
+            }
+
+            .service-card-content p {
+                margin-bottom: 15px;
+            }
+
+            .service-scrollbar-wrapper {
+                width: 70%; 
+            }
+        }
+
         /* =========================================
            BOOST SECTION (VIDEO & BLUR EFFECT)
            ========================================= */
@@ -589,11 +730,40 @@
         }
 
         @media (max-width: 768px) {
-            .glass-panel { padding: 80px 30px 180px 30px; }
-            .boost-title { margin-bottom: 50px; }
-            .boost-content-grid { grid-template-columns: 1fr; gap: 30px; }
-            .yellow-graphic { width: 300px; height: 250px; bottom: -60px; left: -20px; }
-            .boost-text { font-size: 18px; }
+            /* === BOOST SECTION (SUSTAINABLE MOBILITY) MOBILE FIX === */
+            .boost-section {
+                padding: 50px 15px; 
+            }
+            
+            .glass-panel { 
+                padding: 40px 25px; 
+                border-radius: 20px;
+            }
+            
+            .boost-title { 
+                font-size: 28px; 
+                line-height: 1.15;
+                margin-bottom: 25px; 
+                letter-spacing: -0.5px;
+            }
+            
+            .boost-content-grid { 
+                grid-template-columns: 1fr; 
+                gap: 15px; 
+            }
+            
+            .boost-text { 
+                font-size: 15px; 
+                line-height: 1.5;
+            }
+            
+            .boost-text p {
+                margin-bottom: 12px; 
+            }
+            
+            .yellow-graphic { 
+                display: none; 
+            }
         }
 
         /* =========================================
@@ -753,6 +923,81 @@
             }
         }
 
+        @media (max-width: 768px) {
+            /* === TURNKEY SOLUTION SECTION MOBILE FIX === */
+            .turnkey-section {
+                padding: 60px 15px 80px; 
+            }
+
+            .turnkey-title {
+                font-size: 28px;
+                line-height: 1.15;
+                margin-bottom: 40px; 
+                letter-spacing: -1px;
+            }
+
+            .turnkey-grid {
+                grid-template-columns: 1fr; 
+                gap: 25px; 
+            }
+
+            .turnkey-content {
+                padding: 30px 25px; 
+            }
+
+            .turnkey-content h3 {
+                font-size: 28px; 
+                margin-bottom: 20px;
+                line-height: 1.15;
+            }
+
+            .turnkey-content p, 
+            .turnkey-content li {
+                font-size: 15px; 
+                line-height: 1.5;
+            }
+
+            .turnkey-content p {
+                margin-bottom: 15px; 
+            }
+
+            .turnkey-content ul {
+                margin-bottom: 20px;
+            }
+
+            .card-right .turnkey-image {
+                height: 250px;
+            }
+            
+            .turnkey-btn {
+                padding: 15px 20px; 
+                font-size: 16px;
+            }
+
+            .card-right {
+                border-width: 2px; 
+            }
+
+            .card-right .turnkey-image {
+                height: 220px;
+                padding: 15px 15px 0 15px;
+            }
+
+            .card-right .turnkey-image img {
+                border-radius: 12px 12px 0 0; 
+            }
+
+            .card-right .turnkey-content {
+                padding: 25px 20px 30px; 
+            }
+
+            .card-right .turnkey-content h3 {
+                font-size: 26px; 
+                margin-bottom: 15px;
+                line-height: 1.15;
+            }
+        }
+
         /* =========================================
            CHAT / CONTACT SECTION STYLES
            ========================================= */
@@ -765,7 +1010,6 @@
             position: relative;
             max-width: 1400px;
             margin: 0 auto;
-            /* AHIYA GREEN COLOR KARYO CHHE */
             background-color: #0b7a54; 
             border-radius: 20px;
             padding: 100px 5%;
@@ -789,7 +1033,6 @@
             justify-content: center;
         }
 
-        /* AHIYA LOOP NO GREEN COLOR KARYO CHHE */
         .chat-loop svg path {
             stroke: #096a48;
         }
@@ -801,12 +1044,9 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            
-            /* AHIYA TEXT MATE DEFAULT ANIMATION HIDE KARYU CHHE */
             opacity: 0; 
         }
 
-        /* AHIYA TEXT COLOR YELLOW KARYO CHHE */
         .chat-label { 
             font-size: 18px; 
             font-weight: 500; 
@@ -820,12 +1060,10 @@
             font-weight: 800;
             line-height: 1.1;
             letter-spacing: -2px;
-            /* AHIYA TEXT COLOR YELLOW KARYO CHHE */
             color: #d1f34d;
             margin-bottom: 50px;
         }
 
-        /* AHIYA BUTTON COLOR YELLOW ANE HOVER PAR GREEN KARYO CHHE */
         .chat-btn {
             position: relative;
             overflow: hidden;
@@ -860,8 +1098,6 @@
 
         .chat-btn:hover { color: #d1f34d; border-color: rgba(209, 243, 77, 0.4); }
         .chat-btn:hover::before { transform: translateX(-50%) translateY(-50%); }
-
-        /* Scroll Text Animation Set Kariyu Che */
         .chat-content.in-view {
             animation: chatSlideUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
         }
@@ -869,8 +1105,36 @@
         @keyframes chatSlideUp { to { opacity: 1; transform: translateY(0); } }
 
         @media (max-width: 768px) {
-            .chat-container { padding: 70px 6%; min-height: 400px; }
-            .chat-title { margin-bottom: 35px; }
+            /* === CHAT SECTION MOBILE FIX === */
+            .chat-section {
+                padding: 50px 15px 60px;
+            }
+
+            .chat-container { 
+                padding: 40px 20px 50px;
+                min-height: auto; 
+                border-radius: 20px;
+            }
+
+            .chat-label {
+                font-size: 15px; 
+                margin-bottom: 15px;
+            }
+
+            .chat-title { 
+                font-size: 32px;
+                line-height: 1.15;
+                margin-bottom: 30px; 
+                letter-spacing: -1px;
+                padding: 0 10px;
+            }
+
+            .chat-btn {
+                width: 100%; 
+                padding: 18px 0;
+                font-size: 16px;
+                border-radius: 12px;
+            }
         }
 
         /* =========================================
@@ -1040,6 +1304,52 @@
             }
         }
 
+        @media (max-width: 768px) {
+            /* === FAQ SECTION MOBILE FIX === */
+            .faq-section {
+                padding: 60px 15px;
+            }
+
+            .faq-container {
+                gap: 30px; 
+            }
+
+            .faq-title-wrap h2 {
+                font-size: 32px; 
+                line-height: 1.15;
+                margin-bottom: 10px;
+                letter-spacing: -1px;
+            }
+
+            .faq-question {
+                font-size: 18px; 
+                padding: 20px 0; 
+                line-height: 1.3;
+            }
+
+            .faq-question span:first-child {
+                padding-right: 15px; 
+            }
+
+            .faq-answer p {
+                font-size: 15px; 
+                line-height: 1.5;
+                margin-bottom: 15px;
+            }
+            
+            .faq-answer p:last-child {
+                margin-bottom: 20px; 
+            }
+
+            .faq-bg-loop {
+                width: 300px; 
+                height: 300px;
+                bottom: -30px;
+                left: -30px;
+                display: none;
+            }
+        }
+
         /* =========================================
         TOUR WRAPPED UP SECTION (FINAL FIX)
         ========================================= */
@@ -1051,7 +1361,7 @@
         }
 
         .tour-card {
-            background-color: #f4c2b3; 
+            background-color: #d2dbe2; 
             border-radius: 30px;
             display: flex;
             align-items: center;
@@ -1065,7 +1375,7 @@
         .tour-content {
             flex: 1;
             max-width: 600px; 
-            color: #00563c; 
+            color: #2b3b4a; 
             z-index: 2;
         }
 
@@ -1075,7 +1385,7 @@
             font-weight: 800;
             line-height: 1.1;
             letter-spacing: -2px;
-            color: #00563c; 
+            color: #2b3b4a; 
             margin-bottom: 20px;
         }
 
@@ -1085,7 +1395,7 @@
             font-size: 17px;
             font-weight: 500;
             line-height: 1.5;
-            color: #00563c;
+            color: #2b3b4a;
             margin-bottom: 30px;
             max-width: 480px;
         }
@@ -1097,12 +1407,12 @@
             align-items: center;
             justify-content: center;
             padding: 16px 32px;
-            background-color: #00563c; 
+            background-color: #2b3b4a; 
             color: #ffffff;
             font-size: 17px;
             font-weight: 800;
             border-radius: 12px;
-            border: 1px solid #00563c; 
+            border: 1px solid #2b3b4a; 
             transition: color 0.4s ease, border-color 0.4s ease;
             z-index: 1;
             text-decoration: none;
@@ -1117,12 +1427,12 @@
             width: 250%;
             height: 250%;
             border-radius: 50%;
-            background-color: #f4c2b3; 
+            background-color: #d2dbe2; 
             transition: transform 0.5s ease-in-out;
             z-index: -1;
         }
 
-        .tour-btn:hover { color: #00563c; border-color: #00563c; }
+        .tour-btn:hover { color: #2b3b4a; border-color: #2b3b4a; }
         .tour-btn:hover::before { transform: translateX(-50%) translateY(-50%); }
 
         .tour-image {
@@ -1168,6 +1478,45 @@
             .tour-image { position: relative; right: auto; top: auto; width: 100%; max-width: 400px; margin-top: 20px; }
             .tour-content { max-width: 100%; }
             .tour-animated-h { left: 20%; width: 130px; height: 130px; }
+        }
+
+        @media (max-width: 768px) {
+            /* === TOUR WRAPPED UP SECTION MOBILE FIX === */
+            .tour-section {
+                padding: 40px 15px 60px; 
+            }
+
+            .tour-card {
+                padding: 30px 20px; 
+                text-align: left; 
+                min-height: auto; 
+                border-radius: 20px;
+            }
+
+            .tour-content h2 {
+                font-size: 32px; 
+                line-height: 1.15;
+                margin-bottom: 15px;
+                letter-spacing: -1px;
+            }
+
+            .tour-content p {
+                font-size: 15px; 
+                line-height: 1.5;
+                margin-bottom: 25px; 
+            }
+
+            .tour-btn {
+                width: 100%; 
+                padding: 16px 0; 
+                font-size: 16px;
+                border-radius: 12px;
+            }
+
+            .tour-image,
+            .tour-animated-h {
+                display: none; 
+            }
         }
 
     </style>
