@@ -11,6 +11,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Parkinsans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <style>
+        /* =========================================
+           1. BASE STYLES & HEADER
+           ========================================= */
         * {
             margin: 0;
             padding: 0;
@@ -23,12 +26,11 @@
 
         body {
             font-family: "Parkinsans", sans-serif;
-            background-color: #f8f6f0; /* Light Cream Background */
+            background-color: #f8f6f0; 
             color: #333333;
             overflow-x: hidden;
         }
 
-        /* HEADER PLACEHOLDER */
         #header-placeholder {
             width: 100%;
             position: absolute; 
@@ -38,12 +40,12 @@
             background: transparent; 
         }
 
-        /* SPLIT TEXT ANIMATION */
+        /* ANIMATIONS */
         .split-text .char {
             display: inline-block;
             transform: translateY(100%);
             opacity: 0;
-            transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.6s ease;
+            transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.8s ease;
         }
         
         .split-text.in-view .char {
@@ -51,11 +53,11 @@
             opacity: 1;
         }
 
-        /* FADE UP ANIMATION */
+        /* SMOOTH FADE UP ANIMATION FOR ENTIRE PAGE */
         .fade-up-text {
             opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
+            transform: translateY(40px);
+            transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
         .fade-up-text.in-view {
@@ -64,10 +66,10 @@
         }
 
         /* =========================================
-           SCROLL SEQUENCE HERO SECTION
+           2. HERO SECTION (SCROLL SEQUENCE)
            ========================================= */
         .pricing-hero-sequence {
-            height: 350vh; /* Adjusted for 2 text sections instead of 3 */
+            height: 350vh; 
             position: relative;
             background-color: #f8f6f0;
         }
@@ -83,7 +85,6 @@
             align-items: center;
         }
 
-        /* Initial Hero Content (Fades out on scroll) */
         .initial-hero-content {
             position: absolute;
             top: 0;
@@ -97,7 +98,6 @@
             align-items: center;
         }
 
-        /* NEW RIGHT-ALIGNED LOOP GRAPHIC */
         .hero-graphic-employers {
             position: absolute;
             right: -2vw;
@@ -114,13 +114,12 @@
             font-weight: 900;
             line-height: 1.05;
             letter-spacing: -2px;
-            color: #0a4d3c; /* Dark Green */
+            color: #0a4d3c; 
             text-align: center;
             z-index: 10;
             max-width: 1000px;
         }
 
-        /* Run a Quote Button with Hover Animation */
         .quote-btn-wrapper {
             position: absolute;
             top: calc(65% + 200px); 
@@ -136,8 +135,8 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            background-color: #0a4d3c; /* Dark Green Button */
-            color: #ffffff; /* White Text */
+            background-color: #0a4d3c; 
+            color: #ffffff; 
             padding: 18px 40px;
             border-radius: 12px;
             font-size: 18px;
@@ -148,7 +147,6 @@
             z-index: 1;
         }
 
-        /* Hover animation background circle */
         .quote-btn::before {
             content: "";
             position: absolute;
@@ -158,21 +156,14 @@
             width: 250%;
             height: 250%;
             border-radius: 50%;
-            background-color: #f8f6f0; /* Cream yellow hover */
+            background-color: #f8f6f0; 
             transition: transform 0.5s ease-in-out;
             z-index: -1;
         }
 
-        .quote-btn:hover {
-            color: #0a4d3c;
-            border-color: rgba(209, 243, 77, 0.4);
-        }
+        .quote-btn:hover { color: #0a4d3c; border-color: rgba(209, 243, 77, 0.4); }
+        .quote-btn:hover::before { transform: translateX(-50%) translateY(-50%); }
 
-        .quote-btn:hover::before {
-            transform: translateX(-50%) translateY(-50%);
-        }
-
-        /* Video Wrapper */
         .video-full-wrapper {
             position: absolute;
             top: 0;
@@ -185,13 +176,8 @@
             will-change: clip-path;
         }
 
-        .video-full-wrapper video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+        .video-full-wrapper video { width: 100%; height: 100%; object-fit: cover; }
 
-        /* Dark Overlay for Text Visibility */
         .video-dark-overlay {
             position: absolute;
             top: 0;
@@ -204,9 +190,6 @@
             pointer-events: none;
         }
 
-        /* =========================================
-           SCROLLING TEXT (SPLIT LAYOUT 01 / 02)
-           ========================================= */
         .scroll-text {
             position: absolute;
             top: 50%;
@@ -217,105 +200,24 @@
             z-index: 8;
             opacity: 0;
             pointer-events: none;
+            will-change: transform, opacity;
         }
 
-        .split-layout {
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            gap: 60px;
-            width: 100%;
-            text-align: left;
-        }
-
-        .text-left {
-            flex: 1;
-            max-width: 650px;
-        }
-
-        .step-num {
-            font-family: "Parkinsans", sans-serif;
-            font-size: clamp(60px, 8vw, 100px);
-            font-weight: 900;
-            color: #d1f34d; /* Lime Yellow */
-            display: block;
-            margin-bottom: 20px;
-            line-height: 1;
-        }
-
-        .text-left h2 {
-            font-family: "Parkinsans", sans-serif;
-            font-size: clamp(32px, 4vw, 50px); 
-            font-weight: 800;
-            line-height: 1.1;
-            letter-spacing: -1.5px;
-            color: #ffffff;
-        }
-
-        .text-right {
-            flex: 1;
-            margin-top: 120px; /* Align visually with text */
-            max-width: 500px;
-        }
-
-        .text-right p, .text-right ul {
-            font-size: 20px;
-            font-weight: 500;
-            line-height: 1.6;
-            color: #ffffff;
-        }
-
-        .text-right ul {
-            margin-top: 15px;
-            padding-left: 20px;
-        }
-
-        .text-right li {
-            margin-bottom: 10px;
-        }
-
-        /* Responsive Adjustments */
-        @media (max-width: 992px) {
-            .split-layout {
-                flex-direction: column;
-                gap: 30px;
-            }
-            .text-left, .text-right {
-                max-width: 100%;
-                margin-top: 0;
-            }
-            .step-num {
-                font-size: 60px;
-                margin-bottom: 10px;
-            }
-            .text-left h2 {
-                font-size: 28px;
-            }
-            .text-right p, .text-right ul {
-                font-size: 18px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .video-full-wrapper {
-                clip-path: circle(130px at 50% 65%);
-                -webkit-clip-path: circle(130px at 50% 65%);
-            }
-            .quote-btn-wrapper {
-                top: calc(65% + 150px);
-            }
-            .hero-graphic-employers {
-                height: 50vh;
-                right: -10vw;
-            }
-        }
+        .split-layout { display: flex; align-items: flex-start; justify-content: space-between; gap: 60px; width: 100%; text-align: left; }
+        .text-left { flex: 1; max-width: 650px; }
+        .step-num { font-family: "Parkinsans", sans-serif; font-size: clamp(60px, 8vw, 100px); font-weight: 900; color: #d1f34d; display: block; margin-bottom: 20px; line-height: 1; }
+        .text-left h2 { font-family: "Parkinsans", sans-serif; font-size: clamp(32px, 4vw, 50px); font-weight: 800; line-height: 1.1; letter-spacing: -1.5px; color: #ffffff; text-shadow: 0px 4px 20px rgba(0,0,0,0.4); }
+        .text-right { flex: 1; margin-top: 120px; max-width: 500px; }
+        .text-right p, .text-right ul { font-size: 20px; font-weight: 500; line-height: 1.6; color: #ffffff; }
+        .text-right ul { margin-top: 15px; padding-left: 20px; }
+        .text-right li { margin-bottom: 10px; }
 
         /* =========================================
-           TRAINING PROGRAMMES SECTION
+           3. TRAINING PROGRAMMES SECTION
            ========================================= */
         .training-section {
             padding: 100px 4% 80px;
-            background-color: #f2f3f5; /* Light greyish background from screenshot */
+            background-color: #f8f6f0; 
             text-align: center;
         }
 
@@ -325,7 +227,7 @@
             font-weight: 900;
             line-height: 1.1;
             letter-spacing: -2px;
-            color: #1a2e28; /* Very dark green/black */
+            color: #1a2e28; 
             margin-bottom: 60px;
         }
 
@@ -343,7 +245,7 @@
             text-align: left;
             display: flex;
             align-items: flex-start;
-            min-height: 380px; /* Force same height */
+            min-height: 380px; 
         }
 
         .training-card h3 {
@@ -355,167 +257,109 @@
             margin: 0;
         }
 
-        /* Specific Card Colors */
-        .card-yellow {
-            background-color: #fef08a; /* Light Yellow */
-            color: #064e3b; /* Dark Green Text */
-        }
+        .card-yellow { background-color: #fef08a; color: #064e3b; }
+        .card-pink { background-color: #fbcfe8; color: #831843; }
+        .card-blue { background-color: #3b82f6; color: #ffffff; }
 
-        .card-pink {
-            background-color: #fbcfe8; /* Light Pink */
-            color: #831843; /* Dark Maroon/Red Text */
-        }
-
-        .card-blue {
-            background-color: #3b82f6; /* Blue */
-            color: #ffffff; /* White Text */
-        }
-
-        /* Footnote */
         .training-footnote {
             font-size: 16px;
-            color: #9ca3af; /* Light Grey Text */
+            color: #9ca3af; 
             font-weight: 500;
-        }
-
-        /* Responsive Grid */
-        @media (max-width: 992px) {
-            .training-cards-container {
-                grid-template-columns: 1fr; /* Stack cards vertically on smaller screens */
-            }
-            .training-card {
-                min-height: 250px;
-            }
-        }
-
-        /* FOOTER PLACEHOLDER */
-        #footer-placeholder {
-            display: block;
-            width: 100%;
         }
 
         /* =========================================
-        TOUR WRAPPED UP SECTION
-        ========================================= */
-        .tour-section {
-            padding: 5% 4% 80px;
-            background-color: #ffffff; /* Light Cream Background */
-            position: relative;
-            overflow: visible; 
-        }
-
-        .tour-card {
-            background-color: #342415; /* Light Cream Card Background */
-            border-radius: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            padding: 100px 7%;            
-            position: relative;
-            overflow: visible; 
-            min-height: 480px; 
-        }
-
-        .tour-content {
-            flex: 1;
-            max-width: 600px; 
-            color: #fae896; /* Dark Brown Text */
-            z-index: 2;
-        }
-
-        .tour-content h2 {
+           4. SIMULATOR SECTION
+           ========================================= */
+        .simulator-section {
+            background-color: #0a4d3c; 
+            padding: 100px 5%;
             font-family: "Parkinsans", sans-serif;
-            font-size: clamp(36px, 6.2vw, 62px); 
-            font-weight: 800;
-            line-height: 1.1;
-            letter-spacing: -2px;
-            color: #fae896; /* Dark Brown Title */
-            margin-bottom: 20px;
         }
+        .sim-header { text-align: center; margin-bottom: 60px; }
+        .sim-header h2 { font-size: clamp(36px, 6vw, 85px); font-weight: 900; color: #ffffff; letter-spacing: -2px; margin-bottom: 15px; line-height: 1.1; }
+        .sim-header p { font-size: 18px; color: #d1f34d; font-weight: 500; }
+        .sim-container { display: flex; gap: 30px; max-width: 1200px; margin: 0 auto; }
+        .sim-left, .sim-right { background-color: #ffffff; border-radius: 20px; padding: 40px; flex: 1; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .sim-label-top { font-size: 13px; font-weight: 800; letter-spacing: 1px; color: #999; text-transform: uppercase; margin-bottom: 30px; }
+        
+        .sim-input-group { margin-bottom: 30px; }
+        .sim-input-group label { display: block; font-size: 16px; font-weight: 600; color: #111; margin-bottom: 12px; }
+        .sim-input-box { width: 100%; padding: 14px 18px; border: 1px solid #ddd; border-radius: 12px; font-size: 16px; font-family: "Parkinsans", sans-serif; color: #333; outline: none; transition: border-color 0.3s; }
+        .sim-input-box:focus { border-color: #0a4d3c; }
+        
+        .input-with-unit { position: relative; }
+        .input-with-unit .sim-input-box { padding-right: 120px; }
+        .input-with-unit .unit { position: absolute; right: 18px; top: 50%; transform: translateY(-50%); color: #666; font-weight: 500; font-size: 15px; }
 
-        @media (max-width: 1100px) { .tour-content h2 { white-space: normal; } }
+        .slider-wrapper { display: flex; align-items: center; gap: 20px; }
+        .slider-wrapper input[type="range"] { flex: 1; accent-color: #0a4d3c; height: 6px; cursor: pointer; }
+        .slider-value { background-color: #0a4d3c; color: white; padding: 8px 12px; border-radius: 8px; font-weight: 700; font-size: 15px; min-width: 65px; text-align: center; }
+        .sim-sub-text { font-size: 13.5px; color: #777; margin-top: 10px; line-height: 1.5; }
+        .sim-sub-text strong { color: #333; }
 
-        .tour-content p {
-            font-size: 17px;
-            font-weight: 500;
-            line-height: 1.5;
-            color: #fae896; /* Dark Brown Paragraph */
-            margin-bottom: 30px;
-            max-width: 480px;
-        }
+        .sim-accordion-btn { background: none; border: none; color: #666; font-size: 15px; font-weight: 500; cursor: pointer; display: flex; align-items: center; gap: 10px; padding: 0; margin-top: 15px; font-family: "Parkinsans", sans-serif; }
+        .sim-accordion-content { display: none; margin-top: 25px; padding-top: 25px; border-top: 1px solid #eee; }
+        .sim-accordion-content.active { display: block; }
 
-        .tour-btn {
-            position: relative;
-            overflow: hidden; 
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 16px 32px;
-            background-color: #fae896; /* Dark Brown Button Background */
-            color: #342415;
-            font-size: 17px;
-            font-weight: 800;
-            border-radius: 12px;
-            border: 1px solid #fae896; 
-            transition: color 0.4s ease, border-color 0.4s ease;
-            z-index: 1;
-            text-decoration: none;
-        }
+        .sim-btn { display: block; width: 100%; background-color: #d1f34d; color: #0a4d3c; text-align: center; padding: 18px; border-radius: 12px; font-size: 18px; font-weight: 800; text-decoration: none; margin-top: 30px; transition: opacity 0.3s; border: none; cursor: pointer; }
+        .sim-btn:hover { opacity: 0.85; }
 
-        .tour-btn::before {
-            content: "";
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%) translateY(0);
-            width: 250%;
-            height: 250%;
-            border-radius: 50%;
-            background-color: #f4c2b3; /* Peach color on hover */
-            transition: transform 0.5s ease-in-out;
-            z-index: -1;
-        }
+        .res-box { border-radius: 16px; padding: 35px 30px; margin-bottom: 20px; }
+        .res-title { font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 15px; }
+        .res-value { font-size: clamp(45px, 5vw, 65px); font-weight: 900; margin-bottom: 5px; line-height: 1; letter-spacing: -2px; }
+        .res-sub { font-size: 15px; font-weight: 500; }
 
+        .res-dark { background-color: #0a4d3c; color: #d1f34d; }
+        .res-dark .res-sub { color: #fff; }
+        .res-white { background-color: #ffffff; border: 1px solid #eee; }
+        .res-white .res-title { color: #888; }
+        .res-white .res-value { color: #0a4d3c; }
+        .res-white .res-sub { color: #555; }
+        .res-light { background-color: #fcfae1; color: #333; font-size: 15px; line-height: 1.6; padding: 25px 30px; border-radius: 16px; }
+        .res-light strong { font-weight: 800; color: #0a4d3c; }
+        .sim-footer { text-align: center; color: #a7d1a2; font-size: 14px; margin-top: 30px; }
+
+        /* =========================================
+           5. TOUR WRAPPED UP SECTION
+           ========================================= */
+        .tour-section { padding: 5% 4% 80px; background-color: #ffffff; position: relative; overflow: visible; }
+        .tour-card { background-color: #342415; border-radius: 30px; display: flex; align-items: center; justify-content: flex-start; padding: 100px 7%; position: relative; overflow: visible; min-height: 480px; }
+        .tour-content { flex: 1; max-width: 600px; color: #fae896; z-index: 2; }
+        .tour-content h2 { font-family: "Parkinsans", sans-serif; font-size: clamp(36px, 6.2vw, 62px); font-weight: 800; line-height: 1.1; letter-spacing: -2px; color: #fae896; margin-bottom: 20px; }
+        .tour-content p { font-size: 17px; font-weight: 500; line-height: 1.5; color: #fae896; margin-bottom: 30px; max-width: 480px; }
+        .tour-btn { position: relative; overflow: hidden; display: inline-flex; align-items: center; justify-content: center; padding: 16px 32px; background-color: #fae896; color: #342415; font-size: 17px; font-weight: 800; border-radius: 12px; border: 1px solid #fae896; transition: color 0.4s ease, border-color 0.4s ease; z-index: 1; text-decoration: none; }
+        .tour-btn::before { content: ""; position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(0); width: 250%; height: 250%; border-radius: 50%; background-color: #f4c2b3; transition: transform 0.5s ease-in-out; z-index: -1; }
         .tour-btn:hover { color: #342415; border-color: #fae896; }
         .tour-btn:hover::before { transform: translateX(-50%) translateY(-50%); }
-
-        .tour-image {
-            position: absolute;
-            right: -10px;
-            top: -90px; 
-            width: 800px;
-            z-index: 3; 
-            pointer-events: none;
-        }
-
+        .tour-image { position: absolute; right: -10px; top: -90px; width: 800px; z-index: 3; pointer-events: none; }
         .tour-image img { display: block; width: 100%; height: auto; }
-
-        .tour-animated-h {
-            position: absolute;
-            bottom: -110px; 
-            left: 42%; 
-            width: 180px; 
-            height: 180px;
-            z-index: 2;
-            opacity: 0.95;
-            transform: rotate(-45deg); 
-            transition: bottom 1.2s cubic-bezier(0.22, 1, 0.36, 1), transform 1.2s cubic-bezier(0.22, 1, 0.36, 1); 
-        }
-
+        
+        .tour-animated-h { position: absolute; bottom: -110px; left: 42%; width: 180px; height: 180px; z-index: 2; opacity: 0.95; transform: rotate(-45deg); transition: bottom 1.2s cubic-bezier(0.22, 1, 0.36, 1), transform 1.2s cubic-bezier(0.22, 1, 0.36, 1); }
         .tour-animated-h.h-visible { bottom: -40px; transform: rotate(15deg); }
-
-        .tour-content h2,
-        .tour-content p,
-        .tour-content .tour-btn {
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
+        
+        .tour-content h2, .tour-content p, .tour-content .tour-btn { opacity: 0; transform: translateY(30px); }
         .tour-card.content-visible .tour-content h2 { animation: tourSlideUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards; }
         .tour-card.content-visible .tour-content p { animation: tourSlideUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.25s forwards; }
         .tour-card.content-visible .tour-content .tour-btn { animation: tourSlideUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.4s forwards; }
-
         @keyframes tourSlideUp { to { opacity: 1; transform: translateY(0); } }
+
+        #footer-placeholder { display: block; width: 100%; }
+
+        /* =========================================
+           6. RESPONSIVE DESIGN (MEDIA QUERIES)
+           ========================================= */
+        
+        @media (max-width: 1100px) { 
+            .tour-content h2 { white-space: normal; } 
+        }
+
+        @media (max-width: 992px) {
+            .split-layout { flex-direction: column; gap: 30px; }
+            .text-left, .text-right { max-width: 100%; margin-top: 0; }
+            .training-cards-container { grid-template-columns: 1fr; }
+            .training-card { min-height: auto; }
+            .sim-container { flex-direction: column; }
+        }
 
         @media (max-width: 950px) {
             .tour-card { flex-direction: column; padding: 40px 5%; text-align: center; overflow: hidden; }
@@ -523,47 +367,78 @@
             .tour-content { max-width: 100%; }
             .tour-animated-h { left: 20%; width: 130px; height: 130px; }
         }
+
+        /* MOBILE VIEW */
+        @media (max-width: 768px) {
+            /* Hero Section Mobile */
+            .hero-title { font-size: 26px; margin-top: 22vh; padding: 0 15px; letter-spacing: -0.5px; }
+            .hero-graphic-employers { display: none; }
+            .video-full-wrapper { clip-path: circle(90px at 50% 55%); -webkit-clip-path: circle(90px at 50% 55%); }
+            .quote-btn-wrapper { top: calc(55% + 115px); }
+            .quote-btn { padding: 12px 25px; font-size: 15px; white-space: nowrap; }
+
+            /* Scroll Text Mobile */
+            .scroll-text { width: 92%; }
+            .split-layout { gap: 12px; }
+            .step-num { font-size: 40px; margin-bottom: 5px; }
+            .text-left h2 { font-size: 20px; line-height: 1.25; letter-spacing: -0.5px; }
+            .text-right { margin-top: 5px; }
+            .text-right p, .text-right ul { font-size: 15px; line-height: 1.4; }
+            .text-right li { margin-bottom: 6px; }
+
+            /* Training Section Mobile */
+            .training-section { padding: 50px 5% 40px; }
+            .training-title { font-size: 32px; margin-bottom: 25px; line-height: 1.2; letter-spacing: -1px; }
+            .training-cards-container { grid-template-columns: 1fr; gap: 15px; margin-bottom: 25px; }
+            .training-card { padding: 22px 25px; border-radius: 20px; align-items: center; text-align: left; }
+            .training-card h3 { font-size: 18px; line-height: 1.4; letter-spacing: 0px; }
+            .training-card h3 br { display: none; } 
+            .training-footnote { font-size: 13px; margin-top: 10px; }
+
+            /* Simulator Section Mobile */
+            .simulator-section { padding: 60px 4% 50px; }
+            .sim-header { margin-bottom: 40px; }
+            .sim-header h2 { font-size: 38px; }
+            .sim-header p { font-size: 16px; }
+            .sim-left, .sim-right { padding: 25px 20px; }
+            
+            .res-box { padding: 25px 20px; }
+            .res-value { font-size: 40px; }
+
+            /* Tour / Solutions Section Mobile */
+            .tour-section { padding: 40px 5% 60px; }
+            .tour-card { padding: 35px 25px; border-radius: 20px; flex-direction: column; align-items: flex-start; text-align: left; min-height: auto; }
+            .tour-content { max-width: 100%; }
+            .tour-content h2 { font-size: 28px; line-height: 1.15; margin-bottom: 15px; max-width: 80%; }
+            .tour-content p { font-size: 15px; line-height: 1.5; margin-bottom: 25px; }
+            .tour-btn { width: 100%; padding: 16px 0; text-align: center; display: flex; justify-content: center; border-radius: 12px; }
+            .tour-image { display: none !important; }
+            .tour-animated-h { top: 25px; right: 25px; bottom: auto !important; left: auto !important; width: 60px !important; height: 60px !important; transform: none !important; opacity: 1; }
+            .tour-animated-h.h-visible { bottom: auto !important; transform: none !important; }
+        }
     </style>
 </head>
 
 <body>
 
-    <!-- HEADER PLACEHOLDER -->
     <div id="header-placeholder"></div>
 
     <!-- MAIN SCROLL ANIMATION SEQUENCE -->
     <section class="pricing-hero-sequence">
         <div class="sticky-container">
             
-            <!-- Video Background (Starts as circle, grows to full screen) -->
             <div class="video-full-wrapper">
                 <video autoplay loop muted playsinline>
-                    <!-- AHIYA TAMARO SACHO VIDEO PATH MUKJO -->
                     <source src="/images/hero-bg.mp4" type="video/mp4">
                 </video>
             </div>
             
-            <!-- Dark Overlay -->
             <div class="video-dark-overlay"></div>
 
-            <!-- Initial Content (Title & Button & Graphic) -->
             <div class="initial-hero-content">
-                
-                <!-- NEW SVG GRAPHIC FOR EMPLOYERS LOOP DESIGN -->
                 <svg class="hero-graphic-employers" viewBox="0 0 350 700" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M 200,50 
-                             C 400,50 400,250 250,300 
-                             C 100,350 100,150 250,200 
-                             C 450,250 450,500 300,550 
-                             C 150,600 150,400 300,450 
-                             C 500,500 500,750 350,800" 
-                          fill="none" 
-                          stroke="#0a4d3c" 
-                          stroke-width="65" 
-                          stroke-linecap="round"
-                          stroke-linejoin="round"/>
+                    <path d="M 200,50 C 400,50 400,250 250,300 C 100,350 100,150 250,200 C 450,250 450,500 300,550 C 150,600 150,400 300,450 C 500,500 500,750 350,800" fill="none" stroke="#0a4d3c" stroke-width="65" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
-                
                 <h1 class="hero-title split-text">BeeToGreen is optimised<br>for the Sustainable<br>Mobility Allowance</h1>
             </div>
             
@@ -601,44 +476,119 @@
         </div>
     </section>
 
-    <!-- =========================================
-         TRAINING PROGRAMMES SECTION
-         ========================================= -->
+    <!-- TRAINING PROGRAMMES SECTION -->
     <section class="training-section">
         <h2 class="training-title split-text">Our training programmes*</h2>
-        
         <div class="training-cards-container">
-            
-            <!-- Card 1: Yellow -->
-            <div class="training-card card-yellow">
+            <div class="training-card card-yellow fade-up-text">
                 <h3 class="split-text">Choosing your<br>bike (based on<br>usage and<br>budget)</h3>
             </div>
-            
-            <!-- Card 2: Pink -->
-            <div class="training-card card-pink">
+            <div class="training-card card-pink fade-up-text">
                 <h3 class="split-text">Safety a/ Theory<br>b/ Practice</h3>
             </div>
-            
-            <!-- Card 3: Blue -->
-            <div class="training-card card-blue">
+            <div class="training-card card-blue fade-up-text">
                 <h3 class="split-text">Promoting your<br>sustainable<br>mobility<br>programme</h3>
             </div>
-
         </div>
-
         <p class="training-footnote fade-up-text">*Quote and details on request</p>
     </section>
 
-    <!-- =========================================
-         TOUR WRAPPED UP SECTION (UPDATED TEXT & COLOR)
-         ========================================= -->
+    <!-- SIMULATOR SECTION (WITH FADE-UP ANIMATIONS) -->
+    <section class="simulator-section" id="simulator">
+        <div class="sim-header fade-up-text">
+            <h2>Simulate the cost of the project</h2>
+            <p>Indicative estimate for your sustainable mobility fleet</p>
+        </div>
+        
+        <div class="sim-container">
+            
+            <!-- Left Side: Inputs -->
+            <div class="sim-left fade-up-text">
+                <div class="sim-label-top">YOUR PARAMETERS</div>
+                
+                <div class="sim-input-group">
+                    <label>Number of employees in the company</label>
+                    <input type="number" class="sim-input-box" id="sim-emp" value="200">
+                </div>
+
+                <div class="sim-input-group">
+                    <label>Target adoption rate for cycling in year 1</label>
+                    <div class="slider-wrapper">
+                        <input type="range" id="sim-adopt-rate" min="0" max="100" value="20">
+                        <span class="slider-value" id="sim-adopt-val">20 %</span>
+                    </div>
+                    <div class="sim-sub-text">soit <strong id="sim-calc-emp">40</strong> employees</div>
+                </div>
+
+                <div class="sim-input-group">
+                    <label>Annual contribution per cycling employee (FMD)</label>
+                    <div class="input-with-unit">
+                        <input type="number" class="sim-input-box" id="sim-fmd" value="500">
+                        <span class="unit">€ / employee</span>
+                    </div>
+                    <div class="sim-sub-text">The FMD is exempt from social charges up to <strong>€600/year</strong>.</div>
+                </div>
+
+                <div class="sim-accordion">
+                    <button class="sim-accordion-btn" id="sim-acc-btn">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                        Refine with your existing transport allowance (optional)
+                    </button>
+                    <div class="sim-accordion-content" id="sim-acc-content">
+                        <div class="sim-input-group">
+                            <label>Annual public transport allowance per employee</label>
+                            <div class="input-with-unit">
+                                <input type="number" class="sim-input-box" id="sim-transport" value="450">
+                                <span class="unit">€ / employee</span>
+                            </div>
+                        </div>
+                        <div class="sim-input-group">
+                            <label>Share of employees already receiving this allowance</label>
+                            <div class="slider-wrapper">
+                                <input type="range" id="sim-allow-rate" min="0" max="100" value="80">
+                                <span class="slider-value" id="sim-allow-val">80 %</span>
+                            </div>
+                            <div class="sim-sub-text">Employees who switch from reimbursed public transport to cycling generate savings for the company.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="#demo" class="sim-btn">Try it free</a>
+            </div>
+
+            <!-- Right Side: Results -->
+            <div class="sim-right fade-up-text">
+                <div class="sim-label-top">ESTIMATED RESULTS</div>
+                
+                <div class="res-box res-dark">
+                    <div class="res-title">NET ANNUAL TOTAL COST</div>
+                    <div class="res-value" id="res-annual-cost">5 600 €</div>
+                    <div class="res-sub" id="res-annual-sub">140 € per cyclist / year</div>
+                </div>
+
+                <div class="res-box res-white">
+                    <div class="res-title">MONTHLY IMPACT</div>
+                    <div class="res-value" id="res-monthly-impact">467 €</div>
+                    <div class="res-sub" id="res-monthly-sub">12 € per cyclist / month</div>
+                </div>
+
+                <div class="res-box res-light">
+                    <strong><span id="res-savings">€14400</span></strong> in savings/year on public transport reimbursement, thanks to the <span id="res-switchers">40</span> employees switching from transport to cycling.
+                </div>
+            </div>
+
+        </div>
+        <div class="sim-footer fade-up-text">*Indicative and non-binding results</div>
+    </section>
+
+    <!-- TOUR WRAPPED UP SECTION -->
     <section class="tour-section" id="tour">
         <div class="tour-card">
             <div class="tour-content">
                 <h2>Try our solution integrating the Sustainable Mobility Allowance free of charge</h2>
-                <p>
-                    Our marketplace is 100% online. But your bike rides in the real world. That's why we rely on a network of partner shops across France.
-                </p>
+                <p>Our marketplace is 100% online. But your bike rides in the real world. That's why we rely on a network of partner shops across France.</p>
                 <a href="/contact.html" class="tour-btn">Get in touch</a>
             </div>
             <div class="tour-image">
@@ -646,50 +596,34 @@
             </div>
             <div class="tour-animated-h">
                 <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Circle fill updated to Dark Brown -->
                     <circle cx="50" cy="50" r="50" fill="#fae896" />
-                    <path d="M30,25 L30,75 M30,50 L70,50 M70,25 L70,75" 
-                        fill="none" stroke="#342415" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M30,25 L30,75 M30,50 L70,50 M70,25 L70,75" fill="none" stroke="#342415" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER PLACEHOLDER -->
     <div id="footer-placeholder"></div>
 
     <!-- JAVASCRIPT FOR HEADER/FOOTER -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            // Fetch Header
             fetch('../components/header.html')
-                .then(response => {
-                    if (!response.ok) throw new Error('Header load nathi thayu!');
-                    return response.text();
-                })
-                .then(data => {
-                    document.getElementById('header-placeholder').innerHTML = data;
-                })
+                .then(response => { if (!response.ok) throw new Error('Header load nathi thayu!'); return response.text(); })
+                .then(data => { document.getElementById('header-placeholder').innerHTML = data; })
                 .catch(error => console.error("Header Error:", error));
             
-            // Fetch Footer
             fetch('../components/footer.html')
-                .then(response => {
-                    if (!response.ok) throw new Error('Footer load nathi thayu!');
-                    return response.text();
-                })
+                .then(response => { if (!response.ok) throw new Error('Footer load nathi thayu!'); return response.text(); })
                 .then(data => {
                     document.getElementById('footer-placeholder').innerHTML = data;
-                    setTimeout(() => {
-                        const yearSpan = document.getElementById('year');
-                        if(yearSpan) { yearSpan.textContent = new Date().getFullYear(); }
-                    }, 500);
+                    setTimeout(() => { const yearSpan = document.getElementById('year'); if(yearSpan) yearSpan.textContent = new Date().getFullYear(); }, 500);
                 })
                 .catch(error => console.error("Footer Error:", error));
         });
     </script>
 
-    <!-- JAVASCRIPT FOR SCROLL ANIMATION AND OBSERVER -->
+    <!-- MAIN SCROLL & ANIMATION SCRIPT -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             
@@ -701,10 +635,7 @@
                     titleSplit.innerHTML = '';
                     
                     words.forEach((word, wordIndex) => {
-                        if (word === "") {
-                            titleSplit.appendChild(document.createElement('br'));
-                            return;
-                        }
+                        if (word === "") { titleSplit.appendChild(document.createElement('br')); return; }
                         const wordSpan = document.createElement('span');
                         wordSpan.style.display = 'inline-block';
                         wordSpan.style.overflow = 'hidden';
@@ -724,31 +655,25 @@
                 });
             }
 
-            // 2. Observer for new section animations
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.15 
-            };
+            // 2. Intersection Observer For Fade-Up Elements
+            const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
             const mainObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('in-view');
-                    }
+                    if (entry.isIntersecting) { entry.target.classList.add('in-view'); }
                 });
             }, observerOptions);
 
             const animatedElements = document.querySelectorAll('.split-text, .fade-up-text');
             animatedElements.forEach(el => mainObserver.observe(el));
 
-            // Show initial title immediately
+            // Show initial hero title
             setTimeout(() => {
                 const heroTitle = document.querySelector('.hero-title');
                 if(heroTitle) heroTitle.classList.add('in-view');
             }, 100);
 
             // ==========================================
-            // Scroll Sequence Logic (Adjusted for 2 Texts)
+            // Scroll Sequence Logic (Continuous Slide)
             // ==========================================
             const section = document.querySelector('.pricing-hero-sequence');
             const videoWrapper = document.querySelector('.video-full-wrapper');
@@ -758,6 +683,7 @@
             
             const text1 = document.querySelector('.scroll-text.text-1');
             const text2 = document.querySelector('.scroll-text.text-2');
+            const text3 = document.querySelector('.scroll-text.text-3');
 
             window.addEventListener('scroll', () => {
                 if (!section) return;
@@ -767,51 +693,51 @@
                 const sectionHeight = rect.height;
                 const windowHeight = window.innerHeight;
 
-                // Calculate scroll progress from 0 to 1
                 let progress = -sectionTop / (sectionHeight - windowHeight);
                 progress = Math.max(0, Math.min(1, progress));
 
-                // 1. Expand Video Circle (0 to 0.3 progress)
-                const baseRadius = window.innerWidth < 768 ? 130 : 180;
+                const baseRadius = window.innerWidth < 768 ? 90 : 180;
                 const maxRadius = Math.max(window.innerWidth, window.innerHeight) * 1.2;
+                const yPos = window.innerWidth < 768 ? 65 : 65;
 
-                if (progress <= 0.3) {
-                    let p1 = progress / 0.3;
-                    let easeP1 = p1 * p1; // ease-in for smoother expansion
+                if (progress <= 0.25) {
+                    let p1 = progress / 0.25;
+                    let easeP1 = p1 * p1; 
                     let currentRadius = baseRadius + (maxRadius - baseRadius) * easeP1;
                     
-                    videoWrapper.style.clipPath = `circle(${currentRadius}px at 50% 65%)`;
-                    videoWrapper.style.webkitClipPath = `circle(${currentRadius}px at 50% 65%)`;
+                    videoWrapper.style.clipPath = `circle(${currentRadius}px at 50% ${yPos}%)`;
+                    videoWrapper.style.webkitClipPath = `circle(${currentRadius}px at 50% ${yPos}%)`;
                     
-                    // Fade out initial elements
-                    let fadeOut = Math.max(0, 1 - (progress / 0.15));
+                    let fadeOut = Math.max(0, 1 - (progress / 0.1));
                     initialContent.style.opacity = fadeOut;
                     btn.style.opacity = fadeOut;
                     
-                    // Fade in dark overlay
-                    let overlayOpacity = Math.max(0, (progress - 0.15) / 0.15) * 0.7;
+                    let overlayOpacity = Math.max(0, (progress - 0.1) / 0.15) * 0.6;
                     overlay.style.opacity = overlayOpacity;
                 } else {
-                    videoWrapper.style.clipPath = `circle(${maxRadius}px at 50% 65%)`;
-                    videoWrapper.style.webkitClipPath = `circle(${maxRadius}px at 50% 65%)`;
+                    videoWrapper.style.clipPath = `circle(${maxRadius}px at 50% ${yPos}%)`;
+                    videoWrapper.style.webkitClipPath = `circle(${maxRadius}px at 50% ${yPos}%)`;
                     initialContent.style.opacity = 0;
                     btn.style.opacity = 0;
-                    overlay.style.opacity = 0.7;
+                    overlay.style.opacity = 0.6;
                 }
 
-                // Helper Function for Text animations
+                // New Continuous Parallax Scroll Function
                 function updateText(el, start, end, currP) {
                     if (currP > start && currP <= end) {
                         let localP = (currP - start) / (end - start);
                         let opacity = 1;
-                        let yOffset = 0;
-                        if(localP < 0.2) {
-                            opacity = localP / 0.2; // Fade In
-                            yOffset = 30 * (1 - opacity);
-                        } else if (localP > 0.8) {
-                            opacity = 1 - ((localP - 0.8) / 0.2); // Fade Out
-                            yOffset = -30 * (1 - opacity); 
+                        
+                        // નીચેથી ઉપર સળંગ સ્લાઈડ માટે ગણતરી (Continuous scroll travel)
+                        const slideDist = window.innerWidth < 768 ? 180 : 280; 
+                        let yOffset = slideDist - (localP * slideDist * 2);
+
+                        if(localP < 0.25) {
+                            opacity = localP / 0.25; // ધીમેથી દેખાશે
+                        } else if (localP > 0.75) {
+                            opacity = 1 - ((localP - 0.75) / 0.25); // ધીમેથી ગાયબ થશે
                         }
+                        
                         el.style.opacity = opacity;
                         el.style.transform = `translate(-50%, -50%) translateY(${yOffset}px)`;
                     } else {
@@ -819,18 +745,18 @@
                     }
                 }
 
-                // 2. Text 1 Sequence (0.30 to 0.65)
-                updateText(text1, 0.30, 0.65, progress);
+                updateText(text1, 0.25, 0.50, progress);
+                updateText(text2, 0.50, 0.75, progress);
                 
-                // 3. Text 2 Sequence (0.65 to 1.0)
-                if (progress > 0.65) {
-                    let localP = (progress - 0.65) / 0.35;
-                    let opacity = Math.min(1, localP / 0.2);
-                    let yOffset = 30 * (1 - opacity);
-                    text2.style.opacity = opacity;
-                    text2.style.transform = `translate(-50%, -50%) translateY(${yOffset}px)`;
+                if (progress > 0.75) {
+                    let localP = (progress - 0.75) / 0.25;
+                    let opacity = Math.min(1, localP / 0.25);
+                    const slideDist = window.innerWidth < 768 ? 180 : 280;
+                    let yOffset = slideDist - (localP * slideDist * 2);
+                    text3.style.opacity = opacity;
+                    text3.style.transform = `translate(-50%, -50%) translateY(${yOffset}px)`;
                 } else {
-                    text2.style.opacity = 0;
+                    text3.style.opacity = 0;
                 }
             });
         });
@@ -858,6 +784,100 @@
                 tourObserver.observe(tourCard);
             }
         });
+
+/* =========================================
+   DYNAMIC BIKE COST CALCULATOR
+========================================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const bikeSlider = document.getElementById("bikePriceSlider");
+    const bikePriceDisplay = document.getElementById("bikePriceDisplay");
+    const fmdInput = document.getElementById("fmdContribution");
+
+    const monthlyPrice = document.getElementById("monthlyPrice");
+    const purchasePrice = document.getElementById("purchasePrice");
+
+    const mobilityAllowance = document.getElementById("mobilityAllowance");
+    const publicSubsidy = document.getElementById("publicSubsidy");
+
+    // Accordion Toggle for Employers/Employees if needed
+    const accBtn = document.getElementById("sim-acc-btn");
+    const accContent = document.getElementById("sim-acc-content");
+
+    if(accBtn && accContent) {
+        accBtn.addEventListener("click", () => {
+            accContent.classList.toggle("active");
+        });
+    }
+
+    if (!bikeSlider || !fmdInput) return;
+
+    // Public subsidy used in the reference calculator
+    const PUBLIC_SUBSIDY = 500;
+
+    // Reference monthly rental values from the supplied video.
+    const rentalReference = [
+        [0, 0], [500, 19], [1500, 54], [3650, 128], [4650, 162], [5950, 207], [6000, 208]
+    ];
+
+    function formatPrice(value) { return Math.round(value).toLocaleString("en-US"); }
+
+    function calculateMonthlyRental(amount) {
+        if (amount <= 0) return 0;
+        for (let i = 1; i < rentalReference.length; i++) {
+            const previous = rentalReference[i - 1];
+            const current = rentalReference[i];
+            if (amount <= current[0]) {
+                const ratio = (amount - previous[0]) / (current[0] - previous[0]);
+                return Math.round(previous[1] + ratio * (current[1] - previous[1]));
+            }
+        }
+        return Math.round(amount * 0.0348);
+    }
+
+    function updateBikePricePosition() {
+        const min = Number(bikeSlider.min);
+        const max = Number(bikeSlider.max);
+        const value = Number(bikeSlider.value);
+        const percentage = ((value - min) / (max - min)) * 100;
+        bikePriceDisplay.style.left = percentage + "%";
+        bikeSlider.style.background = `linear-gradient(to right, #00583e ${percentage}%, #dedede ${percentage}%)`;
+    }
+
+    function updateCalculator() {
+        const bikePrice = Number(bikeSlider.value);
+        let companyContribution = Number(fmdInput.value);
+        if (!Number.isFinite(companyContribution)) { companyContribution = 0; }
+        companyContribution = Math.max(0, Math.min(10000, companyContribution));
+        fmdInput.value = companyContribution;
+
+        // Total deductions
+        const totalBenefits = companyContribution + PUBLIC_SUBSIDY;
+        
+        // Remaining purchase cost
+        const finalPurchasePrice = Math.max(0, bikePrice - totalBenefits);
+        
+        // Calculate monthly rental
+        const finalMonthlyPrice = calculateMonthlyRental(finalPurchasePrice);
+
+        // Update all values on DOM
+        if(bikePriceDisplay) bikePriceDisplay.textContent = formatPrice(bikePrice) + " €";
+        if(purchasePrice) purchasePrice.textContent = formatPrice(finalPurchasePrice);
+        if(monthlyPrice) monthlyPrice.textContent = formatPrice(finalMonthlyPrice);
+        if(mobilityAllowance) mobilityAllowance.textContent = formatPrice(companyContribution);
+        if(publicSubsidy) publicSubsidy.textContent = formatPrice(PUBLIC_SUBSIDY);
+
+        updateBikePricePosition();
+    }
+
+    // Slider and input interactions
+    bikeSlider.addEventListener("input", updateCalculator);
+    fmdInput.addEventListener("input", updateCalculator);
+    
+    // Initial calculation setup
+    updateCalculator();
+});
     </script>
 </body>
 </html>

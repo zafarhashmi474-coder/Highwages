@@ -634,14 +634,14 @@ button {
     font-weight: 900;
     line-height: 0.98;
     letter-spacing: -5px;
-    color: var(--lime);
     max-width: 1500px;
     margin: 0 auto;
     animation: heroReveal 1.2s ease both;
+    color: #f38437; 
 }
 
 .star {
-    color: #f4b2bf;
+    color: #db2579; 
     font-size: 0.78em;
     margin-left: 8px;
     vertical-align: 12%;
@@ -696,7 +696,7 @@ button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: var(--lime);
+    background: #f38437;
     color: var(--dark-green);
     padding: 23px 39px;
     border-radius: 15px;
@@ -740,7 +740,7 @@ button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    color: var(--lime);
+    color: #f38437;
     font-size: 18px;
     font-weight: 800;
     text-decoration: none;
@@ -757,7 +757,7 @@ button {
     left: 15px;
     right: 15px;
     height: 2px;
-    background-color: var(--lime);
+    background-color: #f38437;
     transition: background-color 0.3s ease;
 }
 
@@ -771,7 +771,7 @@ button {
     width: 250%;
     height: 250%;
     border-radius: 50%;
-    background-color: var(--lime);
+    background-color: #f38437;
     transition: transform 0.5s ease-in-out;
     z-index: -1;
 }
@@ -1401,7 +1401,7 @@ button {
 }
 
 .activate-section .activate-description {
-    max-width: 750px;
+    max-width: 650px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -5258,4 +5258,77 @@ button {
         border-radius: 10px;
         margin-top: 15px !important;
     }
+}
+
+
+/* =========================================
+   ACTIVATE SECTION - MOBILE PROMO CARD FIX
+========================================= */
+
+@media (max-width: 760px) {
+
+    .activate-section {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        min-height: auto !important;
+        padding-top: 100px !important;
+        padding-bottom: 250px !important;
+    }
+
+    /* Activate content */
+    .activate-section .activate-content {
+        width: 100%;
+        margin-bottom: 20px !important;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    /* Promo card below the button */
+    .activate-section .promo-card {
+        position: static !important;
+        top: auto !important;
+        right: auto !important;
+
+        width: min(290px, 88%);
+        max-width: 100%;
+
+        margin: 20px auto 0 !important;
+
+        transform: rotate(5deg) !important;
+
+        opacity: 1 !important;
+        animation: none !important;
+
+        z-index: 4;
+    }
+
+    .activate-section .promo-card:hover {
+        transform: rotate(0deg) translateY(-5px) !important;
+    }
+
+}
+
+/* =====================================
+   MOBILE - HIDE VERTICAL SCROLLBAR
+===================================== */
+
+@media (max-width: 900px) {
+
+    html {
+        scrollbar-width: none !important;
+        -ms-overflow-style: none !important;
+    }
+
+    html::-webkit-scrollbar,
+    body::-webkit-scrollbar {
+        display: none !important;
+        width: 0 !important;
+        height: 0 !important;
+    }
+
+    body {
+        overflow-x: hidden !important;
+    }
+
 }

@@ -19,7 +19,7 @@
 
         #header-placeholder { width: 100%; position: relative; z-index: 1000; }
 
-        .contact-main { width: 100%; min-height: 100vh; padding: 140px 20px 100px; display: flex; flex-direction: column; align-items: center; }
+        .contact-main { width: 100%; min-height: 100vh; padding: 180px 20px 100px; display: flex; flex-direction: column; align-items: center; }
         .contact-heading { width: 100%; max-width: 850px; text-align: center; margin: 0 auto; }
         .contact-heading h1 { font-size: clamp(48px, 6vw, 82px); font-weight: 700; line-height: 1.15; letter-spacing: -3px; color: #0b1e18; margin-bottom: 24px; }
         .contact-heading p { max-width: 730px; margin: 0 auto; font-size: 20px; line-height: 1.7; font-weight: 400; color: #53615c; }
@@ -130,12 +130,44 @@
         .direct-contact-banner { width: 100%; margin-bottom: 30px; border-radius: 8px; overflow: hidden; }
         .direct-contact-banner img { width: 100%; height: auto; display: block; object-fit: cover; }
         .direct-contact-form { width: 100%; max-width: 800px; display: flex; flex-direction: column; gap: 15px; }
-        /* Reducing input padding slightly for this specific form to match design */
         .direct-contact-form .form-group input, .direct-contact-form .form-group select { padding: 12px 14px; }
 
 
         @keyframes cardReveal { from { opacity: 0; transform: translateY(35px); } to { opacity: 1; transform: translateY(0); } }
-        @media (max-width: 768px) { .scheduler-widget { flex-direction: column; } .calendar-panel, .time-panel { width: 100%; border-radius: 12px; } .form-row { flex-direction: column; gap: 20px; } }
+        
+        /* =========================================
+           MOBILE RESPONSIVE UPDATES
+           ========================================= */
+        @media (max-width: 768px) { 
+            .scheduler-widget { flex-direction: column; } 
+            .calendar-panel, .time-panel { width: 100%; border-radius: 12px; } 
+            .form-row { flex-direction: column; gap: 20px; } 
+            
+            /* Main Heading Mobile */
+            .contact-main { padding: 150px 15px 60px; }
+            .contact-heading h1 { font-size: 34px; letter-spacing: -1px; margin-bottom: 15px; }
+            .contact-heading p { font-size: 16px; line-height: 1.5; }
+            
+            /* Contact Cards Mobile */
+            .contact-cards { margin: 40px auto 0; gap: 15px; }
+            .contact-card { min-height: auto; padding: 30px 25px; border-radius: 16px; }
+            .contact-card h2 { font-size: 24px; margin-bottom: 12px; }
+            .contact-card p { font-size: 15px; line-height: 1.5; }
+
+            /* Toggle & Form Mobile */
+            .view-section { margin-top: 30px; }
+            .toggle-container { padding: 5px; margin-bottom: 25px; width: 100%; display: flex; }
+            .toggle-btn { padding: 12px 0; font-size: 15px; flex: 1; text-align: center; border-radius: 30px; }
+            
+            .common-form { gap: 15px; }
+            .form-group label { font-size: 15px; margin-bottom: 5px; }
+            .form-group .subtitle { font-size: 12px; margin-bottom: 8px; line-height: 1.4; }
+            .form-group input, .form-group textarea, .form-group select { padding: 12px; font-size: 14px; border-radius: 10px; }
+            
+            .section-title { font-size: 20px; margin-bottom: 30px; }
+            
+            .employer-booking-form { padding: 25px 20px; }
+        }
     </style>
 </head>
 
@@ -169,17 +201,17 @@
             
             <form class="common-form employee-form">
                 <div class="form-group">
-                    <label>📧 E-mail<span class="required">*</span></label>
-                    <p class="subtitle">votre adresse mail de connexion / your login email address</p>
+                    <label>E-mail<span class="required">*</span></label>
+                    <p class="subtitle">votre adresse mail de connexion Highwages | your Highwages login email address</p>
                     <input type="email" required>
                 </div>
                 <div class="form-group">
-                    <label>🖊️ Description de la demande | Description of the request<span class="required">*</span></label>
-                    <p class="subtitle">Décrivez-nous votre problème / Describe your issue and provide as much information as possible</p>
+                    <label>Description de la demande | Description of the request<span class="required">*</span></label>
+                    <p class="subtitle">Décrivez-nous votre problème en nous donnant le plus d'information possible | Describe your issue and provide as much information as possible</p>
                     <textarea rows="5" required></textarea>
                 </div>
                 <div class="form-group">
-                    <label>🌎 Avez vous une commande ? | Do you have an order ? <span class="required">*</span></label>
+                    <label>Avez vous une commande ? | Do you have an order ? <span class="required">*</span></label>
                     <select required>
                         <option value="" disabled selected>Veuillez sélectionner</option>
                         <option value="yes">Oui / Yes</option>
@@ -339,8 +371,29 @@
 
     </main>
 
-    <div id="footer"></div>
-    <script src="js/components.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch('../components/header.html')
+                .then(response => {
+                    if (!response.ok) throw new Error('Header load nathi thayu!');
+                    return response.text();
+                })
+                .then(data => {
+                    document.getElementById('header-placeholder').innerHTML = data;
+                })
+                .catch(error => console.error("Header Error:", error));
+            
+            fetch('../components/footer.html')
+                .then(response => {
+                    if (!response.ok) throw new Error('Footer load nathi thayu!');
+                    return response.text();
+                })
+                .then(data => {
+                    document.getElementById('footer-placeholder').innerHTML = data;
+                })
+                .catch(error => console.error("Footer Error:", error));
+        });
+    </script>
 
     <script>
         // ==========================================
