@@ -301,10 +301,51 @@
         }
 
         @media (max-width: 768px) {
-            .newsroom-hero { padding-top: 130px; }
-            .newsroom-title { letter-spacing: -1.5px; margin-bottom: 40px; }
-            .articles-grid { grid-template-columns: 1fr; }
-            .article-card { height: 350px; }
+            
+            .newsroom-hero { 
+                padding-top: 110px; 
+                padding-bottom: 40px; 
+            }
+            
+            .newsroom-title { 
+                font-size: clamp(42px, 12vw, 55px); 
+                letter-spacing: -1.5px; 
+                margin-bottom: 30px; 
+            }
+
+            .featured-article {
+                gap: 30px; 
+            }
+
+            .article-meta {
+                font-size: 12px;
+                margin-bottom: 15px;
+            }
+
+            .article-title {
+                font-size: clamp(28px, 8vw, 35px); /* Readable mobile font size */
+                margin-bottom: 20px;
+                letter-spacing: -1px;
+            }
+
+            .article-excerpt {
+                font-size: 16px;
+                line-height: 1.5;
+                margin-bottom: 30px;
+            }
+            
+            .article-image-wrapper {
+                border-radius: 16px; 
+            }
+
+            /* ==== Latest Articles Section (Existing code) ==== */
+            .articles-grid { 
+                grid-template-columns: 1fr; 
+            }
+            
+            .article-card { 
+                height: 350px; 
+            }
         }
 
         /* =========================================
@@ -485,54 +526,58 @@
         }
 
         /* Mobile Responsive */
-
         @media (max-width: 650px) {
             .press-features-section {
                 padding: 20px 5% 70px;
             }
 
             .press-features-label {
-                font-size: 14px;
-                padding-bottom: 22px;
+                font-size: 12px;
+                padding-bottom: 15px;
+                letter-spacing: 1px;
             }
 
             .press-feature-row {
-                grid-template-columns: 1fr 24px;
-                gap: 5px 12px;
-                padding: 17px 8px;
+                grid-template-columns: 1fr 20px;
+                grid-template-rows: auto auto; /* 1st row Date, 2nd row Title */
+                gap: 6px 12px;
+                padding: 20px 0;
                 min-height: auto;
             }
 
             .press-feature-date {
                 grid-column: 1;
+                grid-row: 1;
                 font-size: 11px;
             }
 
             .press-feature-source {
-                grid-column: 1;
-                font-size: 11px;
+                display: none; 
             }
 
             .press-feature-title-wrap {
                 grid-column: 1;
-                grid-row: 3;
-                margin-top: 5px;
+                grid-row: 2;
+                margin-top: 2px;
             }
 
             .press-feature-title {
-                font-size: 16px;
-                line-height: 1.45;
+                font-size: 15px;
+                line-height: 1.4;
             }
 
             .press-feature-arrow {
                 grid-column: 2;
-                grid-row: 1 / span 3;
-                font-size: 22px;
+                grid-row: 2;
+                align-self: start; 
+                font-size: 20px;
+                margin-top: 2px;
             }
 
             .press-feature-row:hover {
-                padding-left: 13px;
-                padding-right: 13px;
+                padding-left: 0; 
+                padding-right: 0;
+                background: transparent;
             }
 
             .press-pagination {
@@ -778,51 +823,68 @@
 
         }
 
+        /* Mobile Responsive for Media Kit */
         @media (max-width: 600px) {
-
             .media-kit-section {
-                width: 92%;
-                padding: 35px 22px;
-                border-radius: 22px;
-                margin-bottom: 60px;
+                width: 100%;
+                padding: 20px 5% 60px;
+                border: none; /* Screenshot pramane border remove kari */
+                border-radius: 0;
+                margin-bottom: 0;
+                background: transparent;
             }
 
             .media-kit-main {
-                gap: 35px;
+                gap: 30px;
+            }
+            
+            .media-kit-label {
+                font-size: 12px;
+                letter-spacing: 1px;
+                margin-bottom: 15px;
             }
 
             .media-kit-heading {
-                font-size: 46px;
-                margin-bottom: 28px;
+                font-size: 36px;
+                margin-bottom: 25px;
+                letter-spacing: -1.5px;
             }
 
             .media-kit-download {
-                min-height: 62px;
-                padding: 18px 28px;
+                min-height: 54px;
+                padding: 14px 28px;
                 font-size: 15px;
+                border-radius: 10px;
             }
 
             .media-kit-assets {
                 grid-template-columns: 1fr;
-                gap: 12px;
+                gap: 15px;
+                margin-top: 10px;
             }
 
             .media-kit-asset {
-                min-height: 70px;
-                padding: 15px 18px;
+                min-height: 65px;
+                padding: 15px 20px;
+                border-radius: 12px;
+            }
+
+            .media-kit-asset-left {
+                gap: 15px;
             }
 
             .media-kit-asset-name {
-                font-size: 17px;
+                font-size: 15px;
             }
 
             .media-kit-contact {
-                margin-top: 32px;
-                padding-top: 27px;
-                font-size: 16px;
+                margin-top: 35px;
+                padding-top: 25px;
+                font-size: 14px;
+                flex-direction: column; /* Screenshot pramane label and email ne stack karya */
+                align-items: flex-start;
                 gap: 8px;
             }
-
         }
 
     </style>
