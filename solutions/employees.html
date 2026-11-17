@@ -20,13 +20,17 @@
 
         html {
             scroll-behavior: smooth;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+            width: 100%;
         }
 
         body {
             font-family: "Parkinsans", sans-serif;
             background: #ffffff;
             color: #0b1e18;
-            overflow-x: hidden;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+            width: 100%;
+            position: relative;
         }
 
         /* HEADER PLACEHOLDER */
@@ -39,7 +43,7 @@
             background: transparent; 
         }
 
-        /* FOOTER PLACEHOLDER (Extra space issue na aave ena mate block aapyu chhe) */
+        /* FOOTER PLACEHOLDER */
         #footer-placeholder {
             display: block;
             width: 100%;
@@ -77,8 +81,8 @@
             position: absolute;
             top: -10%;
             left: -5%;
-            width: 50vw;
-            height: 50vw;
+            width: 50%; /* Replaced vw with % to stop overflow */
+            height: 50%;
             min-width: 600px;
             min-height: 600px;
             border: 80px solid #086b4a; 
@@ -90,8 +94,8 @@
             position: absolute;
             top: 15%;
             right: -10%;
-            width: 60vw;
-            height: 60vw;
+            width: 60%; /* Replaced vw with % to stop overflow */
+            height: 60%;
             min-width: 700px;
             min-height: 700px;
             border: 100px solid #086b4a;
@@ -120,7 +124,7 @@
 
         .hero-title {
             color: #d1f34d; 
-            font-size: clamp(50px, 8vw, 110px); 
+            font-size: clamp(50px, 8vw, 104px); 
             font-weight: 800;
             line-height: 1.05;
             letter-spacing: -2px;
@@ -1183,19 +1187,19 @@
         </div>
 
         <div class="hero-content">
-            <p class="hero-label">FOR EMPLOYEES</p>
-            <h1 class="hero-title">Your bike for the<br>daily commute</h1>
+            <p class="hero-label">FOR JOB SEEKERS</p>
+            <h1 class="hero-title">Your dream career,<br>closer than ever</h1>
             <p class="hero-subtitle">
-                Made accessible by your employer<br>
-                (and a little bit by us too).
+                Handholding support until you get hired<br>
+                (from resume building to final placement).
             </p>
         </div>
     </main>
 
-    <!-- SUSTAINABLE MOBILITY SECTION -->
+    <!-- CAREER ACCELERATION SECTION -->
     <section class="mobility-section">
-        <h2 class="mobility-title fade-up-element delay-1">The Sustainable Mobility Allowance</h2>
-        <p class="mobility-subtitle fade-up-element delay-2">Here's the lowdown</p>
+        <h2 class="mobility-title fade-up-element delay-1">Your Career Acceleration Journey</h2>
+        <p class="mobility-subtitle fade-up-element delay-2">Here's how we transform your job search</p>
 
         <div class="card-container">
             <div class="card">
@@ -1203,8 +1207,8 @@
                     <img src="/images/helmet.png" alt="Person with bike helmet" class="card-image">
                 </div>
                 <div class="card-content">
-                    <h3 class="card-title split-text">A bike you'll love, without breaking the bank.</h3>
-                    <p class="card-desc">With your employer's contribution and the related tax benefits, you get a quality bike at a reduced price.</p>
+                    <h3 class="card-title split-text">A job you'll love, without the endless search.</h3>
+                    <p class="card-desc">With our direct company tie-ups and dedicated recruitment experts, your profile goes straight to top employers for faster placement.</p>
                 </div>
             </div>
 
@@ -1213,8 +1217,8 @@
                     <img src="/images/shape_man.webp" alt="Person smiling" class="card-image">
                 </div>
                 <div class="card-content">
-                    <h3 class="card-title split-text">Commutes that breathe easier and so do you</h3>
-                    <p class="card-desc">Fewer traffic jams, fewer packed trains. Cycling is often faster, less stressful, and a great way to start the day on the right foot.</p>
+                    <h3 class="card-title split-text">Interviews that breathe easier, and so do you.</h3>
+                    <p class="card-desc">No more guessing games. We provide complete resume building and meticulous interview preparation so you walk in with absolute confidence.</p>
                 </div>
             </div>
 
@@ -1223,8 +1227,8 @@
                     <img src="/images/kids.webp" alt="Family on bike" class="card-image">
                 </div>
                 <div class="card-content">
-                    <h3 class="card-title split-text">A bike for work, and for life.</h3>
-                    <p class="card-desc">Standard, electric, folding, cargo... Browse a marketplace of 3,000+ models from the top brands and pick the one that truly fits your rides.</p>
+                    <h3 class="card-title split-text">A career for growth, and for life.</h3>
+                    <p class="card-desc">IT, Finance, Admin, or Tech... We filter your profile to match roles that pay what you deserve and fit your unique skillset perfectly.</p>
                 </div>
             </div>
         </div>
@@ -1239,18 +1243,18 @@
 
         <!-- Frosted Glass Container -->
         <div class="glass-panel">
-            <h2 class="boost-title fade-up-element">It's a boost from your employer for your daily commute.</h2>
+            <h2 class="boost-title fade-up-element">It's the ultimate boost for your professional career.</h2>
             
             <div class="boost-content-grid">
                 <div class="fade-up-element delay-1">
                     <div class="boost-text">
-                        <p>Concretely, your employer can contribute up to €800 per year for trips made with more sustainable transport: electric bike, carpooling, scooter or public transit.</p>
+                        <p>Securing the right job can take months of stressful searching. We streamline the entire process. Our placement experts actively push your resume to decision-makers, bypassing the traditional application black hole.</p>
                     </div>
                 </div>
                 <div class="fade-up-element delay-2">
                     <div class="boost-text">
-                        <p>Concretely, your employer can contribute up to €800 per year for trips made with more sustainable transport: electric bike, carpooling, scooter or public transit.</p>
-                        <p>And good news: this contribution is directly usable on our marketplace.</p>
+                        <p>From optimizing your resume to negotiating the best salary package, our handholding support ensures you land a high-paying role that aligns perfectly with your ambitions.</p>
+                        <p>And good news: we stay by your side until the day you get hired.</p>
                     </div>
                 </div>
             </div>
@@ -1264,45 +1268,45 @@
         </div>
     </section>
 
-    <!-- LONG TERM RENTAL SECTION -->
+    <!-- LONG TERM PLACEMENT SECTION -->
     <section class="rental-section">
         <div class="rental-card scroll-trigger">
             
             <!-- Left Side Image -->
             <div class="rental-image-wrapper">
-                <img src="/images/bike_brand.png" alt="Bike Phone Mount" class="rental-image">
+                <img src="/images/bike_brand.png" alt="Career Growth Graph" class="rental-image">
             </div>
 
             <!-- Right Side Content -->
             <div class="rental-content">
-                <h2>Long-term rental available</h2>
-                <a href="#" class="rental-btn">See the details</a>
+                <h2>Long-term career growth</h2>
+                <a href="#" class="rental-btn">View Open Roles</a>
             </div>
 
         </div>
 
         <div class="market-partners">
-                <p class="partner-subtitle">We partner with France's leading bike brands</p>
+                <p class="partner-subtitle">We partner with industry-leading global brands</p>
                 
                 <div class="partner-logo-slider">
                     <div class="partner-logo-track">
                         <!-- Group 1 -->
                         <div class="partner-logo-group">
-                            <img src="/images/logos/ellipse.webp" alt="Ellipse">
-                            <img src="/images/logos/gaya.webp" alt="Gaya">
-                            <img src="/images/logos/elwing.webp" alt="Elwing">
-                            <img src="/images/logos/jeanfourche.webp" alt="Jean Fourche">
-                            <img src="/images/logos/voltaire.webp" alt="Voltaire">
-                            <img src="/images/logos/bastille.webp" alt="Bastille">
+                            <img src="/images/logos/ellipse.webp" alt="Partner Logo">
+                            <img src="/images/logos/gaya.webp" alt="Partner Logo">
+                            <img src="/images/logos/elwing.webp" alt="Partner Logo">
+                            <img src="/images/logos/jeanfourche.webp" alt="Partner Logo">
+                            <img src="/images/logos/voltaire.webp" alt="Partner Logo">
+                            <img src="/images/logos/bastille.webp" alt="Partner Logo">
                         </div>
                         <!-- Group 2 (For infinite loop) -->
                         <div class="partner-logo-group" aria-hidden="true">
-                            <img src="/images/logos/ellipse.webp" alt="Ellipse">
-                            <img src="/images/logos/gaya.webp" alt="Gaya">
-                            <img src="/images/logos/elwing.webp" alt="Elwing">
-                            <img src="/images/logos/jeanfourche.webp" alt="Jean Fourche">
-                            <img src="/images/logos/voltaire.webp" alt="Voltaire">
-                            <img src="/images/logos/bastille.webp" alt="Bastille">
+                            <img src="/images/logos/ellipse.webp" alt="Partner Logo">
+                            <img src="/images/logos/gaya.webp" alt="Partner Logo">
+                            <img src="/images/logos/elwing.webp" alt="Partner Logo">
+                            <img src="/images/logos/jeanfourche.webp" alt="Partner Logo">
+                            <img src="/images/logos/voltaire.webp" alt="Partner Logo">
+                            <img src="/images/logos/bastille.webp" alt="Partner Logo">
                         </div>
                     </div>
                 </div>
@@ -1323,20 +1327,20 @@
 
             <div class="how-cards-container">
                 <div class="how-card card-light">
-                    <h3 class="how-card-title">Talk to your company about it</h3>
-                    <p class="how-card-text">BeeToGreen is an employee perk. If your company hasn't set it up yet, just mention it. We'll take care of the rest.</p>
+                    <h3 class="how-card-title">Submit Your Profile</h3>
+                    <p class="how-card-text">Send us your updated resume. Our expert recruiters will review your skills, experience, and career goals to find the perfect industry match.</p>
                 </div>
                 <div class="how-card card-dark">
-                    <h3 class="how-card-title">Your company activates BeeToGreen</h3>
-                    <p class="how-card-text">Once signed up, your company gives you access to the platform. And that's when things get interesting.</p>
+                    <h3 class="how-card-title">Resume & Interview Prep</h3>
+                    <p class="how-card-text">We don't just send you out blind. We optimize your CV and conduct mock interviews to ensure you stand out to top-tier employers.</p>
                 </div>
                 <div class="how-card card-light">
-                    <h3 class="how-card-title">Choose your bike</h3>
-                    <p class="how-card-text">Classic, electric, folding, cargo. Browse over 3,000 bikes from the leading brands and find the one that truly fits you.</p>
+                    <h3 class="how-card-title">Exclusive Job Matches</h3>
+                    <p class="how-card-text">Gain access to hidden job markets and exclusive openings. We filter opportunities so you only interview for roles that meet your salary expectations.</p>
                 </div>
                 <div class="how-card card-dark">
-                    <h3 class="how-card-title">Ride! Your bike is ready.</h3>
-                    <p class="how-card-text">For getting to work, running errands, enjoying the weekend, or in short, for riding more... and stress-free.</p>
+                    <h3 class="how-card-title">Get Hired & Thrive</h3>
+                    <p class="how-card-text">Nail the interview and secure the offer. We assist with salary negotiation and provide onboarding support for a smooth transition into your new role.</p>
                 </div>
             </div>
 
@@ -1370,56 +1374,56 @@
                 </div>
 
                 <div class="testi-slide active" data-index="1">
-                    <p class="quote">“We were pleasantly surprised by the impact of cycling on daily company life. It became a real collective movement that gradually brought people together around it.”</p>
+                    <p class="quote">“HighWages made my job search effortless. They revamped my resume and prepared me for the technical rounds. I landed a senior developer role in just two weeks!”</p>
                     <div class="author">
                         <img src="/images/portrait.webp" alt="Mara Kline">
                         <div>
                             <h4>Mara Kline</h4>
-                            <span>Northbay Produce Co.</span>
+                            <span>Placed at TechFlow Inc.</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="testi-slide" data-index="2">
-                    <p class="quote">“Setting up the Sustainable Mobility Allowance with BeeToGreen was disarmingly simple. Our teams are equipped, motivated, and riding every day.”</p>
+                    <p class="quote">“The handholding support is real. They didn't just forward my CV; they actively advocated for me. I got a 30% salary hike thanks to their negotiation tips.”</p>
                     <div class="author">
-                        <img src="/images/portrait.webp" alt="Tom Vasseur">
+                        <img src="/images/portrait.webp" alt="Julien Reyes">
                         <div>
                             <h4>Julien Reyes</h4>
-                            <span>Atelier Voltaire</span>
+                            <span>Financial Analyst</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="testi-slide" data-index="3">
-                    <p class="quote">“We saw a real shift in our mobility culture: fewer cars in the parking lot, more bikes, and most importantly, employees arriving at the office in a great mood.”</p>
+                    <p class="quote">“I was struggling to switch industries, but the HighWages team identified my transferable skills and connected me with a fantastic company culture.”</p>
                     <div class="author">
-                        <img src="/images/portrait.webp" alt="Sarah Jenkins">
+                        <img src="/images/portrait.webp" alt="Camille Doré">
                         <div>
                             <h4>Camille Doré</h4>
-                            <span>Studio Bastille</span>
+                            <span>Operations Manager</span>
                         </div>
                     </div>
                 </div>
                 
                 <div class="testi-slide" data-index="4">
-                    <p class="quote">“Highwage's support is what made the difference for us. From bike racks to test rides, everything was designed to work from day one.”</p>
+                    <p class="quote">“Fast placement and high wages—they truly live up to their name. The communication was transparent throughout the entire hiring process.”</p>
                     <div class="author">
-                        <img src="/images/portrait.webp" alt="David Chen">
+                        <img src="/images/portrait.webp" alt="Tom Vasseur">
                         <div>
                             <h4>Tom Vasseur</h4>
-                            <span>Maison Ellipse</span>
+                            <span>Marketing Director</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="testi-slide" data-index="5">
-                    <p class="quote">“Beyond the environmental aspect, what convinced us was the impact on our teams' health and well-being. Today, we wouldn't go back for anything.”</p>
+                    <p class="quote">“I highly recommend HighWages to any job seeker. Their network of reputed companies is impressive, and they know exactly what employers are looking for.”</p>
                     <div class="author">
                         <img src="/images/portrait.webp" alt="Inès Marchand">
                         <div>
                             <h4>Inès Marchand</h4>
-                            <span>Cycles Gaya</span>
+                            <span>HR Executive</span>
                         </div>
                     </div>
                 </div>
@@ -1437,9 +1441,9 @@
                 </svg>
             </div>
             <div class="chat-content">
-                <span class="chat-label">Let's chat?</span>
-                <h2 class="chat-title">Let's chat and you'll see,<br>it's a breeze!</h2>
-                <a href="/contact.html" class="chat-btn">Get in touch</a>
+                <span class="chat-label">Start Your Journey</span>
+                <h2 class="chat-title">Ready to take the next<br>step in your career?</h2>
+                <a href="/contact.html" class="chat-btn">Submit Your Resume</a>
             </div>
         </div>
     </section>
@@ -1455,66 +1459,67 @@
                 
                 <div class="faq-item active">
                     <button class="faq-question">
-                        <span>Is the contractual relationship between the company and BeeToGreen, or between the employee and BeeToGreen?</span>
+                        <span>Do I have to pay for your placement services as a job seeker?</span>
                         <span class="faq-icon"></span>
                     </button>
                     <div class="faq-answer">
-                        <p>The contractual relationship around equipment is exclusively between the employee and BeeToGreen.</p>
-                        <p>The company makes the scheme available (FMD, communication, Marketplace access), but is not a party to the purchase or rental contract entered into by the employee.</p>
+                        <p>No! Our placement services and handholding support are completely free for job seekers.</p>
+                        <p>We are compensated by our partner companies when we successfully place top talent like you in their organization.</p>
                     </div>
                 </div>
 
                 <div class="faq-item">
                     <button class="faq-question">
-                        <span>What happens if an employee has purchased their bike and leaves the company?</span>
+                        <span>What kind of jobs and industries do you recruit for?</span>
                         <span class="faq-icon"></span>
                     </button>
                     <div class="faq-answer">
-                        <p>In the case of a purchase, there is no specific issue related to the employee's departure. The bike belongs to them outright, and the end of their employment contract has no impact on the ownership of their equipment or on the company.</p>
+                        <p>We specialize in a wide range of industries including IT, Finance, Administration, Healthcare, and Engineering.</p>
+                        <p>Whether you are looking for an entry-level position or an executive role, we have tie-ups with reputed companies across the board.</p>
                     </div>
                 </div>
 
                 <div class="faq-item">
                     <button class="faq-question">
-                        <span>Does the employee own the bike under a long-term rental (LLD)?</span>
+                        <span>How long does the placement process usually take?</span>
                         <span class="faq-icon"></span>
                     </button>
                     <div class="faq-answer">
-                        <p>No. Under a long-term rental agreement, the bike remains the property of the financier/leaser for the entire duration of the contract, even if the employee has paid all scheduled instalments.</p>
-                        <p>The employee has a right of use governed by the contract, but does not own the bike unless the conditions for a potential buyout have been met.</p>
+                        <p>The timeline varies depending on your specific skillset and market demand.</p>
+                        <p>However, with our extensive network and fast placement approach, many candidates secure their desired job within a few weeks of registering with us.</p>
                     </div>
                 </div>
 
                 <div class="faq-item">
                     <button class="faq-question">
-                        <span>What happens if an employee leaves the company during thier LLD?</span>
+                        <span>Do you help with resume building if my current CV is outdated?</span>
                         <span class="faq-icon"></span>
                     </button>
                     <div class="faq-answer">
-                        <p>If the employee leaves the company mid-contract, BeeToGreen takes responsibility for ensuring proper follow-up with the employee.</p>
-                        <p>The employee remains liable for the instalments set out in the contract, including after their departure, unless an early termination arrangement is put in place.</p>
+                        <p>Absolutely. We provide comprehensive handholding support.</p>
+                        <p>Our experts will review, restructure, and optimize your resume to highlight your strengths and align perfectly with what top employers are seeking.</p>
                     </div>
                 </div>
 
                 <div class="faq-item">
                     <button class="faq-question">
-                        <span>Are there solutions to end a contract early?</span>
+                        <span>Will you prepare me for the actual company interviews?</span>
                         <span class="faq-icon"></span>
                     </button>
                     <div class="faq-answer">
-                        <p>Yes. Options exist to terminate contracts ahead of schedule (bike return, buyout, case-by-case solutions depending on the contractual framework).</p>
-                        <p>BeeToGreen supports the employee in exploring these options and navigating the associated steps, in order to find the most suitable solution for their situation.</p>
+                        <p>Yes. We conduct thorough interview preparation sessions, including mock interviews and behavioral question practice.</p>
+                        <p>We also share industry-specific technical tips to boost your confidence before you meet the employer.</p>
                     </div>
                 </div>
 
                 <div class="faq-item">
                     <button class="faq-question">
-                        <span>Is there any risk or constraint for the company if an employee leaves mid-contract?</span>
+                        <span>What happens after I get the job offer?</span>
                         <span class="faq-icon"></span>
                     </button>
                     <div class="faq-answer">
-                        <p>No. The company is not contractually bound by the employee's LLD and does not bear the risk associated with their individual contract.</p>
-                        <p>BeeToGreen manages the relationship with the employee directly, ensuring that an employee's departure has no operational or financial impact on the company.</p>
+                        <p>Our support doesn't end at the offer letter.</p>
+                        <p>We guide you through the salary negotiation process, help you understand your employment contract, and stay in touch during your initial onboarding to ensure a smooth transition.</p>
                     </div>
                 </div>
 
@@ -1526,14 +1531,14 @@
     <section class="tour-section" id="tour">
         <div class="tour-card">
             <div class="tour-content">
-                <h2>Well that's <br> about it</h2>
+                <h2>Ready to get <br> started?</h2>
                 <p>
-                    Our marketplace is 100% online. But your bike, it rides in the real world. That's why we work with a network of partner shops across France.
+                    Your next big career move is just a click away. Connect with our dedicated recruiters today and let's find the job you truly deserve.
                 </p>
-                <a href="/contact.html" class="tour-btn">Get in touch</a>
+                <a href="/contact.html" class="tour-btn">Apply Now</a>
             </div>
             <div class="tour-image">
-                <img src="/images/bike_green_smaller.webp" alt="Cyclist smiling">
+                <img src="/images/bike_green_smaller.webp" alt="Professional hired">
             </div>
             <div class="tour-animated-h">
                 <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">

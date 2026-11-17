@@ -102,7 +102,7 @@
 
         .hero-title {
             color: #d4f2e7;
-            font-size: clamp(55px, 8.5vw, 120px);
+            font-size: clamp(55px, 8.5vw, 140px);
             font-weight: 900;
             line-height: 1.05;
             letter-spacing: -3px;
@@ -144,9 +144,12 @@
                 letter-spacing: -1px !important;
             }
             .reach-card-left p {
-                font-size: 17px !important;
-                line-height: 1.5 !important;
-                margin-bottom: 15px !important;
+                font-size: 22px !important; /* Reduced from 30px */
+                font-weight: 600 !important;
+                line-height: 1.5 !important; /* Slightly tighter line height */
+                margin-bottom: 25px;
+                color: #0c3829;
+                max-width: 95%; /* Ensures it doesn't touch the very edges */
             }
             
             .reach-image-wrapper {
@@ -184,15 +187,16 @@
 
         .reach-card-left {
             width: 45%;
-            background-color: #d4f2e7; 
+            background-color: #d4f2e7;
             color: #062f5f;
             border-radius: 30px;
-            padding: 80px 60px;
+            padding: 55px 60px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             flex-shrink: 0;
-            height: 610px;
+            height: auto;
+            min-height: 610px;
             margin-top: 100px;
         }
 
@@ -206,11 +210,12 @@
         }
 
         .reach-card-left p {
-            font-size: 30px;
+            font-size: 22px !important;
             font-weight: 600;
-            line-height: 1.6;
-            margin-bottom: 25px;
+            line-height: 1.45;
+            margin-bottom: 20px;
             color: #0c3829;
+            max-width: 100%;
         }
 
         .reach-image-wrapper {
@@ -807,7 +812,7 @@
 
         .tour-content h2 {
             font-family: "Parkinsans", sans-serif;
-            font-size: clamp(36px, 4.2vw, 52px); 
+            font-size: clamp(36px, 4.2vw, 72px); 
             font-weight: 800;
             line-height: 1.1;
             letter-spacing: -2px;
@@ -1005,7 +1010,7 @@
     <!-- HERO SECTION -->
     <main class="hero-partner">
         <div class="hero-content">
-            <h1 class="hero-title split-text">Become a<br>BeeToGreen<br>partner</h1>
+            <h1 class="hero-title split-text">Become a<br>HighWages<br>partner</h1>
         </div>
     </main>
 
@@ -1015,58 +1020,59 @@
             
             <!-- Left Info Card -->
             <div class="reach-card-left">
-                <h2 class="split-text">Reach new <br>customers</h2>
-                <p class="fade-up-text" style="transition-delay: 0.1s;">Workplace cycling is booming. Your future customers are already out there.</p>
-                <p class="fade-up-text" style="transition-delay: 0.2s;">With BeeToGreen, you reach them easily. You keep your role: advise, sell, build loyalty.</p>
+                <h2 class="split-text">Reach top tier <br>talent and clients</h2>
+                <p class="fade-up-text" style="transition-delay: 0.1s;">The recruitment industry is booming. Your future top-performing candidates and elite corporate clients are already out there.</p>
+                <p class="fade-up-text" style="transition-delay: 0.2s;">With HighWages, you reach them effortlessly. You keep your focus on your core business while we supply the network.</p>
             </div>
 
             <!-- Right Sticky Image -->
             <div class="reach-image-wrapper">
-                <img src="/images/green-ice-bike.webp" alt="Cyclist smiling" class="reach-image">
+                <img src="/images/green-ice-bike.webp" alt="Professionals networking" class="reach-image">
             </div>
 
         </div>
     </section>
 
     <!-- =========================================
-         BIGGEST FRENCH BICYCLE BRANDS SECTION
+         BIGGEST REPUTED COMPANIES SECTION
          ========================================= -->
     <section class="brands-section">
         <div class="brands-card">
             
             <!-- Left Side Content -->
             <div class="brands-content">
-                <h2 class="split-text">We work with the<br>biggest<br>French bicycle brands.</h2>
-                <p class="fade-up-text" style="transition-delay: 0.2s;">Our marketplace is 100% online. But your bike, on the other hand, is out there in the real world. That's why we rely on a network of partner shops all over France.</p>
+                <h2 class="split-text">We have tie-ups with the<br>biggest<br>global companies.</h2>
+                <p class="fade-up-text" style="transition-delay: 0.2s;">Our sourcing is global, but business happens in the real world. That's why we rely on a strong network of corporate partners and institutional alliances to guarantee successful placements.</p>
             </div>
 
             <!-- Right Side Image (PATH UPDATED) -->
             <div class="brands-image-wrapper">
-                <img src="/images/BTG-Yellow.webp" alt="Partner bicycling with yellow loop graphic">
+                <img src="/images/BTG-Yellow.webp" alt="Corporate Partner Handshake">
             </div>
 
         </div>
 
+        <!-- Keep your existing market-partners logo slider here (Canon, Sony, Hitachi, etc.) -->
         <div class="market-partners">
                 <div class="partner-logo-slider">
                     <div class="partner-logo-track">
                         <!-- Group 1 -->
                         <div class="partner-logo-group">
-                            <img src="/images/logos/ellipse.webp" alt="Ellipse">
-                            <img src="/images/logos/gaya.webp" alt="Gaya">
-                            <img src="/images/logos/elwing.webp" alt="Elwing">
-                            <img src="/images/logos/jeanfourche.webp" alt="Jean Fourche">
-                            <img src="/images/logos/voltaire.webp" alt="Voltaire">
-                            <img src="/images/logos/bastille.webp" alt="Bastille">
+                            <img src="/images/logos/ellipse.webp" alt="Partner Logo">
+                            <img src="/images/logos/gaya.webp" alt="Partner Logo">
+                            <img src="/images/logos/elwing.webp" alt="Partner Logo">
+                            <img src="/images/logos/jeanfourche.webp" alt="Partner Logo">
+                            <img src="/images/logos/voltaire.webp" alt="Partner Logo">
+                            <img src="/images/logos/bastille.webp" alt="Partner Logo">
                         </div>
                         <!-- Group 2 (For infinite loop) -->
                         <div class="partner-logo-group" aria-hidden="true">
-                            <img src="/images/logos/ellipse.webp" alt="Ellipse">
-                            <img src="/images/logos/gaya.webp" alt="Gaya">
-                            <img src="/images/logos/elwing.webp" alt="Elwing">
-                            <img src="/images/logos/jeanfourche.webp" alt="Jean Fourche">
-                            <img src="/images/logos/voltaire.webp" alt="Voltaire">
-                            <img src="/images/logos/bastille.webp" alt="Bastille">
+                            <img src="/images/logos/ellipse.webp" alt="Partner Logo">
+                            <img src="/images/logos/gaya.webp" alt="Partner Logo">
+                            <img src="/images/logos/elwing.webp" alt="Partner Logo">
+                            <img src="/images/logos/jeanfourche.webp" alt="Partner Logo">
+                            <img src="/images/logos/voltaire.webp" alt="Partner Logo">
+                            <img src="/images/logos/bastille.webp" alt="Partner Logo">
                         </div>
                     </div>
                 </div>
@@ -1085,22 +1091,22 @@
             
             <!-- Card 1: Dark Blue -->
             <div class="benefit-card card-dark-blue">
-                <h3 class="split-text">Qualified and<br>supported customers</h3>
+                <h3 class="split-text">Highly qualified<br>and vetted talent pools</h3>
             </div>
 
             <!-- Card 2: Purple -->
             <div class="benefit-card card-purple">
-                <h3 class="split-text">Zero paperwork and<br>we love that!</h3>
+                <h3 class="split-text">Zero administrative<br>paperwork. We handle it!</h3>
             </div>
 
             <!-- Card 3: Maroon -->
             <div class="benefit-card card-maroon">
-                <h3 class="split-text">Additional revenue<br>streams<br>(Maintenance, click,<br>collect and Rental)</h3>
+                <h3 class="split-text">Additional revenue<br>streams<br>(Referrals, Co-sourcing,<br>and VMS support)</h3>
             </div>
 
             <!-- Card 4: Orange -->
             <div class="benefit-card card-orange">
-                <h3 class="split-text">Become eligible for<br>mobility cards (FMD)</h3>
+                <h3 class="split-text">Gain access to<br>exclusive hiring networks</h3>
             </div>
 
         </div>
@@ -1122,22 +1128,22 @@
                 
                 <!-- Card 1: Light Yellow -->
                 <div class="how-card card-light-yellow">
-                    <h3 class="split-text">Sign a partnership<br>agreement</h3>
+                    <h3 class="split-text">Sign a strategic<br>partnership agreement</h3>
                 </div>
 
                 <!-- Card 2: Light Orange/Peach -->
                 <div class="how-card card-light-peach">
-                    <h3 class="split-text">Access a supplier portal.<br>Simple process for<br>in-store sales.</h3>
+                    <h3 class="split-text">Access our talent portal.<br>Simple process for<br>candidate submittals.</h3>
                 </div>
 
                 <!-- Card 3: Light Blue -->
                 <div class="how-card card-light-blue">
-                    <h3 class="split-text">Payment processing via<br>BeeToGreen to allow<br>employees to use their<br>employer mobility<br>budget.</h3>
+                    <h3 class="split-text">Seamless processing via<br>HighWages to ensure<br>compliance and<br>secure data<br>management.</h3>
                 </div>
 
                 <!-- Card 4: Light Cream -->
                 <div class="how-card card-light-cream">
-                    <h3 class="split-text">Automatic invoicing and<br>payment of the sale<br>amount minus<br>commission.</h3>
+                    <h3 class="split-text">Transparent tracking<br>and prompt payment<br>of referral fees or<br>commissions.</h3>
                 </div>
 
             </div>
@@ -1152,17 +1158,15 @@
             
             <!-- Background Video -->
             <video class="chat-bg-video" autoplay loop muted playsinline>
-                <!-- AHIYA TAMARA VIDEO NO SACHO PATH MUKJO -->
                 <source src="/images/hero-bg.mp4" type="video/mp4">
             </video>
 
-            <!-- Dark Overlay text clear vachva mate -->
             <div class="chat-overlay"></div>
 
             <!-- Main Content (Fade Up Animation sathe) -->
             <div class="video-chat-content fade-up-text">
-                <span class="video-chat-label">Shall we chat?</span>
-                <h2 class="video-chat-title">Let's have a chat and<br>you'll see, it's pretty cool!</h2>
+                <span class="video-chat-label">Ready to collaborate?</span>
+                <h2 class="video-chat-title">Let's have a chat and<br>discuss growing together!</h2>
                 <a href="/contact.html" class="video-chat-btn">Get in touch</a>
             </div>
 
@@ -1175,12 +1179,12 @@
             <div class="tour-content">
                 <h2>Well that's about it</h2>
                 <p>
-                    Our marketplace is 100% online. But your bike, it rides in the real world. That's why we work with a network of partner shops across France.
+                    Our recruitment network is vast. But strong partnerships are built on real connections. That's why we collaborate closely with agencies and institutions worldwide.
                 </p>
-                <a href="/contact.html" class="tour-btn">Get in touch</a>
+                <a href="/contact.html" class="tour-btn">Join Our Network</a>
             </div>
             <div class="tour-image">
-                <img src="/images/BTG-Yellow.webp" alt="Cyclist smiling">
+                <img src="/images/BTG-Yellow.webp" alt="Partner smiling">
             </div>
             <div class="tour-animated-h">
                 <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">

@@ -744,6 +744,74 @@
 }
 
 
+/* =====================================
+   GLOBAL MOBILE HEADER BUTTON SIZE FIX
+===================================== */
+
+@media (max-width: 900px) {
+
+    /* WHITE LOGIN BUTTON */
+    .header .header-actions .btn-login {
+        background: #ffffff !important;
+        color: #111111 !important;
+
+        min-width: 78px !important;
+        min-height: 38px !important;
+
+        padding: 0 12px !important;
+        font-size: 14px !important;
+        font-weight: 700 !important;
+
+        border-radius: 11px !important;
+        margin: 0 !important;
+    }
+
+    /* LOGIN HOVER */
+    .header .header-actions .btn-login:hover {
+        background: #ffffff !important;
+        color: #111111 !important;
+    }
+
+    /* HAMBURGER BUTTON */
+    .header .mobile-menu-open {
+        width: 28px !important;
+        height: 32px !important;
+        gap: 5px !important;
+    }
+
+    .header .mobile-menu-open span {
+        width: 25px !important;
+        height: 2.5px !important;
+        background: #ffffff !important;
+    }
+
+    /* LESS GAP BETWEEN LOGIN AND MENU */
+    .header .mobile-header-actions {
+        gap: 10px !important;
+        margin-left: 8px !important;
+    }
+}
+
+/* SMALL MOBILE */
+@media (max-width: 380px) {
+
+    .header .header-actions .btn-login {
+        min-width: 72px !important;
+        min-height: 36px !important;
+        font-size: 13px !important;
+        padding: 0 10px !important;
+    }
+
+    .header .mobile-menu-open {
+        width: 26px !important;
+    }
+
+    .header .mobile-menu-open span {
+        width: 23px !important;
+    }
+}
+
+
 </style>
 </head>
 

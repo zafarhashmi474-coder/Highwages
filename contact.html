@@ -222,60 +222,60 @@ body { font-family: "Parkinsans", sans-serif; background: #1a1a1a; color: #fffff
     <main class="contact-main">
         <section class="contact-heading">
             <h1>Get in touch</h1>
-            <p id="sub-text">Are you an employee or an employer? Choose your profile to be directed to the right contact.</p>
+            <p id="sub-text">Are you a job seeker looking for your dream role, or an employer looking to hire top talent? Choose your profile to be directed to the right team.</p>
         </section>
 
         <!-- MAIN CARDS VIEW -->
         <section class="contact-cards" id="view-cards">
             <a href="#salarie" class="contact-card employee-card">
-                <h2>I'm an employee</h2>
-                <p>You want to learn more about Highwages offering through your company.</p>
+                <h2>I'm a Candidate</h2>
+                <p>You want to learn more about HighWages' handholding support, resume building, and interview preparation.</p>
             </a>
             <a href="#entreprise" class="contact-card employer-card">
-                <h2>I'm an employer</h2>
-                <p>You want to equip your employees with soft mobility solutions through Highwages.</p>
+                <h2>I'm an Employer</h2>
+                <p>You want to equip your company with our full-cycle recruitment, admin support, and VMS solutions.</p>
             </a>
         </section>
 
-        <!-- EMPLOYEE VIEW -->
+        <!-- EMPLOYEE (CANDIDATE) VIEW -->
         <section class="view-section" id="view-employee">
             <div class="toggle-container">
-                <a href="#salarie" class="toggle-btn active">I'm an employee</a>
-                <a href="#entreprise" class="toggle-btn">I'm an employer</a>
+                <a href="#salarie" class="toggle-btn active">I'm a Candidate</a>
+                <a href="#entreprise" class="toggle-btn">I'm an Employer</a>
             </div>
             
             <form class="common-form employee-form">
                 <div class="form-group">
-                    <label>E-mail<span class="required">*</span></label>
-                    <p class="subtitle">votre adresse mail de connexion Highwages | your Highwages login email address</p>
+                    <label>E-mail Address<span class="required">*</span></label>
+                    <p class="subtitle">Your primary contact email address</p>
                     <input type="email" required>
                 </div>
                 <div class="form-group">
-                    <label>Description de la demande | Description of the request<span class="required">*</span></label>
-                    <p class="subtitle">Décrivez-nous votre problème en nous donnant le plus d'information possible | Describe your issue and provide as much information as possible</p>
+                    <label>Description of your request<span class="required">*</span></label>
+                    <p class="subtitle">Describe your career goals or current challenges in your job search, providing as much detail as possible.</p>
                     <textarea rows="5" required></textarea>
                 </div>
                 <div class="form-group">
-                    <label>Avez vous une commande ? | Do you have an order ? <span class="required">*</span></label>
+                    <label>Are you currently employed?<span class="required">*</span></label>
                     <select required>
-                        <option value="" disabled selected>Veuillez sélectionner</option>
-                        <option value="yes">Oui / Yes</option>
-                        <option value="no">Non / No</option>
+                        <option value="" disabled selected>Please select an option</option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
                     </select>
                 </div>
-                <button type="submit" class="submit-btn">Soumettre</button>
+                <button type="submit" class="submit-btn">Submit Request</button>
             </form>
         </section>
 
         <!-- EMPLOYER VIEW (Scheduler + Direct Contact Form) -->
         <section class="view-section" id="view-employer">
             <div class="toggle-container">
-                <a href="#salarie" class="toggle-btn">I'm an employee</a>
-                <a href="#entreprise" class="toggle-btn active">I'm an employer</a>
+                <a href="#salarie" class="toggle-btn">I'm a Candidate</a>
+                <a href="#entreprise" class="toggle-btn active">I'm an Employer</a>
             </div>
 
             <!-- SCHEDULER SECTION -->
-            <h2 class="section-title">Book a meeting with our team</h2>
+            <h2 class="section-title">Book a meeting with our recruitment experts</h2>
 
             <!-- CALENDAR UI -->
             <div class="scheduler-widget" id="scheduler-ui">
@@ -371,44 +371,44 @@ body { font-family: "Parkinsans", sans-serif; background: #1a1a1a; color: #fffff
                 
                 <!-- Placeholder for the large image banner -->
                 <div class="direct-contact-banner">
-                    <img src="images/banner-placeholder.jpg" alt="Highwages Banner" id="employer-banner-img">
+                    <img src="images/banner-placeholder.jpg" alt="HighWages Corporate Support" id="employer-banner-img">
                 </div>
 
                 <!-- 6 Fields Form -->
                 <form class="common-form direct-contact-form">
                     
                     <div class="form-group">
-                        <label>E-mail<span class="required">*</span></label>
+                        <label>Corporate E-mail<span class="required">*</span></label>
                         <input type="email" required>
                     </div>
 
                     <div class="form-group">
-                        <label>Numéro de téléphone</label>
+                        <label>Phone Number</label>
                         <input type="tel">
                     </div>
 
                     <div class="form-group">
-                        <label>Prénom</label>
+                        <label>First Name</label>
                         <input type="text">
                     </div>
 
                     <div class="form-group">
-                        <label>Nom</label>
+                        <label>Last Name</label>
                         <input type="text">
                     </div>
 
                     <div class="form-group">
-                        <label>Nom de l'entreprise</label>
+                        <label>Company Name</label>
                         <input type="text">
                     </div>
 
                     <div class="form-group">
-                        <label>Un besoin en particulier ?</label>
-                        <p class="subtitle">Notre équipe est disponible pour vous accompagner 👉 <span class="link-text">Prenez rendez-vous</span></p>
-                        <input type="text">
+                        <label>Specific Hiring Needs?</label>
+                        <p class="subtitle">Looking for immediate placement? 👉 <span class="link-text" onclick="window.scrollTo(0, document.getElementById('scheduler-ui').offsetTop);">Schedule a Call</span></p>
+                        <input type="text" placeholder="e.g., We need 5 software engineers by Q3...">
                     </div>
 
-                    <button type="submit" class="submit-btn" style="margin-top: 15px;">Soumettre</button>
+                    <button type="submit" class="submit-btn" style="margin-top: 15px;">Submit Request</button>
                 </form>
             </div>
 

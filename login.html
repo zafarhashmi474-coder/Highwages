@@ -41,7 +41,7 @@
             background-color: #0b5e40; /* Dark Green */
             position: sticky;
             top: 0;
-            height: 100vh; /* Keeps the left side fixed while the right side scrolls */
+            height: 100vh; 
             overflow: hidden;
             display: flex;
             flex-direction: column;
@@ -81,7 +81,7 @@
             margin-bottom: 0;
         }
 
-        /* Abstract Light Green Shapes (Using SVG as background) */
+        /* Abstract Light Green Shapes */
         .bg-shapes {
             position: absolute;
             top: 0;
@@ -150,14 +150,14 @@
         .form-wrapper {
             max-width: 450px;
             width: 100%;
-            margin: auto; /* Centers vertically and horizontally */
+            margin: auto; 
         }
 
         .form-wrapper h1 {
             font-family: 'Outfit', sans-serif;
             font-size: 32px;
             font-weight: 700;
-            color: #0b221a; /* Dark Green text */
+            color: #0b221a;
             margin-bottom: 30px;
             text-align: center;
         }
@@ -236,7 +236,7 @@
             100% { transform: translateX(-50%); } 
         }
 
-        /* TEXT OVERLAY (ABSOLUTE CENTER WITH SOLID BACKGROUND) */
+        /* TEXT OVERLAY */
         .btn-text {
             position: absolute; 
             top: 0;
@@ -257,13 +257,13 @@
         }
 
         .btn-microsoft {
-            background-color: #0284c7; /* Blue */
+            background-color: #0284c7; 
             color: #fff;
             gap: 10px;
         }
         
         .btn-google {
-            background-color: #ef4444; /* Red */
+            background-color: #ef4444; 
             color: #fff;
             gap: 10px;
         }
@@ -318,7 +318,7 @@
         .btn-login-submit {
             width: 100%;
             padding: 16px;
-            background-color: #052e16; /* Very Dark Green */
+            background-color: #052e16; 
             color: #fff;
             border: none;
             border-radius: 8px;
@@ -360,7 +360,7 @@
         .floating-chat i { color: #1e3a8a; font-size: 24px; }
 
         /* =========================================
-           RESPONSIVE DESIGN
+           RESPONSIVE DESIGN (UPDATED)
            ========================================= */
         @media (max-width: 1024px) {
             .left-panel { padding: 30px; }
@@ -372,27 +372,15 @@
                 flex-direction: column;
             }
 
+            /* HIDE LEFT PANEL ON MOBILE */
             .left-panel {
-                flex: none;
-                position: relative;
-                height: 500px; /* Specific height for mobile */
-                padding: 30px 20px;
-                text-align: center;
-                align-items: center;
-            }
-
-            .highlight-box {
-                font-size: 28px;
-            }
-
-            .hero-image {
-                width: 95%;
-                bottom: 0;
+                display: none !important; 
             }
 
             .right-panel {
                 flex: none;
                 padding: 40px 20px;
+                min-height: 100vh; /* Fill full height if left panel is gone */
             }
 
             .lang-switcher {
@@ -400,8 +388,8 @@
                 align-self: center;
             }
 
-            .floating-check, .floating-chat {
-                display: none; /* Hide floating icons on small mobile */
+            .floating-chat {
+                display: none; 
             }
         }
 
@@ -583,6 +571,7 @@
             </div>
 
             <div class="form-wrapper">
+                <h1>HighWages</h1>
                 <h1>Welcome back!</h1>
 
                 <span class="section-label">Log in with</span>

@@ -90,7 +90,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 4; 
+            z-index: 7; 
             pointer-events: none;
             display: flex;
             flex-direction: column;
@@ -116,9 +116,9 @@
             font-weight: 900;
             line-height: 1.05;
             letter-spacing: -2px;
-            color: #d1f34d; /* Lime Yellow */
+            color: #d1f34d;
             text-align: center;
-            z-index: 4; 
+            z-index: 10;
         }
 
         /* Run a Quote Button */
@@ -406,107 +406,108 @@ TOUR WRAPPED UP SECTION
                 <svg class="hero-graphic" viewBox="0 0 500 600" xmlns="http://www.w3.org/2000/svg">
                     <path d="M -50 550 C 150 450, 450 200, 300 100 C 150 0, -50 250, 150 450 C 350 650, 250 750, 100 750" fill="none" stroke="#d1f34d" stroke-width="85" stroke-linecap="round"/>
                 </svg>
-                <h1 class="hero-title split-text">Take care of yourself, the planet, and save money</h1>
+                <h1 class="hero-title split-text">Take care of your<br> career, your future, <br>and earn more</h1>
             </div>
             
             <div class="quote-btn-wrapper">
-                <a href="#quote" class="quote-btn">Run a quote</a>
+                <a href="#quote" class="quote-btn">Run a salary quote</a>
             </div>
 
             <!-- Text Overlays -->
             <div class="scroll-text text-1">
-                <h2>Once the company has signed<br>the contract with BeeToGreen, all<br>employees can log in to the<br>platform.</h2>
+                <h2>Once you sign up with<br>HighWages, our recruitment<br>experts immediately begin<br>optimizing your profile.</h2>
             </div>
             <div class="scroll-text text-2">
-                <h2>The company's contribution is<br>either deducted directly from the<br>purchase price or refunded later<br>according to the terms defined<br>by the company.</h2>
+                <h2>We provide complete handholding support from resume building to technical interview preparation at absolutely zero cost to you.</h2>
             </div>
             <div class="scroll-text text-3">
-                <h2>BeeToGreen also supports you in<br>claiming public subsidies you<br>may be eligible for, depending<br>on where you live.</h2>
+                <h2>HighWages also supports you in<br>salary negotiations, ensuring<br>you secure a compensation package<br>that matches your true worth.</h2>
             </div>
 
         </div>
     </section>
 
     
-<!-- DYNAMIC BIKE COST SIMULATOR (Added .fade-up-text to elements) -->
-<section class="simulate-section" id="bike-simulator">
+    <!-- DYNAMIC SALARY SIMULATOR (Replaces Bike Simulator) -->
+    <section class="simulate-section" id="salary-simulator">
 
-    <h2 class="fade-up-text">Simulate the cost of a bike</h2>
+        <h2 class="fade-up-text">Simulate your career growth</h2>
 
-    <div class="simulator-container">
+        <div class="simulator-container">
 
-        <!-- LEFT SIDE -->
-        <div class="simulator-left fade-up-text">
-            <span class="simulator-label">Details to run your simulation</span>
-            <h3>Details to run your simulation</h3>
+            <!-- LEFT SIDE -->
+            <div class="simulator-left fade-up-text">
+                <span class="simulator-label">Set your career goals</span>
+                <h3>What is your target annual salary?</h3>
 
-            <div class="bike-slider-area">
-                <div class="bike-price-display" id="bikePriceDisplay">1,500 €</div>
-                <input type="range" id="bikePriceSlider" min="750" max="7000" step="50" value="1500" aria-label="Bike price">
-            </div>
-
-            <h3 class="fmd-heading">Your company's annual bike contribution (FMD)?</h3>
-            <div class="fmd-input-wrapper">
-                <input type="number" id="fmdContribution" min="0" max="10000" step="50" value="500" aria-label="Annual company bike contribution">
-                <span>€</span>
-            </div>
-        </div>
-
-        <!-- RIGHT SIDE -->
-        <div class="simulator-right fade-up-text">
-            <span class="pricing-heading">PRICING WITH HIGHWAGES</span>
-
-            <div class="pricing-cards">
-                <div class="pricing-card monthly-card">
-                    <div>
-                        <h3>Monthly rental</h3>
-                        <div class="pricing-amount"><span id="monthlyPrice">19</span> €</div>
-                    </div>
-                    <p>over a 36-month long-term lease + Theft and damage insurance included</p>
+                <div class="bike-slider-area">
+                    <div class="bike-price-display" id="bikePriceDisplay">50,000 $</div>
+                    <!-- You can adjust min/max values in JS to represent salary instead of bike price -->
+                    <input type="range" id="bikePriceSlider" min="30000" max="150000" step="5000" value="50000" aria-label="Target Salary">
                 </div>
 
-                <div class="pricing-card purchase-card">
-                    <div>
-                        <h3>Purchase</h3>
-                        <div class="pricing-amount"><span id="purchasePrice">500</span> €</div>
-                    </div>
-                    <p>What is the price of the bike you want to buy?</p>
+                <h3 class="fmd-heading">Current Annual Salary?</h3>
+                <div class="fmd-input-wrapper">
+                    <input type="number" id="fmdContribution" min="20000" max="140000" step="1000" value="40000" aria-label="Current Salary">
+                    <span>$</span>
                 </div>
             </div>
 
-            <div class="pricing-divider"></div>
+            <!-- RIGHT SIDE -->
+            <div class="simulator-right fade-up-text">
+                <span class="pricing-heading">YOUR PLACEMENT PLAN</span>
 
-            <div class="benefit-row">
-                <span>Sustainable Mobility Allowance included</span>
-                <strong><span id="mobilityAllowance">500</span> €</strong>
+                <div class="pricing-cards">
+                    <div class="pricing-card monthly-card">
+                        <div>
+                            <h3>Candidate Fee</h3>
+                            <div class="pricing-amount"><span id="monthlyPrice">0</span> $</div>
+                        </div>
+                        <p>Our handholding placement support is 100% free for job seekers.</p>
+                    </div>
+
+                    <div class="pricing-card purchase-card">
+                        <div>
+                            <h3>Projected Increase</h3>
+                            <div class="pricing-amount"><span id="purchasePrice">10,000</span> $</div>
+                        </div>
+                        <p>Estimated salary boost based on your target and current experience.</p>
+                    </div>
+                </div>
+
+                <div class="pricing-divider"></div>
+
+                <div class="benefit-row">
+                    <span>Resume Building & Optimization</span>
+                    <strong><span>Included</span></strong>
+                </div>
+
+                <div class="benefit-row">
+                    <span>Interview Preparation Sessions</span>
+                    <strong><span>Included</span></strong>
+                </div>
+
+                <a href="../contact.html" class="expert-btn">Talk to a recruiter</a>
             </div>
-
-            <div class="benefit-row">
-                <span>Public subsidy included</span>
-                <strong><span id="publicSubsidy">500</span> €</strong>
-            </div>
-
-            <a href="../contact.html" class="expert-btn">Talk to an expert</a>
         </div>
-    </div>
-</section>
+    </section>
 
     <!-- TOUR WRAPPED UP SECTION -->
     <section class="tour-section" id="tour">
         <div class="tour-card">
             <div class="tour-content">
-                <h2>Try our solution integrating the Sustainable Mobility Allowance free of charge</h2>
-                <p>Our marketplace is 100% online. But your bike rides in the real world. That's why we rely on a network of partner shops across France.</p>
+                <h2>Try our free placement solution and secure your desired job</h2>
+                <p>Our application process is 100% online. But your career growth happens in the real world. That's why we rely on a network of top-tier corporate partners to get you hired.</p>
                 <a href="/contact.html" class="tour-btn">Get in touch</a>
             </div>
             <div class="tour-image">
-                <img src="/images/BTG-Yellow.webp" alt="Cyclist smiling">
+                <img src="/images/BTG-Yellow.webp" alt="Professional smiling">
             </div>
             <div class="tour-animated-h">
-                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <!-- <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="50" cy="50" r="50" fill="#2b3945" />
                     <path d="M30,25 L30,75 M30,50 L70,50 M70,25 L70,75" fill="none" stroke="#e6ff42" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
+                </svg> -->
             </div>
         </div>
     </section>

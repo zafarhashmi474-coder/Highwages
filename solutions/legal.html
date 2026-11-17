@@ -134,7 +134,7 @@
             font-weight: 500;
             color: #888888;
             padding-left: 15px;
-            border-left: 3px solid transparent;
+            border-left: 2px solid #eaeaea;
             transition: all 0.3s ease;
         }
 
@@ -146,7 +146,7 @@
         .sidebar-link.active {
             color: #0c3829; 
             font-weight: 700;
-            border-left: 3px solid #0c3829; 
+            border-left: 2px solid #0c3829; 
         }
 
         /* ---------------------------------
@@ -178,31 +178,65 @@
             color: #222222;
         }
 
-        /* Responsive Adjustments */
+        /* =========================================
+           RESPONSIVE ADJUSTMENTS (MOBILE VIEW)
+           ========================================= */
         @media (max-width: 992px) {
+            .legal-header {
+                padding: 120px 20px 40px; 
+                text-align: left; 
+            }
+
+            .legal-title {
+                font-size: 38px;
+            }
+
+            .legal-intro-text {
+                font-size: 16px;
+            }
+
             .legal-main-container {
                 flex-direction: column;
                 gap: 40px;
+                padding: 0 20px;
             }
+
             .legal-sidebar {
                 width: 100%;
                 position: relative;
                 top: 0;
             }
+
+            /* Keep vertical layout with left border for mobile */
             .sidebar-nav {
-                flex-direction: row;
-                flex-wrap: wrap;
-                gap: 20px;
+                flex-direction: column;
+                gap: 12px;
             }
+
             .sidebar-link {
-                border-left: none;
-                border-bottom: 3px solid transparent;
-                padding-left: 0;
-                padding-bottom: 5px;
+                border-left: 2px solid #eaeaea; 
+                border-bottom: none;
+                padding-left: 15px;
+                padding-bottom: 0;
             }
+
             .sidebar-link.active {
-                border-left: none;
-                border-bottom: 3px solid #0c3829;
+                border-left: 2px solid #0c3829;
+                border-bottom: none;
+            }
+
+            .legal-content-area {
+                gap: 40px;
+            }
+
+            .content-section h2 {
+                font-size: 26px;
+                margin-bottom: 15px;
+                letter-spacing: 0;
+            }
+
+            .content-section p {
+                font-size: 16px;
             }
         }
     </style>
@@ -470,7 +504,6 @@
             const animatedTitles = document.querySelectorAll('.split-text');
             animatedTitles.forEach(title => mainObserver.observe(title));
 
-            // Hero section ni main title ne instantly load karavva mate
             setTimeout(() => {
                 const heroTitle = document.querySelector('.legal-title');
                 if(heroTitle) heroTitle.classList.add('in-view');
