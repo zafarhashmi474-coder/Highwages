@@ -34,26 +34,26 @@ document.addEventListener("DOMContentLoaded", function () {
         {
             bgColor: "#f3f0ff", 
             themeColor: "#5b318e",
-            image: "images/home_bg.webp",
-            badge: "+3,000 bike references",
-            title: "We actually equip you.",
-            desc: "We give you access to our marketplace designed for the commute. Your teams pick, order, ride. And the Sustainable Mobility Allowance handles the rest."
+            image: "images/carrer-coaching.png",
+            badge: "Job Seeker Support",
+            title: "Handholding support till you get your desired job.",
+            desc: "From Resume building to interview preparation to getting you a perfect job that suits your needs and payscale. We guide you to brush up your skills and get a good salary package."
         },
         {
             bgColor: "#fff1eb", 
             themeColor: "#e55a24",
-            image: "images/Card-section2.webp",
-            badge: "+5,000 bike racks installed",
-            title: "We help you get started, by handling everything that usually gets in the way",
-            desc: "Installation of secure bike racks, bike tests to find the right one, safety training to ride with confidence."
+            image: "images/hr-team-meeting.png",
+            badge: "Enterprise Solutions",
+            title: "We filter profiles precisely to your requirements.",
+            desc: "HighWages specializes in providing sourcing services, Admin support, Full cycle recruitment, and VMS support. We perfectly understand your company profile and culture."
         },
         {
             bgColor: "#eafaf1", 
             themeColor: "#1d6a44",
-            image: "images/comment-section-3.webp",
-            badge: "+10 cycling experts",
-            title: "We don't leave you on your own. We support you from A to Z.",
-            desc: "Choosing the right bike for your commute, understanding the options (folding, cargo...), activating available subsidies."
+            image: "images/global-recruitment.png",
+            badge: "Global Reach",
+            title: "Round-the-clock recruitment support for our clients.",
+            desc: "We provide 24/7 outsourcing recruitment support, ensuring high-quality candidates on a weekly basis. We keep you updated during the entire process."
         }
     ];
 
