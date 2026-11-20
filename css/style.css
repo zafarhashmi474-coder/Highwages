@@ -3542,10 +3542,10 @@ button {
 /* Right Tablet Image (Desktop Only) */
 .market-image {
     position: absolute; 
-    right: -35px;           
-    top: 60%;
+    right: -65px;           
+    top: 65%;
     transform: translateY(-50%) rotate(5deg); 
-    width: 690px; 
+    width: 700px; 
     z-index: 2;
     transition: transform 0.5s ease;
 }
@@ -4257,8 +4257,8 @@ button {
 .tour-image {
     position: absolute;
     right: -10px;
-    top: -90px; 
-    width: 580px;
+    top: -20px; 
+    width: 680px;
     z-index: 3; 
     pointer-events: none;
 }

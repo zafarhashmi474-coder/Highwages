@@ -2,7 +2,7 @@
 document.addEventListener("DOMContentLoaded", function () {
 
     // 1. Header load
-    fetch("components/header.html")
+    fetch("/components/header.html")
         .then(response => {
             if (!response.ok) throw new Error("Header not found");
             return response.text();
@@ -34,19 +34,40 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     // 2. Footer load
-    const footerPlaceholder = document.getElementById("footer-placeholder");
+    
+// 2. Footer load
+const footerPlaceholder = document.getElementById("footer-placeholder");
 
-    if (footerPlaceholder) {
-        fetch("components/footer.html")
-            .then(response => {
-                if (!response.ok) throw new Error("Footer not found");
-                return response.text();
-            })
-            .then(data => {
-                footerPlaceholder.innerHTML = data;
-            })
-            .catch(error => console.error("Footer fetch error:", error));
-    }
+if (footerPlaceholder) {
+    fetch("/components/footer.html")
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Footer not found");
+            }
+            return response.text();
+        })
+        .then(data => {
+            footerPlaceholder.innerHTML = data;
+
+            // Show footer after dynamic loading
+            const footer = footerPlaceholder.querySelector(".site-footer");
+
+            if (footer) {
+                requestAnimationFrame(() => {
+                    footer.classList.add("visible");
+                });
+            }
+
+            // Dynamic year
+            const year = footerPlaceholder.querySelector("#year");
+
+            if (year) {
+                year.textContent = new Date().getFullYear();
+            }
+        })
+        .catch(error => console.error("Footer fetch error:", error));
+}
+
 
 
     // 3. Amazon Logo strip animation failsafe
