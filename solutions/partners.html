@@ -221,15 +221,15 @@
         .reach-image-wrapper {
             position: sticky;
             top: 100px;
-            width: 58%;
+            width: 60%;
             height: 850px;
-            min-height: 850px;
+            min-height: 950px;
             border-radius: 30px;
             overflow: visible;
             display: flex;
             align-items: center;
             justify-content: center;
-            opacity: 0; /* Animation mate */
+            opacity: 0; 
             transform: scale(0.95);
             transition: opacity 1s ease, transform 1s cubic-bezier(0.22, 1, 0.36, 1);
         }
@@ -298,10 +298,10 @@
 
         .brands-image-wrapper {
             position: absolute;
-            right: -60px; 
-            top: 50%;
+            right: 60px; 
+            top: 43%;
             transform: translateY(-50%);
-            width: 580px; 
+            width: 400px; 
             z-index: 5;
             pointer-events: none;
             opacity: 0;
@@ -501,7 +501,7 @@
            ========================================= */
         .how-it-works-section {
             padding: 100px 4% 150px;
-            background-color: #ffffff; /* White background matching screenshot */
+            background-color: #ffffff; 
             position: relative;
         }
 
@@ -869,8 +869,8 @@
         .tour-image {
             position: absolute;
             right: -10px;
-            top: -90px; 
-            width: 580px;
+            top: -40px; 
+            width: 680px;
             z-index: 3; 
             pointer-events: none;
         }
@@ -946,23 +946,21 @@
         @media (max-width: 768px) {
             .tour-section { 
                 padding: 50px 5% 80px !important; 
-                background-color: #ffffff !important; /* ફિક્સ: પાછળનું બેકગ્રાઉન્ડ સફેદ કર્યું જેથી કાર્ડ અલગ દેખાય */
+                background-color: #ffffff !important;
                 overflow: hidden !important; 
             }
             .tour-card { 
                 padding: 40px 25px !important; 
                 border-radius: 20px !important; 
-                background-color: #fcf8e3 !important; /* કાર્ડનો ક્રીમ કલર રાખ્યો */
+                background-color: #fcf8e3 !important; 
                 min-height: auto !important; 
                 text-align: left !important; 
                 position: relative !important;
                 overflow: hidden !important; 
             }
             
-            /* મોબાઈલમાં મુખ્ય ઈમેજ છુપાવી દીધી */
             .tour-image { display: none !important; }
 
-            /* ગોળ H લોગો (animated-h) ને ઉપર જમણી બાજુ અડધો સેટ કર્યો */
             .tour-animated-h { 
                 display: block !important; 
                 position: absolute !important;
@@ -976,7 +974,6 @@
                 opacity: 1 !important;
             }
             
-            /* ટાઈટલ અને પેરેગ્રાફની સાઈઝ */
             .tour-content h2 { 
                 font-size: 32px !important; 
                 letter-spacing: -1px !important; 
@@ -990,7 +987,6 @@
                 margin-bottom: 30px !important; 
             }
             
-            /* બટન ફુલ-વિડ્થ */
             .tour-btn { 
                 display: block !important; 
                 width: 100% !important; 
@@ -1027,15 +1023,15 @@
 
             <!-- Right Sticky Image -->
             <div class="reach-image-wrapper">
-                <img src="/images/green-ice-bike.webp" alt="Professionals networking" class="reach-image">
+                <img src="/images/become-partner.png" alt="Professionals networking" class="reach-image">
             </div>
 
         </div>
     </section>
 
     <!-- =========================================
-         BIGGEST REPUTED COMPANIES SECTION
-         ========================================= -->
+        BIGGEST REPUTED COMPANIES SECTION
+    ========================================= -->
     <section class="brands-section">
         <div class="brands-card">
             
@@ -1047,12 +1043,11 @@
 
             <!-- Right Side Image (PATH UPDATED) -->
             <div class="brands-image-wrapper">
-                <img src="/images/BTG-Yellow.webp" alt="Corporate Partner Handshake">
+                <img src="/images/Smiling-Professional.png" alt="Corporate Partner Handshake">
             </div>
 
         </div>
 
-        <!-- Keep your existing market-partners logo slider here (Canon, Sony, Hitachi, etc.) -->
         <div class="market-partners">
                 <div class="partner-logo-slider">
                     <div class="partner-logo-track">
@@ -1158,7 +1153,7 @@
             
             <!-- Background Video -->
             <video class="chat-bg-video" autoplay loop muted playsinline>
-                <source src="/images/hero-bg.mp4" type="video/mp4">
+                <source src="/images/0_Business_Meeting_1280x672.mp4" type="video/mp4">
             </video>
 
             <div class="chat-overlay"></div>
@@ -1184,14 +1179,14 @@
                 <a href="/contact.html" class="tour-btn">Join Our Network</a>
             </div>
             <div class="tour-image">
-                <img src="/images/BTG-Yellow.webp" alt="Partner smiling">
+                <img src="/images/Cheerful_Businesswoman.png" alt="Partner smiling">
             </div>
             <div class="tour-animated-h">
-                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <!-- <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="50" cy="50" r="50" fill="#3b2314" />
                     <path d="M30,25 L30,75 M30,50 L70,50 M70,25 L70,75" 
                         fill="none" stroke="#e6ff42" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
+                </svg> -->
             </div>
         </div>
     </section>
